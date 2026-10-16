@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Creative portfolio exploring psychology, performance, storytelling and production.">
+  <title>Creative Archive — Portfolio</title>
+  <style>
+    :root{--ink:#171717;--lime:#d8f36a;--coral:#ff754a;--blue:#d8e5ff;--cream:#f6f0e7;--pink:#f4d7f0;--paper:#fffdf8;--muted:#66645f;--line:#ded9cf;--radius:22px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.5}a{color:inherit}button,a{touch-action:manipulation}.wrap{width:min(1120px,calc(100% - 40px));margin-inline:auto}.nav{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0}.brand{font-weight:900;letter-spacing:-.05em;text-transform:uppercase}.navlinks{display:flex;gap:20px;flex-wrap:wrap;font-size:.9rem}.navlinks a{text-decoration:none}.navlinks a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px}.hero{background:var(--ink);color:white;border-radius:28px;padding:clamp(28px,6vw,76px);position:relative;overflow:hidden}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.75rem;font-weight:800;color:var(--lime)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3rem,9vw,7.5rem);line-height:.88;letter-spacing:-.085em;margin:28px 0;max-width:900px}h1 span{color:var(--lime);display:block}.intro{max-width:600px;color:#e9e7e2;font-size:1.1rem}.hero-bottom{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:38px}.button{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:999px;background:var(--lime);color:var(--ink);font-weight:800;text-decoration:none;border:2px solid var(--lime)}.button:hover{transform:translateY(-2px)}.hero-sticker{position:absolute;right:7%;top:12%;width:110px;height:110px;background:var(--coral);color:var(--ink);border-radius:50%;display:grid;place-items:center;text-align:center;font-weight:900;transform:rotate(10deg);padding:12px;font-size:.85rem}.section{padding:78px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin-bottom:24px}.kicker{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--muted)}h2{font-size:clamp(2rem,5vw,4rem);line-height:.95;letter-spacing:-.065em;margin:8px 0 0}.section-note{max-width:340px;color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:white;display:flex;flex-direction:column;min-height:260px}.card-top{min-height:150px;padding:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.card-top h3{font-size:clamp(1.7rem,4vw,3rem);line-height:.95;letter-spacing:-.065em;max-width:420px;margin:28px 0 0}.card-top .num{font-size:.75rem;font-weight:800;letter-spacing:.1em}.lime{background:var(--lime)}.coral{background:var(--coral)}.blue{background:var(--blue)}.pink{background:var(--pink)}.cream{background:var(--cream)}.dark{background:var(--ink);color:white}.card-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}.tag{border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:.72rem;font-weight:700}.card p{color:var(--muted);margin-bottom:18px}.card-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.85rem;font-weight:800}.text-link{border:0;background:none;padding:0;font:inherit;text-decoration:underline;text-underline-offset:4px;cursor:pointer}.status{font-size:.72rem;color:var(--muted);font-weight:700}.about{display:grid;grid-template-columns:.85fr 1.15fr;gap:30px;align-items:start}.about-block{background:var(--blue);padding:clamp(24px,4vw,42px);border-radius:var(--radius)}.about-block h2{font-size:clamp(2.2rem,5vw,4.5rem)}.about-copy{font-size:1.1rem;max-width:620px}.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.skills span{background:white;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:.85rem}.contact{background:var(--coral);border-radius:var(--radius);padding:clamp(28px,6vw,62px);display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}.contact h2{max-width:680px}.contact p{max-width:500px;margin:18px 0 0}.contact .button{background:var(--ink);color:white;border-color:var(--ink)}footer{padding:28px 0 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.85rem}.small{font-size:.85rem;color:var(--muted)}.modal{position:fixed;inset:0;background:#0009;display:none;place-items:center;padding:20px;z-index:5}.modal.open{display:grid}.modal-panel{background:var(--paper);border-radius:22px;max-width:620px;width:100%;padding:28px;max-height:85vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;gap:16px;align-items:start}.close{font-size:1.5rem;border:0;background:transparent;cursor:pointer}.modal-panel h2{font-size:2.6rem;margin:10px 0 20px}.todo{background:var(--cream);padding:16px;border-radius:14px;margin-top:14px}.todo ul{padding-left:20px;margin-bottom:0}.todo li{margin:7px 0}
+    @media(max-width:700px){.wrap{width:min(100% - 24px,1120px)}.nav{align-items:flex-start;flex-direction:column}.navlinks{gap:13px}.hero-sticker{position:static;width:82px;height:82px;margin-left:auto;font-size:.7rem}.grid,.about{grid-template-columns:1fr}.section{padding:56px 0}.section-head{align-items:flex-start;flex-direction:column}.card-top{min-height:130px}h1{font-size:clamp(3.1rem,17vw,5.6rem)}}
+    /* Finishing touches: clearer keyboard focus, calmer motion, and better small-screen spacing. */
+    html{scroll-padding-top:24px}
+    section[id]{scroll-margin-top:24px}
+    :focus-visible{outline:3px solid var(--coral);outline-offset:4px}
+    .skip-link{position:fixed;top:12px;left:12px;z-index:10;padding:10px 14px;background:var(--lime);color:var(--ink);border-radius:999px;font-weight:800;text-decoration:none;transform:translateY(-160%)}
+    .skip-link:focus{transform:translateY(0)}
+    .button{transition:transform .18s ease,box-shadow .18s ease}
+    .button:hover{box-shadow:0 8px 20px #1717171a}
+    .text-link{border-radius:4px}
+    .close{border-radius:8px;padding:4px 10px}
+    .close:hover{background:var(--cream)}
+    .contact-note{margin:18px 0 0;font-size:.9rem;font-weight:700}
+    .button-disabled,.button-disabled:hover{cursor:default;transform:none;box-shadow:none}
+    .modal-panel{box-shadow:0 24px 80px #0003}
+    .modal-panel:focus{outline:none}
+    @media(max-width:700px){
+      .hero{padding:28px 22px}
+      .hero-bottom{align-items:flex-start}
+      .hero-bottom .button{width:100%}
+      .navlinks{row-gap:8px}
+      .card-foot{align-items:flex-start;flex-wrap:wrap}
+      .status{line-height:1.5}
+      footer{align-items:flex-start}
+    }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="wrap nav">
+    <a class="brand" href="#home" aria-label="Creative Archive home">Creative Archive<span aria-hidden="true">✳</span></a>
+    <nav class="navlinks" aria-label="Main navigation"><a href="#work">Work</a><a href="#thinking">Psychology</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </header>
+  <main id="main-content">
+    <section class="wrap hero" id="home">
+      <div class="eyebrow">Psychology × storytelling × production</div>
+      <h1>I STUDY PEOPLE.<span>I MAKE IDEAS MOVE.</span></h1>
+      <p class="intro">A growing archive of performance, creative production and psychology-led thinking. I'm interested in how people respond to stories — and how ideas become something people can see, hear and remember.</p>
+      <div class="hero-bottom"><a class="button" href="#work">Explore selected work <span aria-hidden="true">↘</span></a><span class="small" style="color:#d4d1ca">B.Sc. Psychology · Creative practice</span></div>
+      <div class="hero-sticker">IDEAS<br>IN<br>PROGRESS ✳</div>
+    </section>
+
+    <section class="wrap section" id="work">
+      <div class="section-head"><div><div class="kicker">01 / The archive</div><h2>Selected work.</h2></div><p class="section-note">Performance and production projects. Some details and supporting material are still being collected; open a card to see what needs to be added.</p></div>
+      <div class="grid">
+        <article class="card"><div class="card-top lime"><span class="num">PROJECT 01</span><h3>Time Wrath</h3></div><div class="card-body"><div class="tags"><span class="tag">Performance</span><span class="tag">Acting</span></div><p>Acting / performance. Further production details are being verified.</p><div class="card-foot"><button class="text-link" data-project="time">View project checklist ↗</button><span class="status">In progress</span></div></div></article>
+        <article class="card"><div class="card-top coral"><span class="num">PROJECT 02</span><h3>Hari Patang</h3></div><div class="card-body"><div class="tags"><span class="tag">Multiple roles</span><span class="tag">Production</span></div><p>Multiple roles confirmed at a broad level. Specific responsibilities need documenting.</p><div class="card-foot"><button class="text-link" data-project="hari">View project checklist ↗</button><span class="status">In progress</span></div></div></article>
+        <article class="card"><div class="card-top blue"><span class="num">PROJECT 03</span><h3>The Mommy</h3></div><div class="card-body"><div class="tags"><span class="tag">Multiple roles</span></div><p>Multiple roles confirmed at a broad level. Exact credits and evidence are being collected.</p><div class="card-foot"><button class="text-link" data-project="mommy">View project checklist ↗</button><span class="status">In progress</span></div></div></article>
+        <article class="card"><div class="card-top pink"><span class="num">PROJECT 04</span><h3>Ek Tha Raja</h3></div><div class="card-body"><div class="tags"><span class="tag">Performance</span><span class="tag">Acting</span></div><p>Acting / performance. Event, year and supporting material still need confirmation.</p><div class="card-foot"><button class="text-link" data-project="raja">View project checklist ↗</button><span class="status">In progress</span></div></div></article>
+        <article class="card"><div class="card-top cream"><span class="num">PROJECT 05</span><h3>Knock Knock</h3></div><div class="card-body"><div class="tags"><span class="tag">Performance</span><span class="tag">Acting</span></div><p>Acting / performance. Production context and available evidence still need confirmation.</p><div class="card-foot"><button class="text-link" data-project="knock">View project checklist ↗</button><span class="status">In progress</span></div></div></article>
+        <article class="card"><div class="card-top dark"><span class="num">PROJECT 06</span><h3>Ek Anokhi Bhasha</h3></div><div class="card-body"><div class="tags"><span class="tag">Multiple roles</span><span class="tag">Creative work</span></div><p>Multiple roles confirmed at a broad level. Writing, acting or direction credits need clarification.</p><div class="card-foot"><button class="text-link" data-project="bhasha">View project checklist ↗</button><span class="status">In progress</span></div></div></article>
+      </div>
+    </section>
+
+    <section class="wrap section" id="thinking">
+      <div class="section-head"><div><div class="kicker">02 / How I think</div><h2>Psychology meets creativity.</h2></div><p class="section-note">Research and coursework that may inform future creative strategy and consumer-insight projects.</p></div>
+      <div class="card"><div class="card-top coral"><span class="num">RESEARCH PROJECT</span><h3>Greenwashing & consumer behaviour</h3></div><div class="card-body"><p>A coursework project involving data collection and analysis on greenwashing awareness and consumer behaviour. The research question, methods, findings and visuals will be added after checking the original assignment.</p><div class="card-foot"><span class="status">Academic work · details to add</span><span>↗</span></div></div></div>
+    </section>
+
+    <section class="wrap section" id="about">
+      <div class="about"><div class="about-block"><div class="kicker">03 / About</div><h2>Curious about people. Serious about ideas.</h2></div><div><p class="about-copy">I'm a third-year B.Sc. Psychology student interested in the intersection of consumer behaviour, advertising, performance and audiovisual storytelling.</p><p>My experience includes theatre and performance projects, and I'm building my practice in creative strategy, scriptwriting, directing, editing and sound design. This portfolio documents work I've done and the creative skills I'm developing.</p><div class="skills"><span>Psychology</span><span>Storytelling</span><span>Performance</span><span>Scriptwriting</span><span>Adobe Premiere Pro</span><span>Adobe Audition</span><span>After Effects</span></div><p class="small" style="margin-top:20px">Project roles and descriptions will be expanded as original materials and credits are verified.</p></div></div>
+    </section>
+
+    <section class="wrap" id="contact"><div class="contact"><div><div class="kicker">04 / Contact</div><h2>Have a project in mind?</h2><p>I'm interested in creative advertising, consumer insights and production opportunities.</p></div><div><span class="button button-disabled">Add email address to activate <span aria-hidden="true">↗</span></span><p class="contact-note">Replace this prompt with your preferred contact link before publishing.</p></div></div></section>
+  </main>
+  <footer class="wrap"><span>Creative Archive · Portfolio in progress</span><a href="#home">Back to top ↑</a><span>© <span id="year"></span></span></footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle" aria-describedby="modalIntro"><div class="modal-panel"><div class="modal-head"><span class="kicker">PROJECT NOTES / TO COLLECT</span><button class="close" id="closeModal" type="button" aria-label="Close project checklist">×</button></div><h2 id="modalTitle">Project checklist</h2><p id="modalIntro"></p><div class="todo"><strong>Look for</strong><ul><li>Photos or a short video excerpt</li><li>Event or production name and year</li><li>Exact role and responsibilities</li><li>Poster, programme, script or synopsis if available</li><li>A short note about your contribution</li></ul></div><p class="small" style="margin-top:16px">Only add details you can verify. You can publish a simple project card while you continue collecting evidence.</p></div></div>
+  <script>
+    const projectInfo={time:{title:'Time Wrath',intro:'Confirmed role: acting / performance. Add the event, year, performance details and any available visual evidence.'},hari:{title:'Hari Patang',intro:'Confirmed at a broad level: multiple roles. Specify which roles you performed and gather evidence for each contribution.'},mommy:{title:'The Mommy',intro:'Confirmed at a broad level: multiple roles. Verify the exact production, event, year and individual responsibilities.'},raja:{title:'Ek Tha Raja',intro:'Confirmed role: acting / performance. Add the event, year, production synopsis and any available photographs or video.'},knock:{title:'Knock Knock',intro:'Confirmed role: acting / performance. Verify the production context and collect any programme, script, images or recording.'},bhasha:{title:'Ek Anokhi Bhasha',intro:'Confirmed at a broad level: multiple roles. Identify the specific roles and collect supporting production material.'}};
+    const modal=document.getElementById('modal');
+    const title=document.getElementById('modalTitle');
+    const intro=document.getElementById('modalIntro');
+    const closeButton=document.getElementById('closeModal');
+    let lastTrigger=null;
+
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      if(lastTrigger) lastTrigger.focus();
+    }
+
+    document.querySelectorAll('[data-project]').forEach(button=>{
+      button.type='button';
+      button.setAttribute('aria-haspopup','dialog');
+      button.setAttribute('aria-controls','modal');
+      button.addEventListener('click',()=>{
+        const project=projectInfo[button.dataset.project];
+        if(!project) return;
+        lastTrigger=button;
+        title.textContent=project.title;
+        intro.textContent=project.intro;
+        modal.setAttribute('aria-hidden','false');
+        modal.classList.add('open');
+        closeButton.focus();
+      });
+    });
+
+    closeButton.addEventListener('click',closeModal);
+    modal.addEventListener('click',event=>{
+      if(event.target===modal) closeModal();
+    });
+    document.addEventListener('keydown',event=>{
+      if(!modal.classList.contains('open')) return;
+      if(event.key==='Escape'){
+        closeModal();
+        return;
+      }
+      if(event.key==='Tab'){
+        event.preventDefault();
+        closeButton.focus();
+      }
+    });
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

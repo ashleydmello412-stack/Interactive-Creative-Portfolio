@@ -1,0 +1,17 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "x_8fIUTMD2exfNVWCwq4q"
+uri = "file://.local/conversation-workspace/files/attached_assets/index_1792141249907.html"
+type = "html"
+title = "Polished Creative Portfolio HTML"
+description = "A refined, accessible single-file portfolio page with the original content and visual style preserved."
+logical_id = "cd678f6e-e55e-4086-b2bb-06e0409a75bb"
+content_hash = "sha256:ad485f490775f14bdf29ebd3450be13bc1bd7ec4d4b81189dba7aa336ed84bb1"
+size = 17623
+mtime_ms = 1792141373895
+storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/conversation:97f2f316-7db1-41b6-b669-f7885ba62b34/cd678f6e-e55e-4086-b2bb-06e0409a75bb/6a350061-92ec-4b20-b596-5076d166a77f"
+storage_version_token = "1792141392454495"
+content_type = "text/html"
+source_uri = "file://attached_assets/index_1792141249907.html"
