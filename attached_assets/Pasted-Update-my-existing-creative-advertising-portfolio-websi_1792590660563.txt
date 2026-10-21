@@ -1,0 +1,111 @@
+Update my existing creative advertising portfolio website by adding a dedicated **Spec Campaign** case study section. Preserve the existing website structure, visual identity, colour palette, typography, animations, and responsive layout. Do not rebuild the website from scratch.
+
+## Design direction
+- Playful, sophisticated, editorial, and cinematic.
+- Use my existing colour palette:
+  - Deep navy: `#00356B`
+  - Slate blue-grey: `#7D929E`
+  - Warm stone: `#DBD4CC`
+  - Gold ochre: `#DBA12C`
+  - Oxblood: `#591D1D`
+- Use bold typography, generous spacing, asymmetric layouts, and subtle transitions.
+- The section should feel like a professional advertising agency's creative case study, not a generic school assignment.
+- Make it fully responsive for desktop, tablet, and mobile.
+
+## Section structure
+
+### 1. Campaign introduction
+Create a striking opening section with:
+- Campaign title
+- Brand name
+- Campaign category
+- A short campaign description
+- A clear label stating **“Independent Speculative Campaign — Not commissioned or endorsed by the brand.”**
+
+Use placeholder text that I can easily replace later. Do not invent a brand, campaign results, research findings, or statistics.
+
+### 2. The Company
+Create a text-based section introducing the selected company.
+
+Include editable fields for:
+- Company and industry overview
+- Main products or services
+- Target audience
+- Brand positioning and identity
+- Relevant background about the company
+
+Present this information in an engaging editorial layout with readable text, highlighted keywords, and small supporting visual elements where appropriate.
+
+### 3. The Problem
+Create a separate text-based section explaining the problem or opportunity the campaign addresses.
+
+Include editable fields for:
+- The current challenge faced by the brand
+- Evidence or sources supporting the challenge
+- The target audience's needs, behaviour, or frustrations
+- Why the problem matters
+- The opportunity for advertising to address it
+
+Visually distinguish documented facts from my own observations or interpretations. Include a small source/reference area that I can fill in. Do not fabricate facts, statistics, citations, or claims about the company.
+
+### 4. Creative Insight and Strategy
+Add a concise bridge between the problem and the creative work.
+
+Include editable fields for:
+- Audience insight
+- Core campaign idea
+- Key message
+- Desired audience response
+
+Use a visually distinctive layout, such as a large quotation-style insight statement with supporting text.
+
+### 5. Campaign Poster
+Create a prominent visual showcase for the campaign poster.
+
+Requirements:
+- A large poster preview area with an image-upload or image-replacement placeholder.
+- Space for the headline, supporting copy, tagline, and call to action.
+- A short explanation of the poster's creative rationale.
+- A layout that lets me upload my own poster later without breaking the design.
+- Allow the poster to be clicked to view it larger, if practical.
+
+Do not generate a fake finished poster. Use a clearly labelled placeholder until I add my own design.
+
+### 6. Advertisement Storyboard
+Create a storyboard section that displays advertisement frames in sequence.
+
+Each frame should have:
+- Frame number
+- Image or sketch placeholder
+- Visual description
+- Dialogue, voice-over, or on-screen text
+- Camera direction or movement, where relevant
+- Sound or music notes
+- Approximate duration
+
+Use a clean storyboard grid or horizontal sequence. Make the frames easy to duplicate and edit. Include a field for the intended total advertisement duration.
+
+Do not create fictional finished frames; use labelled placeholders.
+
+### 7. Final campaign summary
+At the end, include:
+- Campaign objective
+- Creative approach
+- Deliverables
+- Skills demonstrated
+- A note that the project is speculative and independently developed
+
+Only display information I have entered. Do not invent campaign outcomes or claim that the advertisement was published.
+
+## Functional requirements
+- Integrate the section into my existing navigation and website styling.
+- Add smooth scrolling to the relevant sections.
+- Keep all text, image placeholders, and storyboard content easy to edit.
+- If the site currently uses HTML, CSS, and JavaScript, continue using that setup rather than migrating to a new framework.
+- Do not remove, overwrite, or damage my existing portfolio projects.
+- Keep the code organised and reuse existing components and styles wherever possible.
+- Use accessible heading levels, readable contrast, and descriptive image alt text.
+- Make sure all navigation links and interactions work.
+- Check the finished changes for layout issues and broken functionality.
+
+Before making changes, inspect the existing project files and determine how the current website is structured. Then implement the new section consistently with the existing site.
