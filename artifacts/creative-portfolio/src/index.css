@@ -22,11 +22,11 @@
 }
 
 :root {
-  --background: 40 44% 98%;
+  --background: 40 35% 93%;
   --foreground: 0 0% 9%;
   --border: 40 18% 84%;
   --input: 40 18% 84%;
-  --card: 40 44% 99%;
+  --card: 40 44% 98%;
   --card-foreground: 0 0% 9%;
   --primary: 75 82% 68%;
   --primary-foreground: 0 0% 9%;
@@ -46,7 +46,7 @@
   --chart-3: 221 70% 78%;
   --chart-4: 310 45% 83%;
   --chart-5: 40 35% 78%;
-  --sidebar: 40 44% 98%;
+  --sidebar: 40 35% 93%;
   --sidebar-foreground: 0 0% 9%;
   --sidebar-border: 40 18% 84%;
   --sidebar-primary: 75 82% 48%;
@@ -106,7 +106,7 @@
 @layer base {
   * { @apply border-border; box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-  body { @apply antialiased; margin: 0; background: var(--paper); color: var(--ink); font-family: var(--app-font-sans); line-height: 1.5; }
+  body { @apply antialiased; margin: 0; background: var(--cream); color: var(--ink); font-family: var(--app-font-sans); line-height: 1.5; }
   button, input { font: inherit; }
   button, a { touch-action: manipulation; }
   ::selection { background: var(--lime); color: var(--ink); }
