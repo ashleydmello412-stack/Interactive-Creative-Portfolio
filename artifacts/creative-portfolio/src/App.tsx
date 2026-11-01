@@ -36,14 +36,14 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
       'Explore performance and production projects, search the archive, and review verified roles and details still being collected.',
   },
   '/thinking': {
-    title: 'Psychology Research & Creative Thinking',
+    title: 'Psychology-led Creative Thinking & Advertising',
     description:
-      'Coursework on greenwashing and consumer behaviour, with project methods and findings to be added after the original assignment is checked.',
+      'A brand-first approach to advertising informed by attention, emotion, persuasion, memory, consumer research and cultural context.',
   },
   '/about': {
-    title: 'About — Psychology & Creative Practice',
+    title: 'About — Psychology-led Creative Practice',
     description:
-      'Meet a psychology student building a creative practice across storytelling, performance, scriptwriting, editing, and sound design.',
+      'A psychology student connecting human behaviour with theatre, storytelling, audience engagement and creative advertising.',
   },
   '/contact': {
     title: 'Contact — Creative Archive',
