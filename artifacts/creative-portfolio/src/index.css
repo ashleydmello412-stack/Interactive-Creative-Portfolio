@@ -235,7 +235,17 @@
 .detail-hero { padding:clamp(28px,6vw,65px); border-radius:24px; min-height:300px; display:flex; flex-direction:column; justify-content:space-between; }
 .detail-hero-meta { display:flex; justify-content:space-between; align-items:center; gap:16px; }
 .detail-hero h1 { max-width:850px; margin:45px 0 10px; font-size:clamp(3.2rem,9vw,7.5rem); line-height:.85; letter-spacing:-.09em; }
-.detail-layout { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr); gap:34px; padding:42px 0 74px; align-items:start; }
+.detail-layout { display:grid; grid-template-columns:minmax(0,1fr); gap:34px; padding:42px 0 74px; align-items:start; }
+.archive-range { margin:76px 0 72px; padding:clamp(25px,5vw,48px); border-radius:24px; background:var(--ink); color:var(--paper); }
+.archive-range > .kicker { color:var(--lime); }
+.archive-range > h2 { max-width:760px; margin:12px 0 28px; font-size:clamp(2rem,4.8vw,3.8rem); line-height:.96; letter-spacing:-.075em; }
+.archive-range-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.archive-range-grid article { min-height:190px; padding:20px; border:1px solid #ffffff30; border-radius:17px; background:#ffffff08; }
+.archive-range-grid .mono { color:var(--lime); font-size:.6rem; }
+.archive-range-grid h3 { margin:24px 0 8px; font-size:1.35rem; letter-spacing:-.045em; }
+.archive-range-grid p { margin:0; color:#e9e7e2; font-size:.9rem; line-height:1.65; }
+.archive-range-link { display:inline-flex; align-items:center; gap:10px; margin-top:25px; color:var(--lime); font-size:.88rem; font-weight:700; text-underline-offset:5px; }
+
 .detail-main { min-width:0; }
 .detail-section { padding:0 0 30px; margin:0 0 30px; border-bottom:1px solid var(--line); }
 .detail-section:last-child { border-bottom:0; }
@@ -291,7 +301,7 @@
   .hero-bottom .button { width:100%; }
   .section { padding:57px 0; }
   .section-head { align-items:flex-start; flex-direction:column; }
-  .project-grid,.about-layout,.detail-layout { grid-template-columns:1fr; }
+  .project-grid,.about-layout,.detail-layout,.archive-range-grid { grid-template-columns:1fr; }
   .project-top { min-height:165px; }
   .project-top .project-title-row h3 { font-size:clamp(2.2rem,11vw,3.1rem); }
   .project-index-mark { font-size:8rem; bottom:-27px; }
