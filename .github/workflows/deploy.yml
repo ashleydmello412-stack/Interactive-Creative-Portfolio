@@ -42,6 +42,9 @@ jobs:
           BASE_PATH: /Interactive-Creative-Portfolio/
           NODE_ENV: production
 
+      - name: Add SPA fallback for nested routes
+        run: cp artifacts/creative-portfolio/dist/public/index.html artifacts/creative-portfolio/dist/public/404.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
