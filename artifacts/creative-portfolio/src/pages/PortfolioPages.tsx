@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'wouter';
-import { ArrowDownRight, ArrowLeft, ArrowRight, Search } from 'lucide-react';
+import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import { categories, collectionChecklist, projects } from '../data/projects';
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
@@ -21,74 +21,58 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
 }
 
 export function HomePage() {
-  const skills = ['Psychology', 'Storytelling', 'Performance', 'Scriptwriting', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
   return (
     <main id="main-content" className="main-content">
       <section className="wrap hero reveal" data-testid="section-home-hero">
         <div className="eyebrow">Psychology × storytelling × production</div>
         <h1>I STUDY PEOPLE.<span>I MAKE IDEAS MOVE.</span></h1>
-        <p className="intro">A growing archive of performance, creative production and psychology-led thinking. I'm interested in how people respond to stories — and how ideas become something people can see, hear and remember.</p>
+        <p className="intro">I'm interested in why people think, feel and choose — and how creative work can turn an idea into something people can see, hear and remember.</p>
         <div className="hero-bottom">
-          <Link className="button" href="/work" data-testid="link-explore-work">Explore selected work <ArrowDownRight size={17} aria-hidden="true" /></Link>
+          <Link className="button" href="/work" data-testid="link-explore-work">Explore the work <ArrowDownRight size={17} aria-hidden="true" /></Link>
+          <Link className="hero-secondary" href="/about" data-testid="link-home-about">A little about me <ArrowRight size={16} aria-hidden="true" /></Link>
           <span className="hero-meta">B.Sc. Psychology · Creative practice</span>
         </div>
-        <div className="hero-sticker" aria-label="Ideas in progress">IDEAS<br />IN<br />PROGRESS</div>
+        <div className="hero-sticker" aria-label="Think, make, move">THINK<br />MAKE<br />MOVE</div>
       </section>
-      <nav className="wrap home-section-nav" aria-label="Homepage sections" data-testid="navigation-home-sections">
-        <a href="#about-me" data-testid="link-home-about">About Me <span aria-hidden="true">↘</span></a>
-        <a href="#spec-campaigns" data-testid="link-home-campaigns">Spec Campaigns <span aria-hidden="true">↘</span></a>
-        <a href="#my-work" data-testid="link-home-work">My Work <span aria-hidden="true">↘</span></a>
-      </nav>
-      <section className="wrap section home-about-section" id="about-me" aria-labelledby="about-me-title" data-testid="section-about-me">
-        <div className="about-layout">
-          <div className="about-block"><div className="kicker">01 / About Me</div><h2 id="about-me-title">Curious about people. Serious about ideas.</h2></div>
+
+      <section className="wrap home-destinations section" aria-labelledby="home-destinations-title" data-testid="section-home-destinations">
+        <div className="home-destinations-heading">
           <div>
-            <p className="about-copy">I'm a third-year B.Sc. Psychology student interested in the intersection of consumer behaviour, advertising, performance and audiovisual storytelling.</p>
-            <p>My experience includes theatre and performance projects, and I'm building my practice in creative strategy, scriptwriting, directing, editing and sound design. This portfolio documents work I've done and the creative skills I'm developing.</p>
-            <div className="kicker" style={{ marginTop: 27 }}>TOOLS &amp; INTERESTS</div>
-            <div className="skills" data-testid="list-home-skills">{skills.map((skill) => <span key={skill} data-testid={`home-skill-${skill.toLowerCase().replaceAll(' ', '-')}`}>{skill}</span>)}</div>
-            <p className="status" style={{ marginTop: 20 }}>Project roles and descriptions will be expanded as original materials and credits are verified.</p>
-            <Link className="text-link" href="/about" data-testid="link-home-about-details">More about this practice <span aria-hidden="true">↗</span></Link>
+            <div className="kicker">THE CREATIVE ARCHIVE / START HERE</div>
+            <h2 id="home-destinations-title">Explore the different sides of my work.</h2>
           </div>
+          <p>Psychology gives me questions. Creative practice gives me ways to explore them.</p>
         </div>
-      </section>
-      <section className="wrap section" id="spec-campaigns" aria-labelledby="spec-campaigns-title" data-testid="section-spec-campaigns">
-        <div className="section-head">
-          <div><div className="kicker">02 / Spec Campaigns</div><h2 id="spec-campaigns-title">Concepts, when they’re ready.</h2></div>
-          <p className="section-note">A space for independent campaign concepts. Nothing to show just yet.</p>
+
+        <div className="home-destinations-grid">
+          <Link href="/work" className="home-destination tone-lime" data-testid="home-destination-work">
+            <span className="mono">01 / THE ARCHIVE</span>
+            <div className="home-destination-title"><h3>Work</h3><ArrowUpRight size={24} aria-hidden="true" /></div>
+            <p>Theatre, performance and production projects, with roles and details kept to what can be verified.</p>
+            <span className="home-destination-cta">Explore projects <span aria-hidden="true">↗</span></span>
+          </Link>
+
+          <Link href="/thinking" className="home-destination tone-coral" data-testid="home-destination-thinking">
+            <span className="mono">02 / THE THINKING</span>
+            <div className="home-destination-title"><h3>Psychology</h3><ArrowUpRight size={24} aria-hidden="true" /></div>
+            <p>Coursework and research connected to consumer behaviour, perception and the questions behind decisions.</p>
+            <span className="home-destination-cta">Explore the research <span aria-hidden="true">↗</span></span>
+          </Link>
+
+          <Link href="/about" className="home-destination tone-blue" data-testid="home-destination-about">
+            <span className="mono">03 / THE PERSON</span>
+            <div className="home-destination-title"><h3>About</h3><ArrowUpRight size={24} aria-hidden="true" /></div>
+            <p>The interests, tools and experiences shaping a creative practice across psychology and storytelling.</p>
+            <span className="home-destination-cta">Get to know me <span aria-hidden="true">↗</span></span>
+          </Link>
+
+          <Link href="/contact" className="home-destination tone-dark" data-testid="home-destination-contact">
+            <span className="mono">04 / THE NEXT THING</span>
+            <div className="home-destination-title"><h3>Contact</h3><ArrowUpRight size={24} aria-hidden="true" /></div>
+            <p>For conversations around creative advertising, consumer insights and production opportunities.</p>
+            <span className="home-destination-cta">Start a conversation <span aria-hidden="true">↗</span></span>
+          </Link>
         </div>
-        <div className="campaign-empty" data-testid="empty-spec-campaigns">
-          <span className="campaign-index mono">SPEC / 00</span>
-          <div className="campaign-empty-copy">
-            <span className="campaign-mark" aria-hidden="true">+</span>
-            <h3>Campaign concepts will be added later.</h3>
-            <p>No concepts are published here yet. This section will grow when original work is ready to share.</p>
-          </div>
-          <span className="campaign-status">NOT YET IN THE ARCHIVE</span>
-        </div>
-      </section>
-      <section className="wrap section" id="my-work" aria-labelledby="my-work-title" data-testid="section-my-work">
-        <div className="section-head">
-          <div><div className="kicker">03 / The archive</div><h2 id="my-work-title">My Work.</h2></div>
-          <p className="section-note">Six performance and production projects. Some details and supporting material are still being collected; open a card to see what needs to be added.</p>
-        </div>
-        <div className="project-grid" data-testid="grid-home-projects">{projects.map((project, index) => <ProjectCard project={project} index={index} key={project.slug} />)}</div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 18 }}>
-          <Link className="button button-dark" href="/work" data-testid="link-full-archive">Open the full archive <ArrowRight size={16} aria-hidden="true" /></Link>
-        </div>
-      </section>
-      <section className="wrap section" data-testid="section-thinking-teaser">
-        <div className="section-head">
-          <div><div className="kicker">04 / How I think</div><h2>Psychology meets creativity.</h2></div>
-          <p className="section-note">Research and coursework that may inform future creative strategy and consumer-insight projects.</p>
-        </div>
-        <Link href="/thinking" className="project-card" data-testid="link-thinking-project">
-          <div className="project-top tone-coral"><span className="mono">RESEARCH PROJECT</span><h3>Greenwashing &amp; consumer behaviour</h3></div>
-          <div className="project-body"><p>A coursework project involving data collection and analysis on greenwashing awareness and consumer behaviour. The research question, methods, findings and visuals will be added after checking the original assignment.</p><div className="card-foot"><span className="status">Academic work · details to add</span><span aria-hidden="true">↗</span></div></div>
-        </Link>
-      </section>
-      <section className="wrap" data-testid="section-contact-teaser">
-        <div className="callout"><div><div className="kicker">05 / Contact</div><h2>Have a project in mind?</h2><p>I'm interested in creative advertising, consumer insights and production opportunities.</p></div><Link className="button button-dark" href="/contact" data-testid="link-contact">Contact details <ArrowRight size={16} aria-hidden="true" /></Link></div>
       </section>
     </main>
   );
