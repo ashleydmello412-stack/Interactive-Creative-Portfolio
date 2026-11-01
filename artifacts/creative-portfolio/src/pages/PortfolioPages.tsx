@@ -184,6 +184,13 @@ export function ProjectDetailPage() {
               <p className="detail-muted">No competition results or outcomes have been added to this project entry yet.</p>
             )}
           </section>
+          {project.practiceNote && (
+            <section className="detail-section project-practice-note">
+              <div className="kicker">04 / WHAT I TAKE FROM THIS</div>
+              <p className="detail-lead">{project.practiceNote.title}</p>
+              <p>{project.practiceNote.body}</p>
+            </section>
+          )}
           {project.slug === 'hari-patang' && (
             <section className="detail-section hari-patang-insight">
               <div className="kicker">04 / A CREATIVE CHOICE</div>
