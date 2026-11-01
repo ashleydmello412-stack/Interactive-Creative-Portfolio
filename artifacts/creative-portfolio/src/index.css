@@ -303,6 +303,70 @@
   .campaign-status { align-self:flex-start; }
   .contact-panel { grid-template-columns:1fr; }
 }
+
+/* Psychology-led positioning and method pages */
+.thinking-intro .page-title,.about-intro .page-title { max-width:960px; }
+.thinking-principle { padding:clamp(25px,5vw,48px); border-radius:23px; background:var(--ink); color:var(--paper); }
+.thinking-principle .kicker { color:var(--lime); }
+.thinking-principle-lead { max-width:900px; margin:20px 0 14px; font-size:clamp(1.6rem,3.6vw,2.8rem); line-height:1.12; letter-spacing:-.055em; }
+.thinking-principle > p:last-child { max-width:760px; margin-bottom:0; color:#e9e7e2; line-height:1.75; }
+.thinking-lenses { padding-bottom:50px; }
+.thinking-lens-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
+.thinking-lens { min-height:210px; padding:22px; border-radius:19px; background:var(--paper); border:1px solid var(--line); }
+.thinking-lens:nth-child(2) { background:var(--blue); }
+.thinking-lens:nth-child(3) { background:var(--coral); }
+.thinking-lens:nth-child(4) { background:var(--lime); }
+.thinking-lens .mono { color:#171717a6; font-size:.61rem; }
+.thinking-lens h3 { margin:28px 0 8px; font-size:clamp(1.55rem,2.4vw,2.15rem); letter-spacing:-.06em; line-height:1; }
+.thinking-lens p { margin:0; color:#171717b8; font-size:.91rem; line-height:1.55; }
+.thinking-method { padding-top:40px; border-top:1px solid var(--line); }
+.thinking-method > h2 { max-width:800px; margin:8px 0 28px; font-size:clamp(2.2rem,5vw,4rem); line-height:.95; letter-spacing:-.075em; }
+.thinking-steps { display:grid; gap:0; border-top:1px solid var(--line); }
+.thinking-steps article { display:grid; grid-template-columns:58px minmax(0,1fr); gap:18px; padding:20px 0; border-bottom:1px solid var(--line); }
+.thinking-steps article > span { color:var(--coral); font-family:var(--app-font-mono); font-size:.82rem; padding-top:3px; }
+.thinking-steps h3 { margin:0 0 5px; font-size:1.2rem; letter-spacing:-.035em; }
+.thinking-steps p { max-width:730px; margin:0; color:var(--muted-ink); line-height:1.65; }
+.thinking-methods { margin-top:30px; }
+.thinking-methods .skills { margin-top:14px; }
+.thinking-methods .skills span { background:var(--paper); }
+.thinking-references { padding-top:48px; }
+.reference-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.reference-grid article { min-height:205px; padding:22px; border:1px solid var(--line); border-radius:19px; background:var(--paper); }
+.reference-grid .mono { color:var(--muted-ink); font-size:.59rem; }
+.reference-grid h3 { margin:25px 0 9px; font-size:1.35rem; line-height:1.05; letter-spacing:-.045em; }
+.reference-grid p { margin:0; color:var(--muted-ink); font-size:.9rem; line-height:1.6; }
+.thinking-card { margin:20px 0 70px; }
+.about-positioning { padding:clamp(24px,4vw,40px); border-radius:22px; background:var(--coral); }
+.about-positioning-label { color:#171717a8; }
+.about-positioning > p { max-width:930px; margin:16px 0 0; font-size:clamp(1.55rem,3.4vw,2.65rem); line-height:1.12; letter-spacing:-.055em; }
+.about-story p { max-width:760px; line-height:1.78; color:var(--muted-ink); }
+.about-story .about-copy { color:var(--ink); font-size:clamp(1.2rem,2vw,1.5rem); line-height:1.45; letter-spacing:-.025em; }
+.about-theatre { padding-top:28px; }
+.about-theatre-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.about-theatre-grid article { padding:22px; min-height:205px; border-radius:19px; background:var(--paper); border:1px solid var(--line); }
+.about-theatre-grid article:nth-child(2) { background:var(--blue); }
+.about-theatre-grid article:nth-child(3) { background:var(--lime); }
+.about-theatre-grid .mono { color:#171717a6; font-size:.6rem; }
+.about-theatre-grid h3 { margin:27px 0 9px; font-size:1.35rem; line-height:1.04; letter-spacing:-.045em; }
+.about-theatre-grid p { margin:0; color:#171717b8; font-size:.9rem; line-height:1.6; }
+.about-tools { padding:0 0 70px; }
+.about-tools .skills { margin-top:15px; }
+
+@media(max-width:900px) {
+  .thinking-lens-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:760px) {
+  .thinking-lens-grid,.reference-grid,.about-theatre-grid { grid-template-columns:1fr; }
+  .thinking-lens { min-height:175px; }
+  .thinking-lens h3 { margin-top:20px; }
+  .thinking-method { padding-top:30px; }
+  .thinking-steps article { grid-template-columns:36px minmax(0,1fr); gap:12px; }
+  .about-positioning { margin-top:4px; }
+  .about-theatre { padding-top:5px; }
+  .reference-grid article,.about-theatre-grid article { min-height:unset; }
+  .about-tools { padding-bottom:48px; }
+}
+
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
