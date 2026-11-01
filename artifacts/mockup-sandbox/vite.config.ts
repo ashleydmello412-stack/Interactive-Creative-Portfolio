@@ -6,7 +6,7 @@ import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { mockupPreviewPlugin } from "./mockupPreviewPlugin";
 
 
-const basePath = process.env.BASE_PATH || "/";
+const basePath = "/Interactive-Creative-Portfolio/";
 
 export default defineConfig({
   base: basePath,
