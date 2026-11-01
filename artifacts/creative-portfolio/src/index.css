@@ -235,6 +235,9 @@
 .reveal { animation:enter .55s both; }
 @keyframes enter { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 @media(max-width:760px) {
+  .home-destinations-heading { align-items:flex-start; flex-direction:column; gap:12px; }
+  .home-destinations-grid { grid-template-columns:1fr; }
+  .home-destination { min-height:220px; }
   .wrap { width:min(100% - 28px,1120px); }
   .site-header { padding-top:13px; }
   .nav-row { flex-wrap:wrap; }
