@@ -34,15 +34,15 @@ export function HomePage() {
   return (
     <main id="main-content" className="main-content">
       <section className="wrap hero reveal" data-testid="section-home-hero">
-        <div className="eyebrow">Psychology × storytelling × production</div>
-        <h1>I STUDY PEOPLE.<span>I MAKE IDEAS MOVE.</span></h1>
-        <p className="intro">I'm interested in why people think, feel and choose — and how creative work can turn an idea into something people can see, hear and remember.</p>
+        <div className="eyebrow">Psychology-led thinking × creative execution</div>
+        <h1>I STUDY PEOPLE.<span>I TURN INSIGHT INTO IDEAS.</span></h1>
+        <p className="intro">I want to bring psychology and creative practice together to build advertising that earns attention, creates emotion, persuades with purpose and stays in memory. It starts with understanding what a brand stands for — and the people it hopes to reach.</p>
         <div className="hero-bottom">
           <Link className="button" href="/work" data-testid="link-explore-work">Explore the work <ArrowDownRight size={17} aria-hidden="true" /></Link>
           <Link className="hero-secondary" href="/about" data-testid="link-home-about">A little about me <ArrowRight size={16} aria-hidden="true" /></Link>
           <span className="hero-meta">B.Sc. Psychology · Creative practice</span>
         </div>
-        <div className="hero-sticker" aria-label="Think, make, move">THINK<br />MAKE<br />MOVE</div>
+        <div className="hero-sticker" aria-label="Brand, people, ideas">BRAND<br />PEOPLE<br />IDEAS</div>
       </section>
 
       <section className="wrap home-destinations section" aria-labelledby="home-destinations-title" data-testid="section-home-destinations">
@@ -65,14 +65,14 @@ export function HomePage() {
           <Link href="/thinking" className="home-destination tone-coral" data-testid="home-destination-thinking">
             <span className="mono">02 / THE THINKING</span>
             <div className="home-destination-title"><h3>Psychology</h3><ArrowUpRight size={24} aria-hidden="true" /></div>
-            <p>Coursework and research connected to consumer behaviour, perception and the questions behind decisions.</p>
+            <p>How I bring attention, emotion, persuasion and memory into a brand-first approach to advertising.</p>
             <span className="home-destination-cta">Explore the research <span aria-hidden="true">↗</span></span>
           </Link>
 
           <Link href="/about" className="home-destination tone-blue" data-testid="home-destination-about">
             <span className="mono">03 / THE PERSON</span>
             <div className="home-destination-title"><h3>About</h3><ArrowUpRight size={24} aria-hidden="true" /></div>
-            <p>The interests, tools and experiences shaping a creative practice across psychology and storytelling.</p>
+            <p>The psychology behind my thinking, and the theatre and production experience that shapes how I tell stories.</p>
             <span className="home-destination-cta">Get to know me <span aria-hidden="true">↗</span></span>
           </Link>
 
@@ -162,6 +162,14 @@ export function ProjectDetailPage() {
               <p className="detail-muted">No competition results or outcomes have been added to this project entry yet.</p>
             )}
           </section>
+          {project.slug === 'hari-patang' && (
+            <section className="detail-section hari-patang-insight">
+              <div className="kicker">04 / A CREATIVE CHOICE</div>
+              <p className="detail-lead">Turn an explanation into a moment of audience discovery.</p>
+              <p>One interactive element in <em>Hari Patang</em> invited the audience to recognise the difference between the recycling symbol and the resin identification symbol used on plastics. Rather than leaving the distinction as information delivered from the stage, the performance made space for the audience to engage with it.</p>
+              <p>This reflects the kind of communication I want to create: ideas that give people something to notice, think about and take away. In advertising, that could mean turning a product truth or social message into an experience the audience actively connects with.</p>
+            </section>
+          )}
         </div>
         <aside className="detail-aside">
           <div className="kicker">PROJECT NOTES / TO COMPLETE</div>
@@ -175,25 +183,116 @@ export function ProjectDetailPage() {
 }
 
 export function ThinkingPage() {
+  const lenses = [
+    { number: '01', title: 'Attention', copy: 'What makes someone notice, pause or look twice?' },
+    { number: '02', title: 'Emotion', copy: 'What feeling does the idea create, and why might it matter to the audience?' },
+    { number: '03', title: 'Persuasion', copy: 'What gives the message relevance, credibility and a reason to act?' },
+    { number: '04', title: 'Memory', copy: 'What makes the idea distinctive enough to stay with someone?' },
+  ];
+  const methods = ['Psychological research', 'Consumer research', 'Social & cultural psychology', 'Creative experimentation'];
   return <main className="wrap main-content" id="main-content" data-testid="page-thinking">
-    <header className="page-intro"><div className="kicker">02 / HOW I THINK</div><h1 className="page-title">Curiosity, with a question mark.</h1><p>Research and coursework that may inform future creative strategy and consumer-insight projects.</p></header>
-    <section className="thinking-card"><div className="mono">RESEARCH PROJECT / ACADEMIC WORK · DETAILS TO ADD</div><h2>Greenwashing &amp; consumer behaviour</h2><p>A coursework project involving data collection and analysis on greenwashing awareness and consumer behaviour. The research question, methods, findings and visuals will be added after checking the original assignment.</p>
-      <div className="thinking-footnote"><strong>Still checking the source.</strong><br />Research question, methods, findings and visuals are not published until the original assignment has been checked.</div>
+    <header className="page-intro thinking-intro">
+      <div className="kicker">02 / THE THINKING</div>
+      <h1 className="page-title">Start with the brand. Understand the people. Then make the idea.</h1>
+      <p>I see psychology as a way to make creative decisions more informed — not as a formula to make every campaign look or sound the same.</p>
+    </header>
+
+    <section className="thinking-principle">
+      <div className="kicker">MY STARTING POINT</div>
+      <p className="thinking-principle-lead">Before I think about an advertisement, I want to understand what the brand stands for — and what it needs the campaign to achieve.</p>
+      <p>That objective shapes the approach. A brand may need to build awareness, change a perception, create a new association or strengthen an existing one. I don't believe one creative formula should be applied to all of them.</p>
     </section>
-    <section className="section"><div className="kicker">A NOTE ON THE ARCHIVE</div><h2>Accuracy before polish.</h2><p className="section-note" style={{ marginTop: 14 }}>This space is for coursework that may inform future creative strategy and consumer-insight projects. The project details will be added after checking the original assignment.</p></section>
+
+    <section className="section thinking-lenses" aria-labelledby="lenses-title">
+      <div className="section-head">
+        <div><div className="kicker">THE HUMAN RESPONSE</div><h2 id="lenses-title">Four questions I keep coming back to.</h2></div>
+        <p className="section-note">The psychological lenses I want to bring into the development of an idea.</p>
+      </div>
+      <div className="thinking-lens-grid">
+        {lenses.map((lens) => <article className="thinking-lens" key={lens.number}>
+          <span className="mono">{lens.number} / LENS</span>
+          <h3>{lens.title}</h3>
+          <p>{lens.copy}</p>
+        </article>)}
+      </div>
+    </section>
+
+    <section className="thinking-method section" aria-labelledby="method-title">
+      <div className="kicker">HOW I WANT TO WORK</div>
+      <h2 id="method-title">From brand meaning to creative execution.</h2>
+      <div className="thinking-steps">
+        <article><span>01</span><div><h3>Understand the brand</h3><p>Its identity, values, promise, audience and the objective of the campaign.</p></div></article>
+        <article><span>02</span><div><h3>Understand the audience</h3><p>Their needs, motivations, habits, social context and relationship with the category.</p></div></article>
+        <article><span>03</span><div><h3>Find the human insight</h3><p>Use research and psychological thinking to identify a tension, behaviour or feeling worth building around.</p></div></article>
+        <article><span>04</span><div><h3>Build the creative idea</h3><p>Translate the insight into a concept, script, story, visual device or participatory experience that fits the brand.</p></div></article>
+        <article><span>05</span><div><h3>Experiment and refine</h3><p>Explore different executions and test whether they serve the campaign objective and connect with the intended audience.</p></div></article>
+      </div>
+      <div className="thinking-methods">
+        <div className="kicker">TOOLS I WANT TO BRING TO THE PROCESS</div>
+        <div className="skills">{methods.map((method) => <span key={method}>{method}</span>)}</div>
+      </div>
+    </section>
+
+    <section className="thinking-references section">
+      <div className="section-head">
+        <div><div className="kicker">CREATIVE REFERENCES</div><h2>Ideas that understand their audience.</h2></div>
+        <p className="section-note">Work I return to for its clarity, cultural relevance and ability to make a brand memorable.</p>
+      </div>
+      <div className="reference-grid">
+        <article><span className="mono">HUMOUR / PRODUCT TRUTH</span><h3>Fevicol advertising</h3><p>Turning a simple product promise into a memorable visual idea, often through exaggeration and humour.</p></article>
+        <article><span className="mono">CULTURE / TOPICALITY</span><h3>Amul topical campaigns</h3><p>Using current context, shared references and concise wit to create a sense of collective recognition.</p></article>
+        <article><span className="mono">BRAND / EVERYDAY LANGUAGE</span><h3>“Thanda Matlab Coca-Cola”</h3><p>Making a brand association feel familiar by connecting it to an everyday expression and cultural context.</p></article>
+      </div>
+    </section>
+
+    <section className="thinking-card">
+      <div className="mono">ACADEMIC WORK / CONSUMER BEHAVIOUR</div>
+      <h2>Greenwashing &amp; consumer behaviour</h2>
+      <p>A coursework project involving data collection and analysis on greenwashing awareness and consumer behaviour. The original research question, method and findings will be written up once the assignment is reviewed.</p>
+      <div className="thinking-footnote"><strong>Research details are being checked.</strong><br />No findings or conclusions are being claimed on this page yet.</div>
+    </section>
   </main>;
 }
 
 export function AboutPage() {
-  const skills = ['Psychology', 'Storytelling', 'Performance', 'Scriptwriting', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
+  const skills = ['Psychology', 'Consumer behaviour', 'Storytelling', 'Acting', 'Direction', 'Scriptwriting', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
   return <main className="wrap main-content" id="main-content" data-testid="page-about">
-    <header className="page-intro"><div className="kicker">03 / ABOUT</div><h1 className="page-title">A practice still taking shape.</h1></header>
-    <section className="about-layout section" style={{ paddingTop: 20 }}>
-      <div className="about-block"><div className="kicker">THE THROUGH-LINE</div><h2>Curious about people. Serious about ideas.</h2></div>
-      <div><p className="about-copy">I'm a third-year B.Sc. Psychology student interested in the intersection of consumer behaviour, advertising, performance and audiovisual storytelling.</p><p>My experience includes theatre and performance projects, and I'm building my practice in creative strategy, scriptwriting, directing, editing and sound design. This portfolio documents work I've done and the creative skills I'm developing.</p>
-        <div className="kicker" style={{ marginTop: 27 }}>TOOLS &amp; INTERESTS</div><div className="skills" data-testid="list-skills">{skills.map((skill) => <span key={skill} data-testid={`skill-${skill.toLowerCase().replaceAll(' ', '-')}`}>{skill}</span>)}</div>
-        <p className="status" style={{ marginTop: 20 }}>Project roles and descriptions will be expanded as original materials and credits are verified.</p>
+    <header className="page-intro about-intro">
+      <div className="kicker">03 / ABOUT</div>
+      <h1 className="page-title">Psychology shapes my thinking. Creative practice shapes how I tell stories.</h1>
+      <p>I'm interested in using an understanding of people to develop advertising that feels relevant, emotionally resonant and worth remembering.</p>
+    </header>
+
+    <section className="about-positioning">
+      <div className="about-positioning-label kicker">THE THROUGH-LINE</div>
+      <p>I want to connect the study of human behaviour with the craft of creative communication — from the first insight to the final execution.</p>
+    </section>
+
+    <section className="about-layout section">
+      <div className="about-block"><div className="kicker">PSYCHOLOGY × CREATIVITY</div><h2>Understand people. Give ideas a form.</h2></div>
+      <div className="about-story">
+        <p className="about-copy">I'm a third-year B.Sc. Psychology student interested in consumer behaviour, advertising and the ways people respond to stories, symbols and shared cultural references.</p>
+        <p>My starting point is the brand: what it stands for, what it wants to communicate and what it needs to achieve. From there, I want to understand the people it is speaking to — what catches their attention, moves them emotionally, persuades them and stays in their memory.</p>
+        <p>My experience in theatre gives me a practical foundation for thinking about how an idea reaches an audience. Through acting, direction and scriptwriting, I've worked with dialogue, timing, satire and audience engagement. I've also explored breaking the fourth wall and involving spectators in a performance, alongside theatrical influences such as Poor Theatre and the Theatre of Cruelty.</p>
+        <p>I'm interested in carrying that experience into advertising: developing the thinking behind a campaign and understanding how it can become a script, a story, a performance or a wider brand experience.</p>
       </div>
+    </section>
+
+    <section className="about-theatre section">
+      <div className="section-head">
+        <div><div className="kicker">WHAT THEATRE HAS TAUGHT ME</div><h2>An audience is part of the experience.</h2></div>
+        <p className="section-note">My creative background has made me attentive to how people receive, interpret and participate in a story.</p>
+      </div>
+      <div className="about-theatre-grid">
+        <article><span className="mono">01 / ENGAGEMENT</span><h3>Break the fourth wall</h3><p>Addressing the audience directly and challenging the boundary between performer and spectator.</p></article>
+        <article><span className="mono">02 / PARTICIPATION</span><h3>Bring people into the scene</h3><p>Creating moments where spectators do more than watch — they become part of the communication.</p></article>
+        <article><span className="mono">03 / VOICE</span><h3>Use satire and dialogue</h3><p>Using humour, irony and social observation to make an idea land with an audience.</p></article>
+      </div>
+    </section>
+
+    <section className="about-tools">
+      <div className="kicker">TOOLS &amp; AREAS OF INTEREST</div>
+      <div className="skills" data-testid="list-skills">{skills.map((skill) => <span key={skill} data-testid={`skill-${skill.toLowerCase().replaceAll(' ', '-')}`}>{skill}</span>)}</div>
     </section>
   </main>;
 }
