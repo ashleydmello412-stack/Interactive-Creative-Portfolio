@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { Link, useParams } from 'wouter';
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
-import { categories, collectionChecklist, projects } from '../data/projects';
+import { categories, projects } from '../data/projects';
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   return (
@@ -127,6 +127,28 @@ export function WorkPage() {
       </div>
       <p className="status" aria-live="polite" data-testid="text-project-count">{filtered.length} {filtered.length === 1 ? 'project' : 'projects'} shown</p>
       {filtered.length ? <div className="project-grid" data-testid="grid-projects">{filtered.map((project, index) => <ProjectCard project={project} index={index} key={project.slug} />)}</div> : <div className="empty-results" data-testid="empty-project-results"><strong>No projects match that search.</strong><p style={{ margin: '8px 0 0' }}>Try a different word or clear the filters.</p><button className="button" type="button" onClick={() => { setFilter('All work'); setQuery(''); }} data-testid="button-clear-filters" style={{ marginTop: 16 }}>Clear filters</button></div>}
+      <section className="archive-range" aria-labelledby="archive-range-title">
+        <div className="kicker">ACROSS THE ARCHIVE</div>
+        <h2 id="archive-range-title">Different roles. One interest in how a story reaches people.</h2>
+        <div className="archive-range-grid">
+          <article>
+            <span className="mono">01 / PERFORMANCE</span>
+            <h3>Being in the story</h3>
+            <p>Mime, theatre and short-film work, including lead performance in <em>Time Wrath</em> and acting in <em>Knock Knock</em>.</p>
+          </article>
+          <article>
+            <span className="mono">02 / DEVELOPMENT</span>
+            <h3>Shaping the story</h3>
+            <p>Acting alongside direction and scriptwriting in <em>Hari Patang</em> — experience across both developing and performing an idea.</p>
+          </article>
+          <article>
+            <span className="mono">03 / TECHNICAL</span>
+            <h3>Working behind the stage</h3>
+            <p>Lights handling in <em>Ek Tha Raja</em>, alongside my contribution as a performer.</p>
+          </article>
+        </div>
+        <Link href="/thinking" className="archive-range-link">See how I connect creative practice with psychology <ArrowRight size={16} aria-hidden="true" /></Link>
+      </section>
     </main>
   );
 }
@@ -171,12 +193,7 @@ export function ProjectDetailPage() {
             </section>
           )}
         </div>
-        <aside className="detail-aside">
-          <div className="kicker">PROJECT NOTES / TO COMPLETE</div>
-          <h2>Build out this entry</h2>
-          <p className="detail-aside-copy">The next useful details are about the work itself and your contribution.</p>
-          <ul className="checklist">{collectionChecklist.map((item) => <li key={item}>{item}</li>)}</ul>
-        </aside>
+
       </section>
     </main>
   );
