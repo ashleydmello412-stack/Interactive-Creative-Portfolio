@@ -5,15 +5,23 @@ import { categories, collectionChecklist, projects } from '../data/projects';
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   return (
-    <Link href={`/work/${project.slug}`} className="project-card" data-testid={`link-project-${project.slug}`}>
+    <Link href={`/work/${project.slug}`} className={`project-card project-card-${project.slug}`} data-testid={`link-project-${project.slug}`}>
       <div className={`project-top ${project.tone}`}>
-        <span className="mono">{project.number}</span>
-        <h3>{project.title}</h3>
+        <div className="project-topline">
+          <span className="mono">{project.number}</span>
+          <span className="project-top-label">CREATIVE ARCHIVE</span>
+        </div>
+        <div className="project-title-row">
+          <h3>{project.title}</h3>
+          <span className="project-arrow" aria-hidden="true"><ArrowUpRight size={22} /></span>
+        </div>
+        <span className="project-index-mark" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
       </div>
       <div className="project-body">
+        <div className="project-role-label kicker">ROLE / CATEGORY</div>
         <div className="tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
         <p>{project.summary}</p>
-        <div className="card-foot"><span className="text-link">View project checklist <span aria-hidden="true">↗</span></span><span className="status">In progress</span></div>
+        <div className="card-foot"><span className="text-link">Open project notes <span aria-hidden="true">↗</span></span><span className="status">Details in progress</span></div>
       </div>
       <span className="sr-only">{`Project ${index + 1}: ${project.title}`}</span>
     </Link>
@@ -88,10 +96,14 @@ export function WorkPage() {
   }), [filter, query]);
   return (
     <main className="main-content wrap" id="main-content">
-      <header className="page-intro">
-        <div className="kicker">THE ARCHIVE / 06 PROJECTS</div>
-        <h1 className="page-title">Work, in progress.</h1>
-        <p>Performance and production projects. Some details and supporting material are still being collected; open a card to see what needs to be added.</p>
+      <header className="page-intro work-intro">
+        <div className="kicker">CREATIVE ARCHIVE / SELECTED WORK</div>
+        <h1 className="page-title">A closer look at the work.</h1>
+        <p>A collection of performance and production projects, with the roles, contributions and materials documented as they are verified.</p>
+        <div className="work-intro-meta">
+          <span><strong>06</strong> PROJECTS</span>
+          <span>PERFORMANCE · PRODUCTION · CREATIVE PRACTICE</span>
+        </div>
       </header>
       <div className="archive-toolbar" data-testid="work-toolbar">
         <label className="search-wrap">
