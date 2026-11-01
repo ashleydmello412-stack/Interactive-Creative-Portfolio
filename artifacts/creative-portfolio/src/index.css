@@ -140,6 +140,24 @@
 .home-section-nav a { display:inline-flex; align-items:center; gap:14px; padding:10px 15px; border:1px solid var(--line); border-radius:999px; color:var(--ink); background:var(--paper); text-decoration:none; font-size:.82rem; font-weight:700; transition:transform .18s ease, background .18s ease; }
 .home-section-nav a span { color:var(--coral); font-size:1rem; }
 .home-section-nav a:hover { transform:translateY(-2px); background:var(--lime); }
+
+.home-destinations { padding-top: 24px; }
+.home-destinations-heading { display:flex; justify-content:space-between; align-items:end; gap:28px; margin-bottom:22px; }
+.home-destinations-heading h2 { max-width:680px; margin:8px 0 0; font-size:clamp(2.1rem,4.8vw,3.8rem); line-height:.96; letter-spacing:-.075em; }
+.home-destinations-heading > p { max-width:310px; margin:0 0 4px; color:var(--muted-ink); }
+.home-destinations-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.home-destination { min-height:245px; padding:clamp(22px,3vw,32px); border:1px solid #17171718; border-radius:23px; display:flex; flex-direction:column; color:var(--ink); text-decoration:none; transition:transform .2s ease, box-shadow .2s ease; }
+.home-destination:hover { transform:translateY(-4px); box-shadow:0 14px 28px #17171716; }
+.home-destination .mono { color:#171717a6; }
+.home-destination-title { display:flex; justify-content:space-between; align-items:center; gap:15px; margin-top:28px; }
+.home-destination-title h3 { margin:0; font-size:clamp(2.25rem,4.8vw,3.7rem); line-height:.9; letter-spacing:-.085em; }
+.home-destination-title svg { flex:none; transition:transform .2s ease; }
+.home-destination:hover .home-destination-title svg { transform:translate(3px,-3px); }
+.home-destination p { max-width:430px; margin:13px 0 25px; color:#171717bd; }
+.home-destination-cta { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:auto; padding-top:13px; border-top:1px solid #17171730; font-size:.82rem; font-weight:700; }
+.home-destination.tone-dark .mono { color:var(--lime); }
+.home-destination.tone-dark p { color:#e9e7e2; }
+.home-destination.tone-dark .home-destination-cta { border-color:#ffffff45; }
 .home-about-section { padding-top:62px; }
 .section-head { display:flex; align-items:end; justify-content:space-between; gap:20px; margin-bottom:25px; }
 .kicker { color:var(--muted-ink); }
