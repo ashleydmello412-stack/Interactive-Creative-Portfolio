@@ -18,10 +18,12 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
         <span className="project-index-mark" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
       </div>
       <div className="project-body">
-        <div className="project-role-label kicker">ROLE / CATEGORY</div>
-        <div className="tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
+        <div className="project-role-label kicker">MY CONTRIBUTION</div>
+        <div className="project-credit-list">{project.roles.map((role) => <span className="project-credit" key={role}>{role}</span>)}</div>
         <p>{project.summary}</p>
-        <div className="card-foot"><span className="text-link">Open project notes <span aria-hidden="true">↗</span></span><span className="status">Details in progress</span></div>
+        {project.recognition?.[0] && <div className="project-recognition"><span>NOTABLE RESULT</span><strong>{project.recognition[0]}</strong></div>}
+        <div className="project-card-tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
+        <div className="card-foot"><span className="text-link">Read project details <span aria-hidden="true">↗</span></span><span className="status">{project.period ?? 'Credits in progress'}</span></div>
       </div>
       <span className="sr-only">{`Project ${index + 1}: ${project.title}`}</span>
     </Link>
@@ -127,10 +129,37 @@ export function ProjectDetailPage() {
   return (
     <main className="wrap main-content" id="main-content" data-testid={`project-detail-${project.slug}`}>
       <Link href="/work" className="back-link" data-testid="link-back-work"><ArrowLeft size={16} /> Back to all work</Link>
-      <section className={`detail-hero ${project.tone}`}><span className="mono">{project.number} / IN PROGRESS</span><h1>{project.title}</h1><div className="tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div></section>
+      <section className={`detail-hero ${project.tone}`}>
+        <div className="detail-hero-meta"><span className="mono">{project.number}</span><span className="mono">{project.period ?? 'PROJECT NOTES'}</span></div>
+        <h1>{project.title}</h1>
+        <div className="tags">{project.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
+      </section>
       <section className="detail-layout">
-        <div className="detail-copy"><div className="kicker">CURRENTLY VERIFIED</div><p>{project.summary}</p><p>{project.detail}</p><p>Only add details you can verify. You can publish a simple project card while you continue collecting evidence.</p></div>
-        <aside className="detail-aside"><div className="kicker">PROJECT NOTES / TO COLLECT</div><h2>Look for</h2><ul className="checklist">{collectionChecklist.map((item) => <li key={item}>{item}</li>)}</ul></aside>
+        <div className="detail-main">
+          <section className="detail-section">
+            <div className="kicker">01 / PROJECT OVERVIEW</div>
+            <p className="detail-lead">{project.summary}</p>
+            <p>{project.detail}</p>
+          </section>
+          <section className="detail-section">
+            <div className="kicker">02 / MY CONTRIBUTION</div>
+            <div className="detail-roles">{project.roles.map((role) => <span className="detail-role" key={role}>{role}</span>)}</div>
+          </section>
+          <section className="detail-section">
+            <div className="kicker">03 / RECOGNITION &amp; OUTCOMES</div>
+            {project.recognition?.length ? (
+              <ul className="recognition-list">{project.recognition.map((item) => <li key={item}>{item}</li>)}</ul>
+            ) : (
+              <p className="detail-muted">No competition results or outcomes have been added to this project entry yet.</p>
+            )}
+          </section>
+        </div>
+        <aside className="detail-aside">
+          <div className="kicker">PROJECT NOTES / TO COMPLETE</div>
+          <h2>Build out this entry</h2>
+          <p className="detail-aside-copy">The next useful details are about the work itself and your contribution.</p>
+          <ul className="checklist">{collectionChecklist.map((item) => <li key={item}>{item}</li>)}</ul>
+        </aside>
       </section>
     </main>
   );
