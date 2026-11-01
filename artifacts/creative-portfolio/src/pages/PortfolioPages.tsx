@@ -93,7 +93,16 @@ export function WorkPage() {
   const [query, setQuery] = useState('');
   const filtered = useMemo(() => projects.filter((project) => {
     const categoryMatch = filter === 'All work' || project.tags.includes(filter);
-    const queryMatch = `${project.title} ${project.tags.join(' ')} ${project.summary}`.toLowerCase().includes(query.toLowerCase().trim());
+    const searchableText = [
+      project.title,
+      project.period ?? '',
+      project.tags.join(' '),
+      project.roles.join(' '),
+      project.summary,
+      project.detail,
+      project.recognition?.join(' ') ?? '',
+    ].join(' ');
+    const queryMatch = searchableText.toLowerCase().includes(query.toLowerCase().trim());
     return categoryMatch && queryMatch;
   }), [filter, query]);
   return (
