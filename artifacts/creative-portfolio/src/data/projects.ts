@@ -7,6 +7,10 @@ export type Project = {
   roles: string[];
   summary: string;
   detail: string;
+  practiceNote?: {
+    title: string;
+    body: string;
+  };
   recognition?: string[];
   tone: string;
 };
@@ -21,6 +25,10 @@ export const projects: Project[] = [
     roles: ['Lead performer'],
     summary: 'A mime performance in which I played one of the lead roles.',
     detail: 'Time Wrath was an early mime performance and one of the first major projects in my theatre journey. My confirmed contribution was as a lead performer.',
+    practiceNote: {
+      title: 'Making meaning without dialogue',
+      body: 'Mime relies on the audience reading physical expression, movement and timing rather than spoken explanation. Performing in this form made visual communication central to the work. It is a useful perspective to carry into advertising, where an idea may need to be understood before a single line is read.',
+    },
     recognition: [
       '1st place — Darpan ’24',
       '1st place — Mood Indigo ’24',
@@ -63,6 +71,10 @@ export const projects: Project[] = [
     roles: ['Acting', 'Lights handling'],
     summary: 'A production where I contributed as a performer and also worked on lights.',
     detail: 'My confirmed contributions included acting and lights handling. The performance placements and technical participation are listed separately below.',
+    practiceNote: {
+      title: 'Seeing a production from two sides',
+      body: 'Working as both a performer and a lights handler meant contributing onstage as well as from the technical side of a production. That combination has helped me value not only the performance itself, but also the coordination that supports what an audience finally experiences.',
+    },
     recognition: [
       '1st place — Unmaad',
       '2nd place — Darpan (acting)',
