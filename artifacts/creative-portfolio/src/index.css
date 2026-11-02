@@ -1275,3 +1275,64 @@
   .bhasha-recognition-grid { grid-template-columns:1fr; }
   .bhasha-recognition-card { min-height:145px; }
 }
+
+
+/* Ek Anokhi Bhasha — compact portfolio layout */
+.bhasha-page-compact { padding-bottom:58px; }
+.bhasha-page-compact .bhasha-hero-grid { min-height:365px; }
+.bhasha-page-compact .bhasha-statbar { grid-template-columns:.65fr .95fr 1.4fr; }
+.bhasha-page-compact .bhasha-statbar>div { min-height:82px; }
+.bhasha-page-compact .bhasha-scenes-section,
+.bhasha-page-compact .bhasha-devices-section,
+.bhasha-page-compact .bhasha-contribution-section { padding-top:48px; }
+.bhasha-scenes-compact .bhasha-section-heading,
+.bhasha-devices-compact .bhasha-section-heading,
+.bhasha-contribution-compact .bhasha-section-heading { margin-bottom:15px; }
+.bhasha-scenes-compact .bhasha-section-heading>p { max-width:420px; }
+.bhasha-scenes-compact .bhasha-scenes-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.bhasha-scenes-compact .bhasha-scene-card { min-height:245px; padding:17px; }
+.bhasha-scenes-compact .bhasha-scene-kicker { margin:25px 0 7px; }
+.bhasha-scenes-compact .bhasha-scene-card h3 { font-size:1.16rem; }
+.bhasha-scenes-compact .bhasha-scene-card>p:last-child { font-size:.77rem; line-height:1.55; }
+.bhasha-devices-compact .bhasha-devices-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.bhasha-devices-compact .bhasha-device-card { min-height:150px; padding:16px; }
+.bhasha-devices-compact .bhasha-device-card h3 { margin:20px 0 7px; font-size:1.05rem; }
+.bhasha-devices-compact .bhasha-device-card p { font-size:.75rem; line-height:1.5; }
+.bhasha-contribution-compact .bhasha-contribution-grid .bhasha-role-card { min-height:180px; padding:22px; }
+.bhasha-contribution-compact .bhasha-role-card h3 { margin:23px 0 9px; font-size:2.2rem; }
+.bhasha-contribution-compact .bhasha-role-card p { margin-bottom:0; font-size:.83rem; line-height:1.55; }
+.bhasha-ending-compact { padding-top:48px; }
+.bhasha-ending-compact .bhasha-ending-heading h2 { font-size:clamp(2.4rem,4vw,3.7rem); }
+.bhasha-ending-compact .bhasha-ending-steps article { min-height:112px; }
+.bhasha-ending-compact .bhasha-ending-steps small { margin-top:9px; }
+.bhasha-ending-compact .bhasha-ending-steps strong { font-size:1.12rem; }
+.bhasha-recognition-compact { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:40px; padding:18px 22px; border-radius:14px; background:var(--lime); color:var(--ink); }
+.bhasha-recognition-compact>span { font-family:var(--app-font-mono); font-size:.58rem; letter-spacing:.1em; }
+.bhasha-recognition-compact>strong { font-size:1.2rem; letter-spacing:-.04em; }
+@media(max-width:1050px) {
+  .bhasha-scenes-compact .bhasha-scenes-grid,
+  .bhasha-devices-compact .bhasha-devices-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:760px) {
+  .bhasha-page-compact .bhasha-hero-grid { min-height:unset; }
+  .bhasha-page-compact .bhasha-statbar { grid-template-columns:1fr 1fr; }
+  .bhasha-page-compact .bhasha-statbar .bhasha-stat-note { grid-column:1/-1; }
+  .bhasha-page-compact .bhasha-scenes-section,
+  .bhasha-page-compact .bhasha-devices-section,
+  .bhasha-page-compact .bhasha-contribution-section,
+  .bhasha-page-compact .bhasha-ending-section { padding-top:38px; }
+  .bhasha-scenes-compact .bhasha-section-heading,
+  .bhasha-devices-compact .bhasha-section-heading,
+  .bhasha-contribution-compact .bhasha-section-heading { display:block; }
+  .bhasha-scenes-compact .bhasha-section-heading>p,
+  .bhasha-devices-compact .bhasha-section-heading>p,
+  .bhasha-contribution-compact .bhasha-section-heading>p { margin-top:10px; }
+  .bhasha-scenes-compact .bhasha-scenes-grid,
+  .bhasha-devices-compact .bhasha-devices-grid { grid-template-columns:1fr 1fr; }
+  .bhasha-scenes-compact .bhasha-scene-card { min-height:unset; }
+  .bhasha-contribution-compact .bhasha-contribution-grid { grid-template-columns:1fr; }
+  .bhasha-ending-compact { display:block; }
+  .bhasha-ending-compact .bhasha-ending-steps { margin-top:18px; }
+  .bhasha-ending-compact .bhasha-ending-steps article { min-height:unset; }
+  .bhasha-recognition-compact { flex-direction:column; align-items:flex-start; gap:7px; margin-top:30px; }
+}
