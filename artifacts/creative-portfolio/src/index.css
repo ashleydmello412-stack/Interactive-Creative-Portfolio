@@ -2524,3 +2524,85 @@
   .contact-detail-action { font-size: .49rem; }
   .contact-simple-note { grid-template-columns: 1fr; gap: 15px; padding: 32px 0; }
 }
+
+
+/* About: return to the portfolio's original, quieter profile language */
+.about-page { padding-bottom: 70px; }
+.about-page .page-intro { padding-top: 44px; padding-bottom: 28px; }
+.about-page .page-intro .page-title { max-width: 980px; font-size: clamp(2.8rem,6.5vw,5.7rem); line-height: .94; }
+.about-page .page-intro > p { max-width: 690px; }
+.about-page .about-positioning { margin-top: 8px; }
+.about-page .about-layout { padding-top: 48px; padding-bottom: 45px; }
+.about-page .about-block { position: sticky; top: 24px; }
+.about-page .about-story p { max-width: 720px; }
+.about-page .about-theatre { padding-top: 28px; }
+.about-page .about-theatre-grid article { min-height: 190px; }
+.about-journey-simple { margin-top: 30px; padding: 30px 0 34px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.about-journey-simple > .kicker { margin-bottom: 20px; }
+.about-journey-simple-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.about-journey-simple-grid article { padding: 20px 22px; border-radius: 16px; background: var(--cream); }
+.about-journey-simple-grid article:nth-child(2) { background: var(--blue); }
+.about-journey-simple-grid article > span { color: var(--muted-ink); font-family: var(--app-font-mono); font-size: .58rem; letter-spacing: .1em; }
+.about-journey-simple-grid h3 { margin: 18px 0 7px; font-size: 1.45rem; letter-spacing: -.05em; }
+.about-journey-simple-grid p { margin: 0; color: var(--muted-ink); line-height: 1.65; font-size: .9rem; }
+.about-journey-simple-grid em { color: var(--ink); }
+.about-page .about-journey-link { color: var(--ink); }
+.about-tools-simple { display: block; padding-top: 34px; padding-bottom: 10px; }
+.about-tools-simple .skills { margin-top: 17px; }
+.about-tools-simple .skills span { background: var(--paper); }
+
+/* Contact: interactive brief builder, deliberately functional rather than biographical */
+.contact-brief-page { padding-top: 44px; padding-bottom: 70px; }
+.contact-brief-header { max-width: 860px; padding: 10px 0 32px; }
+.contact-brief-header > .kicker { margin-bottom: 25px; }
+.contact-brief-header h1 { margin: 0; font-size: clamp(3rem,7.5vw,6rem); line-height: .9; letter-spacing: -.09em; }
+.contact-brief-header h1 em { color: var(--coral); font-style: normal; }
+.contact-brief-header > p { max-width: 570px; margin: 20px 0 0 auto; color: var(--muted-ink); line-height: 1.7; }
+.contact-brief-builder { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(280px,.9fr); gap: 14px; align-items: stretch; }
+.contact-brief-form { padding: clamp(22px,3.5vw,36px); border: 1px solid var(--line); border-radius: 21px; background: var(--paper); }
+.contact-brief-form-head,.contact-brief-preview-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.contact-brief-form-head > span:last-child,.contact-brief-preview-top > span:last-child { color: var(--muted-ink); font-family: var(--app-font-mono); font-size: .55rem; letter-spacing: .08em; }
+.contact-brief-form h2 { max-width: 500px; margin: 23px 0 26px; font-size: clamp(1.8rem,3.4vw,2.7rem); line-height: .98; letter-spacing: -.07em; }
+.contact-brief-field { display: flex; flex-direction: column; gap: 8px; margin: 0 0 17px; }
+.contact-brief-field > span { color: var(--muted-ink); font-family: var(--app-font-mono); font-size: .56rem; letter-spacing: .09em; }
+.contact-brief-field input,.contact-brief-field select,.contact-brief-field textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; background: var(--cream); color: var(--ink); padding: 12px 13px; font: inherit; font-size: .9rem; outline-offset: 2px; }
+.contact-brief-field input:focus,.contact-brief-field select:focus,.contact-brief-field textarea:focus { outline: 2px solid var(--coral); border-color: transparent; }
+.contact-brief-field textarea { resize: vertical; min-height: 100px; line-height: 1.55; }
+.contact-brief-field input::placeholder,.contact-brief-field textarea::placeholder { color: #17171770; }
+.contact-brief-build-button { display: inline-flex; align-items: center; gap: 11px; margin-top: 4px; padding: 13px 17px; border: 1px solid var(--ink); border-radius: 999px; background: var(--lime); color: var(--ink); font: inherit; font-size: .83rem; font-weight: 700; cursor: pointer; transition: transform .18s ease,background .18s ease; }
+.contact-brief-build-button:hover { transform: translateY(-2px); background: var(--coral); }
+.contact-brief-preview { position: sticky; top: 20px; display: flex; flex-direction: column; align-self: start; min-height: 400px; padding: clamp(22px,3.5vw,34px); border-radius: 21px; background: var(--ink); color: var(--paper); }
+.contact-brief-preview-top .kicker { color: var(--lime); }
+.contact-brief-preview-mark { display: grid; place-items: center; width: 76px; height: 76px; margin: 48px 0 24px; border: 1px solid #ffffff60; border-radius: 50%; color: var(--lime); font-size: 2.6rem; transform: rotate(-15deg); }
+.contact-brief-preview h3 { max-width: 360px; margin: 0 0 12px; font-size: clamp(1.8rem,3.4vw,2.7rem); line-height: .96; letter-spacing: -.07em; }
+.contact-brief-preview > p { max-width: 390px; margin: 0; color: #e9e7e2; line-height: 1.7; font-size: .92rem; }
+.contact-brief-preview-foot { margin-top: auto; padding-top: 30px; color: var(--lime); font-family: var(--app-font-mono); font-size: .53rem; line-height: 1.6; letter-spacing: .07em; }
+.contact-brief-preview-subject { display: flex; flex-direction: column; gap: 7px; margin: 30px 0 16px; color: var(--lime); font-family: var(--app-font-mono); font-size: .56rem; letter-spacing: .08em; }
+.contact-brief-preview-subject strong { color: var(--paper); font-family: var(--app-font); font-size: 1rem; letter-spacing: -.02em; }
+.contact-brief-preview-content { flex: 1; padding: 17px; border-left: 2px solid var(--coral); border-radius: 0 10px 10px 0; background: #ffffff0d; color: #f5f1e9; font-size: .83rem; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; }
+.contact-brief-email-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; margin-top: 18px; padding: 13px 16px; border-radius: 999px; background: var(--lime); color: var(--ink); font-size: .82rem; font-weight: 700; text-decoration: none; transition: background .18s ease,transform .18s ease; }
+.contact-brief-email-button:hover { background: var(--coral); transform: translateY(-2px); }
+.contact-brief-edit-button { align-self: flex-start; margin-top: 12px; padding: 7px 0; border: 0; background: transparent; color: #e9e7e2; font: inherit; font-size: .78rem; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.contact-direct { display: grid; grid-template-columns: minmax(180px,.7fr) minmax(0,1.3fr); gap: 24px; margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--line); }
+.contact-direct > div:first-child p { margin: 9px 0 0; color: var(--muted-ink); font-size: .9rem; }
+.contact-direct-links { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
+.contact-direct-links a { display: flex; flex-direction: column; gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); font-size: .78rem; font-weight: 700; text-decoration: none; transition: background .18s ease,border-color .18s ease; }
+.contact-direct-links a:hover { background: var(--cream); border-color: var(--coral); }
+.contact-direct-links a span { color: var(--muted-ink); font-size: .68rem; font-weight: 400; overflow-wrap: anywhere; }
+.contact-brief-page a:focus-visible,.contact-brief-page button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+@media(max-width:850px) {
+  .contact-brief-builder { grid-template-columns: minmax(0,1fr) minmax(250px,.8fr); }
+  .contact-direct { grid-template-columns: 1fr; gap: 14px; }
+}
+@media(max-width:700px) {
+  .about-page .about-layout { grid-template-columns: 1fr; gap: 20px; }
+  .about-page .about-block { position: static; }
+  .about-journey-simple-grid { grid-template-columns: 1fr; }
+  .contact-brief-page { padding-top: 25px; }
+  .contact-brief-header h1 { font-size: clamp(3rem,13vw,4.8rem); }
+  .contact-brief-header > p { margin-left: 0; }
+  .contact-brief-builder { grid-template-columns: 1fr; }
+  .contact-brief-preview { position: static; min-height: 320px; }
+  .contact-brief-preview-mark { margin-top: 30px; }
+  .contact-direct-links { grid-template-columns: 1fr; }
+}
