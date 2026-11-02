@@ -146,6 +146,10 @@ export const projects: Project[] = [
       contribution: 'I was the Street Play Sub-Head and helped with coordination and management wherever needed. On stage, I performed across the other scenes as part of the ensemble, with a named character credit as Netaji in Scene 1.',
       reflection: 'The play’s progression — from exaggerated comedy to a painful human consequence, then towards a collective response — shows how street theatre can make a social issue felt as well as discussed. The weighing scale, recurring refrain, multilingual greetings and shared invented sound give the audience recurring images and sounds to follow. The closing sequence turns the argument into a simple progression: realisation, acceptance and action.',
     },
+    recognition: [
+      '1st place — Blossoms ’26 (pre-finals)',
+      'Did not win — Blossoms ’26 finals',
+    ],
     tone: 'tone-dark',
   },
 
