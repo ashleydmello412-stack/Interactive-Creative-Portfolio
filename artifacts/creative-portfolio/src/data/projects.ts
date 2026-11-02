@@ -11,6 +11,12 @@ export type Project = {
     title: string;
     body: string;
   };
+  caseStudy?: {
+    premise: string;
+    scenes: { title: string; description: string }[];
+    contribution: string;
+    reflection: string;
+  };
   recognition?: string[];
   tone: string;
 };
@@ -42,10 +48,22 @@ export const projects: Project[] = [
     title: 'Hari Patang',
     number: 'PROJECT 02',
     period: '2025–2026',
-    tags: ['Multiple roles', 'Production'],
-    roles: ['Acting', 'Direction', 'Scriptwriting'],
-    summary: 'A theatre project where I worked across acting, direction and scriptwriting.',
-    detail: 'My confirmed contributions to Hari Patang included performing, directing and scripting. The project gave me experience across both the performance and development sides of a production.',
+    tags: ['Street Play', 'Greenwashing', 'Acting', 'Direction', 'Scriptwriting'],
+    roles: ['Acting — Red Light and Dhritrashtra', 'Direction', 'Scriptwriting', 'Presented the consumer-tools solution segment'],
+    summary: 'A street play about greenwashing: how environmental claims shape consumer choices, how misleading claims go unnoticed, and how people can respond.',
+    detail: 'Hari Patang uses a comic, satirical street-play format to unpack the gap between the language of sustainability and the evidence behind it. The story moves from a marketplace full of competing “green” promises to a media sequence, a Dhritrashtra allegory about selective blindness, and a final set of practical responses.',
+    caseStudy: {
+      premise: 'How do people distinguish genuine environmental responsibility from marketing that simply sounds sustainable? Hari Patang turns that question into a public-facing performance, using familiar settings, humour, music, audience call-and-response and a mythological reference to make greenwashing easier to recognise.',
+      scenes: [
+        { title: '01 / The green pitch', description: 'The opening uses a traffic-light formation and a mock promotional pitch to introduce the language of cleanliness, green choices and environmental responsibility. The sudden coupon offer adds a deliberately commercial twist to the promise of going green.' },
+        { title: '02 / The marketplace', description: 'A confused customer is pulled between “green” and non-green groups while trying to make ordinary purchases. The scene uses crowd movement, banter and a comic “all is well” refrain to show how sustainability labels can make choices feel reassuring without explaining what is actually different.' },
+        { title: '03 / The news desk', description: 'A reporter sequence uses jokes, wordplay and familiar cultural references to question how environmental stories and claims are covered — and what goes unexamined when the media does not give them attention.' },
+        { title: '04 / The blindfold', description: 'The play shifts into a timeline and a Dhritrashtra sequence. Blindfolds become a visual metaphor for failing to notice the gap between sustainability promises and evidence, before the characters confront examples of vague claims, unsupported labels and distant targets.' },
+        { title: '05 / The way forward', description: 'The closing kite sequence moves from exposing the problem to practical responses: using consumer-facing information tools, demanding laws and transparency, building eco-literacy and scanning a QR code for further information.' },
+      ],
+      contribution: 'I worked across acting, direction and scriptwriting. In the performance, I played the Red Light in the opening and Dhritrashtra in the fourth scene. I also presented the first solution segment, introducing consumer-facing tools. The script places these roles within a larger structure that moves from satire and confusion towards awareness and action.',
+      reflection: 'The project brought together several ways of communicating with a live audience: character, humour, rhythm, familiar references, visual formations and direct address. It also made me think about how to move an audience from recognising a problem to having something practical to do next. That is a structure I would like to carry into campaign development: establish the tension, make the message understandable, and give people a clear next step.',
+    },
     recognition: [
       '1st place — Darpan',
       '2nd place — Mood Indigo prelims',
