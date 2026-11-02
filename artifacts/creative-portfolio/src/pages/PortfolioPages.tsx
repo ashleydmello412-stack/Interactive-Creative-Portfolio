@@ -191,9 +191,36 @@ export function ProjectDetailPage() {
               <p>{project.practiceNote.body}</p>
             </section>
           )}
+          {project.caseStudy && (
+            <>
+              <section className="detail-section project-case-study">
+                <div className="kicker">04 / THE CENTRAL QUESTION</div>
+                <p className="detail-lead">{project.caseStudy.premise}</p>
+              </section>
+              <section className="detail-section project-scene-breakdown">
+                <div className="kicker">05 / HOW THE STORY UNFOLDS</div>
+                <div className="project-scene-list">
+                  {project.caseStudy.scenes.map((scene) => (
+                    <article className="project-scene" key={scene.title}>
+                      <h3>{scene.title}</h3>
+                      <p>{scene.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+              <section className="detail-section project-contribution-note">
+                <div className="kicker">06 / MY CONTRIBUTION</div>
+                <p>{project.caseStudy.contribution}</p>
+              </section>
+              <section className="detail-section project-practice-reflection">
+                <div className="kicker">07 / WHAT I TAKE FROM THIS</div>
+                <p className="detail-lead">{project.caseStudy.reflection}</p>
+              </section>
+            </>
+          )}
           {project.slug === 'hari-patang' && (
             <section className="detail-section hari-patang-insight">
-              <div className="kicker">04 / A CREATIVE CHOICE</div>
+              <div className="kicker">08 / A CREATIVE CHOICE</div>
               <p className="detail-lead">Turn an explanation into a moment of audience discovery.</p>
               <p>One interactive element in <em>Hari Patang</em> invited the audience to recognise the difference between the recycling symbol and the resin identification symbol used on plastics. Rather than leaving the distinction as information delivered from the stage, the performance made space for the audience to engage with it.</p>
               <p>This reflects the kind of communication I want to create: ideas that give people something to notice, think about and take away. In advertising, that could mean turning a product truth or social message into an experience the audience actively connects with.</p>
