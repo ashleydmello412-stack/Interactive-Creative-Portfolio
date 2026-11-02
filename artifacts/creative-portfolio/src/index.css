@@ -2297,3 +2297,9 @@
   .time-wrath-recognition-card ul { grid-template-columns: 1fr; }
   .time-wrath-end-links { flex-direction: column; }
 }
+
+
+/* Keep the Time Wrath footer navigation legible on the light page background */
+.time-wrath-end-links .archive-range-link { color: var(--ink); text-decoration-color: var(--coral); text-underline-offset: 4px; }
+.time-wrath-end-links .archive-range-link:hover { color: #a83f24; }
+.time-wrath-end-links .archive-range-link:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; border-radius: 4px; }
