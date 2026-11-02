@@ -857,120 +857,157 @@ export function ThinkingPage() {
 }
 
 export function AboutPage() {
-  const skills = ['Psychology', 'Consumer behaviour', 'Storytelling', 'Acting', 'Direction', 'Scriptwriting', 'Sound design', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
-  return <main className="wrap main-content about-page" id="main-content" data-testid="page-about">
+  const skills = ['Psychology', 'Consumer behaviour', 'Storytelling', 'Acting', 'Direction', 'Scriptwriting', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
+  return <main className="wrap main-content" id="main-content" data-testid="page-about">
     <header className="page-intro about-intro">
       <div className="kicker">03 / ABOUT</div>
-      <h1 className="page-title">Psychology shapes how I understand people. Theatre shapes how I tell stories.</h1>
-      <p>I'm Ashley, a third-year B.Sc. Psychology student, performer and theatre-maker. I'm interested in the overlap between human behaviour and creative communication — especially advertising.</p>
+      <h1 className="page-title">Psychology shapes my thinking. Creative practice shapes how I tell stories.</h1>
+      <p>I'm interested in using an understanding of people to develop advertising that feels relevant, emotionally resonant and worth remembering.</p>
     </header>
 
     <section className="about-positioning">
-      <div className="about-positioning-label kicker">A LITTLE ABOUT HOW I GOT HERE</div>
-      <p>My route into creative work has not been a straight line. It runs through lecture rooms, rehearsal spaces, scripts, sound cues and the experience of standing in front of an audience.</p>
+      <div className="about-positioning-label kicker">THE THROUGH-LINE</div>
+      <p>I want to connect the study of human behaviour with the craft of creative communication — from the first insight to the final execution.</p>
     </section>
 
     <section className="about-layout section">
-      <div className="about-block"><div className="kicker">THE ACADEMIC SIDE</div><h2>Curious about why people think, feel and choose.</h2></div>
+      <div className="about-block"><div className="kicker">PSYCHOLOGY × CREATIVITY</div><h2>Understand people. Give ideas a form.</h2></div>
       <div className="about-story">
-        <p className="about-copy">Studying psychology has made me curious about the small and large things that shape human behaviour — attention, emotion, memory, social influence and the decisions people make every day.</p>
-        <p>I'm especially interested in consumer behaviour: how people relate to brands, what makes a message feel relevant, and why some ideas stay with us long after we've encountered them. I enjoy approaching these questions through research as well as creative thinking.</p>
-        <p>Outside the classroom, theatre has been a major part of my university experience. I started with performance and gradually took on more responsibilities across acting, direction and scriptwriting. I've also worked with sound and lights, and taken on coordination responsibilities within productions.</p>
-        <p>What I enjoy most is the process of making something with other people — taking an idea that is still vague, testing how it might work in front of an audience, and refining it until the story becomes clear.</p>
+        <p className="about-copy">I'm a third-year B.Sc. Psychology student interested in consumer behaviour, advertising and the ways people respond to stories, symbols and shared cultural references.</p>
+        <p>My starting point is the brand: what it stands for, what it wants to communicate and what it needs to achieve. From there, I want to understand the people it is speaking to — what catches their attention, moves them emotionally, persuades them and stays in their memory.</p>
+        <p>My experience in theatre gives me a practical foundation for thinking about how an idea reaches an audience. Through acting, direction and scriptwriting, I've worked with dialogue, timing, satire and audience engagement. I've also explored breaking the fourth wall and involving spectators in a performance, alongside theatrical influences such as Poor Theatre and the Theatre of Cruelty.</p>
+        <p>I'm interested in carrying that experience into advertising: developing the thinking behind a campaign and understanding how it can become a script, a story, a performance or a wider brand experience.</p>
       </div>
     </section>
 
     <section className="about-theatre section">
       <div className="section-head">
-        <div><div className="kicker">A FEW THINGS THEATRE HAS TAUGHT ME</div><h2>Making a story work beyond the page.</h2></div>
-        <p className="section-note">Theatre has given me a practical way to explore communication, collaboration and the relationship between a story and its audience.</p>
+        <div><div className="kicker">WHAT THEATRE HAS TAUGHT ME</div><h2>An audience is part of the experience.</h2></div>
+        <p className="section-note">My creative background has made me attentive to how people receive, interpret and participate in a story.</p>
       </div>
       <div className="about-theatre-grid">
-        <article><span className="mono">01 / PERFORMANCE</span><h3>Read the room</h3><p>Performing has taught me to pay attention to timing, reactions and the energy between a performer and an audience.</p></article>
-        <article><span className="mono">02 / MAKING</span><h3>Build the whole picture</h3><p>Writing, directing and working with sound and lights have shown me how different decisions come together to support one idea.</p></article>
-        <article><span className="mono">03 / COLLABORATION</span><h3>Make it together</h3><p>Productions have taught me to work across roles, respond to changing needs and contribute wherever the process requires it.</p></article>
+        <article><span className="mono">01 / ENGAGEMENT</span><h3>Break the fourth wall</h3><p>Addressing the audience directly and challenging the boundary between performer and spectator.</p></article>
+        <article><span className="mono">02 / PARTICIPATION</span><h3>Bring people into the scene</h3><p>Creating moments where spectators do more than watch — they become part of the communication.</p></article>
+        <article><span className="mono">03 / VOICE</span><h3>Use satire and dialogue</h3><p>Using humour, irony and social observation to make an idea land with an audience.</p></article>
       </div>
     </section>
 
-    <section className="about-journey-simple">
-      <div className="kicker">A FEW MILESTONES / 2024—26</div>
-      <div className="about-journey-simple-grid">
-        <article><span>2024—25</span><h3>Starting on stage</h3><p><em>Time Wrath</em>, <em>Why So Serious?</em>, <em>The Perfect Crime</em>, the InBlooms Mime Duo and <em>One Two Ka Four</em>.</p></article>
-        <article><span>2025—26</span><h3>Taking on more roles</h3><p><em>Hari Patang</em>, <em>Ek Tha Raja</em>, <em>Ek Anokhi Bhasha</em> and the short film <em>Knock Knock</em>.</p></article>
-      </div>
-      <Link href="/work" className="about-journey-link" data-testid="link-about-full-archive">Explore the projects and contributions <ArrowRight size={16} aria-hidden="true" /></Link>
-    </section>
-
-    <section className="about-tools about-tools-simple">
-      <div className="kicker">TOOLS &amp; AREAS I KEEP EXPLORING</div>
+    <section className="about-tools">
+      <div className="kicker">TOOLS &amp; AREAS OF INTEREST</div>
       <div className="skills" data-testid="list-skills">{skills.map((skill) => <span key={skill} data-testid={`skill-${skill.toLowerCase().replaceAll(' ', '-')}`}>{skill}</span>)}</div>
     </section>
   </main>;
 }
 
 export function ContactPage() {
-  const [brand, setBrand] = useState('');
-  const [offering, setOffering] = useState('');
-  const [audience, setAudience] = useState('');
-  const [objective, setObjective] = useState('Build awareness');
-  const [support, setSupport] = useState('Creative concept & script');
-  const [context, setContext] = useState('');
-  const [showPreview, setShowPreview] = useState(false);
-  const brief = [
-    `Brand / organisation: ${brand.trim() || 'Not specified'}`,
-    `Product / service: ${offering.trim() || 'Not specified'}`,
-    `Audience: ${audience.trim() || 'Not specified'}`,
-    `What the project needs to do: ${objective}`,
-    `Support I'm looking for: ${support}`,
-    context.trim() ? `A little more context: ${context.trim()}` : '',
-  ].filter(Boolean).join('\n');
-  const subject = brand.trim() ? `Project enquiry — ${brand.trim()}` : 'Creative project enquiry';
-  const emailHref = `mailto:ashleydmello412@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Hi Ashley,\n\nI'd like to discuss a project with you. Here's a little context:\n\n${brief}\n\nWould you be open to a conversation?\n\n[Your name]`)}`;
-  return <main className="wrap main-content contact-page contact-brief-page" id="main-content" data-testid="page-contact">
-    <header className="contact-brief-header">
-      <div className="kicker">04 / CONTACT</div>
-      <h1>Have a brief?<br /><em>Let's build a starting point.</em></h1>
-      <p>Tell me a little about the brand, the people you're trying to reach and what you have in mind. This will turn into an email draft — you can edit it before sending.</p>
-    </header>
+  const topics = [
+    {
+      title: 'Creative concepts & scripts',
+      tag: '01 / THE IDEA',
+      copy: 'A campaign thought, a story, a script, or the creative direction that gives it shape.',
+      starter: "I'm reaching out about a creative idea for [brand / project]. The audience I'm thinking about is [audience], and the thought I'd like to explore is [idea].",
+    },
+    {
+      title: 'Direction & production',
+      tag: '02 / THE MAKING',
+      copy: 'Performance-led storytelling, short-form video, production, or making an idea work on screen.',
+      starter: "I'm getting in touch about a [film / video / production] project. The format and brief are [details], and I'm looking to discuss [role / collaboration].",
+    },
+    {
+      title: 'Consumer insight & research',
+      tag: '03 / THE WHY',
+      copy: 'Audience behaviour, consumer psychology, research questions, and insight-led creative work.',
+      starter: "I'd like to discuss a consumer insight or research question around [audience / behaviour]. The context is [details], and the question I'm exploring is [question].",
+    },
+    {
+      title: 'Something else',
+      tag: '04 / THE UNEXPECTED',
+      copy: 'An opportunity, a collaboration, a question, or simply a conversation worth starting.',
+      starter: "I came across your portfolio and wanted to connect about [opportunity / idea]. A little context: [details].",
+    },
+  ];
+  const [activeTopic, setActiveTopic] = useState(0);
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
+  const starter = `Hi Ashley,\n\n${topics[activeTopic].starter}\n\nWould you be open to a conversation?\n\n[Your name]`;
 
-    <section className="contact-brief-builder" aria-labelledby="contact-brief-title">
-      <div className="contact-brief-form">
-        <div className="contact-brief-form-head"><span className="kicker">THE PROJECT BUILDER</span><span>01—05 / YOUR BRIEF</span></div>
-        <h2 id="contact-brief-title">A few details to get us talking.</h2>
-        <label className="contact-brief-field"><span>01 / BRAND OR ORGANISATION</span><input value={brand} maxLength={80} onChange={(event) => {setBrand(event.target.value); setShowPreview(false);}} placeholder="e.g. A neighbourhood café" /></label>
-        <label className="contact-brief-field"><span>02 / PRODUCT OR SERVICE</span><input value={offering} maxLength={100} onChange={(event) => {setOffering(event.target.value); setShowPreview(false);}} placeholder="What are we talking about?" /></label>
-        <label className="contact-brief-field"><span>03 / WHO IS IT FOR?</span><input value={audience} maxLength={120} onChange={(event) => {setAudience(event.target.value); setShowPreview(false);}} placeholder="e.g. First-time buyers, students, parents..." /></label>
-        <label className="contact-brief-field"><span>04 / WHAT WOULD YOU LIKE TO ACHIEVE?</span><select value={objective} onChange={(event) => {setObjective(event.target.value); setShowPreview(false);}}>
-          <option>Build awareness</option><option>Change brand perception</option><option>Launch a product or service</option><option>Build an emotional connection</option><option>Encourage trial or purchase</option><option>Strengthen customer loyalty</option><option>Explore an idea / not sure yet</option>
-        </select></label>
-        <label className="contact-brief-field"><span>05 / WHAT KIND OF SUPPORT ARE YOU LOOKING FOR?</span><select value={support} onChange={(event) => {setSupport(event.target.value); setShowPreview(false);}}>
-          <option>Creative concept &amp; script</option><option>Direction &amp; production</option><option>Consumer insight &amp; research</option><option>Campaign development from brief to execution</option><option>A collaboration / something else</option>
-        </select></label>
-        <label className="contact-brief-field"><span>ANYTHING ELSE I SHOULD KNOW? (OPTIONAL)</span><textarea rows={4} maxLength={700} value={context} onChange={(event) => {setContext(event.target.value); setShowPreview(false);}} placeholder="A challenge you're facing, an idea you've been thinking about, a timeline — anything useful." /></label>
-        <button className="contact-brief-build-button" type="button" onClick={() => setShowPreview(true)}>Prepare my enquiry <ArrowUpRight size={17} aria-hidden="true" /></button>
+  const copyStarter = async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(starter);
+      setCopyState('copied');
+    } catch {
+      setCopyState('error');
+    }
+  };
+
+  return <main className="wrap main-content contact-page" id="main-content" data-testid="page-contact">
+    <section className="contact-page-hero">
+      <div className="contact-page-hero-copy">
+        <div className="kicker">04 / CONTACT — OPEN INVITATION</div>
+        <h1>The next good idea could start <em>here.</em></h1>
+        <p>I'm interested in the space between understanding people and making things that connect with them. That's where psychology, storytelling and creative work meet.</p>
+        <div className="contact-hero-tags"><span>PSYCHOLOGY</span><i>×</i><span>CREATIVE PRACTICE</span></div>
       </div>
-      <aside className="contact-brief-preview" aria-live="polite">
-        <div className="contact-brief-preview-top"><span className="kicker">THE HAND-OFF</span><span>EMAIL / DRAFT</span></div>
-        {!showPreview ? <>
-          <div className="contact-brief-preview-mark" aria-hidden="true">↗</div>
-          <h3>Your brief, in your words.</h3>
-          <p>Fill in the details on the left. I'll organise them into a first message to make the next step easier.</p>
-          <div className="contact-brief-preview-foot">NOT A FORM SUBMISSION — YOU REVIEW THE EMAIL BEFORE SENDING.</div>
-        </> : <>
-          <div className="contact-brief-preview-subject">SUBJECT <strong>{subject}</strong></div>
-          <div className="contact-brief-preview-content">Hi Ashley,{"\n\n"}I'd like to discuss a project with you. Here's a little context:{"\n\n"}{brief}{"\n\n"}Would you be open to a conversation?{"\n\n"}[Your name]</div>
-          <a className="contact-brief-email-button" href={emailHref}>Open email draft <ArrowUpRight size={16} aria-hidden="true" /></a>
-          <button className="contact-brief-edit-button" type="button" onClick={() => setShowPreview(false)}>Edit my details</button>
-        </>}
-      </aside>
+      <div className="contact-page-art" aria-hidden="true">
+        <div className="contact-art-orbit contact-art-orbit-one" />
+        <div className="contact-art-orbit contact-art-orbit-two" />
+        <div className="contact-art-sticker"><span>GOOD IDEAS</span><strong>START<br />WITH<br />PEOPLE.</strong><i>✳</i></div>
+        <span className="contact-art-side-note">NOTICE<br />CONNECT<br />CREATE</span>
+      </div>
+      <span className="contact-page-index" aria-hidden="true">LET'S TALK / 04</span>
     </section>
 
-    <section className="contact-direct">
-      <div><span className="kicker">PREFER TO REACH OUT DIRECTLY?</span><p>No brief needed. You can contact me here.</p></div>
-      <div className="contact-direct-links">
-        <a href="mailto:ashleydmello412@gmail.com">Email <span>ashleydmello412@gmail.com ↗</span></a>
-        <a href="tel:+919653281997">Phone <span>+91 96532 81997 ↗</span></a>
-        <a href="https://www.linkedin.com/in/ashley-d-mello-a48072341" target="_blank" rel="noreferrer">LinkedIn <span>Connect with me ↗</span></a>
+    <section className="contact-conversation" aria-labelledby="contact-conversation-title">
+      <div className="contact-section-heading">
+        <div className="kicker">A PLACE TO BEGIN</div>
+        <h2 id="contact-conversation-title">What are you thinking about?</h2>
+        <p>Choose the closest starting point. No perfectly formed brief required.</p>
+      </div>
+      <div className="contact-conversation-grid">
+        <div className="contact-topic-list" role="group" aria-label="Choose a conversation topic">
+          {topics.map((topic, index) => <button
+            key={topic.title}
+            type="button"
+            className={`contact-topic${activeTopic === index ? ' is-active' : ''}`}
+            aria-pressed={activeTopic === index}
+            onClick={() => { setActiveTopic(index); setCopyState('idle'); }}
+            data-testid={`button-contact-topic-${index + 1}`}
+          >
+            <span className="contact-topic-tag">{topic.tag}</span>
+            <strong>{topic.title}</strong>
+            <span className="contact-topic-arrow" aria-hidden="true">↗</span>
+          </button>)}
+        </div>
+        <div className="contact-starter-card" aria-live="polite">
+          <div className="contact-starter-topline"><span className="kicker">A USEFUL FIRST MESSAGE</span><span className="contact-starter-number">0{activeTopic + 1} / 04</span></div>
+          <h3>{topics[activeTopic].title}</h3>
+          <p>{topics[activeTopic].copy}</p>
+          <div className="contact-starter-message">{starter}</div>
+          <button className="contact-copy-button" type="button" onClick={copyStarter} data-testid="button-copy-contact-starter">
+            {copyState === 'copied' ? 'Copied to clipboard ✓' : copyState === 'error' ? 'Copy unavailable — select the text above' : 'Copy message starter ↗'}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section className="contact-next-step" aria-label="Explore the portfolio">
+      <div>
+        <div className="kicker">WANT A LITTLE MORE CONTEXT?</div>
+        <h2>Take a look around first.</h2>
+        <p>See the projects, the thinking behind them, and the creative direction I'm interested in exploring.</p>
+      </div>
+      <div className="contact-next-links">
+        <Link href="/work" className="contact-next-link" data-testid="link-contact-work"><span>01 / SELECTED WORK</span><strong>Explore the archive ↗</strong></Link>
+        <Link href="/thinking" className="contact-next-link" data-testid="link-contact-thinking"><span>02 / THE THINKING</span><strong>Explore psychology ↗</strong></Link>
+      </div>
+    </section>
+
+    <section className="contact-direct-links-original" aria-label="Contact details">
+      <div><span className="kicker">PREFER TO REACH ME DIRECTLY?</span><p>Your project can start with a message, a call or a connection.</p></div>
+      <div className="contact-direct-links-original-grid">
+        <a href="mailto:ashleydmello412@gmail.com"><span>EMAIL</span><strong>ashleydmello412@gmail.com ↗</strong></a>
+        <a href="tel:+919653281997"><span>PHONE</span><strong>+91 96532 81997 ↗</strong></a>
+        <a href="https://www.linkedin.com/in/ashley-d-mello-a48072341" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>Connect with me ↗</strong></a>
       </div>
     </section>
   </main>;
