@@ -767,10 +767,106 @@ export function AboutPage() {
 }
 
 export function ContactPage() {
-  return <main className="wrap main-content" id="main-content" data-testid="page-contact">
-    <section className="contact-panel">
-      <div><div className="kicker">04 / CONTACT</div><h1>Have a project in mind?</h1><p>I'm interested in creative advertising, consumer insights and production opportunities.</p></div>
-      <div><span className="disabled-contact" aria-disabled="true" data-testid="status-email-unavailable">Add email address to activate <span aria-hidden="true">↗</span></span><p className="contact-note">Replace this prompt with your preferred contact link before publishing.</p></div>
+  const topics = [
+    {
+      title: 'Creative concepts & scripts',
+      tag: '01 / THE IDEA',
+      copy: 'A campaign thought, a story, a script, or the creative direction that gives it shape.',
+      starter: "I'm reaching out about a creative idea for [brand / project]. The audience I'm thinking about is [audience], and the thought I'd like to explore is [idea].",
+    },
+    {
+      title: 'Direction & production',
+      tag: '02 / THE MAKING',
+      copy: 'Performance-led storytelling, short-form video, production, or making an idea work on screen.',
+      starter: "I'm getting in touch about a [film / video / production] project. The format and brief are [details], and I'm looking to discuss [role / collaboration].",
+    },
+    {
+      title: 'Consumer insight & research',
+      tag: '03 / THE WHY',
+      copy: 'Audience behaviour, consumer psychology, research questions, and insight-led creative work.',
+      starter: "I'd like to discuss a consumer insight or research question around [audience / behaviour]. The context is [details], and the question I'm exploring is [question].",
+    },
+    {
+      title: 'Something else',
+      tag: '04 / THE UNEXPECTED',
+      copy: 'An opportunity, a collaboration, a question, or simply a conversation worth starting.',
+      starter: "I came across your portfolio and wanted to connect about [opportunity / idea]. A little context: [details].",
+    },
+  ];
+  const [activeTopic, setActiveTopic] = useState(0);
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
+  const starter = `Hi Ashley,\\n\\n${topics[activeTopic].starter}\\n\\nWould you be open to a conversation?\\n\\n[Your name]`;
+
+  const copyStarter = async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(starter);
+      setCopyState('copied');
+    } catch {
+      setCopyState('error');
+    }
+  };
+
+  return <main className="wrap main-content contact-page" id="main-content" data-testid="page-contact">
+    <section className="contact-page-hero">
+      <div className="contact-page-hero-copy">
+        <div className="kicker">04 / CONTACT — OPEN INVITATION</div>
+        <h1>The next good idea could start <em>here.</em></h1>
+        <p>I'm interested in the space between understanding people and making things that connect with them. That's where psychology, storytelling and creative work meet.</p>
+        <div className="contact-hero-tags"><span>PSYCHOLOGY</span><i>×</i><span>CREATIVE PRACTICE</span></div>
+      </div>
+      <div className="contact-page-art" aria-hidden="true">
+        <div className="contact-art-orbit contact-art-orbit-one" />
+        <div className="contact-art-orbit contact-art-orbit-two" />
+        <div className="contact-art-sticker"><span>GOOD IDEAS</span><strong>START<br />WITH<br />PEOPLE.</strong><i>✳</i></div>
+        <span className="contact-art-side-note">NOTICE<br />CONNECT<br />CREATE</span>
+      </div>
+      <span className="contact-page-index" aria-hidden="true">LET'S TALK / 04</span>
+    </section>
+
+    <section className="contact-conversation" aria-labelledby="contact-conversation-title">
+      <div className="contact-section-heading">
+        <div className="kicker">A PLACE TO BEGIN</div>
+        <h2 id="contact-conversation-title">What are you thinking about?</h2>
+        <p>Choose the closest starting point. No perfectly formed brief required.</p>
+      </div>
+      <div className="contact-conversation-grid">
+        <div className="contact-topic-list" role="group" aria-label="Choose a conversation topic">
+          {topics.map((topic, index) => <button
+            key={topic.title}
+            type="button"
+            className={`contact-topic${activeTopic === index ? ' is-active' : ''}`}
+            aria-pressed={activeTopic === index}
+            onClick={() => { setActiveTopic(index); setCopyState('idle'); }}
+            data-testid={`button-contact-topic-${index + 1}`}
+          >
+            <span className="contact-topic-tag">{topic.tag}</span>
+            <strong>{topic.title}</strong>
+            <span className="contact-topic-arrow" aria-hidden="true">↗</span>
+          </button>)}
+        </div>
+        <div className="contact-starter-card" aria-live="polite">
+          <div className="contact-starter-topline"><span className="kicker">A USEFUL FIRST MESSAGE</span><span className="contact-starter-number">0{activeTopic + 1} / 04</span></div>
+          <h3>{topics[activeTopic].title}</h3>
+          <p>{topics[activeTopic].copy}</p>
+          <div className="contact-starter-message">{starter}</div>
+          <button className="contact-copy-button" type="button" onClick={copyStarter} data-testid="button-copy-contact-starter">
+            {copyState === 'copied' ? 'Copied to clipboard ✓' : copyState === 'error' ? 'Copy unavailable — select the text above' : 'Copy message starter ↗'}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section className="contact-next-step" aria-label="Explore the portfolio">
+      <div>
+        <div className="kicker">WANT A LITTLE MORE CONTEXT?</div>
+        <h2>Take a look around first.</h2>
+        <p>See the projects, the thinking behind them, and the creative direction I'm interested in exploring.</p>
+      </div>
+      <div className="contact-next-links">
+        <Link href="/work" className="contact-next-link" data-testid="link-contact-work"><span>01 / SELECTED WORK</span><strong>Explore the archive ↗</strong></Link>
+        <Link href="/thinking" className="contact-next-link" data-testid="link-contact-thinking"><span>02 / THE THINKING</span><strong>Explore psychology ↗</strong></Link>
+      </div>
     </section>
   </main>;
 }
