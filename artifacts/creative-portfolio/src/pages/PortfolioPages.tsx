@@ -1,11 +1,24 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type PointerEvent } from 'react';
 import { Link, useParams } from 'wouter';
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import { categories, projects } from '../data/projects';
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
+  const handlePointerMove = (event: PointerEvent<HTMLAnchorElement>) => {
+    if (event.pointerType !== 'mouse') return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    event.currentTarget.style.setProperty('--tilt-x', `${(y * -3.5).toFixed(2)}deg`);
+    event.currentTarget.style.setProperty('--tilt-y', `${(x * 3.5).toFixed(2)}deg`);
+  };
+  const resetPointer = (event: PointerEvent<HTMLAnchorElement>) => {
+    event.currentTarget.style.setProperty('--tilt-x', '0deg');
+    event.currentTarget.style.setProperty('--tilt-y', '0deg');
+  };
+
   return (
-    <Link href={`/work/${project.slug}`} className={`project-card project-card-${project.slug}`} data-testid={`link-project-${project.slug}`}>
+    <Link href={`/work/${project.slug}`} className={`project-card project-card-${project.slug}`} onPointerMove={handlePointerMove} onPointerLeave={resetPointer} data-testid={`link-project-${project.slug}`}>
       <div className={`project-top ${project.tone}`}>
         <div className="project-topline">
           <span className="mono">{project.number}</span>
@@ -60,6 +73,16 @@ export function HomePage() {
         </div>
         <div className="hero-sticker" aria-label="Brand, people, ideas">BRAND<br />PEOPLE<br />IDEAS</div>
       </section>
+
+      <div className="home-ticker" aria-label="Psychology, culture, storytelling, people and ideas">
+        <div className="home-ticker-track" aria-hidden="true">
+          {Array.from({ length: 2 }).map((_, index) => (
+            <span className="home-ticker-set" key={index}>
+              <b>PSYCHOLOGY</b><i>✳</i><b>CULTURE</b><i>✳</i><b>STORYTELLING</b><i>✳</i><b>PEOPLE</b><i>✳</i><b>IDEAS</b><i>✳</i>
+            </span>
+          ))}
+        </div>
+      </div>
 
       <section className="wrap home-destinations section" aria-labelledby="home-destinations-title" data-testid="section-home-destinations">
         <div className="home-destinations-heading">
