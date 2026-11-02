@@ -157,6 +157,137 @@ export function ProjectDetailPage() {
   const params = useParams<{ slug: string }>();
   const project = projects.find((item) => item.slug === params.slug);
   if (!project) return <main className="wrap not-found" id="main-content"><div className="kicker">ARCHIVE / NOT FOUND</div><h1>This project isn't in the archive.</h1><Link href="/work" className="button" data-testid="link-back-to-archive">Back to the archive <ArrowLeft size={16} /></Link></main>;
+
+  if (project.slug === 'hari-patang' && project.caseStudy) {
+    const caseStudy = project.caseStudy;
+    const devices = [
+      { number: '01', title: 'Satire & sales language', copy: 'The mock green coupon and marketplace pitches turn familiar advertising language into something the audience can question.' },
+      { number: '02', title: 'Visual metaphor', copy: 'Traffic lights frame the opening. Blindfolds and the Dhritrashtra sequence make selective blindness visible.' },
+      { number: '03', title: 'Audience participation', copy: 'Chants, call-and-response and the recycling-symbol interaction ask the crowd to notice, answer and think along.' },
+      { number: '04', title: 'Music & cultural reference', copy: 'Jingles, familiar tunes, wordplay and a news-desk format keep a complex subject accessible in a street-play setting.' },
+    ];
+
+    return (
+      <main className="wrap main-content hari-patang-page" id="main-content" data-testid="project-detail-hari-patang">
+        <Link href="/work" className="back-link hari-back-link" data-testid="link-back-work"><ArrowLeft size={16} /> Back to all work</Link>
+
+        <section className="hari-hero">
+          <div className="hari-hero-topline">
+            <span>LIVE ILLUSION PRODUCTIONS <i> / </i> CREATIVE ARCHIVE</span>
+            <span>2025—2026</span>
+          </div>
+          <div className="hari-hero-grid">
+            <div className="hari-hero-copy">
+              <p className="hari-eyebrow">A STREET PLAY ABOUT GREENWASHING</p>
+              <h1><span>HARI</span><em>PATANG</em></h1>
+              <p className="hari-hero-summary">When everything claims to be green, how do we know what is actually good?</p>
+              <div className="hari-hero-tags"><span>STREET THEATRE</span><span>CONSUMER AWARENESS</span><span>ENVIRONMENT</span></div>
+            </div>
+            <div className="hari-kite-stage" aria-hidden="true">
+              <div className="hari-kite-orbit"></div>
+              <div className="hari-kite-stamp">ONE KITE<br />ONE IDEA</div>
+              <svg className="hari-kite-art" viewBox="0 0 360 420" role="presentation">
+                <path className="hari-kite-string" d="M183 315 C220 355 128 365 185 405" />
+                <path className="hari-kite-tail" d="M183 315 C220 355 128 365 185 405" />
+                <path className="hari-kite-ribbon" d="M174 355 l-20 9 22 9 18 -9z M165 383 l-18 8 22 8 17 -9z" />
+                <polygon className="hari-kite-panel hari-kite-panel-a" points="180,25 315,170 180,170" />
+                <polygon className="hari-kite-panel hari-kite-panel-b" points="315,170 180,315 180,170" />
+                <polygon className="hari-kite-panel hari-kite-panel-c" points="180,315 45,170 180,170" />
+                <polygon className="hari-kite-panel hari-kite-panel-d" points="45,170 180,25 180,170" />
+                <path className="hari-kite-frame" d="M180 25 L315 170 L180 315 L45 170 Z M45 170 H315 M180 25 V315" />
+                <circle className="hari-kite-knot" cx="180" cy="170" r="7" />
+              </svg>
+              <span className="hari-kite-caption">EK PATANG<br />EK DOR<br />EK AASMAAN<br />EK SOCH</span>
+            </div>
+          </div>
+          <div className="hari-hero-bottom"><span>THE STORY</span><span>THE PEOPLE</span><span>THE PROOF</span><span className="hari-hero-arrow">↓</span></div>
+        </section>
+
+        <section className="hari-statbar" aria-label="Project at a glance">
+          <div className="hari-stat"><strong>05</strong><span>SCENES</span></div>
+          <div className="hari-stat"><strong>03</strong><span>CORE CREATIVE ROLES</span></div>
+          <div className="hari-stat"><strong>02</strong><span>COMPETITION RESULTS</span></div>
+          <div className="hari-stat-award"><span>RECOGNITION</span><strong>1st — Darpan</strong><strong>2nd — Mood Indigo prelims</strong></div>
+        </section>
+
+        <section className="hari-question-section">
+          <div className="hari-section-index">01 <span>/ THE CENTRAL QUESTION</span></div>
+          <div className="hari-question-grid">
+            <h2>Green on the label.<br /><em>But what’s behind it?</em></h2>
+            <div className="hari-question-copy">
+              <p>{caseStudy.premise}</p>
+              <span className="hari-question-note">A PLAY ABOUT LOOKING BEYOND THE CLAIM.</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="hari-scenes-section">
+          <div className="hari-section-heading">
+            <div><div className="hari-section-index">02 <span>/ THE STORYLINE</span></div><h2>Five scenes.<br /><em>One unfolding argument.</em></h2></div>
+            <p>The play moves from the attraction of green claims to the responsibility of questioning them — and finally, to what an audience can do next.</p>
+          </div>
+          <div className="hari-scenes-grid">
+            {caseStudy.scenes.map((scene, index) => (
+              <article className={`hari-scene-card hari-scene-card-${index + 1}`} key={scene.title}>
+                <div className="hari-scene-card-top"><span className="hari-scene-number">{String(index + 1).padStart(2, '0')}</span><span className="hari-scene-dash"></span></div>
+                <p className="hari-scene-kicker">{index === 0 ? 'THE HOOK' : index === 1 ? 'THE CONFLICT' : index === 2 ? 'THE SATIRE' : index === 3 ? 'THE REVEAL' : 'THE RESPONSE'}</p>
+                <h3>{scene.title.replace(/^\d+\s*\/\s*/, '')}</h3>
+                <p className="hari-scene-description">{scene.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="hari-devices-section">
+          <div className="hari-section-heading hari-devices-heading">
+            <div><div className="hari-section-index">03 <span>/ THE CREATIVE LANGUAGE</span></div><h2>Making the message<br /><em>feel like a performance.</em></h2></div>
+            <p>The play doesn't rely on explanation alone. It uses the grammar of street theatre to make the subject visible, memorable and participatory.</p>
+          </div>
+          <div className="hari-devices-grid">
+            {devices.map((device, index) => (
+              <article className={`hari-device-card hari-device-card-${index + 1}`} key={device.number}>
+                <span className="hari-device-number">{device.number}</span>
+                <h3>{device.title}</h3>
+                <p>{device.copy}</p>
+              </article>
+            ))}
+          </div>
+          <div className="hari-symbol-note">
+            <span className="hari-symbol-mark">↗</span>
+            <div><span>AN INTERACTIVE DETAIL</span><p>The audience was invited to distinguish the recycling symbol from the resin identification symbol used on plastics — turning a small piece of information into a moment of discovery.</p></div>
+          </div>
+        </section>
+
+        <section className="hari-contribution-section">
+          <div className="hari-section-heading">
+            <div><div className="hari-section-index">04 <span>/ MY CONTRIBUTION</span></div><h2>On stage, in the script<br /><em>and in the direction.</em></h2></div>
+            <p>My contribution crossed performance and the development of the production, with one solution segment delivered directly to the audience.</p>
+          </div>
+          <div className="hari-roles-grid">
+            <article><span>01 / PERFORMANCE</span><h3>Red Light</h3><p>Scene 1 — part of the traffic-light opening that introduces the play’s environmental theme.</p></article>
+            <article><span>02 / PERFORMANCE</span><h3>Dhritrashtra</h3><p>Scene 4 — the central character in the blindfold sequence about failing to see the difference between claims and reality.</p></article>
+            <article><span>03 / DIRECTION & SCRIPT</span><h3>Shaping the play</h3><p>Worked across direction and scriptwriting to build the journey from the opening pitch to the closing solutions.</p></article>
+            <article><span>04 / AUDIENCE ADDRESS</span><h3>Consumer tools</h3><p>Presented the first solution block, introducing Good On You, Ecolabel Index and EarthHero as tools named in the script.</p></article>
+          </div>
+        </section>
+
+        <section className="hari-results-section">
+          <div><div className="hari-section-index">05 <span>/ RECOGNITION</span></div><h2>The work travelled.<br /><em>The message stayed.</em></h2></div>
+          <div className="hari-awards">
+            <div className="hari-award"><span>01</span><strong>1st PLACE</strong><small>DARPAN</small></div>
+            <div className="hari-award"><span>02</span><strong>2nd PLACE</strong><small>MOOD INDIGO PRELIMS</small></div>
+          </div>
+        </section>
+
+        <section className="hari-takeaway">
+          <span className="hari-takeaway-label">WHAT I TAKE FROM HARI PATANG</span>
+          <p>Move people from <em>noticing</em> a problem to <em>knowing what to do</em> about it.</p>
+          <div className="hari-takeaway-footer"><span>LIVE ILLUSION PRODUCTIONS</span><span>HARI PATANG / 2025—26</span><span>↗</span></div>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="wrap main-content" id="main-content" data-testid={`project-detail-${project.slug}`}>
       <Link href="/work" className="back-link" data-testid="link-back-work"><ArrowLeft size={16} /> Back to all work</Link>
@@ -191,43 +322,7 @@ export function ProjectDetailPage() {
               <p>{project.practiceNote.body}</p>
             </section>
           )}
-          {project.caseStudy && (
-            <>
-              <section className="detail-section project-case-study">
-                <div className="kicker">04 / THE CENTRAL QUESTION</div>
-                <p className="detail-lead">{project.caseStudy.premise}</p>
-              </section>
-              <section className="detail-section project-scene-breakdown">
-                <div className="kicker">05 / HOW THE STORY UNFOLDS</div>
-                <div className="project-scene-list">
-                  {project.caseStudy.scenes.map((scene) => (
-                    <article className="project-scene" key={scene.title}>
-                      <h3>{scene.title}</h3>
-                      <p>{scene.description}</p>
-                    </article>
-                  ))}
-                </div>
-              </section>
-              <section className="detail-section project-contribution-note">
-                <div className="kicker">06 / MY CONTRIBUTION</div>
-                <p>{project.caseStudy.contribution}</p>
-              </section>
-              <section className="detail-section project-practice-reflection">
-                <div className="kicker">07 / WHAT I TAKE FROM THIS</div>
-                <p className="detail-lead">{project.caseStudy.reflection}</p>
-              </section>
-            </>
-          )}
-          {project.slug === 'hari-patang' && (
-            <section className="detail-section hari-patang-insight">
-              <div className="kicker">08 / A CREATIVE CHOICE</div>
-              <p className="detail-lead">Turn an explanation into a moment of audience discovery.</p>
-              <p>One interactive element in <em>Hari Patang</em> invited the audience to recognise the difference between the recycling symbol and the resin identification symbol used on plastics. Rather than leaving the distinction as information delivered from the stage, the performance made space for the audience to engage with it.</p>
-              <p>This reflects the kind of communication I want to create: ideas that give people something to notice, think about and take away. In advertising, that could mean turning a product truth or social message into an experience the audience actively connects with.</p>
-            </section>
-          )}
         </div>
-
       </section>
     </main>
   );
