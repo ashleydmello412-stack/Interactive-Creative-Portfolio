@@ -120,7 +120,7 @@ export const projects: Project[] = [
     title: 'Ek Anokhi Bhasha',
     number: 'PROJECT 06',
     tags: ['Performance', 'Acting', 'Street Play', 'Language & Identity', 'Creative work'],
-    roles: ['Acting — Netaji (Scene 1)'],
+    roles: ['Street Play Sub-Head', 'Ensemble performance across the play', 'Acting — Netaji (Scene 1)'],
     summary: 'A multilingual street play about language, identity and belonging — and the harm that begins when difference becomes a reason to exclude.',
     detail: 'Ek Anokhi Bhasha uses political satire, a classroom scene and a kabadiwala’s weighing scale to examine language-based prejudice. It moves from comic exchanges and questions of linguistic identity to the human consequences of discrimination, then closes with a call for realisation, acceptance and action.',
     caseStudy: {
@@ -143,7 +143,7 @@ export const projects: Project[] = [
           description: 'The closing scene turns from blame to responsibility. The title is unpacked through a sequence: from “one” comes realisation, from uniqueness comes acceptance, and from language comes action. The opening multilingual greeting returns, alongside the shared “Aeiiioa” sound, to end on connection across difference.',
         },
       ],
-      contribution: 'The uploaded script explicitly credits me as Netaji in Scene 1. This page records that confirmed performance credit; the script copy does not itemise any additional individual role or production credits.',
+      contribution: 'I was the Street Play Sub-Head and helped with coordination and management wherever needed. On stage, I performed across the other scenes as part of the ensemble, with a named character credit as Netaji in Scene 1.',
       reflection: 'The play’s progression — from exaggerated comedy to a painful human consequence, then towards a collective response — shows how street theatre can make a social issue felt as well as discussed. The weighing scale, recurring refrain, multilingual greetings and shared invented sound give the audience recurring images and sounds to follow. The closing sequence turns the argument into a simple progression: realisation, acceptance and action.',
     },
     tone: 'tone-dark',
