@@ -33,7 +33,7 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
   '/work': {
     title: 'Creative Work & Performance Projects',
     description:
-      'Explore creative projects and academic work, with verified roles, contributions and research themes.',
+      'Explore performance and production projects, search the archive, and review verified roles and details still being collected.',
   },
   '/thinking': {
     title: 'Psychology-led Creative Thinking & Advertising',
