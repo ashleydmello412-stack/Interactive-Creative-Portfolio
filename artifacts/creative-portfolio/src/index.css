@@ -1237,3 +1237,25 @@
   .bhasha-takeaway-footer { flex-wrap:wrap; font-size:.46rem; }
 }
 
+
+
+/* Ek Anokhi Bhasha contribution: ensemble performance and sub-head role */
+.bhasha-contribution-grid {
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:11px;
+}
+.bhasha-contribution-grid .bhasha-role-card {
+  max-width:none;
+  min-height:245px;
+}
+.bhasha-role-card-stage { background:var(--ink); }
+.bhasha-role-card-team { background:var(--blue); color:var(--ink); }
+.bhasha-role-card-team .bhasha-role-index { color:#72842b; }
+.bhasha-role-card-team h3 { color:#687d28; }
+.bhasha-role-card-team p { color:#42495a; }
+.bhasha-role-card-team>span { border-color:#17171735; color:#50576a; }
+@media(max-width:760px) {
+  .bhasha-contribution-grid { grid-template-columns:1fr; }
+  .bhasha-contribution-grid .bhasha-role-card { min-height:unset; }
+}
