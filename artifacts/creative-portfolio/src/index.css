@@ -1259,3 +1259,19 @@
   .bhasha-contribution-grid { grid-template-columns:1fr; }
   .bhasha-contribution-grid .bhasha-role-card { min-height:unset; }
 }
+
+
+/* Ek Anokhi Bhasha — competition result */
+.bhasha-recognition-section { padding:72px 0 0; }
+.bhasha-recognition-grid { display:grid; grid-template-columns:1fr 1fr; gap:11px; }
+.bhasha-recognition-card { display:flex; flex-direction:column; justify-content:space-between; min-height:185px; padding:24px; border-radius:18px; background:var(--lime); color:var(--ink); }
+.bhasha-recognition-card-finals { background:var(--blue); }
+.bhasha-recognition-card>span { font-family:var(--app-font-mono); font-size:.57rem; letter-spacing:.12em; color:#4f5e20; }
+.bhasha-recognition-card-finals>span { color:#56627e; }
+.bhasha-recognition-card strong { display:block; margin-top:22px; font-size:clamp(2.4rem,4vw,4rem); line-height:.95; letter-spacing:-.08em; }
+.bhasha-recognition-card p { margin:8px 0 0; font-size:.86rem; color:#4e4c45; }
+@media(max-width:760px) {
+  .bhasha-recognition-section { padding-top:52px; }
+  .bhasha-recognition-grid { grid-template-columns:1fr; }
+  .bhasha-recognition-card { min-height:145px; }
+}
