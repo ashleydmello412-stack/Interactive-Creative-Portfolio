@@ -222,6 +222,139 @@ export function ProjectDetailPage() {
 
 
 
+  if (project.slug === 'time-wrath') {
+    const beats = [
+      {
+        number: '01',
+        label: 'THE VOYAGE',
+        title: 'Two adventurers. One treasure.',
+        description: 'The story begins with two adventurers setting out by ship, travelling across the world in search of a treasure. The voyage establishes the scale of the journey and the partnership at its centre.',
+      },
+      {
+        number: '02',
+        label: 'THE ENCOUNTER',
+        title: 'A destination, and its people.',
+        description: 'When the adventurers reach their destination, they encounter the Indigenous people of that place. The expedition moves from travel into confrontation.',
+      },
+      {
+        number: '03',
+        label: 'THE BETRAYAL',
+        title: 'The partnership breaks.',
+        description: 'During the encounter, Ashley’s character is betrayed by the other adventurer. The search for treasure becomes a story of broken trust.',
+      },
+      {
+        number: '04',
+        label: 'THE FINAL TRAP',
+        title: 'The journey ends behind bars.',
+        description: 'The other adventurer eventually reaches the destination, only to end up trapped in a cell-like enclosure. The final image turns the expected reward of the expedition into confinement.',
+      },
+    ];
+
+    return (
+      <main className="wrap main-content time-wrath-page" id="main-content" data-testid="project-detail-time-wrath">
+        <Link href="/work" className="back-link time-wrath-back-link" data-testid="link-back-work"><ArrowLeft size={16} /> Back to all work</Link>
+
+        <section className="time-wrath-hero">
+          <div className="time-wrath-hero-meta">
+            <span>LIVE ILLUSION PRODUCTIONS <i>/</i> MIME PERFORMANCE</span>
+            <span>2024—2025</span>
+          </div>
+          <div className="time-wrath-hero-grid">
+            <div className="time-wrath-hero-copy">
+              <p className="time-wrath-eyebrow">A TREASURE HUNT / A STORY OF TRUST &amp; BETRAYAL</p>
+              <h1>TIME <em>WRATH</em></h1>
+              <p className="time-wrath-summary">Two adventurers cross the world by ship in search of treasure. At their destination, an encounter with its Indigenous people sets a journey of betrayal and entrapment in motion.</p>
+              <div className="time-wrath-tags"><span>MIME</span><span>ADVENTURE</span><span>LEAD PERFORMANCE</span></div>
+            </div>
+            <div className="time-wrath-map" aria-hidden="true">
+              <div className="time-wrath-map-ring time-wrath-map-ring-one" />
+              <div className="time-wrath-map-ring time-wrath-map-ring-two" />
+              <div className="time-wrath-map-route" />
+              <span className="time-wrath-map-point time-wrath-map-point-one"><b>01</b><i>DEPARTURE</i></span>
+              <span className="time-wrath-map-point time-wrath-map-point-two"><b>02</b><i>ENCOUNTER</i></span>
+              <span className="time-wrath-map-point time-wrath-map-point-three"><b>03</b><i>BETRAYAL</i></span>
+              <span className="time-wrath-map-point time-wrath-map-point-four"><b>04</b><i>THE TRAP</i></span>
+              <span className="time-wrath-map-centre">THE<br />TREASURE<br />ROUTE</span>
+              <span className="time-wrath-map-caption">A STORY IN FOUR MOVEMENTS</span>
+            </div>
+          </div>
+          <div className="time-wrath-hero-bottom"><span>VOYAGE</span><span>CONFRONTATION</span><span>BETRAYAL</span><span>CONFINEMENT</span></div>
+        </section>
+
+        <section className="time-wrath-statbar" aria-label="Project at a glance">
+          <div><strong>01</strong><span>LEAD PERFORMER</span></div>
+          <div><strong>04</strong><span>COMPETITION RESULTS</span></div>
+          <div><strong>2024–25</strong><span>PERFORMANCE PERIOD</span></div>
+        </section>
+
+        <section className="time-wrath-story" aria-labelledby="time-wrath-story-title">
+          <div className="time-wrath-section-heading">
+            <div><div className="kicker">01 / THE STORY</div><h2 id="time-wrath-story-title">A voyage with an unexpected end.</h2></div>
+            <p>Explore the plot in sequence. Each beat changes the relationship between the two adventurers and moves the story towards its final image.</p>
+          </div>
+          <div className="time-wrath-story-explorer">
+            <div className="time-wrath-story-tabs" role="tablist" aria-label="Explore the story of Time Wrath">
+              {beats.map((beat, index) => <button
+                type="button"
+                role="tab"
+                id={`time-wrath-tab-${index}`}
+                aria-selected={activeScene === index}
+                aria-controls="time-wrath-beat-panel"
+                className={activeScene === index ? 'is-active' : ''}
+                key={beat.number}
+                onClick={() => setActiveScene(index)}
+                data-testid={`button-time-wrath-beat-${index + 1}`}
+              >
+                <span>{beat.number}</span><strong>{beat.label}</strong><b>↗</b>
+              </button>)}
+            </div>
+            <article className="time-wrath-beat-panel" id="time-wrath-beat-panel" role="tabpanel" aria-labelledby={`time-wrath-tab-${activeScene}`} key={activeScene}>
+              <div className="time-wrath-beat-index">STORY BEAT / {beats[activeScene].number} OF 04</div>
+              <p>{beats[activeScene].label}</p>
+              <h3>{beats[activeScene].title}</h3>
+              <div className="time-wrath-beat-description">{beats[activeScene].description}</div>
+              <div className="time-wrath-beat-controls">
+                <span>{beats[activeScene].number} — 04</span>
+                <div>
+                  <button type="button" aria-label="Previous story beat" disabled={activeScene === 0} onClick={() => setActiveScene((current) => Math.max(0, current - 1))}>←</button>
+                  <button type="button" aria-label="Next story beat" disabled={activeScene === beats.length - 1} onClick={() => setActiveScene((current) => Math.min(beats.length - 1, current + 1))}>→</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="time-wrath-contribution">
+          <article className="time-wrath-role-card">
+            <span className="kicker">02 / MY CONTRIBUTION</span>
+            <strong>Lead performer.</strong>
+            <p>I performed one of the lead roles: the adventurer who is betrayed during the encounter at the destination.</p>
+            <span className="time-wrath-role-foot">PERFORMANCE / MIME</span>
+          </article>
+          <article className="time-wrath-recognition-card">
+            <span className="kicker">03 / COMPETITION RECOGNITION</span>
+            <h2>Award-winning<br />performance.</h2>
+            <ul>
+              {project.recognition?.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </article>
+        </section>
+
+        <section className="time-wrath-reflection">
+          <div className="kicker">04 / THE PERFORMANCE LANGUAGE</div>
+          <h2>A story told through <em>physical action.</em></h2>
+          <p>Time Wrath moves through a sequence of recognisable story shifts: departure, encounter, betrayal and confinement. In mime, those changes have to be communicated through the performers’ bodies, movement and interaction rather than spoken explanation. The precise staging, transitions and visual devices will be added after reviewing the performance footage.</p>
+          <div className="time-wrath-reflection-note"><span>VISUAL ARCHIVE</span><strong>Performance footage and scene stills to be added after review.</strong></div>
+        </section>
+
+        <div className="time-wrath-end-links">
+          <Link href="/work" className="archive-range-link"><ArrowLeft size={16} aria-hidden="true" /> Back to the creative archive</Link>
+          <Link href="/work/hari-patang" className="archive-range-link">Next project: Hari Patang <ArrowRight size={16} aria-hidden="true" /></Link>
+        </div>
+      </main>
+    );
+  }
+
   if (project.slug === 'ek-anokhi-bhasha' && project.caseStudy) {
     const caseStudy = project.caseStudy;
     const devices = [
