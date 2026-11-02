@@ -391,6 +391,62 @@ export function ThinkingPage() {
       </div>
     </section>
 
+    <section className="research-feature" aria-labelledby="research-proposal-title">
+      <div className="research-feature-top">
+        <div>
+          <div className="kicker">RESEARCH / QUALITATIVE METHODS</div>
+          <p className="research-feature-overline">ACADEMIC PROPOSAL · CIA 3</p>
+        </div>
+        <span className="research-status">PROPOSAL</span>
+      </div>
+
+      <div className="research-feature-main">
+        <div className="research-feature-title">
+          <p className="research-feature-index">01 / LANGUAGE &amp; IDENTITY</p>
+          <h2 id="research-proposal-title">Shifting Tongues,<br /><em>Shifting Selves.</em></h2>
+          <p className="research-feature-intro">Exploring how bilingual young adults move between languages — and between versions of themselves — across everyday social settings.</p>
+        </div>
+        <div className="research-question-card">
+          <span>THE RESEARCH QUESTION</span>
+          <p>How do bilingual young adults change language preference between family, peer, and academic environments, and what does this say about their identity negotiation?</p>
+          <div className="research-contexts">
+            <span>FAMILY</span><i>+</i><span>PEERS</span><i>+</i><span>ACADEMIA</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="research-proposal-details">
+        <article className="research-method-card">
+          <span className="research-detail-index">01 / APPROACH</span>
+          <h3>Interpretative Phenomenological Analysis</h3>
+          <p>IPA is the primary analytic approach, grounded in an interpretivist paradigm and informed by hermeneutics and social constructivism.</p>
+          <div className="research-method-tags"><span>Interpretivism</span><span>Hermeneutics</span><span>Social constructivism</span></div>
+        </article>
+        <article className="research-method-card research-method-card-accent">
+          <span className="research-detail-index">02 / DATA COLLECTION</span>
+          <h3>Listen. Record. Reflect.</h3>
+          <ul>
+            <li>Semi-structured interviews</li>
+            <li>14-day language-use diaries</li>
+            <li>Follow-up / stimulated-recall interviews</li>
+          </ul>
+        </article>
+        <article className="research-method-card research-method-card-dark">
+          <span className="research-detail-index">03 / PROPOSED SAMPLE</span>
+          <h3>6–10 participants</h3>
+          <p>Bilingual young adults aged 18–25, enrolled in higher education in an urban Indian context. Purposive, maximum-variation sampling is proposed.</p>
+        </article>
+      </div>
+
+      <div className="research-feature-footer">
+        <div>
+          <span>WHAT THE STUDY LOOKS AT</span>
+          <p>Not just which language is used, but what language comes to mean in a particular relationship, setting or moment.</p>
+        </div>
+        <div className="research-proposal-note"><strong>Research proposal</strong><br />The page presents the proposed design, not completed participant findings.</div>
+      </div>
+    </section>
+
     <section className="thinking-card">
       <div className="mono">ACADEMIC WORK / CONSUMER BEHAVIOUR</div>
       <h2>Greenwashing &amp; consumer behaviour</h2>
