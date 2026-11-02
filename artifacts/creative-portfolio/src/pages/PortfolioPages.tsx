@@ -330,29 +330,35 @@ export function ProjectDetailPage() {
 
 export function ThinkingPage() {
   const lenses = [
-    { number: '01', title: 'Attention', copy: 'What makes someone notice, pause or look twice?' },
-    { number: '02', title: 'Emotion', copy: 'What feeling does the idea create, and why might it matter to the audience?' },
-    { number: '03', title: 'Persuasion', copy: 'What gives the message relevance, credibility and a reason to act?' },
-    { number: '04', title: 'Memory', copy: 'What makes the idea distinctive enough to stay with someone?' },
+    { number: '01', title: 'Attention', copy: 'What makes someone notice?' },
+    { number: '02', title: 'Emotion', copy: 'What makes the message matter?' },
+    { number: '03', title: 'Persuasion', copy: 'What gives someone a reason to act?' },
+    { number: '04', title: 'Memory', copy: 'What makes the idea stay?' },
   ];
-  const methods = ['Psychological research', 'Consumer research', 'Social & cultural psychology', 'Creative experimentation'];
-  return <main className="wrap main-content" id="main-content" data-testid="page-thinking">
-    <header className="page-intro thinking-intro">
+  const steps = [
+    ['01', 'Understand the brand'],
+    ['02', 'Understand the audience'],
+    ['03', 'Find the human insight'],
+    ['04', 'Make the creative idea'],
+    ['05', 'Experiment & refine'],
+  ];
+  return <main className="wrap main-content thinking-page-compact" id="main-content" data-testid="page-thinking">
+    <header className="page-intro thinking-intro thinking-compact-intro">
       <div className="kicker">02 / THE THINKING</div>
-      <h1 className="page-title">Start with the brand. Understand the people. Then make the idea.</h1>
-      <p>I see psychology as a way to make creative decisions more informed — not as a formula to make every campaign look or sound the same.</p>
+      <h1 className="page-title">Psychology, people<br />&amp; the ideas between.</h1>
+      <p>I use psychology to ask better questions about people — then bring those questions into creative storytelling and advertising.</p>
     </header>
 
-    <section className="thinking-principle">
+    <section className="thinking-principle thinking-principle-compact">
       <div className="kicker">MY STARTING POINT</div>
-      <p className="thinking-principle-lead">Before I think about an advertisement, I want to understand what the brand stands for — and what it needs the campaign to achieve.</p>
-      <p>That objective shapes the approach. A brand may need to build awareness, change a perception, create a new association or strengthen an existing one. I don't believe one creative formula should be applied to all of them.</p>
+      <h2>Start with the brand.<br /><em>Then understand the people.</em></h2>
+      <p>A campaign should respond to what a brand needs to achieve — whether that is awareness, a shift in perception, a new association or stronger loyalty. There is no one formula for every brief.</p>
     </section>
 
-    <section className="section thinking-lenses" aria-labelledby="lenses-title">
-      <div className="section-head">
-        <div><div className="kicker">THE HUMAN RESPONSE</div><h2 id="lenses-title">Four questions I keep coming back to.</h2></div>
-        <p className="section-note">The psychological lenses I want to bring into the development of an idea.</p>
+    <section className="thinking-lenses thinking-compact-section" aria-labelledby="lenses-title">
+      <div className="thinking-compact-heading">
+        <div><div className="kicker">THE HUMAN RESPONSE</div><h2 id="lenses-title">Four lenses I return to.</h2></div>
+        <p>Questions that help me think through how an idea reaches people.</p>
       </div>
       <div className="thinking-lens-grid">
         {lenses.map((lens) => <article className="thinking-lens" key={lens.number}>
@@ -363,118 +369,57 @@ export function ThinkingPage() {
       </div>
     </section>
 
-    <section className="thinking-method section" aria-labelledby="method-title">
-      <div className="kicker">HOW I WANT TO WORK</div>
-      <h2 id="method-title">From brand meaning to creative execution.</h2>
-      <div className="thinking-steps">
-        <article><span>01</span><div><h3>Understand the brand</h3><p>Its identity, values, promise, audience and the objective of the campaign.</p></div></article>
-        <article><span>02</span><div><h3>Understand the audience</h3><p>Their needs, motivations, habits, social context and relationship with the category.</p></div></article>
-        <article><span>03</span><div><h3>Find the human insight</h3><p>Use research and psychological thinking to identify a tension, behaviour or feeling worth building around.</p></div></article>
-        <article><span>04</span><div><h3>Build the creative idea</h3><p>Translate the insight into a concept, script, story, visual device or participatory experience that fits the brand.</p></div></article>
-        <article><span>05</span><div><h3>Experiment and refine</h3><p>Explore different executions and test whether they serve the campaign objective and connect with the intended audience.</p></div></article>
+    <section className="thinking-method-compact thinking-compact-section" aria-labelledby="method-title">
+      <div className="thinking-compact-heading">
+        <div><div className="kicker">FROM INSIGHT TO EXECUTION</div><h2 id="method-title">How I want to work.</h2></div>
+        <p>Research and creative experimentation inform each stage.</p>
       </div>
-      <div className="thinking-methods">
-        <div className="kicker">TOOLS I WANT TO BRING TO THE PROCESS</div>
-        <div className="skills">{methods.map((method) => <span key={method}>{method}</span>)}</div>
+      <div className="thinking-step-strip">
+        {steps.map(([number,title]) => <article key={number}>
+          <span>{number}</span><h3>{title}</h3>
+        </article>)}
       </div>
+      <div className="thinking-tool-line"><strong>Methods I want to bring in:</strong> psychological research · consumer research · social and cultural psychology · creative testing</div>
     </section>
 
-    <section className="thinking-references section">
-      <div className="section-head">
-        <div><div className="kicker">CREATIVE REFERENCES</div><h2>Ideas that understand their audience.</h2></div>
-        <p className="section-note">Work I return to for its clarity, cultural relevance and ability to make a brand memorable.</p>
+    <section className="thinking-references-compact thinking-compact-section" aria-labelledby="references-title">
+      <div className="thinking-compact-heading">
+        <div><div className="kicker">CREATIVE REFERENCES</div><h2 id="references-title">Work I keep coming back to.</h2></div>
       </div>
       <div className="reference-grid">
-        <article><span className="mono">HUMOUR / PRODUCT TRUTH</span><h3>Fevicol advertising</h3><p>Turning a simple product promise into a memorable visual idea, often through exaggeration and humour.</p></article>
-        <article><span className="mono">CULTURE / TOPICALITY</span><h3>Amul topical campaigns</h3><p>Using current context, shared references and concise wit to create a sense of collective recognition.</p></article>
-        <article><span className="mono">BRAND / EVERYDAY LANGUAGE</span><h3>“Thanda Matlab Coca-Cola”</h3><p>Making a brand association feel familiar by connecting it to an everyday expression and cultural context.</p></article>
+        <article><span className="mono">HUMOUR / PRODUCT TRUTH</span><h3>Fevicol</h3><p>A simple product promise turned into a memorable visual idea.</p></article>
+        <article><span className="mono">CULTURE / TOPICALITY</span><h3>Amul</h3><p>Shared references and topical wit that invite collective recognition.</p></article>
+        <article><span className="mono">BRAND / EVERYDAY LANGUAGE</span><h3>Thanda Matlab Coca-Cola</h3><p>A brand association woven into an everyday expression.</p></article>
       </div>
     </section>
 
-    <section className="research-feature" aria-labelledby="research-proposal-title">
-      <div className="research-feature-top">
-        <div>
-          <div className="kicker">RESEARCH / QUALITATIVE METHODS</div>
-          <p className="research-feature-overline">ACADEMIC PROPOSAL · CIA 3</p>
-        </div>
-        <span className="research-status">PROPOSAL</span>
+    <section className="thinking-research-compact thinking-compact-section" aria-labelledby="research-work-title">
+      <div className="thinking-compact-heading">
+        <div><div className="kicker">RESEARCH &amp; COURSEWORK</div><h2 id="research-work-title">The questions behind the work.</h2></div>
+        <p>Academic work that shows how I approach behaviour, meaning and evidence.</p>
       </div>
-
-      <div className="research-feature-main">
-        <div className="research-feature-title">
-          <p className="research-feature-index">01 / LANGUAGE &amp; IDENTITY</p>
-          <h2 id="research-proposal-title">Shifting Tongues,<br /><em>Shifting Selves.</em></h2>
-          <p className="research-feature-intro">Exploring how bilingual young adults move between languages — and between versions of themselves — across everyday social settings.</p>
-        </div>
-        <div className="research-question-card">
-          <span>THE RESEARCH QUESTION</span>
-          <p>How do bilingual young adults change language preference between family, peer, and academic environments, and what does this say about their identity negotiation?</p>
-          <div className="research-contexts">
-            <span>FAMILY</span><i>+</i><span>PEERS</span><i>+</i><span>ACADEMIA</span>
+      <article className="research-proposal-card">
+        <div className="research-proposal-card-meta"><span>QUALITATIVE RESEARCH METHODS · CIA 3</span><span>RESEARCH PROPOSAL</span></div>
+        <div className="research-proposal-card-main">
+          <div>
+            <h3>Shifting Tongues,<br /><em>Shifting Selves.</em></h3>
+            <p>Language choice and identity negotiation among bilingual young adults.</p>
+          </div>
+          <div className="research-card-question">
+            <span>THE RESEARCH QUESTION</span>
+            <p>How do bilingual young adults change language preference between family, peer and academic environments — and what does this say about identity?</p>
           </div>
         </div>
-      </div>
-
-      <div className="research-proposal-details">
-        <article className="research-method-card">
-          <span className="research-detail-index">01 / APPROACH</span>
-          <h3>Interpretative Phenomenological Analysis</h3>
-          <p>IPA is the primary analytic approach, grounded in an interpretivist paradigm and informed by hermeneutics and social constructivism.</p>
-          <div className="research-method-tags"><span>Interpretivism</span><span>Hermeneutics</span><span>Social constructivism</span></div>
-        </article>
-        <article className="research-method-card research-method-card-accent">
-          <span className="research-detail-index">02 / DATA COLLECTION</span>
-          <h3>Listen. Record. Reflect.</h3>
-          <ul>
-            <li>Semi-structured interviews</li>
-            <li>14-day language-use diaries</li>
-            <li>Follow-up / stimulated-recall interviews</li>
-          </ul>
-        </article>
-        <article className="research-method-card research-method-card-dark">
-          <span className="research-detail-index">03 / PROPOSED SAMPLE</span>
-          <h3>6–10 participants</h3>
-          <p>Bilingual young adults aged 18–25, enrolled in higher education in an urban Indian context. Purposive, maximum-variation sampling is proposed.</p>
-        </article>
-      </div>
-
-      <div className="research-feature-footer">
-        <div>
-          <span>WHAT THE STUDY LOOKS AT</span>
-          <p>Not just which language is used, but what language comes to mean in a particular relationship, setting or moment.</p>
+        <div className="research-proposal-card-footer">
+          <div className="research-card-tags"><span>IPA</span><span>Interviews</span><span>14-day language diaries</span><span>6–10 proposed participants</span></div>
+          <a href={`${import.meta.env.BASE_URL}research/shifting-tongues-proposal.html`} target="_blank" rel="noreferrer" className="research-open-document">Read the full proposal <ArrowUpRight size={16} aria-hidden="true" /></a>
         </div>
-        <div className="research-proposal-note"><strong>Research proposal</strong><br />The page presents the proposed design, not completed participant findings.</div>
-      </div>
-    </section>
+      </article>
 
-    <section className="research-document-section" aria-labelledby="full-proposal-heading">
-      <div className="research-document-heading">
-        <div>
-          <div className="kicker">THE ACTUAL SUBMISSION</div>
-          <h2 id="full-proposal-heading">Read the full research proposal.</h2>
-          <p>Not just an overview. The original proposal is reproduced below as a readable document, including its literature review, research rationale, methodology, proposed analysis, critical evaluation, references and appendices.</p>
-        </div>
-        <a className="research-open-document" href={`${import.meta.env.BASE_URL}research/shifting-tongues-proposal.html`} target="_blank" rel="noreferrer">Open full document ↗</a>
-      </div>
-      <div className="research-iframe-wrap">
-        <div className="research-iframe-toolbar">
-          <span>SHifting tongues, shifting selves / FULL PROPOSAL</span>
-          <span>SCROLL TO READ</span>
-        </div>
-        <iframe
-          className="research-proposal-iframe"
-          src={`${import.meta.env.BASE_URL}research/shifting-tongues-proposal.html`}
-          title="Full research proposal: Shifting Tongues, Shifting Selves"
-          loading="lazy"
-        />
-      </div>
-    </section>
-
-    <section className="thinking-card">
-      <div className="mono">ACADEMIC WORK / CONSUMER BEHAVIOUR</div>
-      <h2>Greenwashing &amp; consumer behaviour</h2>
-      <p>A coursework project involving data collection and analysis on greenwashing awareness and consumer behaviour. The original research question, method and findings will be written up once the assignment is reviewed.</p>
-      <div className="thinking-footnote"><strong>Research details are being checked.</strong><br />No findings or conclusions are being claimed on this page yet.</div>
+      <article className="research-secondary-card">
+        <div><span className="mono">COURSEWORK / CONSUMER BEHAVIOUR</span><h3>Greenwashing awareness &amp; consumer behaviour</h3></div>
+        <p>Data collection and analysis exploring awareness of greenwashing and consumer behaviour. The research question, method and findings still need to be documented before making claims about the results.</p>
+      </article>
     </section>
   </main>;
 }
