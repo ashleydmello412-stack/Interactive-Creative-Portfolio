@@ -795,7 +795,7 @@ export function ContactPage() {
   ];
   const [activeTopic, setActiveTopic] = useState(0);
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
-  const starter = `Hi Ashley,\\n\\n${topics[activeTopic].starter}\\n\\nWould you be open to a conversation?\\n\\n[Your name]`;
+  const starter = `Hi Ashley,\n\n${topics[activeTopic].starter}\n\nWould you be open to a conversation?\n\n[Your name]`;
 
   const copyStarter = async () => {
     try {
