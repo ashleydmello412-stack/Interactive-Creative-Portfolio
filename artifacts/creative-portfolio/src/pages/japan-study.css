@@ -1,0 +1,381 @@
+/* Academic project: Cultural Foundations of Business Practices in Japan */
+.japan-study-page { padding-bottom: 76px; }
+.japan-study-back { margin-bottom: 16px; }
+
+.japan-study-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(24px, 4.8vw, 56px);
+  border-radius: 27px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.japan-study-topline,
+.japan-study-hero-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: #ffffffa3;
+  font-family: var(--app-font-mono);
+  font-size: .58rem;
+  letter-spacing: .11em;
+}
+.japan-study-topline { padding-bottom: 17px; border-bottom: 1px solid #ffffff35; }
+.japan-study-topline i { color: var(--coral); font-style: normal; padding: 0 5px; }
+.japan-study-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr);
+  align-items: center;
+  gap: 24px;
+  min-height: 425px;
+  padding: 30px 0 24px;
+}
+.japan-study-hero-copy { position: relative; z-index: 1; }
+.japan-study-eyebrow {
+  margin: 0 0 18px;
+  color: var(--coral);
+  font-family: var(--app-font-mono);
+  font-size: .65rem;
+  letter-spacing: .15em;
+}
+.japan-study-hero-copy h1 {
+  max-width: 800px;
+  margin: 0;
+  font-size: clamp(3.25rem, 7vw, 6.9rem);
+  line-height: .88;
+  letter-spacing: -.085em;
+  text-wrap: balance;
+}
+.japan-study-hero-copy h1 em {
+  display: block;
+  margin-top: 8px;
+  color: var(--lime);
+  font-style: normal;
+}
+.japan-study-lead {
+  max-width: 590px;
+  margin: 23px 0 19px;
+  color: #e9e7e2;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.japan-study-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.japan-study-tags span {
+  padding: 7px 10px;
+  border: 1px solid #ffffff49;
+  border-radius: 999px;
+  color: #f6f0e7;
+  font-family: var(--app-font-mono);
+  font-size: .54rem;
+  letter-spacing: .08em;
+}
+
+.japan-study-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 325px;
+  isolation: isolate;
+}
+.japan-study-art-orbit {
+  position: absolute;
+  width: min(100%, 330px);
+  aspect-ratio: 1;
+  border: 1px solid #ffffff42;
+  border-radius: 50%;
+  transform: rotate(-25deg) scaleY(.78);
+}
+.japan-study-art-orbit::before,
+.japan-study-art-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 23px;
+  border: 1px dashed #ffffff35;
+  border-radius: 50%;
+}
+.japan-study-art-orbit::after { inset: 47px; border-style: solid; opacity: .65; }
+.japan-study-art-sun {
+  position: absolute;
+  width: 150px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 19px #ff754a17, 0 0 75px #ff754a3c;
+}
+.japan-study-kanji {
+  position: relative;
+  z-index: 1;
+  color: var(--ink);
+  font-family: serif;
+  font-size: 5.8rem;
+  line-height: 1;
+  transform: translateY(-5px);
+}
+.japan-study-art-word {
+  position: absolute;
+  right: 8%;
+  bottom: 15%;
+  color: var(--lime);
+  font-family: var(--app-font-mono);
+  font-size: 1.05rem;
+  letter-spacing: .2em;
+}
+.japan-study-art-caption {
+  position: absolute;
+  left: 2%;
+  bottom: 13%;
+  color: #ffffffab;
+  font-family: var(--app-font-mono);
+  font-size: .53rem;
+  line-height: 1.7;
+  letter-spacing: .12em;
+}
+.japan-study-hero-footer {
+  justify-content: flex-start;
+  gap: clamp(16px, 4vw, 50px);
+  padding-top: 15px;
+  border-top: 1px solid #ffffff35;
+  color: var(--lime);
+}
+
+.japan-study-meta {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr .65fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+.japan-study-meta article {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-height: 93px;
+  padding: 17px 19px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--paper);
+}
+.japan-study-meta article > span {
+  color: var(--muted-ink);
+  font-family: var(--app-font-mono);
+  font-size: .55rem;
+  letter-spacing: .12em;
+}
+.japan-study-meta strong { font-size: .9rem; line-height: 1.35; }
+
+.japan-study-overview,
+.japan-study-focus,
+.japan-study-business {
+  padding: 73px 0 0;
+}
+.japan-study-section-index {
+  color: var(--coral);
+  font-family: var(--app-font-mono);
+  font-size: .63rem;
+  letter-spacing: .11em;
+}
+.japan-study-section-index span { color: var(--muted-ink); margin-left: 8px; }
+.japan-study-overview-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 35px;
+  align-items: center;
+  padding-top: 22px;
+}
+.japan-study-overview-grid h2,
+.japan-study-section-heading h2 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  line-height: .94;
+  letter-spacing: -.075em;
+}
+.japan-study-overview-grid h2 em,
+.japan-study-section-heading h2 em { color: #8b9f31; font-style: normal; }
+.japan-study-overview-grid > div p {
+  max-width: 660px;
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.japan-study-note {
+  display: inline-block;
+  margin-top: 18px;
+  color: #7d8e2a;
+  font-family: var(--app-font-mono);
+  font-size: .56rem;
+  letter-spacing: .09em;
+}
+
+.japan-study-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+.japan-study-section-heading h2 { margin-top: 14px; }
+.japan-study-section-heading > p {
+  max-width: 370px;
+  margin: 0 0 3px;
+  color: var(--muted-ink);
+  font-size: .87rem;
+  line-height: 1.7;
+}
+.japan-study-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.japan-study-focus-card {
+  min-height: 238px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: var(--paper);
+}
+.japan-study-focus-card-2 { background: var(--blue); }
+.japan-study-focus-card-3 { background: var(--lime); }
+.japan-study-focus-card-4 { background: var(--coral); }
+.japan-study-focus-card > span {
+  color: #7c7a70;
+  font-family: var(--app-font-mono);
+  font-size: .62rem;
+}
+.japan-study-focus-card h3 {
+  margin: 36px 0 10px;
+  font-size: 1.38rem;
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+.japan-study-focus-card p {
+  margin: 0;
+  color: #4e4c45;
+  font-size: .82rem;
+  line-height: 1.65;
+}
+
+.japan-study-business-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+}
+.japan-study-business-card {
+  min-height: 220px;
+  padding: clamp(21px, 3vw, 32px);
+  border-radius: 19px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.japan-study-business-card-2 { background: #d8e5ff; color: var(--ink); }
+.japan-study-business-card > span {
+  color: var(--lime);
+  font-family: var(--app-font-mono);
+  font-size: .57rem;
+  letter-spacing: .12em;
+}
+.japan-study-business-card-2 > span { color: #697b27; }
+.japan-study-business-card h3 {
+  margin: 33px 0 10px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: .95;
+  letter-spacing: -.07em;
+}
+.japan-study-business-card p {
+  max-width: 600px;
+  margin: 0;
+  color: #e9e7e2;
+  font-size: .9rem;
+  line-height: 1.7;
+}
+.japan-study-business-card-2 p { color: #4d5260; }
+
+.japan-study-synthesis {
+  position: relative;
+  overflow: hidden;
+  margin-top: 72px;
+  padding: clamp(25px, 5vw, 52px);
+  border-radius: 23px;
+  background: var(--lime);
+  color: var(--ink);
+}
+.japan-study-synthesis::after {
+  content: "和";
+  position: absolute;
+  right: 3%;
+  top: -35%;
+  color: #1717170c;
+  font-family: serif;
+  font-size: clamp(13rem, 32vw, 27rem);
+  line-height: 1;
+  pointer-events: none;
+}
+.japan-study-synthesis > span,
+.japan-study-synthesis-footer {
+  position: relative;
+  z-index: 1;
+  font-family: var(--app-font-mono);
+  font-size: .58rem;
+  letter-spacing: .1em;
+}
+.japan-study-synthesis > p {
+  position: relative;
+  z-index: 1;
+  max-width: 930px;
+  margin: 20px 0 38px;
+  font-size: clamp(1.8rem, 4vw, 3.55rem);
+  line-height: 1.05;
+  letter-spacing: -.065em;
+}
+.japan-study-synthesis-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 15px;
+  border-top: 1px solid #17171735;
+  color: #3c4028;
+  font-size: .53rem;
+}
+
+.archive-range-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+@media (max-width: 1050px) {
+  .japan-study-focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .archive-range-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .japan-study-page { padding-bottom: 52px; }
+  .japan-study-hero { padding: 20px; border-radius: 21px; }
+  .japan-study-topline { font-size: .48rem; }
+  .japan-study-hero-grid { grid-template-columns: 1fr; gap: 0; min-height: unset; padding: 34px 0 15px; }
+  .japan-study-hero-copy h1 { font-size: clamp(3.2rem, 15vw, 5.4rem); }
+  .japan-study-lead { font-size: .9rem; }
+  .japan-study-tags span { font-size: .47rem; }
+  .japan-study-art { min-height: 245px; }
+  .japan-study-art-orbit { width: 240px; }
+  .japan-study-art-sun { width: 112px; }
+  .japan-study-kanji { font-size: 4.5rem; }
+  .japan-study-art-caption { left: 5%; bottom: 7%; }
+  .japan-study-art-word { right: 8%; bottom: 7%; }
+  .japan-study-hero-footer { flex-wrap: wrap; gap: 9px 18px; font-size: .48rem; }
+  .japan-study-meta { grid-template-columns: 1fr 1fr; }
+  .japan-study-meta article:first-child { grid-column: 1 / -1; }
+  .japan-study-overview,
+  .japan-study-focus,
+  .japan-study-business { padding-top: 52px; }
+  .japan-study-overview-grid { grid-template-columns: 1fr; gap: 18px; }
+  .japan-study-overview-grid h2,
+  .japan-study-section-heading h2 { font-size: clamp(2.7rem, 12vw, 4rem); }
+  .japan-study-section-heading { display: block; }
+  .japan-study-section-heading > p { margin-top: 12px; }
+  .japan-study-focus-card { min-height: unset; padding: 17px; }
+  .japan-study-focus-card h3 { margin-top: 25px; }
+  .japan-study-focus-card p { font-size: .78rem; }
+  .japan-study-business-grid { grid-template-columns: 1fr; }
+  .japan-study-business-card { min-height: unset; }
+  .japan-study-business-card h3 { margin-top: 25px; }
+  .japan-study-synthesis { margin-top: 52px; border-radius: 19px; }
+  .japan-study-synthesis > p { font-size: clamp(1.8rem, 9vw, 3rem); }
+  .japan-study-synthesis-footer { flex-wrap: wrap; font-size: .46rem; }
+  .archive-range-grid { grid-template-columns: 1fr; }
+}
