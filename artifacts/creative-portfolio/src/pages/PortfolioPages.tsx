@@ -240,7 +240,7 @@ export function ProjectDetailPage() {
           </div>
           <div className="bhasha-devices-grid">
             {devices.map((device) => (
-              <article className={'bhasha-device-card bhasha-device-card-' + device.number} key={device.number}>
+              <article className={'bhasha-device-card bhasha-device-card-' + Number(device.number)} key={device.number}>
                 <span>{device.number}</span><h3>{device.title}</h3><p>{device.copy}</p>
               </article>
             ))}
