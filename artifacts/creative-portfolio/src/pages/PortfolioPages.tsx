@@ -595,10 +595,14 @@ export function ThinkingPage() {
           <span className="thinking-lens-action">{activeLens === index ? 'SELECTED' : 'EXPLORE'} <b>↗</b></span>
         </button>)}
       </div>
-      <article className="lens-detail-panel" id="lens-detail-panel" role="tabpanel">
-        <div className="lens-detail-index">LENS {lenses[activeLens].number} / A QUESTION TO WORK WITH</div>
+      <article className="lens-detail-panel" id="lens-detail-panel" role="tabpanel" key={activeLens}>
+        <div className="lens-detail-index">LENS {lenses[activeLens].number} / FROM PSYCHOLOGY TO CREATIVE CHOICE</div>
         <div className="lens-detail-content">
-          <div><h3>{lenses[activeLens].question}</h3><p>{lenses[activeLens].detail}</p></div>
+          <div className="lens-detail-main">
+            <h3>{lenses[activeLens].question}</h3>
+            <p>{lenses[activeLens].detail}</p>
+            <div className="lens-creative-translation"><span>WHAT THIS COULD CHANGE IN THE CREATIVE</span><p>{lenses[activeLens].creative}</p></div>
+          </div>
           <div className="lens-signal-list"><span>THINGS TO LOOK FOR</span>{lenses[activeLens].signals.map((signal) => <b key={signal}>{signal}</b>)}</div>
         </div>
       </article>
@@ -606,20 +610,64 @@ export function ThinkingPage() {
 
     <section className="brief-playground thinking-compact-section" aria-labelledby="brief-playground-title">
       <div className="thinking-compact-heading">
-        <div><div className="kicker">INTERACTIVE / THE BRIEF PLAYGROUND</div><h2 id="brief-playground-title">Change the objective.<br />Change the question.</h2></div>
-        <p>Pick what the brand needs to do. The starting question shifts with the job.</p>
+        <div><div className="kicker">INTERACTIVE / BUILD A STARTING BRIEF</div><h2 id="brief-playground-title">A brief is a starting point.<br />Make a direction from it.</h2></div>
+        <p>Try different objectives and audiences to see how the creative question changes. This is a thinking exercise, not a finished campaign recommendation.</p>
       </div>
-      <div className="brief-playground-layout">
-        <div className="brief-objectives" role="group" aria-label="Choose a campaign objective">
-          {objectives.map((objective, index) => <button type="button" className={activeObjective === index ? 'is-active' : ''} aria-pressed={activeObjective === index} onClick={() => setActiveObjective(index)} key={objective.title}>
-            <span>0{index + 1}</span><strong>{objective.title}</strong><small>{objective.label}</small><b>↗</b>
-          </button>)}
+      <div className="brief-builder">
+        <div className="brief-builder-controls">
+          <div className="brief-builder-step"><span>01</span><strong>SET THE CONTEXT</strong></div>
+          <label className="brief-field">
+            <span>BRAND / PRODUCT / SERVICE</span>
+            <input type="text" value={brandName} maxLength={60} placeholder="e.g. A neighbourhood café" onChange={(event) => { setBrandName(event.target.value); setShowDirection(false); }} />
+          </label>
+          <label className="brief-field">
+            <span>WHO ARE YOU SPEAKING TO?</span>
+            <select value={audience} onChange={(event) => { setAudience(event.target.value); setShowDirection(false); }}>
+              <option>Students &amp; young adults</option>
+              <option>First-time buyers</option>
+              <option>Existing customers</option>
+              <option>Price-conscious shoppers</option>
+              <option>Busy working professionals</option>
+              <option>A broad everyday audience</option>
+            </select>
+          </label>
+          <div className="brief-builder-step brief-objective-heading"><span>02</span><strong>CHOOSE THE OBJECTIVE</strong></div>
+          <div className="brief-objectives" role="group" aria-label="Choose a campaign objective">
+            {objectives.map((objective, index) => <button type="button" className={activeObjective === index ? 'is-active' : ''} aria-pressed={activeObjective === index} onClick={() => { setActiveObjective(index); setRouteIndex(0); setShowDirection(false); }} key={objective.title}>
+              <span>0{index + 1}</span><strong>{objective.title}</strong><small>{objective.label}</small><b>↗</b>
+            </button>)}
+          </div>
+          <div className="brief-builder-step brief-tone-heading"><span>03</span><strong>CHOOSE A TONE</strong></div>
+          <div className="brief-tone-options" role="group" aria-label="Choose a creative tone">
+            {['Playful', 'Warm', 'Bold', 'Thoughtful'].map((option) => <button type="button" key={option} aria-pressed={tone === option} className={tone === option ? 'is-active' : ''} onClick={() => { setTone(option); setShowDirection(false); }}>{option}</button>)}
+          </div>
+          <button type="button" className="brief-build-button" onClick={() => { setRouteIndex(0); setShowDirection(true); }}>Build my direction <span>↗</span></button>
         </div>
-        <article className="brief-output" aria-live="polite" key={activeObjective}>
-          <span className="brief-output-eyebrow">THE FIRST QUESTION I’D ASK</span>
-          <h3>{objectives[activeObjective].prompt}</h3>
-          <div className="brief-output-foot"><span>CREATIVE DIRECTION</span><strong>{objectives[activeObjective].response}</strong></div>
-          <div className="brief-output-lens">STARTING LENS <b>{objectives[activeObjective].lens}</b></div>
+        <article className={'brief-output brief-output-builder' + (showDirection ? ' has-direction' : '')} aria-live="polite" key={(showDirection ? activeObjective : 'empty') + '-' + routeIndex}>
+          {!showDirection ? <>
+            <div className="brief-output-index">YOUR CREATIVE WORKSPACE</div>
+            <div className="brief-empty-graphic" aria-hidden="true"><span>?</span><i></i><b></b></div>
+            <div className="brief-empty-copy"><h3>Start with the job the brand needs to do.</h3><p>Add a brand and audience, choose an objective and tone, then build a starting direction.</p></div>
+            <div className="brief-output-foot"><span>READY WHEN YOU ARE</span><strong>01 / 04 OBJECTIVES</strong></div>
+          </> : <>
+            <div className="brief-output-index">YOUR STARTING DIRECTION <span>NOT A FINISHED CAMPAIGN</span></div>
+            <div className="brief-built-summary">
+              <div><span>THE BRAND</span><strong>{brandName.trim() || 'Your brand'}</strong></div>
+              <div><span>THE AUDIENCE</span><strong>{audience}</strong></div>
+              <div><span>THE OBJECTIVE</span><strong>{objectives[activeObjective].title}</strong></div>
+              <div><span>THE TONE</span><strong>{tone}</strong></div>
+            </div>
+            <div className="brief-insight-block"><span>THE TENSION TO INVESTIGATE</span><p>{objectives[activeObjective].tension}</p></div>
+            <div className="brief-route-block">
+              <span>POSSIBLE CREATIVE ROUTE / 0{routeIndex + 1}</span>
+              <p>{objectives[activeObjective].routes[routeIndex]}</p>
+              <small>Try a {tone.toLowerCase()} tone for {audience.toLowerCase()} — then test whether the idea feels relevant to them.</small>
+            </div>
+            <div className="brief-output-footer">
+              <div><span>STARTING PSYCHOLOGY LENS</span><strong>{objectives[activeObjective].lens}</strong></div>
+              <button type="button" onClick={() => setRouteIndex((current) => (current + 1) % objectives[activeObjective].routes.length)}>Try another route <b>↻</b></button>
+            </div>
+          </>}
         </article>
       </div>
     </section>
