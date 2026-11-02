@@ -857,244 +857,130 @@ export function ThinkingPage() {
 }
 
 export function AboutPage() {
-  const interests = [
-    {
-      number: '01',
-      label: 'THE THINKING',
-      title: 'Consumer & brand insight',
-      copy: 'Understanding what a brand needs to communicate, who it is speaking to, and what might make that message meaningful.',
-      tone: 'about-direction-card-lime',
-    },
-    {
-      number: '02',
-      label: 'THE STORY',
-      title: 'Concepts & scriptwriting',
-      copy: 'Turning an observation into a central idea, then shaping it through story, dialogue, character and visual language.',
-      tone: 'about-direction-card-blue',
-    },
-    {
-      number: '03',
-      label: 'THE EXECUTION',
-      title: 'Direction & production',
-      copy: 'Taking an idea beyond the page — thinking about performance, sound, pacing and how it comes together on screen.',
-      tone: 'about-direction-card-coral',
-    },
-  ];
   const skills = ['Psychology', 'Consumer behaviour', 'Storytelling', 'Acting', 'Direction', 'Scriptwriting', 'Sound design', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
-  return <main className="wrap main-content about-page" id="main-content" data-testid="page-about">
-    <header className="about-hero">
-      <div className="about-hero-copy">
-        <div className="kicker">03 / ABOUT — THE PERSON BEHIND THE WORK</div>
-        <h1>I'm curious about <em>people.</em><br />I'm drawn to the ideas that move them.</h1>
-        <p>I'm a third-year B.Sc. Psychology student with a creative practice shaped by theatre, performance and production. I'm interested in bringing those two worlds together in advertising — understanding people, finding the story, and helping bring the idea to life.</p>
-        <div className="about-hero-actions">
-          <Link href="/work" className="about-hero-link" data-testid="link-about-work">Explore my work <ArrowUpRight size={16} aria-hidden="true" /></Link>
-          <Link href="/thinking" className="about-hero-link about-hero-link-secondary" data-testid="link-about-thinking">How I think about advertising <ArrowUpRight size={16} aria-hidden="true" /></Link>
-        </div>
-      </div>
-      <div className="about-hero-art" aria-hidden="true">
-        <div className="about-hero-orbit about-hero-orbit-one" />
-        <div className="about-hero-orbit about-hero-orbit-two" />
-        <div className="about-hero-note about-hero-note-top">OBSERVE / QUESTION / MAKE</div>
-        <div className="about-hero-stamp"><span>PEOPLE</span><strong>FIRST.</strong><i>✳</i></div>
-        <div className="about-hero-note about-hero-note-bottom">PSYCHOLOGY<br />×<br />CREATIVE PRACTICE</div>
-      </div>
-      <span className="about-hero-index" aria-hidden="true">A LITTLE ABOUT ME / 03</span>
+  return <main className="wrap main-content about-page editorial-about" id="main-content" data-testid="page-about">
+    <header className="editorial-about-header">
+      <div className="kicker">03 / ABOUT</div>
+      <h1>A little bit of psychology.<br /><em>A lot of storytelling.</em></h1>
+      <p className="editorial-about-standfirst">I'm Ashley — a psychology student, theatre-maker and aspiring creative in advertising. I'm interested in what makes people tick, and what it takes to turn that understanding into a story people want to spend time with.</p>
+      <div className="editorial-about-byline"><span>THE PERSON BEHIND THE PROJECTS</span><span>PSYCHOLOGY × CREATIVE PRACTICE</span></div>
     </header>
 
-    <section className="about-throughline">
-      <div className="kicker">THE THROUGH-LINE</div>
-      <p>Psychology helps me ask <em>why</em> people respond. Theatre has taught me to think about <em>how</em> an idea reaches them.</p>
-    </section>
-
-    <section className="about-two-worlds" aria-labelledby="about-two-worlds-title">
-      <div className="about-section-heading">
-        <div><div className="kicker">TWO WAYS OF LOOKING AT PEOPLE</div><h2 id="about-two-worlds-title">One studies the response.<br /><em>The other creates it.</em></h2></div>
-        <p>I'm interested in the space between understanding an audience and creating something worth their attention.</p>
+    <section className="editorial-about-intro">
+      <div className="editorial-about-intro-lead">
+        <span className="kicker">THE SHORT VERSION</span>
+        <p>I like ideas that make you <em>think</em>, make you <em>feel</em>, or make you see something familiar a little differently.</p>
       </div>
-      <div className="about-worlds-grid">
-        <article className="about-world-card about-world-psychology">
-          <span className="about-world-number">01 / PSYCHOLOGY</span>
-          <h3>What makes people think, feel and choose?</h3>
-          <p>My degree has given me a foundation for exploring behaviour, social influence, cognition and consumer responses. I want to use that understanding to ask better questions before a creative idea is made.</p>
-          <div className="about-world-tags"><span>BEHAVIOUR</span><span>CONSUMER THINKING</span><span>RESEARCH</span></div>
-        </article>
-        <article className="about-world-card about-world-theatre">
-          <span className="about-world-number">02 / THEATRE &amp; PRODUCTION</span>
-          <h3>What makes an idea come alive?</h3>
-          <p>Performing, directing and scriptwriting have let me work with movement, timing, character, satire and audience engagement. I've also worked on the technical side of a production, including lights and sound.</p>
-          <div className="about-world-tags"><span>PERFORMANCE</span><span>STORYTELLING</span><span>EXECUTION</span></div>
-        </article>
+      <div className="editorial-about-intro-copy">
+        <p>I'm currently in my third year of a B.Sc. in Psychology at CHRIST (Deemed to be University). My academic interests include consumer behaviour and the ways attention, emotion, social influence and memory shape how people interpret messages and make choices.</p>
+        <p>Alongside university, theatre has been where I've learnt by doing. I've performed, written, directed and worked behind the scenes. It has made me curious about the choices that make a story land: what an audience notices, when a moment needs silence, and how a simple action can communicate more than a paragraph.</p>
+        <p>I'm now looking to bring those interests together in advertising — not only developing the idea, but also writing it, directing it and being involved in how it is made.</p>
       </div>
     </section>
 
-    <section className="about-journey" aria-labelledby="about-journey-title">
-      <div className="about-section-heading">
-        <div><div className="kicker">THE CREATIVE JOURNEY</div><h2 id="about-journey-title">From being in the story<br />to helping shape it.</h2></div>
-        <p>My experience in theatre has grown across performance, writing, direction and production. These are a few milestones from that journey.</p>
+    <section className="editorial-about-chapter">
+      <div className="editorial-about-chapter-heading">
+        <span className="kicker">01 / THE TWO WORLDS I MOVE BETWEEN</span>
+        <h2>Understanding people.<br /><em>Communicating with them.</em></h2>
       </div>
-      <div className="about-journey-list">
-        <article className="about-journey-item">
-          <div className="about-journey-date"><span>2024—25</span><b>01</b></div>
-          <div className="about-journey-content">
-            <span className="about-journey-label">BUILDING THE FOUNDATION</span>
-            <h3>Learning to tell stories through performance.</h3>
-            <p>Mime and street theatre became my starting point. I performed as a lead in <em>Time Wrath</em>, took on a central role in <em>Why So Serious?</em>, and performed in the Blossoms mime <em>The Perfect Crime</em>.</p>
-            <div className="about-journey-credit"><strong>Time Wrath</strong><span>1st — Darpan ’24 · Mood Indigo ’24 · VIT</span><span>2nd — Enact</span></div>
+      <div className="editorial-about-columns">
+        <article>
+          <span className="editorial-about-small-label">IN THE CLASSROOM</span>
+          <h3>Psychology gives me questions.</h3>
+          <p>What catches someone's attention? How do beliefs and social context shape a decision? Why does one message stay with us while another disappears? Studying psychology gives me frameworks and research methods to approach questions like these with more than intuition.</p>
+        </article>
+        <article>
+          <span className="editorial-about-small-label">IN REHEARSAL &amp; PRODUCTION</span>
+          <h3>Theatre gives me a way to test ideas.</h3>
+          <p>Acting and directing have taught me to think about an audience in real time. Scriptwriting has made me attentive to structure and dialogue; sound and lights have made me aware of the details that shape a performance. The work is collaborative, practical and rarely just one person's idea.</p>
+        </article>
+      </div>
+    </section>
+
+    <section className="editorial-about-journey">
+      <div className="editorial-about-chapter-heading">
+        <span className="kicker">02 / A CREATIVE TIMELINE</span>
+        <h2>How the work has<br /><em>grown so far.</em></h2>
+        <p>A few milestones from my theatre and performance experience — from taking the stage to taking on more of the making.</p>
+      </div>
+      <div className="editorial-timeline">
+        <article className="editorial-timeline-entry">
+          <div className="editorial-timeline-date"><span>2024—25</span><i>01</i></div>
+          <div className="editorial-timeline-body">
+            <h3>Finding my footing in performance</h3>
+            <p><em>Time Wrath</em> was my first mime, in which I played the lead. I went on to perform a central role in <em>Why So Serious?</em> and act in the Blossoms mime <em>The Perfect Crime</em>.</p>
+            <div className="editorial-timeline-note"><strong>Time Wrath</strong><span>1st — Darpan ’24, Mood Indigo ’24 and VIT</span><span>2nd — Enact</span></div>
           </div>
         </article>
-        <article className="about-journey-item">
-          <div className="about-journey-date"><span>2025</span><b>02</b></div>
-          <div className="about-journey-content">
-            <span className="about-journey-label">MOVING BEYOND PERFORMANCE</span>
-            <h3>Taking on more of the making.</h3>
-            <p>For the <em>InBlooms Mime Duo</em>, I acted, directed, scripted and sound-designed; the performance placed second. For <em>One Two Ka Four</em> at Blossoms ’25, I acted, directed and scripted the street play.</p>
+        <article className="editorial-timeline-entry">
+          <div className="editorial-timeline-date"><span>2025</span><i>02</i></div>
+          <div className="editorial-timeline-body">
+            <h3>Taking on the story behind the performance</h3>
+            <p>For the <em>InBlooms Mime Duo</em>, I acted, directed, scripted and sound-designed; the performance placed second. At Blossoms ’25, I acted, directed and scripted the street play <em>One Two Ka Four</em>, and was appointed POC for the procession opening act.</p>
           </div>
         </article>
-        <article className="about-journey-item">
-          <div className="about-journey-date"><span>2025—26</span><b>03</b></div>
-          <div className="about-journey-content">
-            <span className="about-journey-label">WORKING ACROSS A PRODUCTION</span>
-            <h3>Moving between the stage and what supports it.</h3>
-            <p><em>Hari Patang</em> brought together acting, direction and scriptwriting. In <em>Ek Tha Raja</em>, I acted and handled lights. In <em>Ek Anokhi Bhasha</em>, I performed as part of the ensemble and served as Street Play Sub-Head. I also acted in the short film <em>Knock Knock</em>.</p>
+        <article className="editorial-timeline-entry">
+          <div className="editorial-timeline-date"><span>2025—26</span><i>03</i></div>
+          <div className="editorial-timeline-body">
+            <h3>Working across roles and formats</h3>
+            <p><em>Hari Patang</em> brought together acting, direction and scriptwriting. I acted and handled lights for <em>Ek Tha Raja</em>, served as Street Play Sub-Head and performed in <em>Ek Anokhi Bhasha</em>, and acted in the short film <em>Knock Knock</em>.</p>
           </div>
         </article>
       </div>
-      <Link href="/work" className="about-journey-link" data-testid="link-about-full-archive">See the projects and my contributions <ArrowRight size={16} aria-hidden="true" /></Link>
+      <Link href="/work" className="editorial-about-work-link" data-testid="link-about-full-archive">The projects, in more detail <ArrowUpRight size={16} aria-hidden="true" /></Link>
     </section>
 
-    <section className="about-direction" aria-labelledby="about-direction-title">
-      <div className="about-section-heading">
-        <div><div className="kicker">WHERE I WANT TO TAKE THIS</div><h2 id="about-direction-title">The kind of creative work<br />I want to be part of.</h2></div>
-        <p>My goal is to contribute across the process — from understanding the problem to developing the idea and shaping its execution.</p>
-      </div>
-      <div className="about-direction-grid">
-        {interests.map((item) => <article className={`about-direction-card ${item.tone}`} key={item.number}>
-          <span>{item.number} / {item.label}</span>
-          <h3>{item.title}</h3>
-          <p>{item.copy}</p>
-        </article>)}
-      </div>
+    <section className="editorial-about-perspective">
+      <span className="kicker">03 / WHAT I'M WORKING TOWARDS</span>
+      <p>I want to be part of the whole creative process: <strong>finding the human insight, shaping the concept, writing the story and helping direct the final piece.</strong></p>
+      <span className="editorial-about-perspective-foot">INSIGHT → IDEA → SCRIPT → EXECUTION</span>
     </section>
 
-    <section className="about-tools" aria-labelledby="about-tools-title">
-      <div><div className="kicker">MY CREATIVE TOOLKIT</div><h2 id="about-tools-title">Areas I explore. Tools I use.</h2></div>
-      <p className="about-tools-intro">A mix of academic interests, creative practice and audiovisual tools that I continue to develop.</p>
-      <div className="about-tool-groups">
-        <div><span>INTERESTS &amp; PRACTICE</span><div className="skills">{skills.slice(0, 7).map((skill) => <span key={skill}>{skill}</span>)}</div></div>
-        <div><span>EDITING &amp; AUDIOVISUAL TOOLS</span><div className="skills">{skills.slice(7).map((skill) => <span key={skill}>{skill}</span>)}</div></div>
-      </div>
+    <section className="editorial-about-toolkit">
+      <div className="editorial-about-toolkit-heading"><span className="kicker">A FEW THINGS IN MY TOOLKIT</span><p>Areas I study, practices I've worked in and tools I use.</p></div>
+      <div className="editorial-about-toolkit-list">{skills.map((skill) => <span key={skill}>{skill}</span>)}</div>
     </section>
 
-    <section className="about-closing">
-      <div><div className="kicker">THE NEXT CHAPTER</div><h2>I'm interested in making work that understands people — and gives them something to feel.</h2></div>
-      <Link href="/contact" className="about-closing-link" data-testid="link-about-contact">Let's start a conversation <ArrowUpRight size={18} aria-hidden="true" /></Link>
-    </section>
+    <footer className="editorial-about-footer">
+      <span className="kicker">KEEP EXPLORING</span>
+      <Link href="/work" data-testid="link-about-work">Selected work <ArrowUpRight size={16} aria-hidden="true" /></Link>
+      <Link href="/thinking" data-testid="link-about-thinking">Psychology &amp; ideas <ArrowUpRight size={16} aria-hidden="true" /></Link>
+    </footer>
   </main>;
 }
 
 export function ContactPage() {
-  const topics = [
-    {
-      title: 'Creative concepts & scripts',
-      tag: '01 / THE IDEA',
-      copy: 'A campaign thought, a story, a script, or the creative direction that gives it shape.',
-      starter: "I'm reaching out about a creative idea for [brand / project]. The audience I'm thinking about is [audience], and the thought I'd like to explore is [idea].",
-    },
-    {
-      title: 'Direction & production',
-      tag: '02 / THE MAKING',
-      copy: 'Performance-led storytelling, short-form video, production, or making an idea work on screen.',
-      starter: "I'm getting in touch about a [film / video / production] project. The format and brief are [details], and I'm looking to discuss [role / collaboration].",
-    },
-    {
-      title: 'Consumer insight & research',
-      tag: '03 / THE WHY',
-      copy: 'Audience behaviour, consumer psychology, research questions, and insight-led creative work.',
-      starter: "I'd like to discuss a consumer insight or research question around [audience / behaviour]. The context is [details], and the question I'm exploring is [question].",
-    },
-    {
-      title: 'Something else',
-      tag: '04 / THE UNEXPECTED',
-      copy: 'An opportunity, a collaboration, a question, or simply a conversation worth starting.',
-      starter: "I came across your portfolio and wanted to connect about [opportunity / idea]. A little context: [details].",
-    },
-  ];
-  const [activeTopic, setActiveTopic] = useState(0);
-  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
-  const starter = `Hi Ashley,\n\n${topics[activeTopic].starter}\n\nWould you be open to a conversation?\n\n[Your name]`;
-
-  const copyStarter = async () => {
-    try {
-      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-      await navigator.clipboard.writeText(starter);
-      setCopyState('copied');
-    } catch {
-      setCopyState('error');
-    }
-  };
-
-  return <main className="wrap main-content contact-page" id="main-content" data-testid="page-contact">
-    <section className="contact-page-hero">
-      <div className="contact-page-hero-copy">
-        <div className="kicker">04 / CONTACT — OPEN INVITATION</div>
-        <h1>The next good idea could start <em>here.</em></h1>
-        <p>I'm interested in the space between understanding people and making things that connect with them. That's where psychology, storytelling and creative work meet.</p>
-        <div className="contact-hero-tags"><span>PSYCHOLOGY</span><i>×</i><span>CREATIVE PRACTICE</span></div>
-      </div>
-      <div className="contact-page-art" aria-hidden="true">
-        <div className="contact-art-orbit contact-art-orbit-one" />
-        <div className="contact-art-orbit contact-art-orbit-two" />
-        <div className="contact-art-sticker"><span>GOOD IDEAS</span><strong>START<br />WITH<br />PEOPLE.</strong><i>✳</i></div>
-        <span className="contact-art-side-note">NOTICE<br />CONNECT<br />CREATE</span>
-      </div>
-      <span className="contact-page-index" aria-hidden="true">LET'S TALK / 04</span>
+  return <main className="wrap main-content contact-page contact-simple" id="main-content" data-testid="page-contact">
+    <header className="contact-simple-header">
+      <div className="kicker">04 / CONTACT</div>
+      <h1>Have something in mind?<br /><em>Let's talk.</em></h1>
+      <p>For creative collaborations, projects, opportunities or a conversation about the work, these are the best ways to reach me.</p>
+    </header>
+    <section className="contact-details" aria-label="Contact details">
+      <a className="contact-detail-row" href="mailto:ashleydmello412@gmail.com">
+        <span className="contact-detail-type">EMAIL <small>01</small></span>
+        <strong>ashleydmello412@gmail.com</strong>
+        <span className="contact-detail-action">WRITE TO ME ↗</span>
+      </a>
+      <a className="contact-detail-row" href="tel:+919653281997">
+        <span className="contact-detail-type">PHONE <small>02</small></span>
+        <strong>+91 96532 81997</strong>
+        <span className="contact-detail-action">GIVE ME A CALL ↗</span>
+      </a>
+      <a className="contact-detail-row" href="https://www.linkedin.com/in/ashley-d-mello-a48072341" target="_blank" rel="noreferrer">
+        <span className="contact-detail-type">LINKEDIN <small>03</small></span>
+        <strong>Connect with me</strong>
+        <span className="contact-detail-action">VIEW PROFILE ↗</span>
+      </a>
     </section>
-
-    <section className="contact-conversation" aria-labelledby="contact-conversation-title">
-      <div className="contact-section-heading">
-        <div className="kicker">A PLACE TO BEGIN</div>
-        <h2 id="contact-conversation-title">What are you thinking about?</h2>
-        <p>Choose the closest starting point. No perfectly formed brief required.</p>
-      </div>
-      <div className="contact-conversation-grid">
-        <div className="contact-topic-list" role="group" aria-label="Choose a conversation topic">
-          {topics.map((topic, index) => <button
-            key={topic.title}
-            type="button"
-            className={`contact-topic${activeTopic === index ? ' is-active' : ''}`}
-            aria-pressed={activeTopic === index}
-            onClick={() => { setActiveTopic(index); setCopyState('idle'); }}
-            data-testid={`button-contact-topic-${index + 1}`}
-          >
-            <span className="contact-topic-tag">{topic.tag}</span>
-            <strong>{topic.title}</strong>
-            <span className="contact-topic-arrow" aria-hidden="true">↗</span>
-          </button>)}
-        </div>
-        <div className="contact-starter-card" aria-live="polite">
-          <div className="contact-starter-topline"><span className="kicker">A USEFUL FIRST MESSAGE</span><span className="contact-starter-number">0{activeTopic + 1} / 04</span></div>
-          <h3>{topics[activeTopic].title}</h3>
-          <p>{topics[activeTopic].copy}</p>
-          <div className="contact-starter-message">{starter}</div>
-          <button className="contact-copy-button" type="button" onClick={copyStarter} data-testid="button-copy-contact-starter">
-            {copyState === 'copied' ? 'Copied to clipboard ✓' : copyState === 'error' ? 'Copy unavailable — select the text above' : 'Copy message starter ↗'}
-          </button>
-        </div>
-      </div>
+    <section className="contact-simple-note">
+      <span className="kicker">WHAT I'M OPEN TO</span>
+      <p>Creative concepts and scripts, direction and production, consumer insight and research, and collaborations that bring these interests together.</p>
     </section>
-
-    <section className="contact-next-step" aria-label="Explore the portfolio">
-      <div>
-        <div className="kicker">WANT A LITTLE MORE CONTEXT?</div>
-        <h2>Take a look around first.</h2>
-        <p>See the projects, the thinking behind them, and the creative direction I'm interested in exploring.</p>
-      </div>
-      <div className="contact-next-links">
-        <Link href="/work" className="contact-next-link" data-testid="link-contact-work"><span>01 / SELECTED WORK</span><strong>Explore the archive ↗</strong></Link>
-        <Link href="/thinking" className="contact-next-link" data-testid="link-contact-thinking"><span>02 / THE THINKING</span><strong>Explore psychology ↗</strong></Link>
-      </div>
-    </section>
+    <footer className="contact-simple-footer">
+      <span>THANKS FOR STOPPING BY.</span>
+      <Link href="/work">Back to selected work <ArrowUpRight size={16} aria-hidden="true" /></Link>
+    </footer>
   </main>;
 }
 
