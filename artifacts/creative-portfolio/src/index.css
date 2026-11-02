@@ -1022,3 +1022,80 @@
   .research-iframe-toolbar { font-size:.49rem; padding:11px 12px; }
   .research-proposal-iframe { height:950px; }
 }
+
+
+/* Compact psychology and research overview */
+.thinking-page-compact { padding-bottom:62px; }
+.thinking-compact-intro { padding:35px 0 25px; }
+.thinking-compact-intro .page-title { max-width:850px; }
+.thinking-compact-intro p { max-width:610px; }
+.thinking-principle-compact { display:grid; grid-template-columns:.8fr 1.2fr; column-gap:35px; align-items:start; padding:28px 32px; }
+.thinking-principle-compact .kicker { grid-column:1/-1; }
+.thinking-principle-compact h2 { margin:16px 0 0; font-size:clamp(1.9rem,3.8vw,3rem); line-height:.98; letter-spacing:-.065em; }
+.thinking-principle-compact h2 em { color:var(--lime); font-style:normal; }
+.thinking-principle-compact > p:last-child { align-self:center; margin:15px 0 0; max-width:550px; color:#e9e7e2; line-height:1.7; }
+.thinking-compact-section { padding:42px 0 0; }
+.thinking-compact-heading { display:flex; justify-content:space-between; align-items:end; gap:20px; margin-bottom:17px; }
+.thinking-compact-heading h2 { margin:7px 0 0; font-size:clamp(1.9rem,4vw,3rem); line-height:.98; letter-spacing:-.07em; }
+.thinking-compact-heading > p { max-width:330px; margin:0 0 2px; color:var(--muted-ink); font-size:.87rem; line-height:1.6; }
+.thinking-page-compact .thinking-lens-grid { grid-template-columns:repeat(4,minmax(0,1fr)); gap:9px; }
+.thinking-page-compact .thinking-lens { min-height:145px; padding:16px; }
+.thinking-page-compact .thinking-lens h3 { margin:19px 0 6px; font-size:1.45rem; }
+.thinking-page-compact .thinking-lens p { font-size:.81rem; }
+.thinking-step-strip { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; }
+.thinking-step-strip article { min-height:105px; padding:14px; border:1px solid var(--line); border-radius:14px; background:var(--paper); }
+.thinking-step-strip article:nth-child(2),.thinking-step-strip article:nth-child(4) { background:var(--blue); }
+.thinking-step-strip article:nth-child(3) { background:var(--lime); }
+.thinking-step-strip article > span { color:var(--coral); font-family:var(--app-font-mono); font-size:.62rem; }
+.thinking-step-strip h3 { margin:17px 0 0; font-size:.95rem; line-height:1.08; letter-spacing:-.035em; }
+.thinking-tool-line { margin-top:11px; color:var(--muted-ink); font-size:.77rem; line-height:1.6; }
+.thinking-tool-line strong { color:var(--ink); }
+.thinking-references-compact .reference-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+.thinking-references-compact .reference-grid article { min-height:145px; padding:16px; }
+.thinking-references-compact .reference-grid h3 { margin:17px 0 6px; font-size:1.12rem; }
+.thinking-references-compact .reference-grid p { font-size:.8rem; line-height:1.5; }
+.thinking-research-compact { padding-top:47px; }
+.research-proposal-card { overflow:hidden; padding:22px 25px 18px; border-radius:19px; background:var(--ink); color:var(--paper); }
+.research-proposal-card-meta { display:flex; justify-content:space-between; gap:12px; padding-bottom:12px; border-bottom:1px solid #ffffff35; color:#ffffff9c; font-family:var(--app-font-mono); font-size:.58rem; letter-spacing:.09em; }
+.research-proposal-card-meta span:last-child { color:var(--lime); }
+.research-proposal-card-main { display:grid; grid-template-columns:.9fr 1.1fr; gap:27px; align-items:center; padding:20px 0; }
+.research-proposal-card-main h3 { margin:0; font-size:clamp(2rem,4.1vw,3.5rem); line-height:.86; letter-spacing:-.08em; }
+.research-proposal-card-main h3 em { color:var(--lime); font-style:normal; }
+.research-proposal-card-main > div:first-child > p { margin:11px 0 0; color:#e9e7e2; font-size:.88rem; }
+.research-card-question { padding:17px 19px; border-radius:13px; background:var(--paper); color:var(--ink); }
+.research-card-question > span { color:var(--muted-ink); font-family:var(--app-font-mono); font-size:.56rem; letter-spacing:.1em; }
+.research-card-question p { margin:9px 0 0; font-size:.92rem; font-weight:600; line-height:1.5; }
+.research-proposal-card-footer { display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:13px; border-top:1px solid #ffffff35; }
+.research-card-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.research-card-tags span { padding:5px 8px; border:1px solid #ffffff48; border-radius:999px; color:#e9e7e2; font-size:.62rem; }
+.research-proposal-card .research-open-document { padding:9px 13px; border:1px solid var(--lime); background:var(--lime); color:var(--ink); white-space:nowrap; }
+.research-proposal-card .research-open-document:hover { background:#e8ff9a; }
+.research-secondary-card { display:grid; grid-template-columns:.8fr 1.2fr; gap:22px; align-items:center; margin-top:10px; padding:17px 20px; border:1px solid var(--line); border-radius:15px; background:var(--paper); }
+.research-secondary-card .mono { color:var(--muted-ink); font-size:.55rem; }
+.research-secondary-card h3 { margin:6px 0 0; font-size:1.1rem; letter-spacing:-.035em; }
+.research-secondary-card p { margin:0; color:var(--muted-ink); font-size:.8rem; line-height:1.55; }
+@media(max-width:900px) {
+  .thinking-page-compact .thinking-lens-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .thinking-step-strip { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:760px) {
+  .thinking-compact-intro { padding:28px 0 20px; }
+  .thinking-principle-compact { grid-template-columns:1fr; padding:23px; }
+  .thinking-principle-compact h2 { font-size:2.1rem; }
+  .thinking-compact-heading { display:block; }
+  .thinking-compact-heading > p { margin-top:9px; }
+  .thinking-compact-section { padding-top:34px; }
+  .thinking-page-compact .thinking-lens-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .thinking-page-compact .thinking-lens { min-height:125px; }
+  .thinking-step-strip { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .thinking-step-strip article { min-height:88px; }
+  .thinking-references-compact .reference-grid { grid-template-columns:1fr; }
+  .thinking-references-compact .reference-grid article { min-height:unset; }
+  .research-proposal-card { padding:18px; }
+  .research-proposal-card-meta { font-size:.49rem; }
+  .research-proposal-card-main { grid-template-columns:1fr; gap:17px; }
+  .research-proposal-card-main h3 { font-size:2.6rem; }
+  .research-proposal-card-footer { align-items:flex-start; flex-direction:column; }
+  .research-proposal-card .research-open-document { white-space:normal; }
+  .research-secondary-card { grid-template-columns:1fr; gap:7px; }
+}
