@@ -447,6 +447,29 @@ export function ThinkingPage() {
       </div>
     </section>
 
+    <section className="research-document-section" aria-labelledby="full-proposal-heading">
+      <div className="research-document-heading">
+        <div>
+          <div className="kicker">THE ACTUAL SUBMISSION</div>
+          <h2 id="full-proposal-heading">Read the full research proposal.</h2>
+          <p>Not just an overview. The original proposal is reproduced below as a readable document, including its literature review, research rationale, methodology, proposed analysis, critical evaluation, references and appendices.</p>
+        </div>
+        <a className="research-open-document" href={`${import.meta.env.BASE_URL}research/shifting-tongues-proposal.html`} target="_blank" rel="noreferrer">Open full document ↗</a>
+      </div>
+      <div className="research-iframe-wrap">
+        <div className="research-iframe-toolbar">
+          <span>SHifting tongues, shifting selves / FULL PROPOSAL</span>
+          <span>SCROLL TO READ</span>
+        </div>
+        <iframe
+          className="research-proposal-iframe"
+          src={`${import.meta.env.BASE_URL}research/shifting-tongues-proposal.html`}
+          title="Full research proposal: Shifting Tongues, Shifting Selves"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
     <section className="thinking-card">
       <div className="mono">ACADEMIC WORK / CONSUMER BEHAVIOUR</div>
       <h2>Greenwashing &amp; consumer behaviour</h2>
