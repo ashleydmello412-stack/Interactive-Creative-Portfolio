@@ -857,44 +857,138 @@ export function ThinkingPage() {
 }
 
 export function AboutPage() {
-  const skills = ['Psychology', 'Consumer behaviour', 'Storytelling', 'Acting', 'Direction', 'Scriptwriting', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
-  return <main className="wrap main-content" id="main-content" data-testid="page-about">
-    <header className="page-intro about-intro">
-      <div className="kicker">03 / ABOUT</div>
-      <h1 className="page-title">Psychology shapes my thinking. Creative practice shapes how I tell stories.</h1>
-      <p>I'm interested in using an understanding of people to develop advertising that feels relevant, emotionally resonant and worth remembering.</p>
+  const interests = [
+    {
+      number: '01',
+      label: 'THE THINKING',
+      title: 'Consumer & brand insight',
+      copy: 'Understanding what a brand needs to communicate, who it is speaking to, and what might make that message meaningful.',
+      tone: 'about-direction-card-lime',
+    },
+    {
+      number: '02',
+      label: 'THE STORY',
+      title: 'Concepts & scriptwriting',
+      copy: 'Turning an observation into a central idea, then shaping it through story, dialogue, character and visual language.',
+      tone: 'about-direction-card-blue',
+    },
+    {
+      number: '03',
+      label: 'THE EXECUTION',
+      title: 'Direction & production',
+      copy: 'Taking an idea beyond the page — thinking about performance, sound, pacing and how it comes together on screen.',
+      tone: 'about-direction-card-coral',
+    },
+  ];
+  const skills = ['Psychology', 'Consumer behaviour', 'Storytelling', 'Acting', 'Direction', 'Scriptwriting', 'Sound design', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
+  return <main className="wrap main-content about-page" id="main-content" data-testid="page-about">
+    <header className="about-hero">
+      <div className="about-hero-copy">
+        <div className="kicker">03 / ABOUT — THE PERSON BEHIND THE WORK</div>
+        <h1>I'm curious about <em>people.</em><br />I'm drawn to the ideas that move them.</h1>
+        <p>I'm a third-year B.Sc. Psychology student with a creative practice shaped by theatre, performance and production. I'm interested in bringing those two worlds together in advertising — understanding people, finding the story, and helping bring the idea to life.</p>
+        <div className="about-hero-actions">
+          <Link href="/work" className="about-hero-link" data-testid="link-about-work">Explore my work <ArrowUpRight size={16} aria-hidden="true" /></Link>
+          <Link href="/thinking" className="about-hero-link about-hero-link-secondary" data-testid="link-about-thinking">How I think about advertising <ArrowUpRight size={16} aria-hidden="true" /></Link>
+        </div>
+      </div>
+      <div className="about-hero-art" aria-hidden="true">
+        <div className="about-hero-orbit about-hero-orbit-one" />
+        <div className="about-hero-orbit about-hero-orbit-two" />
+        <div className="about-hero-note about-hero-note-top">OBSERVE / QUESTION / MAKE</div>
+        <div className="about-hero-stamp"><span>PEOPLE</span><strong>FIRST.</strong><i>✳</i></div>
+        <div className="about-hero-note about-hero-note-bottom">PSYCHOLOGY<br />×<br />CREATIVE PRACTICE</div>
+      </div>
+      <span className="about-hero-index" aria-hidden="true">A LITTLE ABOUT ME / 03</span>
     </header>
 
-    <section className="about-positioning">
-      <div className="about-positioning-label kicker">THE THROUGH-LINE</div>
-      <p>I want to connect the study of human behaviour with the craft of creative communication — from the first insight to the final execution.</p>
+    <section className="about-throughline">
+      <div className="kicker">THE THROUGH-LINE</div>
+      <p>Psychology helps me ask <em>why</em> people respond. Theatre has taught me to think about <em>how</em> an idea reaches them.</p>
     </section>
 
-    <section className="about-layout section">
-      <div className="about-block"><div className="kicker">PSYCHOLOGY × CREATIVITY</div><h2>Understand people. Give ideas a form.</h2></div>
-      <div className="about-story">
-        <p className="about-copy">I'm a third-year B.Sc. Psychology student interested in consumer behaviour, advertising and the ways people respond to stories, symbols and shared cultural references.</p>
-        <p>My starting point is the brand: what it stands for, what it wants to communicate and what it needs to achieve. From there, I want to understand the people it is speaking to — what catches their attention, moves them emotionally, persuades them and stays in their memory.</p>
-        <p>My experience in theatre gives me a practical foundation for thinking about how an idea reaches an audience. Through acting, direction and scriptwriting, I've worked with dialogue, timing, satire and audience engagement. I've also explored breaking the fourth wall and involving spectators in a performance, alongside theatrical influences such as Poor Theatre and the Theatre of Cruelty.</p>
-        <p>I'm interested in carrying that experience into advertising: developing the thinking behind a campaign and understanding how it can become a script, a story, a performance or a wider brand experience.</p>
+    <section className="about-two-worlds" aria-labelledby="about-two-worlds-title">
+      <div className="about-section-heading">
+        <div><div className="kicker">TWO WAYS OF LOOKING AT PEOPLE</div><h2 id="about-two-worlds-title">One studies the response.<br /><em>The other creates it.</em></h2></div>
+        <p>I'm interested in the space between understanding an audience and creating something worth their attention.</p>
+      </div>
+      <div className="about-worlds-grid">
+        <article className="about-world-card about-world-psychology">
+          <span className="about-world-number">01 / PSYCHOLOGY</span>
+          <h3>What makes people think, feel and choose?</h3>
+          <p>My degree has given me a foundation for exploring behaviour, social influence, cognition and consumer responses. I want to use that understanding to ask better questions before a creative idea is made.</p>
+          <div className="about-world-tags"><span>BEHAVIOUR</span><span>CONSUMER THINKING</span><span>RESEARCH</span></div>
+        </article>
+        <article className="about-world-card about-world-theatre">
+          <span className="about-world-number">02 / THEATRE &amp; PRODUCTION</span>
+          <h3>What makes an idea come alive?</h3>
+          <p>Performing, directing and scriptwriting have let me work with movement, timing, character, satire and audience engagement. I've also worked on the technical side of a production, including lights and sound.</p>
+          <div className="about-world-tags"><span>PERFORMANCE</span><span>STORYTELLING</span><span>EXECUTION</span></div>
+        </article>
       </div>
     </section>
 
-    <section className="about-theatre section">
-      <div className="section-head">
-        <div><div className="kicker">WHAT THEATRE HAS TAUGHT ME</div><h2>An audience is part of the experience.</h2></div>
-        <p className="section-note">My creative background has made me attentive to how people receive, interpret and participate in a story.</p>
+    <section className="about-journey" aria-labelledby="about-journey-title">
+      <div className="about-section-heading">
+        <div><div className="kicker">THE CREATIVE JOURNEY</div><h2 id="about-journey-title">From being in the story<br />to helping shape it.</h2></div>
+        <p>My experience in theatre has grown across performance, writing, direction and production. These are a few milestones from that journey.</p>
       </div>
-      <div className="about-theatre-grid">
-        <article><span className="mono">01 / ENGAGEMENT</span><h3>Break the fourth wall</h3><p>Addressing the audience directly and challenging the boundary between performer and spectator.</p></article>
-        <article><span className="mono">02 / PARTICIPATION</span><h3>Bring people into the scene</h3><p>Creating moments where spectators do more than watch — they become part of the communication.</p></article>
-        <article><span className="mono">03 / VOICE</span><h3>Use satire and dialogue</h3><p>Using humour, irony and social observation to make an idea land with an audience.</p></article>
+      <div className="about-journey-list">
+        <article className="about-journey-item">
+          <div className="about-journey-date"><span>2024—25</span><b>01</b></div>
+          <div className="about-journey-content">
+            <span className="about-journey-label">BUILDING THE FOUNDATION</span>
+            <h3>Learning to tell stories through performance.</h3>
+            <p>Mime and street theatre became my starting point. I performed as a lead in <em>Time Wrath</em>, took on a central role in <em>Why So Serious?</em>, and performed in the Blossoms mime <em>The Perfect Crime</em>.</p>
+            <div className="about-journey-credit"><strong>Time Wrath</strong><span>1st — Darpan ’24 · Mood Indigo ’24 · VIT</span><span>2nd — Enact</span></div>
+          </div>
+        </article>
+        <article className="about-journey-item">
+          <div className="about-journey-date"><span>2025</span><b>02</b></div>
+          <div className="about-journey-content">
+            <span className="about-journey-label">MOVING BEYOND PERFORMANCE</span>
+            <h3>Taking on more of the making.</h3>
+            <p>For the <em>InBlooms Mime Duo</em>, I acted, directed, scripted and sound-designed; the performance placed second. For <em>One Two Ka Four</em> at Blossoms ’25, I acted, directed and scripted the street play.</p>
+          </div>
+        </article>
+        <article className="about-journey-item">
+          <div className="about-journey-date"><span>2025—26</span><b>03</b></div>
+          <div className="about-journey-content">
+            <span className="about-journey-label">WORKING ACROSS A PRODUCTION</span>
+            <h3>Moving between the stage and what supports it.</h3>
+            <p><em>Hari Patang</em> brought together acting, direction and scriptwriting. In <em>Ek Tha Raja</em>, I acted and handled lights. In <em>Ek Anokhi Bhasha</em>, I performed as part of the ensemble and served as Street Play Sub-Head. I also acted in the short film <em>Knock Knock</em>.</p>
+          </div>
+        </article>
+      </div>
+      <Link href="/work" className="about-journey-link" data-testid="link-about-full-archive">See the projects and my contributions <ArrowRight size={16} aria-hidden="true" /></Link>
+    </section>
+
+    <section className="about-direction" aria-labelledby="about-direction-title">
+      <div className="about-section-heading">
+        <div><div className="kicker">WHERE I WANT TO TAKE THIS</div><h2 id="about-direction-title">The kind of creative work<br />I want to be part of.</h2></div>
+        <p>My goal is to contribute across the process — from understanding the problem to developing the idea and shaping its execution.</p>
+      </div>
+      <div className="about-direction-grid">
+        {interests.map((item) => <article className={`about-direction-card ${item.tone}`} key={item.number}>
+          <span>{item.number} / {item.label}</span>
+          <h3>{item.title}</h3>
+          <p>{item.copy}</p>
+        </article>)}
       </div>
     </section>
 
-    <section className="about-tools">
-      <div className="kicker">TOOLS &amp; AREAS OF INTEREST</div>
-      <div className="skills" data-testid="list-skills">{skills.map((skill) => <span key={skill} data-testid={`skill-${skill.toLowerCase().replaceAll(' ', '-')}`}>{skill}</span>)}</div>
+    <section className="about-tools" aria-labelledby="about-tools-title">
+      <div><div className="kicker">MY CREATIVE TOOLKIT</div><h2 id="about-tools-title">Areas I explore. Tools I use.</h2></div>
+      <p className="about-tools-intro">A mix of academic interests, creative practice and audiovisual tools that I continue to develop.</p>
+      <div className="about-tool-groups">
+        <div><span>INTERESTS &amp; PRACTICE</span><div className="skills">{skills.slice(0, 7).map((skill) => <span key={skill}>{skill}</span>)}</div></div>
+        <div><span>EDITING &amp; AUDIOVISUAL TOOLS</span><div className="skills">{skills.slice(7).map((skill) => <span key={skill}>{skill}</span>)}</div></div>
+      </div>
+    </section>
+
+    <section className="about-closing">
+      <div><div className="kicker">THE NEXT CHAPTER</div><h2>I'm interested in making work that understands people — and gives them something to feel.</h2></div>
+      <Link href="/contact" className="about-closing-link" data-testid="link-about-contact">Let's start a conversation <ArrowUpRight size={18} aria-hidden="true" /></Link>
     </section>
   </main>;
 }
