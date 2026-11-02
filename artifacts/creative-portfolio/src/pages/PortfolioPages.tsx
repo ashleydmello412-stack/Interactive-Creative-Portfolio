@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Link, useParams } from 'wouter';
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import { categories, projects } from '../data/projects';
+import './japan-study.css';
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   return (
@@ -9,7 +10,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
       <div className={`project-top ${project.tone}`}>
         <div className="project-topline">
           <span className="mono">{project.number}</span>
-          <span className="project-top-label">CREATIVE ARCHIVE</span>
+          <span className="project-top-label">{project.tags.includes('Academic work') ? 'ACADEMIC WORK' : 'CREATIVE ARCHIVE'}</span>
         </div>
         <div className="project-title-row">
           <h3>{project.title}</h3>
@@ -58,7 +59,7 @@ export function HomePage() {
           <Link href="/work" className="home-destination tone-lime" data-testid="home-destination-work">
             <span className="mono">01 / THE ARCHIVE</span>
             <div className="home-destination-title"><h3>Work</h3><ArrowUpRight size={24} aria-hidden="true" /></div>
-            <p>Theatre, performance and production projects, with roles and details kept to what can be verified.</p>
+            <p>Creative and academic projects, with roles and details kept to what can be verified.</p>
             <span className="home-destination-cta">Explore projects <span aria-hidden="true">↗</span></span>
           </Link>
 
@@ -108,12 +109,12 @@ export function WorkPage() {
   return (
     <main className="main-content wrap" id="main-content">
       <header className="page-intro work-intro">
-        <div className="kicker">CREATIVE ARCHIVE / SELECTED WORK</div>
+        <div className="kicker">CREATIVE + ACADEMIC ARCHIVE / SELECTED WORK</div>
         <h1 className="page-title">A closer look at the work.</h1>
-        <p>A collection of performance and production projects, with the roles, contributions and materials documented as they are verified.</p>
+        <p>A collection of creative projects and academic work, with roles, contributions and details documented as they are verified.</p>
         <div className="work-intro-meta">
-          <span><strong>06</strong> PROJECTS</span>
-          <span>PERFORMANCE · PRODUCTION · CREATIVE PRACTICE</span>
+          <span><strong>{String(projects.length).padStart(2, '0')}</strong> ENTRIES</span>
+          <span>PERFORMANCE · PRODUCTION · ACADEMIC WORK</span>
         </div>
       </header>
       <div className="archive-toolbar" data-testid="work-toolbar">
@@ -129,7 +130,7 @@ export function WorkPage() {
       {filtered.length ? <div className="project-grid" data-testid="grid-projects">{filtered.map((project, index) => <ProjectCard project={project} index={index} key={project.slug} />)}</div> : <div className="empty-results" data-testid="empty-project-results"><strong>No projects match that search.</strong><p style={{ margin: '8px 0 0' }}>Try a different word or clear the filters.</p><button className="button" type="button" onClick={() => { setFilter('All work'); setQuery(''); }} data-testid="button-clear-filters" style={{ marginTop: 16 }}>Clear filters</button></div>}
       <section className="archive-range" aria-labelledby="archive-range-title">
         <div className="kicker">ACROSS THE ARCHIVE</div>
-        <h2 id="archive-range-title">Different roles. One interest in how a story reaches people.</h2>
+        <h2 id="archive-range-title">Different ways of understanding people, ideas and culture.</h2>
         <div className="archive-range-grid">
           <article>
             <span className="mono">01 / PERFORMANCE</span>
@@ -146,6 +147,11 @@ export function WorkPage() {
             <h3>Working behind the stage</h3>
             <p>Lights handling in <em>Ek Tha Raja</em>, alongside my contribution as a performer.</p>
           </article>
+          <article>
+            <span className="mono">04 / ACADEMIC CONTEXT</span>
+            <h3>Reading culture through business</h3>
+            <p>A paper exploring how values, social hierarchy and cultural expectations connect with Japanese workplace practices.</p>
+          </article>
         </div>
         <Link href="/thinking" className="archive-range-link">See how I connect creative practice with psychology <ArrowRight size={16} aria-hidden="true" /></Link>
       </section>
@@ -157,6 +163,86 @@ export function ProjectDetailPage() {
   const params = useParams<{ slug: string }>();
   const project = projects.find((item) => item.slug === params.slug);
   if (!project) return <main className="wrap not-found" id="main-content"><div className="kicker">ARCHIVE / NOT FOUND</div><h1>This project isn't in the archive.</h1><Link href="/work" className="button" data-testid="link-back-to-archive">Back to the archive <ArrowLeft size={16} /></Link></main>;
+
+
+  if (project.slug === 'japan-business-culture' && project.academicStudy) {
+    const study = project.academicStudy;
+    return (
+      <main className="wrap main-content japan-study-page" id="main-content" data-testid="project-detail-japan-business-culture">
+        <Link href="/work" className="back-link japan-study-back" data-testid="link-back-work"><ArrowLeft size={16} /> Back to all work</Link>
+        <section className="japan-study-hero">
+          <div className="japan-study-topline">
+            <span>ACADEMIC WORK <i>/</i> SELECTED PAPER</span>
+            <span>GLOBAL LEADERSHIP &amp; CULTURE</span>
+          </div>
+          <div className="japan-study-hero-grid">
+            <div className="japan-study-hero-copy">
+              <p className="japan-study-eyebrow">CULTURE × BUSINESS</p>
+              <h1>CULTURAL FOUNDATIONS <em>OF BUSINESS PRACTICES IN JAPAN</em></h1>
+              <p className="japan-study-lead">{project.summary}</p>
+              <div className="japan-study-tags">
+                <span>JAPANESE CULTURE</span><span>BUSINESS PRACTICES</span><span>GLOBAL LEADERSHIP</span>
+              </div>
+            </div>
+            <div className="japan-study-art" aria-label="Wa, the Japanese concept of harmony">
+              <div className="japan-study-art-orbit"></div>
+              <div className="japan-study-art-sun"></div>
+              <span className="japan-study-kanji">和</span>
+              <span className="japan-study-art-word">WA</span>
+              <span className="japan-study-art-caption">HARMONY<br />AS A CULTURAL LENS</span>
+            </div>
+          </div>
+          <div className="japan-study-hero-footer"><span>VALUES</span><span>SOCIAL STRUCTURE</span><span>WORKPLACE</span><span>ADAPTATION</span></div>
+        </section>
+        <section className="japan-study-meta" aria-label="Academic paper details">
+          <article><span>COURSE</span><strong>{study.course}</strong></article>
+          <article><span>INSTITUTION</span><strong>{study.institution}</strong></article>
+          <article><span>FORMAT</span><strong>Academic paper</strong></article>
+        </section>
+        <section className="japan-study-overview">
+          <div className="japan-study-section-index">01 <span>/ THE PAPER</span></div>
+          <div className="japan-study-overview-grid">
+            <h2>Tradition and modernity,<br /><em>in the same conversation.</em></h2>
+            <div>
+              <p>{project.detail}</p>
+              <span className="japan-study-note">A CULTURAL OVERVIEW OF SOCIAL LIFE AND BUSINESS PRACTICE.</span>
+            </div>
+          </div>
+        </section>
+        <section className="japan-study-focus">
+          <div className="japan-study-section-heading">
+            <div><div className="japan-study-section-index">02 <span>/ THEMES EXPLORED</span></div><h2>Four connected<br /><em>layers of culture.</em></h2></div>
+            <p>The paper moves from foundational beliefs to everyday conventions, social structures and the workplace.</p>
+          </div>
+          <div className="japan-study-focus-grid">
+            {study.focusAreas.map((area, index) => (
+              <article className={'japan-study-focus-card japan-study-focus-card-' + (index + 1)} key={area.number}>
+                <span>{area.number}</span><h3>{area.title}</h3><p>{area.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="japan-study-business">
+          <div className="japan-study-section-heading">
+            <div><div className="japan-study-section-index">03 <span>/ THE BUSINESS LENS</span></div><h2>Culture at work.</h2></div>
+            <p>Two practices the paper uses to illustrate how cultural expectations can enter organisational life.</p>
+          </div>
+          <div className="japan-study-business-grid">
+            {study.businessPractices.map((practice, index) => (
+              <article className={'japan-study-business-card japan-study-business-card-' + (index + 1)} key={practice.title}>
+                <span>{practice.term}</span><h3>{practice.title}</h3><p>{practice.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="japan-study-synthesis">
+          <span>THE PAPER’S CENTRAL THREAD</span>
+          <p>{study.synthesis}</p>
+          <div className="japan-study-synthesis-footer"><span>BS1412 / GLOBAL LEADERSHIP &amp; CULTURE</span><span>ACADEMIC WORK / 01</span><span>↗</span></div>
+        </section>
+      </main>
+    );
+  }
 
   if (project.slug === 'hari-patang' && project.caseStudy) {
     const caseStudy = project.caseStudy;
