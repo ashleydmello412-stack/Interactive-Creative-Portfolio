@@ -119,10 +119,33 @@ export const projects: Project[] = [
     slug: 'ek-anokhi-bhasha',
     title: 'Ek Anokhi Bhasha',
     number: 'PROJECT 06',
-    tags: ['Multiple roles', 'Creative work'],
-    roles: ['Multiple roles — exact credits being documented'],
-    summary: 'A creative project involving multiple roles; specific responsibilities still need clarification.',
-    detail: 'Multiple roles are confirmed at a broad level. The specific writing, performance, direction or production responsibilities need to be identified before they are listed as individual credits.',
+    tags: ['Performance', 'Acting', 'Street Play', 'Language & Identity', 'Creative work'],
+    roles: ['Acting — Netaji (Scene 1)'],
+    summary: 'A multilingual street play about language, identity and belonging — and the harm that begins when difference becomes a reason to exclude.',
+    detail: 'Ek Anokhi Bhasha uses political satire, a classroom scene and a kabadiwala’s weighing scale to examine language-based prejudice. It moves from comic exchanges and questions of linguistic identity to the human consequences of discrimination, then closes with a call for realisation, acceptance and action.',
+    caseStudy: {
+      premise: 'What happens when language stops being a way to connect and becomes a test of who belongs? Ek Anokhi Bhasha follows that question through everyday interactions, public rhetoric and increasingly serious consequences. Its final movement turns the idea around: every voice is unique, every language is unique, and difference can become a basis for understanding rather than exclusion.',
+      scenes: [
+        {
+          title: '01 / The language of power',
+          description: 'A media interview puts a self-proclaimed protector of culture on the spot. The questions expose the gap between public claims about respecting language and the actions described in the scene. When the reporters cannot understand the leader’s language, the satire turns on them — and the media is caged. The scene uses exaggeration and reversal to question who gets to define cultural loyalty.',
+        },
+        {
+          title: '02 / The classroom',
+          description: 'A surprise test becomes a conversation about accents, identity and language. Students debate what counts as a national language; the narrator then distinguishes the constitutional position described in the script. The scene rewrites lines from the national pledge with exclusionary conditions, showing how shared belonging can be narrowed when language is treated as a test of identity.',
+        },
+        {
+          title: '03 / The weighing scale',
+          description: 'A kabadiwala’s weighing machine becomes a metaphor for “the weight of the nation”. A sequence of news-like incidents moves from jokes about language to discrimination, assault and a mother’s distress as her son is dismissed rather than helped. The repeated “Saare Jahan Se Achha” refrain becomes increasingly uncomfortable as the consequences grow more serious.',
+        },
+        {
+          title: '04 / Ek Anokhi Bhasha',
+          description: 'The closing scene turns from blame to responsibility. The title is unpacked through a sequence: from “one” comes realisation, from uniqueness comes acceptance, and from language comes action. The opening multilingual greeting returns, alongside the shared “Aeiiioa” sound, to end on connection across difference.',
+        },
+      ],
+      contribution: 'The uploaded script explicitly credits me as Netaji in Scene 1. This page records that confirmed performance credit; the script copy does not itemise any additional individual role or production credits.',
+      reflection: 'The play’s progression — from exaggerated comedy to a painful human consequence, then towards a collective response — shows how street theatre can make a social issue felt as well as discussed. The weighing scale, recurring refrain, multilingual greetings and shared invented sound give the audience recurring images and sounds to follow. The closing sequence turns the argument into a simple progression: realisation, acceptance and action.',
+    },
     tone: 'tone-dark',
   },
 
