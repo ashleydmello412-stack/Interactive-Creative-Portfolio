@@ -272,9 +272,28 @@ export function ProjectDetailPage() {
           </div>
         </section>
 
+        <section className="bhasha-recognition-section">
+          <div className="bhasha-section-heading">
+            <div><div className="bhasha-section-index">05 <span>/ RECOGNITION</span></div><h2>One strong result.<br /><em>Then the finals.</em></h2></div>
+            <p>The play placed first at Blossoms ’26 before the finals. It did not win in the finals — both parts of the result are kept here.</p>
+          </div>
+          <div className="bhasha-recognition-grid">
+            <article className="bhasha-recognition-card bhasha-recognition-card-first">
+              <span>PRE-FINALS RESULT</span>
+              <strong>1st place</strong>
+              <p>Blossoms ’26</p>
+            </article>
+            <article className="bhasha-recognition-card bhasha-recognition-card-finals">
+              <span>FINALS RESULT</span>
+              <strong>No win</strong>
+              <p>Blossoms ’26 finals</p>
+            </article>
+          </div>
+        </section>
+
         <section className="bhasha-ending-section">
           <div className="bhasha-ending-heading">
-            <span>05 / THE CLOSING IDEA</span>
+            <span>06 / THE CLOSING IDEA</span>
             <h2>From one.<br /><em>To understanding.</em></h2>
             <p>The final sequence builds its response in three steps, keeping the play’s message direct and memorable.</p>
           </div>
