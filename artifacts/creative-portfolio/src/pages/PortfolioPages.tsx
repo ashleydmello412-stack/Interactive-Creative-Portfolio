@@ -200,7 +200,7 @@ export function ProjectDetailPage() {
 
         <section className="bhasha-statbar" aria-label="Project at a glance">
           <div><strong>04</strong><span>SCENES</span></div>
-          <div><strong>01</strong><span>CONFIRMED SCRIPT CREDIT</span></div>
+          <div><strong>02</strong><span>SIDES OF THE PRODUCTION</span></div>
           <div><strong>03</strong><span>STAGES OF THE CLOSING IDEA</span></div>
           <div className="bhasha-stat-note"><span>THE CENTRAL QUESTION</span><strong>Who gets to belong?</strong></div>
         </section>
@@ -253,14 +253,22 @@ export function ProjectDetailPage() {
 
         <section className="bhasha-contribution-section">
           <div className="bhasha-section-heading">
-            <div><div className="bhasha-section-index">04 <span>/ MY CONTRIBUTION</span></div><h2>A character in<br /><em>the opening argument.</em></h2></div>
-            <p>The script names me in the opening media-interview sequence, where the play first introduces its questions about language and power.</p>
+            <div><div className="bhasha-section-index">04 <span>/ MY CONTRIBUTION</span></div><h2>Part of the play.<br /><em>On stage and off it.</em></h2></div>
+            <p>My contribution combined an organisational role as Street Play Sub-Head with ensemble performance across the production.</p>
           </div>
-          <div className="bhasha-role-card">
-            <div className="bhasha-role-index">01 / CONFIRMED PERFORMANCE CREDIT</div>
-            <h3>Netaji</h3>
-            <p>Scene 1 — the political figure questioned by reporters about protecting regional languages, education and respect for other languages. The scene uses the character to set up the play’s satire around public claims and cultural identity.</p>
-            <span>CAST CREDIT IN THE UPLOADED SCRIPT: ASHLEY</span>
+          <div className="bhasha-contribution-grid">
+            <article className="bhasha-role-card bhasha-role-card-stage">
+              <div className="bhasha-role-index">01 / PERFORMANCE</div>
+              <h3>Ensemble performer</h3>
+              <p>I was present and performed across the other scenes as part of the street-play ensemble. The script specifically names me as Netaji in Scene 1, in the media-interview sequence that opens the play’s satire around language and cultural identity.</p>
+              <span>NAMED CHARACTER CREDIT: NETAJI / SCENE 1</span>
+            </article>
+            <article className="bhasha-role-card bhasha-role-card-team">
+              <div className="bhasha-role-index">02 / ORGANISATION</div>
+              <h3>Street Play Sub-Head</h3>
+              <p>I helped with coordination and management wherever needed during the production, alongside my onstage involvement.</p>
+              <span>SUPPORTING THE PRODUCTION AS NEEDED</span>
+            </article>
           </div>
         </section>
 
