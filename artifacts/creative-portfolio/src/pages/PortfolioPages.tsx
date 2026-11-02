@@ -160,17 +160,18 @@ export function ProjectDetailPage() {
 
 
 
+
   if (project.slug === 'ek-anokhi-bhasha' && project.caseStudy) {
     const caseStudy = project.caseStudy;
     const devices = [
-      { number: '01', title: 'Multilingual sound', copy: 'The opening greeting moves across languages, while “Aeiiioa” gives the ensemble a shared sound that does not depend on one language.' },
-      { number: '02', title: 'Satire & reversal', copy: 'The interview with Netaji turns the language test back on the people who claim to defend culture, exposing the contradictions in the scene.' },
-      { number: '03', title: 'The weighing scale', copy: 'The kabadiwala’s weighing machine becomes “the weight of the nation” — a visual anchor for the news stories and their escalating consequences.' },
-      { number: '04', title: 'Refrain & tonal shift', copy: '“Saare Jahan Se Achha” returns across the weighing-scale sequence, changing in meaning as the scenes move from comedy towards grief.' },
+      { number: '01', title: 'Multilingual sound', copy: 'Greetings from different languages open the play; “Aeiiioa” returns as a shared ensemble sound.' },
+      { number: '02', title: 'Satire & reversal', copy: 'The Netaji interview turns the language test back on those demanding linguistic conformity.' },
+      { number: '03', title: 'Visual metaphor', copy: 'The weighing machine becomes “the weight of the nation”.' },
+      { number: '04', title: 'A changing refrain', copy: '“Saare Jahan Se Achha” shifts from a familiar refrain to an uneasy counterpoint as the stakes rise.' },
     ];
 
     return (
-      <main className="wrap main-content bhasha-page" id="main-content" data-testid="project-detail-ek-anokhi-bhasha">
+      <main className="wrap main-content bhasha-page bhasha-page-compact" id="main-content" data-testid="project-detail-ek-anokhi-bhasha">
         <Link href="/work" className="back-link bhasha-back-link" data-testid="link-back-work"><ArrowLeft size={16} /> Back to all work</Link>
 
         <section className="bhasha-hero">
@@ -182,7 +183,7 @@ export function ProjectDetailPage() {
             <div className="bhasha-hero-copy">
               <p className="bhasha-eyebrow">A STREET PLAY ABOUT LANGUAGE &amp; BELONGING</p>
               <h1>EK ANOKHI <em>BHASHA</em></h1>
-              <p className="bhasha-hero-summary">One. Unique. Language. A story about the things that make us different — and the ways we can still understand one another.</p>
+              <p className="bhasha-hero-summary">A multilingual street play about who gets to belong — and what happens when language becomes a boundary.</p>
               <div className="bhasha-hero-tags"><span>STREET THEATRE</span><span>LANGUAGE &amp; IDENTITY</span><span>SOCIAL SATIRE</span></div>
             </div>
             <div className="bhasha-hero-art" aria-label="A visual metaphor for many languages sharing one space">
@@ -200,26 +201,14 @@ export function ProjectDetailPage() {
 
         <section className="bhasha-statbar" aria-label="Project at a glance">
           <div><strong>04</strong><span>SCENES</span></div>
-          <div><strong>02</strong><span>SIDES OF THE PRODUCTION</span></div>
-          <div><strong>03</strong><span>STAGES OF THE CLOSING IDEA</span></div>
-          <div className="bhasha-stat-note"><span>THE CENTRAL QUESTION</span><strong>Who gets to belong?</strong></div>
+          <div><strong>02</strong><span>CONTRIBUTION AREAS</span></div>
+          <div className="bhasha-stat-note"><span>RECOGNITION</span><strong>1st place · Blossoms ’26</strong></div>
         </section>
 
-        <section className="bhasha-question-section">
-          <div className="bhasha-section-index">01 <span>/ THE CENTRAL QUESTION</span></div>
-          <div className="bhasha-question-grid">
-            <h2>When language<br /><em>becomes a boundary.</em></h2>
-            <div>
-              <p>{caseStudy.premise}</p>
-              <span className="bhasha-note">A PLAY ABOUT THE DIFFERENCE BETWEEN SPEAKING DIFFERENTLY AND BELONGING LESS.</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="bhasha-scenes-section">
+        <section className="bhasha-scenes-section bhasha-scenes-compact">
           <div className="bhasha-section-heading">
-            <div><div className="bhasha-section-index">02 <span>/ THE STORYLINE</span></div><h2>Four scenes.<br /><em>A change in tone.</em></h2></div>
-            <p>The play moves from satire and classroom debate to a sequence of human consequences, before arriving at a shared language of acceptance.</p>
+            <div><div className="bhasha-section-index">01 <span>/ THE STORY</span></div><h2>Four scenes.<br /><em>One idea.</em></h2></div>
+            <p>{caseStudy.premise}</p>
           </div>
           <div className="bhasha-scenes-grid">
             {caseStudy.scenes.map((scene, index) => (
@@ -233,10 +222,10 @@ export function ProjectDetailPage() {
           </div>
         </section>
 
-        <section className="bhasha-devices-section">
+        <section className="bhasha-devices-section bhasha-devices-compact">
           <div className="bhasha-section-heading">
-            <div><div className="bhasha-section-index">03 <span>/ THE PERFORMANCE LANGUAGE</span></div><h2>Not one language.<br /><em>Many ways to be heard.</em></h2></div>
-            <p>The script returns to sounds, props and refrains to help the audience recognise how the meaning of a scene changes.</p>
+            <div><div className="bhasha-section-index">02 <span>/ THE CREATIVE LANGUAGE</span></div><h2>How the message<br /><em>reaches the audience.</em></h2></div>
+            <p>Sound, satire and a strong visual metaphor carry the idea without over-explaining it.</p>
           </div>
           <div className="bhasha-devices-grid">
             {devices.map((device) => (
@@ -245,69 +234,42 @@ export function ProjectDetailPage() {
               </article>
             ))}
           </div>
-          <div className="bhasha-language-strip">
-            <div><span>THE SOUND THAT CONNECTS THE PLAY</span><strong>AEIIIOA</strong></div>
-            <p>The opening sound returns at the end. It becomes a theatrical shorthand for communication that is not restricted to a single recognised language.</p>
-          </div>
         </section>
 
-        <section className="bhasha-contribution-section">
+        <section className="bhasha-contribution-section bhasha-contribution-compact">
           <div className="bhasha-section-heading">
-            <div><div className="bhasha-section-index">04 <span>/ MY CONTRIBUTION</span></div><h2>Part of the play.<br /><em>On stage and off it.</em></h2></div>
-            <p>My contribution combined an organisational role as Street Play Sub-Head with ensemble performance across the production.</p>
+            <div><div className="bhasha-section-index">03 <span>/ MY CONTRIBUTION</span></div><h2>On stage.<br /><em>And off it.</em></h2></div>
+            <p>Street Play Sub-Head and ensemble performer across the production.</p>
           </div>
           <div className="bhasha-contribution-grid">
             <article className="bhasha-role-card bhasha-role-card-stage">
-              <div className="bhasha-role-index">01 / PERFORMANCE</div>
-              <h3>Ensemble performer</h3>
-              <p>I was present and performed across the other scenes as part of the street-play ensemble. The script specifically names me as Netaji in Scene 1, in the media-interview sequence that opens the play’s satire around language and cultural identity.</p>
-              <span>NAMED CHARACTER CREDIT: NETAJI / SCENE 1</span>
+              <div className="bhasha-role-index">PERFORMANCE</div>
+              <h3>Ensemble + Netaji</h3>
+              <p>Performed across the scenes, with a named character credit as Netaji in Scene 1.</p>
             </article>
             <article className="bhasha-role-card bhasha-role-card-team">
-              <div className="bhasha-role-index">02 / ORGANISATION</div>
+              <div className="bhasha-role-index">PRODUCTION</div>
               <h3>Street Play Sub-Head</h3>
-              <p>I helped with coordination and management wherever needed during the production, alongside my onstage involvement.</p>
-              <span>SUPPORTING THE PRODUCTION AS NEEDED</span>
+              <p>Supported coordination and management wherever needed.</p>
             </article>
           </div>
         </section>
 
-        <section className="bhasha-recognition-section">
-          <div className="bhasha-section-heading">
-            <div><div className="bhasha-section-index">05 <span>/ RECOGNITION</span></div><h2>One strong result.<br /><em>Then the finals.</em></h2></div>
-            <p>The play placed first at Blossoms ’26 before the finals. It did not win in the finals — both parts of the result are kept here.</p>
-          </div>
-          <div className="bhasha-recognition-grid">
-            <article className="bhasha-recognition-card bhasha-recognition-card-first">
-              <span>PRE-FINALS RESULT</span>
-              <strong>1st place</strong>
-              <p>Blossoms ’26</p>
-            </article>
-            <article className="bhasha-recognition-card bhasha-recognition-card-finals">
-              <span>FINALS RESULT</span>
-              <strong>No win</strong>
-              <p>Blossoms ’26 finals</p>
-            </article>
-          </div>
-        </section>
-
-        <section className="bhasha-ending-section">
+        <section className="bhasha-ending-section bhasha-ending-compact">
           <div className="bhasha-ending-heading">
-            <span>06 / THE CLOSING IDEA</span>
-            <h2>From one.<br /><em>To understanding.</em></h2>
-            <p>The final sequence builds its response in three steps, keeping the play’s message direct and memorable.</p>
+            <span>04 / THE CLOSING IDEA</span>
+            <h2>One.<br /><em>Unique. Language.</em></h2>
           </div>
           <div className="bhasha-ending-steps">
-            <article><span>01</span><small>ONE</small><strong>Realisation</strong><p>Recognising that a shared identity need not erase difference.</p></article>
-            <article><span>02</span><small>UNIQUENESS</small><strong>Acceptance</strong><p>Every human voice and every language carries its own identity.</p></article>
-            <article><span>03</span><small>LANGUAGE</small><strong>Action</strong><p>Turning recognition and acceptance into the way we treat one another.</p></article>
+            <article><small>ONE</small><strong>Realisation</strong></article>
+            <article><small>UNIQUENESS</small><strong>Acceptance</strong></article>
+            <article><small>LANGUAGE</small><strong>Action</strong></article>
           </div>
         </section>
 
-        <section className="bhasha-takeaway">
-          <span>WHAT I TAKE FROM EK ANOKHI BHASHA</span>
-          <p>Language should help us <em>understand one another</em> — not decide who deserves to belong.</p>
-          <div className="bhasha-takeaway-footer"><span>EK ANOKHI BHASHA</span><span>NUKKAD NAATAK / BHASHAVAAD</span><span>↗</span></div>
+        <section className="bhasha-recognition-compact">
+          <span>RECOGNITION</span>
+          <strong>1st place · Blossoms ’26</strong>
         </section>
       </main>
     );
