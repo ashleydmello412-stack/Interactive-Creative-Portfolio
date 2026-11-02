@@ -38,7 +38,7 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
   '/thinking': {
     title: 'Psychology-led Creative Thinking & Advertising',
     description:
-      'A brand-first approach to advertising informed by attention, emotion, persuasion, memory, consumer research and cultural context.',
+      'A brand-first approach to advertising informed by psychology, consumer research, cultural context and qualitative research into bilingual identity.',
   },
   '/about': {
     title: 'About — Psychology-led Creative Practice',
