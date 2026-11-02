@@ -125,9 +125,59 @@ export const projects: Project[] = [
     detail: 'Multiple roles are confirmed at a broad level. The specific writing, performance, direction or production responsibilities need to be identified before they are listed as individual credits.',
     tone: 'tone-dark',
   },
+  {
+    slug: 'japan-business-culture',
+    title: 'Cultural Foundations of Business Practices in Japan',
+    number: 'ACADEMIC 01',
+    period: 'Academic paper',
+    tags: ['Academic work', 'Japanese culture', 'Business culture'],
+    roles: ['Research & academic writing'],
+    summary: 'An academic paper examining how religious traditions, social expectations and hierarchy feature in Japanese social life and business practices.',
+    detail: 'The paper explores the relationship between tradition and modernity in Japan. It discusses Shintoism and Buddhism, the value of wa (harmony), social norms, language and symbols, social stratification, and the ways hierarchy and collective expectations are reflected in business practices.',
+    academicStudy: {
+      course: 'BS1412 Global Leadership and Culture',
+      institution: 'CHRIST (Deemed to be University)',
+      focusAreas: [
+        {
+          number: '01',
+          title: 'Beliefs, values & traditions',
+          description: 'The paper considers Shintoism and Buddhism alongside wa (harmony), respect, discipline, gaman and customs that shape social and professional conduct.',
+        },
+        {
+          number: '02',
+          title: 'Norms, language & symbols',
+          description: 'It discusses indirect communication, honne and tatemae, keigo, bowing, gift-giving, punctuality, cleanliness and culturally significant symbols.',
+        },
+        {
+          number: '03',
+          title: 'Hierarchy & stratification',
+          description: 'The discussion covers senpai-kōhai relationships, educational and occupational status, gender roles, and differences between urban and rural opportunities.',
+        },
+        {
+          number: '04',
+          title: 'Business practices',
+          description: 'It examines nemawashi, the lifetime employment system (shūshin koyō), corporate loyalty, consensus-building and adaptation to global business.',
+        },
+      ],
+      businessPractices: [
+        {
+          title: 'Nemawashi',
+          term: 'CONSENSUS BEFORE DECISION',
+          description: 'The paper describes nemawashi as informal consultation and consensus-building before a formal decision, allowing stakeholders’ views to be considered.',
+        },
+        {
+          title: 'Shūshin koyō',
+          term: 'LIFETIME EMPLOYMENT',
+          description: 'The paper discusses the lifetime employment model in relation to long-term company loyalty and the collectivist character of workplace relationships.',
+        },
+      ],
+      synthesis: 'The paper argues that Japanese business practices are connected to wider cultural expectations around harmony, hierarchy, respect, discipline and collective responsibility. It also considers how these traditions interact with the pressure to adapt to a rapidly changing global environment.',
+    },
+    tone: 'tone-blue',
+  },
 ];
 
-export const categories = ['All work', 'Performance', 'Acting', 'Production', 'Multiple roles', 'Creative work'];
+export const categories = ['All work', 'Performance', 'Acting', 'Production', 'Multiple roles', 'Creative work', 'Academic work'];
 export const collectionChecklist = [
   'Confirm the production or event name and year',
   'Write a concise synopsis of the work',
