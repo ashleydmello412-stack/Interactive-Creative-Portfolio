@@ -44,13 +44,34 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
 }
 
 export function HomePage() {
+  const heroQuestions = [
+    <>What makes <em>people</em> feel something?</>,
+    <>What earns a <em>second look?</em></>,
+    <>What makes an idea <em>stay?</em></>,
+  ];
+  const [heroQuestion, setHeroQuestion] = useState(0);
+
+  const handleHeroPointer = (event: PointerEvent<HTMLElement>) => {
+    if (event.pointerType !== 'mouse') return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    event.currentTarget.style.setProperty('--hero-shift-x', `${(x * 12).toFixed(1)}px`);
+    event.currentTarget.style.setProperty('--hero-shift-y', `${(y * 10).toFixed(1)}px`);
+  };
+
+  const resetHeroPointer = (event: PointerEvent<HTMLElement>) => {
+    event.currentTarget.style.setProperty('--hero-shift-x', '0px');
+    event.currentTarget.style.setProperty('--hero-shift-y', '0px');
+  };
+
   return (
     <main id="main-content" className="main-content">
-      <section className="wrap hero reveal" data-testid="section-home-hero">
+      <section className="wrap hero reveal" onPointerMove={handleHeroPointer} onPointerLeave={resetHeroPointer} data-testid="section-home-hero">
         <div className="eyebrow">Psychology-led thinking × creative execution</div>
         <h1><span className="hero-line hero-line-one">I STUDY <em>PEOPLE.</em></span><span className="hero-line hero-line-two">I TURN INSIGHT</span><span className="hero-line hero-line-three"><em>INTO IDEAS.</em></span></h1>
         <p className="intro">I want to bring psychology and creative practice together to build advertising that earns attention, creates emotion, persuades with purpose and stays in memory. It starts with understanding what a brand stands for — and the people it hopes to reach.</p>
-        <div className="hero-visual" aria-hidden="true">
+        <div className="hero-visual">
           <div className="hero-visual-orbit hero-visual-orbit-one" />
           <div className="hero-visual-orbit hero-visual-orbit-two" />
           <div className="hero-visual-card hero-visual-card-back">
@@ -60,8 +81,8 @@ export function HomePage() {
           </div>
           <div className="hero-visual-card hero-visual-card-main">
             <span className="hero-visual-card-label">START WITH A QUESTION</span>
-            <strong>What makes<br /><em>people</em><br />feel something?</strong>
-            <div className="hero-visual-card-foot"><span>HUMAN INSIGHT</span><b>↗</b></div>
+            <strong>{heroQuestions[heroQuestion]}</strong>
+            <div className="hero-visual-card-foot"><span>HUMAN INSIGHT</span><button type="button" aria-label="Show another creative question" onClick={() => setHeroQuestion((current) => (current + 1) % heroQuestions.length)}>↻</button></div>
           </div>
           <span className="hero-visual-spark hero-visual-spark-one">✳</span>
           <span className="hero-visual-spark hero-visual-spark-two">•</span>
@@ -193,6 +214,7 @@ export function WorkPage() {
 }
 
 export function ProjectDetailPage() {
+  const [activeScene, setActiveScene] = useState(0);
   const params = useParams<{ slug: string }>();
   const project = projects.find((item) => item.slug === params.slug);
   if (!project) return <main className="wrap not-found" id="main-content"><div className="kicker">ARCHIVE / NOT FOUND</div><h1>This project isn't in the archive.</h1><Link href="/work" className="button" data-testid="link-back-to-archive">Back to the archive <ArrowLeft size={16} /></Link></main>;
@@ -249,15 +271,27 @@ export function ProjectDetailPage() {
             <div><div className="bhasha-section-index">01 <span>/ THE STORY</span></div><h2>Four scenes.<br /><em>One idea.</em></h2></div>
             <p>{caseStudy.premise}</p>
           </div>
-          <div className="bhasha-scenes-grid">
-            {caseStudy.scenes.map((scene, index) => (
-              <article className={'bhasha-scene-card bhasha-scene-card-' + (index + 1)} key={scene.title}>
-                <div className="bhasha-scene-top"><span>{String(index + 1).padStart(2, '0')}</span><i></i></div>
-                <p className="bhasha-scene-kicker">{['THE SATIRE', 'THE QUESTION', 'THE CONSEQUENCE', 'THE RESPONSE'][index]}</p>
-                <h3>{scene.title.split(' / ').slice(1).join(' / ')}</h3>
-                <p>{scene.description}</p>
-              </article>
-            ))}
+          <div className="story-explorer bhasha-story-explorer">
+            <div className="story-tabs" role="tablist" aria-label="Explore the four scenes">
+              {caseStudy.scenes.map((scene, index) => (
+                <button type="button" role="tab" key={scene.title} id={`bhasha-scene-tab-${index}`} aria-selected={activeScene === index} aria-controls="bhasha-scene-panel" onClick={() => setActiveScene(index)}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>{scene.title.split(' / ').slice(1).join(' / ')}
+                </button>
+              ))}
+            </div>
+            <article className="story-feature" id="bhasha-scene-panel" role="tabpanel" aria-labelledby={`bhasha-scene-tab-${activeScene}`} key={activeScene}>
+              <div className="story-feature-index">SCENE {String(activeScene + 1).padStart(2, '0')} / 04</div>
+              <p className="story-feature-kicker">{['THE SATIRE', 'THE QUESTION', 'THE CONSEQUENCE', 'THE RESPONSE'][activeScene]}</p>
+              <h3>{caseStudy.scenes[activeScene].title.split(' / ').slice(1).join(' / ')}</h3>
+              <p>{caseStudy.scenes[activeScene].description}</p>
+              <div className="story-feature-controls">
+                <span>{activeScene + 1} OF {caseStudy.scenes.length}</span>
+                <div>
+                  <button type="button" aria-label="Previous scene" disabled={activeScene === 0} onClick={() => setActiveScene((current) => Math.max(0, current - 1))}>←</button>
+                  <button type="button" aria-label="Next scene" disabled={activeScene === caseStudy.scenes.length - 1} onClick={() => setActiveScene((current) => Math.min(caseStudy.scenes.length - 1, current + 1))}>→</button>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -382,15 +416,27 @@ export function ProjectDetailPage() {
             <div><div className="hari-section-index">02 <span>/ THE STORYLINE</span></div><h2>Five scenes.<br /><em>One unfolding argument.</em></h2></div>
             <p>The play moves from the attraction of green claims to the responsibility of questioning them — and finally, to what an audience can do next.</p>
           </div>
-          <div className="hari-scenes-grid">
-            {caseStudy.scenes.map((scene, index) => (
-              <article className={`hari-scene-card hari-scene-card-${index + 1}`} key={scene.title}>
-                <div className="hari-scene-card-top"><span className="hari-scene-number">{String(index + 1).padStart(2, '0')}</span><span className="hari-scene-dash"></span></div>
-                <p className="hari-scene-kicker">{index === 0 ? 'THE HOOK' : index === 1 ? 'THE CONFLICT' : index === 2 ? 'THE SATIRE' : index === 3 ? 'THE REVEAL' : 'THE RESPONSE'}</p>
-                <h3>{scene.title.replace(/^\d+\s*\/\s*/, '')}</h3>
-                <p className="hari-scene-description">{scene.description}</p>
-              </article>
-            ))}
+          <div className="story-explorer hari-story-explorer">
+            <div className="story-tabs" role="tablist" aria-label="Explore the five scenes">
+              {caseStudy.scenes.map((scene, index) => (
+                <button type="button" role="tab" key={scene.title} id={`hari-scene-tab-${index}`} aria-selected={activeScene === index} aria-controls="hari-scene-panel" onClick={() => setActiveScene(index)}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>{scene.title.replace(/^\d+\s*\/\s*/, '')}
+                </button>
+              ))}
+            </div>
+            <article className="story-feature hari-story-feature" id="hari-scene-panel" role="tabpanel" aria-labelledby={`hari-scene-tab-${activeScene}`} key={activeScene}>
+              <div className="story-feature-index">SCENE {String(activeScene + 1).padStart(2, '0')} / 05</div>
+              <p className="story-feature-kicker">{['THE HOOK', 'THE CONFLICT', 'THE SATIRE', 'THE REVEAL', 'THE RESPONSE'][activeScene]}</p>
+              <h3>{caseStudy.scenes[activeScene].title.replace(/^\d+\s*\/\s*/, '')}</h3>
+              <p>{caseStudy.scenes[activeScene].description}</p>
+              <div className="story-feature-controls">
+                <span>{activeScene + 1} OF {caseStudy.scenes.length}</span>
+                <div>
+                  <button type="button" aria-label="Previous scene" disabled={activeScene === 0} onClick={() => setActiveScene((current) => Math.max(0, current - 1))}>←</button>
+                  <button type="button" aria-label="Next scene" disabled={activeScene === caseStudy.scenes.length - 1} onClick={() => setActiveScene((current) => Math.min(caseStudy.scenes.length - 1, current + 1))}>→</button>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -485,11 +531,19 @@ export function ProjectDetailPage() {
 }
 
 export function ThinkingPage() {
+  const [activeLens, setActiveLens] = useState(0);
+  const [activeObjective, setActiveObjective] = useState(0);
   const lenses = [
-    { number: '01', title: 'Attention', copy: 'What makes someone notice?' },
-    { number: '02', title: 'Emotion', copy: 'What makes the message matter?' },
-    { number: '03', title: 'Persuasion', copy: 'What gives someone a reason to act?' },
-    { number: '04', title: 'Memory', copy: 'What makes the idea stay?' },
+    { number: '01', title: 'Attention', copy: 'What makes someone notice?', detail: 'Look at the context people are already paying attention to. The creative challenge is to make the brand relevant enough to earn a pause, not just louder than everything around it.', question: 'What would make this worth a second look?', signals: ['Distinctive visual cue', 'Immediate relevance', 'A clear first impression'] },
+    { number: '02', title: 'Emotion', copy: 'What makes the message matter?', detail: 'Decide what the audience should feel, then look for a human situation that can carry that feeling. Tone, character and tension can make an abstract promise feel personal.', question: 'What feeling should the idea leave behind?', signals: ['Recognisable human tension', 'Tone and atmosphere', 'A point of connection'] },
+    { number: '03', title: 'Persuasion', copy: 'What gives someone a reason to act?', detail: 'A persuasive idea gives people a reason to believe the message. The promise, proof and next step should work together rather than relying on a clever line alone.', question: 'What would make the promise believable?', signals: ['A credible reason to believe', 'A clear value exchange', 'A useful next step'] },
+    { number: '04', title: 'Memory', copy: 'What makes the idea stay?', detail: 'Look for a recognisable device that can connect the message to an everyday moment. A repeated phrase, image or association can help make a brand easier to recall.', question: 'What could people remember or repeat?', signals: ['A recognisable cue', 'A repeatable phrase or image', 'A meaningful brand link'] },
+  ];
+  const objectives = [
+    { title: 'Awareness', label: 'Get noticed', prompt: 'What would make this brand earn attention in a space already crowded with messages?', response: 'A distinctive entry point', lens: 'ATTENTION' },
+    { title: 'Perception', label: 'Change the view', prompt: 'Which existing belief about the brand needs to be challenged, softened or reframed?', response: 'A new way to see the brand', lens: 'EMOTION + PERSUASION' },
+    { title: 'Association', label: 'Own a meaning', prompt: 'What everyday moment, cultural cue or feeling should people connect with this brand?', response: 'A meaningful connection', lens: 'MEMORY' },
+    { title: 'Loyalty', label: 'Build a reason to return', prompt: 'What experience would make choosing this brand feel worthwhile again?', response: 'A reason to come back', lens: 'PERSUASION + MEMORY' },
   ];
   const steps = [
     ['01', 'Understand the brand'],
@@ -516,12 +570,40 @@ export function ThinkingPage() {
         <div><div className="kicker">THE HUMAN RESPONSE</div><h2 id="lenses-title">Four lenses I return to.</h2></div>
         <p>Questions that help me think through how an idea reaches people.</p>
       </div>
-      <div className="thinking-lens-grid">
-        {lenses.map((lens) => <article className="thinking-lens" key={lens.number}>
+      <div className="thinking-lens-grid" role="tablist" aria-label="Choose a psychology lens">
+        {lenses.map((lens, index) => <button type="button" role="tab" aria-selected={activeLens === index} aria-controls="lens-detail-panel" className={`thinking-lens${activeLens === index ? ' is-active' : ''}`} key={lens.number} onClick={() => setActiveLens(index)}>
           <span className="mono">{lens.number} / LENS</span>
           <h3>{lens.title}</h3>
           <p>{lens.copy}</p>
-        </article>)}
+          <span className="thinking-lens-action">{activeLens === index ? 'SELECTED' : 'EXPLORE'} <b>↗</b></span>
+        </button>)}
+      </div>
+      <article className="lens-detail-panel" id="lens-detail-panel" role="tabpanel">
+        <div className="lens-detail-index">LENS {lenses[activeLens].number} / A QUESTION TO WORK WITH</div>
+        <div className="lens-detail-content">
+          <div><h3>{lenses[activeLens].question}</h3><p>{lenses[activeLens].detail}</p></div>
+          <div className="lens-signal-list"><span>THINGS TO LOOK FOR</span>{lenses[activeLens].signals.map((signal) => <b key={signal}>{signal}</b>)}</div>
+        </div>
+      </article>
+    </section>
+
+    <section className="brief-playground thinking-compact-section" aria-labelledby="brief-playground-title">
+      <div className="thinking-compact-heading">
+        <div><div className="kicker">INTERACTIVE / THE BRIEF PLAYGROUND</div><h2 id="brief-playground-title">Change the objective.<br />Change the question.</h2></div>
+        <p>Pick what the brand needs to do. The starting question shifts with the job.</p>
+      </div>
+      <div className="brief-playground-layout">
+        <div className="brief-objectives" role="group" aria-label="Choose a campaign objective">
+          {objectives.map((objective, index) => <button type="button" className={activeObjective === index ? 'is-active' : ''} aria-pressed={activeObjective === index} onClick={() => setActiveObjective(index)} key={objective.title}>
+            <span>0{index + 1}</span><strong>{objective.title}</strong><small>{objective.label}</small><b>↗</b>
+          </button>)}
+        </div>
+        <article className="brief-output" aria-live="polite" key={activeObjective}>
+          <span className="brief-output-eyebrow">THE FIRST QUESTION I’D ASK</span>
+          <h3>{objectives[activeObjective].prompt}</h3>
+          <div className="brief-output-foot"><span>CREATIVE DIRECTION</span><strong>{objectives[activeObjective].response}</strong></div>
+          <div className="brief-output-lens">STARTING LENS <b>{objectives[activeObjective].lens}</b></div>
+        </article>
       </div>
     </section>
 
