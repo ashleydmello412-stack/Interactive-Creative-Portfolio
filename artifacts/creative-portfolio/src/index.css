@@ -1099,3 +1099,141 @@
   .research-proposal-card .research-open-document { white-space:normal; }
   .research-secondary-card { grid-template-columns:1fr; gap:7px; }
 }
+
+
+
+/* Ek Anokhi Bhasha — a multilingual street-theatre case study */
+.bhasha-page { padding-bottom:76px; }
+.bhasha-back-link { margin-bottom:16px; }
+.bhasha-hero { overflow:hidden; padding:clamp(24px,4.8vw,56px); border-radius:27px; background:var(--ink); color:var(--paper); }
+.bhasha-hero-topline,.bhasha-hero-bottom { display:flex; align-items:center; justify-content:space-between; gap:14px; color:#ffffff9d; font-family:var(--app-font-mono); font-size:.58rem; letter-spacing:.11em; }
+.bhasha-hero-topline { padding-bottom:17px; border-bottom:1px solid #ffffff35; }
+.bhasha-hero-topline i { color:var(--coral); font-style:normal; padding:0 5px; }
+.bhasha-hero-grid { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(270px,.92fr); gap:25px; align-items:center; min-height:450px; padding:28px 0 22px; }
+.bhasha-hero-copy { position:relative; z-index:1; }
+.bhasha-eyebrow { margin:0 0 18px; color:var(--coral); font-family:var(--app-font-mono); font-size:.64rem; letter-spacing:.14em; }
+.bhasha-hero-copy h1 { max-width:800px; margin:0; font-size:clamp(3.7rem,8vw,7.4rem); line-height:.82; letter-spacing:-.095em; }
+.bhasha-hero-copy h1 em { display:block; margin-top:11px; color:var(--lime); font-style:normal; }
+.bhasha-hero-summary { max-width:560px; margin:25px 0 20px; color:#e9e7e2; font-size:1rem; line-height:1.7; }
+.bhasha-hero-tags { display:flex; flex-wrap:wrap; gap:7px; }
+.bhasha-hero-tags span { padding:7px 10px; border:1px solid #ffffff49; border-radius:999px; font-family:var(--app-font-mono); font-size:.54rem; letter-spacing:.08em; }
+.bhasha-hero-art { position:relative; display:grid; place-items:center; min-height:345px; isolation:isolate; }
+.bhasha-speech-core { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; width:160px; aspect-ratio:1; border-radius:50%; background:var(--coral); color:var(--ink); box-shadow:0 0 0 18px #ff754a19,0 0 0 44px #ff754a0b; }
+.bhasha-speech-core span { font-family:serif; font-size:4rem; line-height:1; }
+.bhasha-speech-core strong { margin-top:4px; font-family:var(--app-font-mono); font-size:.62rem; letter-spacing:.25em; }
+.bhasha-word-orbit { position:absolute; z-index:3; padding:7px 10px; border:1px solid #ffffff5a; border-radius:999px; background:#171717; color:var(--paper); font-family:var(--app-font-mono); font-size:.57rem; letter-spacing:.1em; }
+.bhasha-word-orbit-one { top:8%; left:20%; color:var(--lime); transform:rotate(-12deg); }
+.bhasha-word-orbit-two { top:19%; right:4%; color:var(--coral); transform:rotate(9deg); }
+.bhasha-word-orbit-three { bottom:22%; left:2%; color:#d8e5ff; transform:rotate(8deg); }
+.bhasha-word-orbit-four { right:8%; bottom:10%; color:var(--lime); transform:rotate(-8deg); }
+.bhasha-art-footer { position:absolute; top:4%; right:3%; color:#ffffff83; font-family:var(--app-font-mono); font-size:.5rem; line-height:1.55; letter-spacing:.1em; text-align:right; }
+.bhasha-art-sound { position:absolute; bottom:0; left:50%; transform:translateX(-50%); color:#ffffff55; font-size:clamp(2.1rem,5vw,3.7rem); font-weight:700; letter-spacing:.13em; white-space:nowrap; }
+.bhasha-hero-bottom { justify-content:flex-start; gap:clamp(18px,4vw,52px); padding-top:15px; border-top:1px solid #ffffff35; color:var(--lime); }
+.bhasha-hero-arrow { margin-left:auto; color:var(--coral); font-size:1rem; }
+.bhasha-statbar { display:grid; grid-template-columns:.65fr .95fr .95fr 1.45fr; gap:9px; margin-top:12px; }
+.bhasha-statbar>div { display:flex; flex-direction:column; justify-content:center; min-height:100px; padding:16px 18px; border:1px solid var(--line); border-radius:15px; background:var(--paper); }
+.bhasha-statbar>div>strong { font-size:2.3rem; line-height:1; letter-spacing:-.07em; }
+.bhasha-statbar>div>span,.bhasha-stat-note>span { margin-top:7px; color:var(--muted-ink); font-family:var(--app-font-mono); font-size:.52rem; letter-spacing:.1em; }
+.bhasha-statbar .bhasha-stat-note { background:var(--lime); }
+.bhasha-stat-note strong { margin-top:7px; font-size:1.12rem; line-height:1.1; letter-spacing:-.04em; }
+.bhasha-question-section,.bhasha-scenes-section,.bhasha-devices-section,.bhasha-contribution-section,.bhasha-ending-section { padding:72px 0 0; }
+.bhasha-section-index { color:var(--coral); font-family:var(--app-font-mono); font-size:.62rem; letter-spacing:.1em; }
+.bhasha-section-index span { margin-left:8px; color:var(--muted-ink); }
+.bhasha-question-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:34px; align-items:center; padding-top:23px; }
+.bhasha-question-grid h2,.bhasha-section-heading h2 { margin:0; font-size:clamp(2.5rem,5.2vw,4.8rem); line-height:.93; letter-spacing:-.08em; }
+.bhasha-question-grid h2 em,.bhasha-section-heading h2 em,.bhasha-ending-heading h2 em { color:#8b9f31; font-style:normal; }
+.bhasha-question-grid>div p { max-width:680px; margin:0; color:var(--muted-ink); font-size:1rem; line-height:1.8; }
+.bhasha-note { display:inline-block; margin-top:16px; color:#778629; font-family:var(--app-font-mono); font-size:.54rem; letter-spacing:.1em; }
+.bhasha-section-heading { display:flex; justify-content:space-between; align-items:end; gap:25px; margin-bottom:20px; }
+.bhasha-section-heading h2 { margin-top:13px; }
+.bhasha-section-heading>p { max-width:380px; margin:0 0 3px; color:var(--muted-ink); font-size:.88rem; line-height:1.7; }
+.bhasha-scenes-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.bhasha-scene-card { min-height:300px; padding:20px; border:1px solid var(--line); border-radius:17px; background:var(--paper); }
+.bhasha-scene-card-2 { background:var(--blue); }
+.bhasha-scene-card-3 { background:var(--coral); }
+.bhasha-scene-card-4 { background:var(--lime); }
+.bhasha-scene-top { display:flex; align-items:center; gap:10px; }
+.bhasha-scene-top span { color:var(--muted-ink); font-family:var(--app-font-mono); font-size:.6rem; }
+.bhasha-scene-top i { display:block; width:34px; height:1px; background:var(--coral); }
+.bhasha-scene-kicker { margin:39px 0 9px; color:var(--muted-ink); font-family:var(--app-font-mono); font-size:.53rem; letter-spacing:.11em; }
+.bhasha-scene-card h3 { margin:0 0 11px; font-size:1.36rem; line-height:1.02; letter-spacing:-.05em; }
+.bhasha-scene-card>p:last-child { margin:0; color:#49483f; font-size:.81rem; line-height:1.65; }
+.bhasha-devices-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.bhasha-device-card { min-height:205px; padding:20px; border:1px solid var(--line); border-radius:17px; background:var(--ink); color:var(--paper); }
+.bhasha-device-card-2 { background:var(--lime); color:var(--ink); }
+.bhasha-device-card-3 { background:var(--blue); color:var(--ink); }
+.bhasha-device-card-4 { background:var(--coral); color:var(--ink); }
+.bhasha-device-card>span { color:var(--coral); font-family:var(--app-font-mono); font-size:.6rem; }
+.bhasha-device-card-2>span,.bhasha-device-card-3>span,.bhasha-device-card-4>span { color:#6e7c2d; }
+.bhasha-device-card h3 { margin:31px 0 9px; font-size:1.25rem; line-height:1.03; letter-spacing:-.05em; }
+.bhasha-device-card p { margin:0; color:#e9e7e2; font-size:.82rem; line-height:1.65; }
+.bhasha-device-card-2 p,.bhasha-device-card-3 p,.bhasha-device-card-4 p { color:#34362a; }
+.bhasha-language-strip { display:grid; grid-template-columns:.75fr 1.25fr; gap:20px; align-items:center; margin-top:11px; padding:21px 24px; border:1px dashed #8b9f31; border-radius:17px; background:#d8f36a35; }
+.bhasha-language-strip>div>span { display:block; color:#6b7a2b; font-family:var(--app-font-mono); font-size:.54rem; letter-spacing:.1em; }
+.bhasha-language-strip strong { display:block; margin-top:6px; font-size:clamp(2rem,4vw,3.3rem); letter-spacing:.08em; }
+.bhasha-language-strip p { margin:0; color:var(--muted-ink); font-size:.86rem; line-height:1.7; }
+.bhasha-role-card { max-width:740px; padding:clamp(24px,4vw,38px); border-radius:20px; background:var(--ink); color:var(--paper); }
+.bhasha-role-index { color:var(--lime); font-family:var(--app-font-mono); font-size:.57rem; letter-spacing:.12em; }
+.bhasha-role-card h3 { margin:32px 0 10px; color:var(--coral); font-size:clamp(2.5rem,5vw,4.4rem); line-height:.9; letter-spacing:-.08em; }
+.bhasha-role-card p { max-width:620px; margin:0 0 23px; color:#e9e7e2; font-size:.9rem; line-height:1.75; }
+.bhasha-role-card>span { display:block; padding-top:13px; border-top:1px solid #ffffff35; color:#ffffff8d; font-family:var(--app-font-mono); font-size:.53rem; letter-spacing:.1em; }
+.bhasha-ending-section { display:grid; grid-template-columns:.7fr 1.3fr; gap:30px; align-items:center; }
+.bhasha-ending-heading>span { color:var(--coral); font-family:var(--app-font-mono); font-size:.6rem; letter-spacing:.1em; }
+.bhasha-ending-heading h2 { margin:16px 0 12px; font-size:clamp(2.6rem,5vw,4.7rem); line-height:.9; letter-spacing:-.08em; }
+.bhasha-ending-heading>p { margin:0; max-width:330px; color:var(--muted-ink); font-size:.86rem; line-height:1.7; }
+.bhasha-ending-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; }
+.bhasha-ending-steps article { min-height:165px; padding:17px; border-radius:15px; background:var(--paper); border:1px solid var(--line); }
+.bhasha-ending-steps article:nth-child(2) { background:var(--blue); }
+.bhasha-ending-steps article:nth-child(3) { background:var(--lime); }
+.bhasha-ending-steps article>span,.bhasha-ending-steps small { display:block; color:var(--muted-ink); font-family:var(--app-font-mono); font-size:.55rem; letter-spacing:.1em; }
+.bhasha-ending-steps small { margin-top:21px; }
+.bhasha-ending-steps strong { display:block; margin-top:5px; font-size:1.32rem; letter-spacing:-.04em; }
+.bhasha-ending-steps p { margin:7px 0 0; color:#55534a; font-size:.75rem; line-height:1.55; }
+.bhasha-takeaway { position:relative; overflow:hidden; margin-top:72px; padding:clamp(27px,5vw,54px); border-radius:24px; background:var(--coral); color:var(--ink); }
+.bhasha-takeaway:after { content:"言"; position:absolute; top:-30%; right:3%; color:#1717170b; font-family:serif; font-size:clamp(13rem,30vw,26rem); pointer-events:none; }
+.bhasha-takeaway>span,.bhasha-takeaway-footer { position:relative; z-index:1; font-family:var(--app-font-mono); font-size:.57rem; letter-spacing:.1em; }
+.bhasha-takeaway>p { position:relative; z-index:1; max-width:930px; margin:20px 0 38px; font-size:clamp(2rem,5vw,4.6rem); line-height:.98; letter-spacing:-.075em; }
+.bhasha-takeaway>p em { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; font-style:normal; }
+.bhasha-takeaway-footer { display:flex; justify-content:space-between; gap:12px; padding-top:14px; border-top:1px solid #17171735; color:#39382e; font-size:.52rem; }
+@media(max-width:1050px) { .bhasha-scenes-grid,.bhasha-devices-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:760px) {
+  .bhasha-page { padding-bottom:52px; }
+  .bhasha-hero { padding:20px; border-radius:21px; }
+  .bhasha-hero-topline { font-size:.47rem; }
+  .bhasha-hero-grid { grid-template-columns:1fr; gap:0; min-height:unset; padding:34px 0 18px; }
+  .bhasha-hero-copy h1 { font-size:clamp(3.5rem,17vw,6rem); }
+  .bhasha-hero-summary { font-size:.9rem; }
+  .bhasha-hero-tags span { font-size:.47rem; }
+  .bhasha-hero-art { min-height:280px; margin-top:8px; }
+  .bhasha-speech-core { width:130px; }
+  .bhasha-speech-core span { font-size:3.3rem; }
+  .bhasha-word-orbit { font-size:.48rem; }
+  .bhasha-word-orbit-one { left:13%; }
+  .bhasha-word-orbit-two { right:0; }
+  .bhasha-word-orbit-three { left:0; }
+  .bhasha-word-orbit-four { right:2%; }
+  .bhasha-art-footer { top:0; right:0; font-size:.45rem; }
+  .bhasha-art-sound { bottom:-2px; font-size:2rem; }
+  .bhasha-hero-bottom { flex-wrap:wrap; gap:9px 16px; font-size:.48rem; }
+  .bhasha-statbar { grid-template-columns:1fr 1fr; }
+  .bhasha-statbar>div { min-height:83px; }
+  .bhasha-statbar .bhasha-stat-note { grid-column:1/-1; }
+  .bhasha-question-section,.bhasha-scenes-section,.bhasha-devices-section,.bhasha-contribution-section,.bhasha-ending-section { padding-top:52px; }
+  .bhasha-question-grid { grid-template-columns:1fr; gap:18px; }
+  .bhasha-question-grid h2,.bhasha-section-heading h2 { font-size:clamp(2.7rem,12vw,4rem); }
+  .bhasha-section-heading { display:block; }
+  .bhasha-section-heading>p { margin-top:12px; }
+  .bhasha-scenes-grid,.bhasha-devices-grid { grid-template-columns:1fr; }
+  .bhasha-scene-card { min-height:unset; }
+  .bhasha-scene-kicker { margin-top:25px; }
+  .bhasha-language-strip { grid-template-columns:1fr; gap:8px; padding:17px; }
+  .bhasha-role-card h3 { margin-top:24px; }
+  .bhasha-ending-section { grid-template-columns:1fr; gap:20px; }
+  .bhasha-ending-steps { grid-template-columns:1fr; }
+  .bhasha-ending-steps article { min-height:unset; }
+  .bhasha-ending-steps small { margin-top:12px; }
+  .bhasha-takeaway { margin-top:52px; border-radius:19px; }
+  .bhasha-takeaway>p { font-size:clamp(2rem,10vw,3.4rem); }
+  .bhasha-takeaway-footer { flex-wrap:wrap; font-size:.46rem; }
+}
+
