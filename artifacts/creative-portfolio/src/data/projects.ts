@@ -17,6 +17,13 @@ export type Project = {
     contribution: string;
     reflection: string;
   };
+  academicStudy?: {
+    course: string;
+    institution: string;
+    focusAreas: { number: string; title: string; description: string }[];
+    businessPractices: { title: string; term: string; description: string }[];
+    synthesis: string;
+  };
   recognition?: string[];
   tone: string;
 };
