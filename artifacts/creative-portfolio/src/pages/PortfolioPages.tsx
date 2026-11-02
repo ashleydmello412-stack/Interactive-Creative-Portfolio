@@ -35,8 +35,24 @@ export function HomePage() {
     <main id="main-content" className="main-content">
       <section className="wrap hero reveal" data-testid="section-home-hero">
         <div className="eyebrow">Psychology-led thinking × creative execution</div>
-        <h1>I STUDY PEOPLE.<span>I TURN INSIGHT INTO IDEAS.</span></h1>
+        <h1><span className="hero-line hero-line-one">I STUDY <em>PEOPLE.</em></span><span className="hero-line hero-line-two">I TURN INSIGHT</span><span className="hero-line hero-line-three"><em>INTO IDEAS.</em></span></h1>
         <p className="intro">I want to bring psychology and creative practice together to build advertising that earns attention, creates emotion, persuades with purpose and stays in memory. It starts with understanding what a brand stands for — and the people it hopes to reach.</p>
+        <div className="hero-visual" aria-hidden="true">
+          <div className="hero-visual-orbit hero-visual-orbit-one" />
+          <div className="hero-visual-orbit hero-visual-orbit-two" />
+          <div className="hero-visual-card hero-visual-card-back">
+            <span className="hero-visual-card-label">THE PROCESS</span>
+            <strong>Notice.<br />Connect.<br />Create.</strong>
+            <small>PEOPLE / CULTURE / IDEAS</small>
+          </div>
+          <div className="hero-visual-card hero-visual-card-main">
+            <span className="hero-visual-card-label">START WITH A QUESTION</span>
+            <strong>What makes<br /><em>people</em><br />feel something?</strong>
+            <div className="hero-visual-card-foot"><span>HUMAN INSIGHT</span><b>↗</b></div>
+          </div>
+          <span className="hero-visual-spark hero-visual-spark-one">✳</span>
+          <span className="hero-visual-spark hero-visual-spark-two">•</span>
+        </div>
         <div className="hero-bottom">
           <Link className="button" href="/work" data-testid="link-explore-work">Explore the work <ArrowDownRight size={17} aria-hidden="true" /></Link>
           <Link className="hero-secondary" href="/about" data-testid="link-home-about">A little about me <ArrowRight size={16} aria-hidden="true" /></Link>
