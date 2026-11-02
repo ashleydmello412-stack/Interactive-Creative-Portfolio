@@ -551,18 +551,6 @@ export function ThinkingPage() {
     { title: 'Loyalty', label: 'Build a reason to return', prompt: 'What experience would make choosing this brand feel worthwhile again?', tension: 'A repeat choice needs to feel meaningful beyond habit, convenience or a one-time offer.', lens: 'PERSUASION + MEMORY', lensIndex: 2, routes: ['Make returning customers feel recognised through a small, consistent experience that demonstrates the value of the relationship.', 'Show the benefit of coming back through a story that builds on familiarity and gives the audience a reason to continue the relationship.'] },
   ];
   const steps = [
-    { number: '01', title: 'Attention', copy: 'What makes someone notice?', detail: 'Look at the context people are already paying attention to. The creative challenge is to make the brand relevant enough to earn a pause, not just louder than everything around it.', question: 'What would make this worth a second look?', signals: ['Distinctive visual cue', 'Immediate relevance', 'A clear first impression'] },
-    { number: '02', title: 'Emotion', copy: 'What makes the message matter?', detail: 'Decide what the audience should feel, then look for a human situation that can carry that feeling. Tone, character and tension can make an abstract promise feel personal.', question: 'What feeling should the idea leave behind?', signals: ['Recognisable human tension', 'Tone and atmosphere', 'A point of connection'] },
-    { number: '03', title: 'Persuasion', copy: 'What gives someone a reason to act?', detail: 'A persuasive idea gives people a reason to believe the message. The promise, proof and next step should work together rather than relying on a clever line alone.', question: 'What would make the promise believable?', signals: ['A credible reason to believe', 'A clear value exchange', 'A useful next step'] },
-    { number: '04', title: 'Memory', copy: 'What makes the idea stay?', detail: 'Look for a recognisable device that can connect the message to an everyday moment. A repeated phrase, image or association can help make a brand easier to recall.', question: 'What could people remember or repeat?', signals: ['A recognisable cue', 'A repeatable phrase or image', 'A meaningful brand link'] },
-  ];
-  const objectives = [
-    { title: 'Awareness', label: 'Get noticed', prompt: 'What would make this brand earn attention in a space already crowded with messages?', response: 'A distinctive entry point', lens: 'ATTENTION' },
-    { title: 'Perception', label: 'Change the view', prompt: 'Which existing belief about the brand needs to be challenged, softened or reframed?', response: 'A new way to see the brand', lens: 'EMOTION + PERSUASION' },
-    { title: 'Association', label: 'Own a meaning', prompt: 'What everyday moment, cultural cue or feeling should people connect with this brand?', response: 'A meaningful connection', lens: 'MEMORY' },
-    { title: 'Loyalty', label: 'Build a reason to return', prompt: 'What experience would make choosing this brand feel worthwhile again?', response: 'A reason to come back', lens: 'PERSUASION + MEMORY' },
-  ];
-  const steps = [
     ['01', 'Understand the brand'],
     ['02', 'Understand the audience'],
     ['03', 'Find the human insight'],
