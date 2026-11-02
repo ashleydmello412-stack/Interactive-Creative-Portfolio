@@ -29,11 +29,11 @@ export const projects: Project[] = [
     period: '2024–2025',
     tags: ['Performance', 'Acting'],
     roles: ['Lead performer'],
-    summary: 'A mime performance in which I played one of the lead roles.',
-    detail: 'Time Wrath was an early mime performance and one of the first major projects in my theatre journey. My confirmed contribution was as a lead performer.',
+    summary: 'A mime adventure following two treasure-seeking travellers across the world by ship — from an encounter at their destination to betrayal and a final trap.',
+    detail: 'Two adventurers travel by ship in search of a treasure. At their destination, they encounter the Indigenous people of the place. During the encounter, Ashley’s character is betrayed by the other adventurer; the other adventurer eventually reaches the destination, only to end up trapped in a cell-like enclosure. This account follows the plot as currently recalled, with staging and transitions to be checked against the performance footage.',
     practiceNote: {
-      title: 'Making meaning without dialogue',
-      body: 'Mime relies on the audience reading physical expression, movement and timing rather than spoken explanation. Performing in this form made visual communication central to the work. It is a useful perspective to carry into advertising, where an idea may need to be understood before a single line is read.',
+      title: 'A journey told through physical storytelling',
+      body: 'The story moves through distinct changes in place and relationship: a voyage, an encounter, a betrayal and an ending built around confinement. As a mime performance, those shifts depend on physical action and the performers’ interaction to make the plot legible without dialogue. The precise gestures, transitions and stage pictures will be documented after reviewing the video.',
     },
     recognition: [
       '1st place — Darpan ’24',
