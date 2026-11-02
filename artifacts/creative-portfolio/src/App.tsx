@@ -101,10 +101,81 @@ function Shell({ children }: { children: ReactNode }) {
       ?.setAttribute('content', metadata.description);
   }, [location]);
 
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const selector = [
+        '#main-content .page-intro',
+        '#main-content .hero',
+        '#main-content .section',
+        '#main-content .home-destination',
+        '#main-content .project-card',
+        '#main-content .archive-range',
+        '#main-content .thinking-principle',
+        '#main-content .thinking-lens',
+        '#main-content .thinking-step-strip article',
+        '#main-content .reference-grid article',
+        '#main-content .research-proposal-card',
+        '#main-content .research-secondary-card',
+        '#main-content .about-positioning',
+        '#main-content .about-block',
+        '#main-content .about-theatre-grid article',
+        '#main-content .contact-panel',
+        '#main-content .bhasha-scene-card',
+        '#main-content .hari-scene-card',
+      ].join(',');
+      const targets = Array.from(document.querySelectorAll<HTMLElement>(selector));
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      targets.forEach((element, index) => {
+        element.classList.add('motion-ready');
+        element.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 75}ms`);
+      });
+
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        targets.forEach((element) => element.classList.add('is-visible'));
+        return;
+      }
+
+      observer = new IntersectionObserver((entries, activeObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            activeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+      targets.forEach((element) => observer?.observe(element));
+    });
+    let observer: IntersectionObserver | undefined;
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer?.disconnect();
+    };
+  }, [location]);
+
+  useEffect(() => {
+    const progress = document.querySelector<HTMLElement>('.scroll-progress');
+    const updateProgress = () => {
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+      progress?.style.setProperty('--scroll-scale', String(Math.min(1, Math.max(0, ratio))));
+    };
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    return () => {
+      window.removeEventListener('scroll', updateProgress);
+      window.removeEventListener('resize', updateProgress);
+    };
+  }, []);
+
   return (
     <>
       <a className="skip-link" href="#main-content" data-testid="link-skip-content">Skip to content</a>
       <header className="site-header wrap" id="page-top">
+        <div className="scroll-progress" aria-hidden="true" />
         <div className="nav-row">
           <Link href="/" className="brand" aria-label="Creative Archive home" data-testid="link-brand">Creative Archive<span className="brand-mark" aria-hidden="true">·</span></Link>
           <button className="menu-toggle" type="button" aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen((open) => !open)} data-testid="button-menu-toggle">
@@ -118,7 +189,7 @@ function Shell({ children }: { children: ReactNode }) {
           </nav>
         </div>
       </header>
-      {children}
+      <div className="route-stage" key={location}>{children}</div>
       <footer className="site-footer wrap" data-testid="site-footer">
         <span>Creative Archive · Portfolio in progress</span>
         <a href="#page-top" data-testid="link-footer-home">Back to top ↑</a>
