@@ -1473,6 +1473,26 @@
   padding-top: 12px;
   border-top: 1px solid var(--line);
 }
+.hero-visual-card-foot button {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.35rem;
+  line-height: 1;
+  transition: transform .18s ease, background .18s ease;
+}
+.hero-visual-card-foot button:hover { transform: rotate(45deg); background: var(--coral); }
+.hero-visual-card-foot button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
 .hero-visual-card-foot b { color: var(--coral); font-size: 1.3rem; }
 .hero-visual-spark { position: absolute; color: var(--lime); }
 .hero-visual-spark-one { top: 10px; right: 4%; font-size: 2.3rem; animation: sparkTurn 12s linear infinite; }
