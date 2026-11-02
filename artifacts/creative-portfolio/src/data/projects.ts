@@ -121,34 +121,33 @@ export const projects: Project[] = [
     number: 'PROJECT 06',
     tags: ['Performance', 'Acting', 'Street Play', 'Language & Identity', 'Creative work'],
     roles: ['Street Play Sub-Head', 'Ensemble performance across the play', 'Acting — Netaji (Scene 1)'],
-    summary: 'A multilingual street play about language, identity and belonging — and the harm that begins when difference becomes a reason to exclude.',
-    detail: 'Ek Anokhi Bhasha uses political satire, a classroom scene and a kabadiwala’s weighing scale to examine language-based prejudice. It moves from comic exchanges and questions of linguistic identity to the human consequences of discrimination, then closes with a call for realisation, acceptance and action.',
+    summary: 'A multilingual street play about language, identity and belonging — and what happens when difference becomes a reason to exclude.',
+    detail: 'Through political satire, a classroom debate and a weighing-scale sequence, the play moves from everyday language prejudice to its human consequences — then towards realisation, acceptance and action.',
     caseStudy: {
-      premise: 'What happens when language stops being a way to connect and becomes a test of who belongs? Ek Anokhi Bhasha follows that question through everyday interactions, public rhetoric and increasingly serious consequences. Its final movement turns the idea around: every voice is unique, every language is unique, and difference can become a basis for understanding rather than exclusion.',
+      premise: 'What happens when language becomes a test of who belongs? The play traces that question from everyday prejudice to its human consequences, then turns towards understanding across difference.',
       scenes: [
         {
           title: '01 / The language of power',
-          description: 'A media interview puts a self-proclaimed protector of culture on the spot. The questions expose the gap between public claims about respecting language and the actions described in the scene. When the reporters cannot understand the leader’s language, the satire turns on them — and the media is caged. The scene uses exaggeration and reversal to question who gets to define cultural loyalty.',
+          description: 'A media interview exposes the gap between public claims and actions. When the reporters cannot understand the leader’s language, the test is turned back on them — a comic reversal that questions who gets to define cultural loyalty.',
         },
         {
           title: '02 / The classroom',
-          description: 'A surprise test becomes a conversation about accents, identity and language. Students debate what counts as a national language; the narrator then distinguishes the constitutional position described in the script. The scene rewrites lines from the national pledge with exclusionary conditions, showing how shared belonging can be narrowed when language is treated as a test of identity.',
+          description: 'A classroom debate about accents and the idea of a national language leads into a rewritten pledge. Each added condition shows how easily shared belonging can be narrowed by linguistic identity.',
         },
         {
           title: '03 / The weighing scale',
-          description: 'A kabadiwala’s weighing machine becomes a metaphor for “the weight of the nation”. A sequence of news-like incidents moves from jokes about language to discrimination, assault and a mother’s distress as her son is dismissed rather than helped. The repeated “Saare Jahan Se Achha” refrain becomes increasingly uncomfortable as the consequences grow more serious.',
+          description: 'A kabadiwala’s weighing machine becomes “the weight of the nation”. News-like incidents escalate from jokes to discrimination and tragedy, while “Saare Jahan Se Achha” shifts from a familiar refrain to an uneasy counterpoint.',
         },
         {
           title: '04 / Ek Anokhi Bhasha',
-          description: 'The closing scene turns from blame to responsibility. The title is unpacked through a sequence: from “one” comes realisation, from uniqueness comes acceptance, and from language comes action. The opening multilingual greeting returns, alongside the shared “Aeiiioa” sound, to end on connection across difference.',
+          description: 'The final sequence moves from one to realisation, uniqueness to acceptance, and language to action. The multilingual greeting and “Aeiiioa” return to close the play on connection.',
         },
       ],
-      contribution: 'I was the Street Play Sub-Head and helped with coordination and management wherever needed. On stage, I performed across the other scenes as part of the ensemble, with a named character credit as Netaji in Scene 1.',
+      contribution: 'Street Play Sub-Head; supported coordination and management wherever needed. Performed across the production as part of the ensemble, with a named credit as Netaji in Scene 1.',
       reflection: 'The play’s progression — from exaggerated comedy to a painful human consequence, then towards a collective response — shows how street theatre can make a social issue felt as well as discussed. The weighing scale, recurring refrain, multilingual greetings and shared invented sound give the audience recurring images and sounds to follow. The closing sequence turns the argument into a simple progression: realisation, acceptance and action.',
     },
     recognition: [
       '1st place — Blossoms ’26 (pre-finals)',
-      'Did not win — Blossoms ’26 finals',
     ],
     tone: 'tone-dark',
   },
