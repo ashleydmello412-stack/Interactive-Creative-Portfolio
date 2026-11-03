@@ -857,57 +857,96 @@ export function ThinkingPage() {
 }
 
 export function AboutPage() {
-  const interests = ['Psychology', 'Theatre', 'Mime & street play', 'Piano & music', 'Sound', 'Video editing', 'Scriptwriting', 'Direction'];
-  const tools = ['Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
-  return <main className="wrap main-content about-page" id="main-content" data-testid="page-about">
-    <header className="page-intro about-intro">
-      <div className="kicker">03 / ABOUT — THE PERSON BEHIND THE WORK</div>
-      <h1 className="page-title">Hi, I'm Ashley. I like stories, people, and figuring out what makes an idea stick.</h1>
-      <p>I'm a third-year B.Sc. Psychology student at CHRIST, with one foot in the world of human behaviour and the other usually somewhere around a rehearsal room, a script or an editing timeline.</p>
+  const interests = ['Psychology', 'Theatre', 'Mime & street play', 'Piano', 'Music & sound', 'Video editing', 'Scriptwriting', 'Direction'];
+  const tools = ['Premiere Pro', 'Audition', 'After Effects'];
+  return <main className="wrap main-content about-page about-vibrant" id="main-content" data-testid="page-about">
+    <header className="about-vibrant-hero">
+      <div className="about-vibrant-copy">
+        <div className="kicker">03 / ABOUT — A LITTLE MORE PERSONAL</div>
+        <h1>I like figuring people out. <em>And making a bit of a scene.</em></h1>
+        <p>I'm Ashley D'Mello — a psychology student, theatre person, occasional pianist and enthusiastic creative dabbler. Most of my interests come back to the same thing: people, stories, and why one tiny detail can change the way something feels.</p>
+        <div className="about-vibrant-signoff"><span>CURIOUS BY DEFAULT</span><span>MAKING THINGS AS I GO ↘</span></div>
+      </div>
+      <div className="about-vibrant-collage" aria-label="A playful typographic collage representing psychology and creative practice">
+        <div className="about-collage-orbit"></div>
+        <div className="about-collage-card about-collage-card-back"><span>NOTES FROM THE PROCESS</span><strong>observe<br/>wonder<br/>repeat.</strong></div>
+        <div className="about-collage-card about-collage-card-front"><span>THE HUMAN BEING BEHIND THE WORK</span><strong>A.</strong><i>✳</i></div>
+        <span className="about-collage-tag about-collage-tag-one">PSYCH STUDENT</span>
+        <span className="about-collage-tag about-collage-tag-two">THEATRE KID(ISH)</span>
+        <span className="about-collage-caption">A WORK IN PROGRESS — IN A GOOD WAY.</span>
+      </div>
     </header>
 
-    <section className="about-positioning">
-      <div className="about-positioning-label kicker">A LITTLE CONTEXT</div>
-      <p>I didn't arrive at creative work through one neat route. Psychology made me curious about people; theatre gave me a place to turn that curiosity into something other people could experience.</p>
-    </section>
-
-    <section className="about-layout section">
-      <div className="about-block"><div className="kicker">THE THINGS THAT SHAPE ME</div><h2>Curiosity in the classroom. Creativity everywhere else.</h2></div>
-      <div className="about-story">
-        <p className="about-copy">Psychology is the part of my life that keeps me asking questions. I'm interested in how people think, feel, make decisions and relate to the world around them — from everyday social behaviour to the way people respond to brands and stories.</p>
-        <p>Outside lectures, theatre has become a big part of my university experience. I started out performing and gradually found myself wanting to be involved in more of the process: writing, directing, working with sound and lights, and figuring out how all the pieces fit together. Mime and street theatre have been especially fun because they make you communicate an entire idea with movement, timing, expression and whatever the audience brings into the moment.</p>
-        <p>I also spent five weeks interning at Mona Remedial Educational Centre, where I supported remedial educators, helped prepare teaching aids and assisted with classroom activities. It was a different kind of learning experience — one that involved paying attention, adapting how information was presented and understanding the value of patient, practical support.</p>
-        <p>I'm still figuring out exactly where all these interests will take me. I know I want to keep working where psychology and creative storytelling can inform each other — especially in advertising, film and other forms of communication.</p>
+    <section className="about-vibrant-intro">
+      <div className="about-vibrant-side-label"><span className="kicker">THE SHORT STORY</span><span className="about-vibrant-side-number">01 / 04</span></div>
+      <div className="about-vibrant-intro-copy">
+        <p className="about-vibrant-lead">Somewhere between a psychology lecture and a theatre rehearsal, I realised I really like understanding how people tick — and then finding creative ways to communicate with them.</p>
+        <div className="about-vibrant-paragraphs">
+          <p>I'm in my third year of B.Sc. Psychology at CHRIST. I like the questions psychology opens up: what people notice, what they remember, what influences a decision, and how the same message can mean different things to different people.</p>
+          <p>Outside class, I've spent a lot of time around theatre. I began with acting and mime, then gradually got pulled into scripting, direction and the behind-the-scenes details that make a performance work. I like that theatre is equal parts planning and improvising — you can prepare everything, and an audience will still surprise you.</p>
+        </div>
       </div>
     </section>
 
-    <section className="about-theatre section">
-      <div className="section-head">
-        <div><div className="kicker">OFFSTAGE, TOO</div><h2>Some of the things I keep coming back to.</h2></div>
-        <p className="section-note">Not everything I enjoy making fits neatly into a project title or a role description.</p>
+    <section className="about-vibrant-worlds">
+      <div className="about-vibrant-section-head">
+        <div><span className="kicker">THREE PLACES YOU'LL FIND ME</span><h2>Different rooms.<br/><em>Same curiosity.</em></h2></div>
+        <p>Not a list of job titles. Just three parts of my life that keep finding their way into each other.</p>
       </div>
-      <div className="about-theatre-grid about-personal-grid">
-        <article><span className="mono">01 / MUSIC</span><h3>Piano, playlists &amp; sound</h3><p>I play piano, enjoy exploring music, and like thinking about how sound changes the mood and rhythm of a performance.</p></article>
-        <article><span className="mono">02 / MAKING</span><h3>Editing &amp; experimenting</h3><p>I enjoy working with video and audio — shaping a sequence, finding its pace, and seeing how small editing choices change the way a story feels.</p></article>
-        <article><span className="mono">03 / PEOPLE</span><h3>Stories, perspectives &amp; conversations</h3><p>I'm drawn to stories that make me look at familiar things differently, and to creative spaces where people bring very different ideas to the same table.</p></article>
+      <div className="about-vibrant-world-grid">
+        <article className="about-vibrant-world about-world-study">
+          <span className="about-vibrant-world-index">01 / THE CLASSROOM</span>
+          <div className="about-world-doodle about-world-doodle-study" aria-hidden="true">?</div>
+          <h3>Asking why.</h3>
+          <p>Psychology keeps me curious about behaviour, relationships, attention and the choices people make. Consumer psychology is where a lot of those questions meet my creative interests.</p>
+          <span className="about-vibrant-world-foot">READ · QUESTION · CONNECT</span>
+        </article>
+        <article className="about-vibrant-world about-world-stage">
+          <span className="about-vibrant-world-index">02 / THE REHEARSAL ROOM</span>
+          <div className="about-world-doodle about-world-doodle-stage" aria-hidden="true">✳</div>
+          <h3>Making a scene.</h3>
+          <p>Mime and street theatre taught me to tell stories with movement, timing and expression. Acting led me into writing and directing — and made collaboration a big part of the fun.</p>
+          <span className="about-vibrant-world-foot">ACT · WRITE · DIRECT</span>
+        </article>
+        <article className="about-vibrant-world about-world-edit">
+          <span className="about-vibrant-world-index">03 / THE EDITING TIMELINE</span>
+          <div className="about-audio-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <h3>Playing with the details.</h3>
+          <p>I enjoy piano, music, audio and video editing. A sound cue, a cut or a pause can completely change the rhythm of a story — I like experimenting with those details.</p>
+          <span className="about-vibrant-world-foot">LISTEN · CUT · REFINE</span>
+        </article>
       </div>
     </section>
 
-    <section className="about-personal-footer">
-      <div className="about-personal-note">
-        <span className="kicker">CURRENTLY EXPLORING</span>
-        <p>How an observation about people can turn into a concept, a script, a performance, a film — or an idea that takes a completely different shape.</p>
-      </div>
-      <div className="about-personal-skills">
-        <div className="kicker">A FEW INTERESTS &amp; TOOLS</div>
-        <div className="skills" data-testid="list-skills">{interests.map((item) => <span key={item}>{item}</span>)}{tools.map((item) => <span key={item}>{item}</span>)}</div>
+    <section className="about-vibrant-detour">
+      <div className="about-detour-stamp">A DIFFERENT<br/>KIND OF<br/><strong>LEARNING</strong></div>
+      <div className="about-detour-copy">
+        <span className="kicker">A FIVE-WEEK DETOUR / MONA REMEDIAL EDUCATIONAL CENTRE</span>
+        <h2>Learning to pay attention in a different way.</h2>
+        <p>During my internship at Mona Remedial Educational Centre, I supported remedial educators, helped prepare teaching aids and assisted with classroom activities. I also got to observe and assist the wider team. It was a practical reminder that communication is never one-size-fits-all — you have to pay attention to the person in front of you.</p>
       </div>
     </section>
 
-    <div className="about-bottom-link">
-      <span className="kicker">WHEN YOU'RE READY</span>
-      <Link href="/work" className="about-journey-link" data-testid="link-about-full-archive">Have a look at what I've been making <ArrowRight size={16} aria-hidden="true" /></Link>
-    </div>
+    <section className="about-vibrant-timeline">
+      <div className="about-vibrant-section-head">
+        <div><span className="kicker">A QUICK LOOK BACK</span><h2>How it all<br/><em>started to stack up.</em></h2></div>
+        <p>University has been a series of saying yes to the next thing — and discovering I enjoy the making as much as the performing.</p>
+      </div>
+      <div className="about-vibrant-timeline-row">
+        <article><span>2024—25 / THE START</span><strong>First mime. First big wins.</strong><p><em>Time Wrath</em>, <em>Why So Serious?</em>, <em>The Perfect Crime</em>, and the InBlooms Mime Duo — where I acted, directed, scripted and sound-designed.</p></article>
+        <b className="about-timeline-arrow">↗</b>
+        <article><span>2025—26 / MORE TO MAKE</span><strong>More roles, more formats.</strong><p><em>Hari Patang</em>, <em>Ek Tha Raja</em>, <em>Ek Anokhi Bhasha</em> and the short film <em>Knock Knock</em> brought different combinations of acting, direction, writing and production.</p></article>
+      </div>
+      <Link href="/work" className="about-vibrant-work-link" data-testid="link-about-full-archive">The projects have their own stories. Take a look <ArrowRight size={16} aria-hidden="true" /></Link>
+    </section>
+
+    <section className="about-vibrant-bottom">
+      <div className="about-bottom-quote"><span className="kicker">CURRENTLY COLLECTING</span><p>Interesting people. Unexpected stories. New ways to make an idea land.</p><span className="about-bottom-quote-mark">✳</span></div>
+      <div className="about-bottom-list">
+        <div><span className="kicker">THINGS I LIKE</span><div className="about-bottom-chips">{interests.map((item) => <span key={item}>{item}</span>)}</div></div>
+        <div><span className="kicker">TOOLS I PLAY WITH</span><div className="about-bottom-chips about-tool-chips">{tools.map((item) => <span key={item}>{item}</span>)}</div></div>
+      </div>
+    </section>
   </main>;
 }
 
