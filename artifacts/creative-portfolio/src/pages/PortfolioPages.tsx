@@ -857,45 +857,57 @@ export function ThinkingPage() {
 }
 
 export function AboutPage() {
-  const skills = ['Psychology', 'Consumer behaviour', 'Storytelling', 'Acting', 'Direction', 'Scriptwriting', 'Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
-  return <main className="wrap main-content" id="main-content" data-testid="page-about">
+  const interests = ['Psychology', 'Theatre', 'Mime & street play', 'Piano & music', 'Sound', 'Video editing', 'Scriptwriting', 'Direction'];
+  const tools = ['Adobe Premiere Pro', 'Adobe Audition', 'After Effects'];
+  return <main className="wrap main-content about-page" id="main-content" data-testid="page-about">
     <header className="page-intro about-intro">
-      <div className="kicker">03 / ABOUT</div>
-      <h1 className="page-title">Psychology shapes my thinking. Creative practice shapes how I tell stories.</h1>
-      <p>I'm interested in using an understanding of people to develop advertising that feels relevant, emotionally resonant and worth remembering.</p>
+      <div className="kicker">03 / ABOUT — THE PERSON BEHIND THE WORK</div>
+      <h1 className="page-title">Hi, I'm Ashley. I like stories, people, and figuring out what makes an idea stick.</h1>
+      <p>I'm a third-year B.Sc. Psychology student at CHRIST, with one foot in the world of human behaviour and the other usually somewhere around a rehearsal room, a script or an editing timeline.</p>
     </header>
 
     <section className="about-positioning">
-      <div className="about-positioning-label kicker">THE THROUGH-LINE</div>
-      <p>I want to connect the study of human behaviour with the craft of creative communication — from the first insight to the final execution.</p>
+      <div className="about-positioning-label kicker">A LITTLE CONTEXT</div>
+      <p>I didn't arrive at creative work through one neat route. Psychology made me curious about people; theatre gave me a place to turn that curiosity into something other people could experience.</p>
     </section>
 
     <section className="about-layout section">
-      <div className="about-block"><div className="kicker">PSYCHOLOGY × CREATIVITY</div><h2>Understand people. Give ideas a form.</h2></div>
+      <div className="about-block"><div className="kicker">THE THINGS THAT SHAPE ME</div><h2>Curiosity in the classroom. Creativity everywhere else.</h2></div>
       <div className="about-story">
-        <p className="about-copy">I'm a third-year B.Sc. Psychology student interested in consumer behaviour, advertising and the ways people respond to stories, symbols and shared cultural references.</p>
-        <p>My starting point is the brand: what it stands for, what it wants to communicate and what it needs to achieve. From there, I want to understand the people it is speaking to — what catches their attention, moves them emotionally, persuades them and stays in their memory.</p>
-        <p>My experience in theatre gives me a practical foundation for thinking about how an idea reaches an audience. Through acting, direction and scriptwriting, I've worked with dialogue, timing, satire and audience engagement. I've also explored breaking the fourth wall and involving spectators in a performance, alongside theatrical influences such as Poor Theatre and the Theatre of Cruelty.</p>
-        <p>I'm interested in carrying that experience into advertising: developing the thinking behind a campaign and understanding how it can become a script, a story, a performance or a wider brand experience.</p>
+        <p className="about-copy">Psychology is the part of my life that keeps me asking questions. I'm interested in how people think, feel, make decisions and relate to the world around them — from everyday social behaviour to the way people respond to brands and stories.</p>
+        <p>Outside lectures, theatre has become a big part of my university experience. I started out performing and gradually found myself wanting to be involved in more of the process: writing, directing, working with sound and lights, and figuring out how all the pieces fit together. Mime and street theatre have been especially fun because they make you communicate an entire idea with movement, timing, expression and whatever the audience brings into the moment.</p>
+        <p>I also spent five weeks interning at Mona Remedial Educational Centre, where I supported remedial educators, helped prepare teaching aids and assisted with classroom activities. It was a different kind of learning experience — one that involved paying attention, adapting how information was presented and understanding the value of patient, practical support.</p>
+        <p>I'm still figuring out exactly where all these interests will take me. I know I want to keep working where psychology and creative storytelling can inform each other — especially in advertising, film and other forms of communication.</p>
       </div>
     </section>
 
     <section className="about-theatre section">
       <div className="section-head">
-        <div><div className="kicker">WHAT THEATRE HAS TAUGHT ME</div><h2>An audience is part of the experience.</h2></div>
-        <p className="section-note">My creative background has made me attentive to how people receive, interpret and participate in a story.</p>
+        <div><div className="kicker">OFFSTAGE, TOO</div><h2>Some of the things I keep coming back to.</h2></div>
+        <p className="section-note">Not everything I enjoy making fits neatly into a project title or a role description.</p>
       </div>
-      <div className="about-theatre-grid">
-        <article><span className="mono">01 / ENGAGEMENT</span><h3>Break the fourth wall</h3><p>Addressing the audience directly and challenging the boundary between performer and spectator.</p></article>
-        <article><span className="mono">02 / PARTICIPATION</span><h3>Bring people into the scene</h3><p>Creating moments where spectators do more than watch — they become part of the communication.</p></article>
-        <article><span className="mono">03 / VOICE</span><h3>Use satire and dialogue</h3><p>Using humour, irony and social observation to make an idea land with an audience.</p></article>
+      <div className="about-theatre-grid about-personal-grid">
+        <article><span className="mono">01 / MUSIC</span><h3>Piano, playlists &amp; sound</h3><p>I play piano, enjoy exploring music, and like thinking about how sound changes the mood and rhythm of a performance.</p></article>
+        <article><span className="mono">02 / MAKING</span><h3>Editing &amp; experimenting</h3><p>I enjoy working with video and audio — shaping a sequence, finding its pace, and seeing how small editing choices change the way a story feels.</p></article>
+        <article><span className="mono">03 / PEOPLE</span><h3>Stories, perspectives &amp; conversations</h3><p>I'm drawn to stories that make me look at familiar things differently, and to creative spaces where people bring very different ideas to the same table.</p></article>
       </div>
     </section>
 
-    <section className="about-tools">
-      <div className="kicker">TOOLS &amp; AREAS OF INTEREST</div>
-      <div className="skills" data-testid="list-skills">{skills.map((skill) => <span key={skill} data-testid={`skill-${skill.toLowerCase().replaceAll(' ', '-')}`}>{skill}</span>)}</div>
+    <section className="about-personal-footer">
+      <div className="about-personal-note">
+        <span className="kicker">CURRENTLY EXPLORING</span>
+        <p>How an observation about people can turn into a concept, a script, a performance, a film — or an idea that takes a completely different shape.</p>
+      </div>
+      <div className="about-personal-skills">
+        <div className="kicker">A FEW INTERESTS &amp; TOOLS</div>
+        <div className="skills" data-testid="list-skills">{interests.map((item) => <span key={item}>{item}</span>)}{tools.map((item) => <span key={item}>{item}</span>)}</div>
+      </div>
     </section>
+
+    <div className="about-bottom-link">
+      <span className="kicker">WHEN YOU'RE READY</span>
+      <Link href="/work" className="about-journey-link" data-testid="link-about-full-archive">Have a look at what I've been making <ArrowRight size={16} aria-hidden="true" /></Link>
+    </div>
   </main>;
 }
 
