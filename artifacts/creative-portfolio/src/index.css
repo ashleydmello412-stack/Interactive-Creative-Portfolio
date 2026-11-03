@@ -2675,3 +2675,130 @@
   .about-world-detail,.about-timeline-panel,.about-interest-detail { animation: none; }
   .about-vibrant-world,.about-timeline-tabs button,.about-bottom-chips button { transition: none; }
 }
+
+
+/* Extra About interactions: shuffle card, quick-fire Q&A, surprise-interest control */
+.about-collage-card-interactive {
+  appearance: none;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease;
+}
+.about-collage-card-interactive:hover {
+  transform: rotate(-3deg) translate(-27px,-7px) scale(1.035);
+  box-shadow: 0 24px 46px #00000052;
+}
+.about-collage-card-interactive:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 5px;
+}
+.about-collage-card-interactive > small {
+  color: #1717179c;
+  font-family: var(--app-font-mono);
+  font-size: .48rem;
+  letter-spacing: .1em;
+}
+.about-collage-card-interactive > strong {
+  transition: transform .22s ease;
+}
+.about-collage-card-interactive:active > strong { transform: scale(.88) rotate(8deg); }
+.about-quickfire { padding: 65px 0 60px; border-bottom: 1px solid var(--line); }
+.about-quickfire-layout { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 12px; }
+.about-quickfire-questions { display: grid; gap: 8px; align-content: start; }
+.about-quickfire-questions button {
+  display: grid;
+  grid-template-columns: 30px minmax(0,1fr) 24px;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background .18s ease,transform .18s ease,border-color .18s ease;
+}
+.about-quickfire-questions button:hover { transform: translateX(4px); border-color: var(--ink); }
+.about-quickfire-questions button.is-active { background: var(--lime); border-color: var(--ink); }
+.about-quickfire-questions button > span { color: var(--muted-ink); font-family: var(--app-font-mono); font-size: .58rem; }
+.about-quickfire-questions button > strong { font-size: .91rem; line-height: 1.35; }
+.about-quickfire-questions button > b { justify-self: end; font-size: 1.25rem; font-weight: 400; }
+.about-quickfire-questions button:focus-visible,.about-bottom-chip-heading button:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 3px;
+}
+.about-quickfire-answer {
+  position: relative;
+  display: flex;
+  min-height: 250px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(22px,3.5vw,34px);
+  border-radius: 18px;
+  background: var(--blue);
+  animation: aboutReveal .25s ease both;
+}
+.about-quickfire-answer > .kicker { position: relative; z-index: 1; color: var(--muted-ink); }
+.about-quickfire-answer > p {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 30px 0 12px;
+  font-size: clamp(1.45rem,2.6vw,2rem);
+  line-height: 1.13;
+  letter-spacing: -.05em;
+}
+.about-quickfire-doodle {
+  position: absolute;
+  right: 12px;
+  bottom: -52px;
+  color: #17171713;
+  font-size: 12rem;
+  line-height: 1;
+  transform: rotate(-12deg);
+}
+.about-bottom-chip-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+.about-bottom-chip-heading > span {
+  color: var(--muted-ink);
+  font-family: var(--app-font-mono);
+  font-size: .51rem;
+  letter-spacing: .1em;
+}
+.about-bottom-chip-heading button {
+  padding: 6px 9px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--ink);
+  font-family: var(--app-font-mono);
+  font-size: .52rem;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: transform .18s ease,background .18s ease;
+}
+.about-bottom-chip-heading button:hover { transform: rotate(-3deg) translateY(-2px); background: var(--coral); }
+@media(max-width:850px) {
+  .about-quickfire-layout { grid-template-columns: 1fr; }
+  .about-quickfire-questions { grid-template-columns: 1fr 1fr; }
+  .about-quickfire-questions button { min-height: 75px; }
+}
+@media(max-width:650px) {
+  .about-quickfire { padding: 45px 0; }
+  .about-quickfire-questions { grid-template-columns: 1fr; }
+  .about-quickfire-questions button { min-height: 58px; }
+  .about-quickfire-answer { min-height: 205px; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .about-collage-card-interactive,.about-quickfire-questions button,.about-bottom-chip-heading button { transition: none; }
+}
