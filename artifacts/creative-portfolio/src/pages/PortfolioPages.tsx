@@ -860,6 +860,8 @@ export function AboutPage() {
   const [activeSide, setActiveSide] = useState(0);
   const [activeChapter, setActiveChapter] = useState(0);
   const [activeInterest, setActiveInterest] = useState('Piano & music');
+  const [heroNoteIndex, setHeroNoteIndex] = useState(0);
+  const [activeQuickFact, setActiveQuickFact] = useState(0);
 
   const sides = [
     {
@@ -926,6 +928,19 @@ export function AboutPage() {
   ];
   const selectedInterest = interests.find((item) => item.name === activeInterest) ?? interests[0];
 
+  const heroNotes = [
+    { eyebrow: 'THE HUMAN BEING BEHIND THE WORK', mark: 'A.', caption: 'A WORK IN PROGRESS — IN A GOOD WAY.' },
+    { eyebrow: 'CURRENT STATUS: CURIOUS', mark: '?', caption: 'ASK / WONDER / REPEAT.' },
+    { eyebrow: 'OFTEN FOUND SOMEWHERE BETWEEN', mark: '✳', caption: 'STAGE / SCREEN / SOUND.' },
+  ];
+
+  const quickFacts = [
+    { question: 'What was my first mime?', answer: 'Time Wrath. I played the lead, and it became one of the first big milestones in my theatre journey.' },
+    { question: 'What do I do offstage?', answer: 'Piano, music, audio and video editing. I like having something creative to tinker with even when there is no rehearsal.' },
+    { question: 'A different kind of experience?', answer: 'A five-week internship at Mona Remedial Educational Centre, where I supported remedial educators, prepared teaching aids and assisted with classroom activities.' },
+    { question: 'What happens behind the scenes?', answer: 'Alongside acting, I have worked on direction, scriptwriting, sound design and lights — depending on what the production needed.' },
+  ];
+
   return <main className="wrap main-content about-page about-vibrant" id="main-content" data-testid="page-about">
     <header className="about-vibrant-hero">
       <div className="about-vibrant-copy">
@@ -937,10 +952,12 @@ export function AboutPage() {
       <div className="about-vibrant-collage" aria-label="A playful typographic collage representing psychology and creative practice">
         <div className="about-collage-orbit"></div>
         <div className="about-collage-card about-collage-card-back"><span>NOTES FROM THE PROCESS</span><strong>observe<br/>wonder<br/>repeat.</strong></div>
-        <div className="about-collage-card about-collage-card-front"><span>THE HUMAN BEING BEHIND THE WORK</span><strong>A.</strong><i>✳</i></div>
+        <button type="button" className="about-collage-card about-collage-card-front about-collage-card-interactive" onClick={() => setHeroNoteIndex((current) => (current + 1) % heroNotes.length)} aria-label="Shuffle the collage note">
+          <span>{heroNotes[heroNoteIndex].eyebrow}</span><strong>{heroNotes[heroNoteIndex].mark}</strong><i>✳</i><small>CLICK TO SHUFFLE ↻</small>
+        </button>
         <span className="about-collage-tag about-collage-tag-one">PSYCH STUDENT</span>
         <span className="about-collage-tag about-collage-tag-two">THEATRE KID(ISH)</span>
-        <span className="about-collage-caption">A WORK IN PROGRESS — IN A GOOD WAY.</span>
+        <span className="about-collage-caption">{heroNotes[heroNoteIndex].caption}</span>
       </div>
     </header>
 
@@ -1005,10 +1022,29 @@ export function AboutPage() {
       <Link href="/work" className="about-vibrant-work-link" data-testid="link-about-full-archive">The projects have their own stories. Take a look <ArrowRight size={16} aria-hidden="true" /></Link>
     </section>
 
+    <section className="about-quickfire">
+      <div className="about-vibrant-section-head">
+        <div><span className="kicker">QUICK-FIRE / NO REHEARSALS</span><h2>A few things you<br/><em>could ask me.</em></h2></div>
+        <p>Pick a question. I'll give you the short version.</p>
+      </div>
+      <div className="about-quickfire-layout">
+        <div className="about-quickfire-questions" role="group" aria-label="Quick questions about Ashley">
+          {quickFacts.map((fact,index)=><button type="button" key={fact.question} className={activeQuickFact===index?'is-active':''} aria-pressed={activeQuickFact===index} onClick={()=>setActiveQuickFact(index)}>
+            <span>0{index+1}</span><strong>{fact.question}</strong><b>{activeQuickFact===index?'−':'+'}</b>
+          </button>)}
+        </div>
+        <article className="about-quickfire-answer" aria-live="polite" key={activeQuickFact}>
+          <span className="kicker">THE SHORT ANSWER / 0{activeQuickFact+1}</span>
+          <p>{quickFacts[activeQuickFact].answer}</p>
+          <span className="about-quickfire-doodle" aria-hidden="true">✳</span>
+        </article>
+      </div>
+    </section>
+
     <section className="about-vibrant-bottom">
       <div className="about-bottom-quote"><span className="kicker">CURRENTLY COLLECTING</span><p>Interesting people. Unexpected stories. New ways to make an idea land.</p><span className="about-bottom-quote-mark">✳</span></div>
       <div className="about-bottom-list">
-        <div><span className="kicker">PICK A RABBIT HOLE</span><div className="about-bottom-chips" role="group" aria-label="Explore personal interests">{interests.map((item)=><button type="button" key={item.name} aria-pressed={activeInterest===item.name} className={activeInterest===item.name?'is-active':''} onClick={()=>setActiveInterest(item.name)}>{item.name}</button>)}</div>
+        <div><span className="kicker">PICK A RABBIT HOLE</span><div className="about-bottom-chip-heading"><span>CHOOSE ONE</span><button type="button" onClick={() => setActiveInterest((current) => interests[(interests.findIndex((item)=>item.name===current)+1)%interests.length].name)}>SURPRISE ME ↗</button></div><div className="about-bottom-chips" role="group" aria-label="Explore personal interests">{interests.map((item)=><button type="button" key={item.name} aria-pressed={activeInterest===item.name} className={activeInterest===item.name?'is-active':''} onClick={()=>setActiveInterest(item.name)}>{item.name}</button>)}</div>
           <article className="about-interest-detail" aria-live="polite" key={selectedInterest.name}><span className="kicker">CURRENTLY INTO / {selectedInterest.name.toUpperCase()}</span><p>{selectedInterest.detail}</p></article>
         </div>
         <div><span className="kicker">TOOLS I PLAY WITH</span><div className="about-bottom-chips about-tool-chips"><span>Premiere Pro</span><span>Audition</span><span>After Effects</span></div></div>
