@@ -2238,3 +2238,46 @@
   .contact-direct-links-original { grid-template-columns: 1fr; gap: 12px; }
   .contact-direct-links-original-grid { grid-template-columns: 1fr; }
 }
+
+
+/* Personal details on the About page */
+.about-personal-grid article { min-height: 205px; }
+.about-personal-grid article:nth-child(1) { background: var(--blue); }
+.about-personal-grid article:nth-child(2) { background: var(--lime); }
+.about-personal-grid article:nth-child(3) { background: var(--paper); }
+.about-personal-footer {
+  display: grid;
+  grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr);
+  gap: 26px;
+  align-items: start;
+  padding: 38px 0 32px;
+  border-top: 1px solid var(--line);
+}
+.about-personal-note {
+  padding: 24px;
+  border-radius: 18px;
+  background: var(--coral);
+}
+.about-personal-note > p {
+  max-width: 590px;
+  margin: 15px 0 0;
+  font-size: clamp(1.35rem,2.8vw,2.05rem);
+  line-height: 1.13;
+  letter-spacing: -.045em;
+}
+.about-personal-skills > .kicker { margin: 3px 0 15px; }
+.about-personal-skills .skills { gap: 8px; }
+.about-personal-skills .skills span { background: var(--paper); }
+.about-bottom-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.about-bottom-link .about-journey-link { margin-top: 0; }
+@media(max-width:700px) {
+  .about-personal-footer { grid-template-columns: 1fr; gap: 22px; padding: 30px 0 24px; }
+  .about-bottom-link { align-items: flex-start; flex-direction: column; gap: 8px; }
+}
