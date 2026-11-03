@@ -857,8 +857,75 @@ export function ThinkingPage() {
 }
 
 export function AboutPage() {
-  const interests = ['Psychology', 'Theatre', 'Mime & street play', 'Piano', 'Music & sound', 'Video editing', 'Scriptwriting', 'Direction'];
-  const tools = ['Premiere Pro', 'Audition', 'After Effects'];
+  const [activeSide, setActiveSide] = useState(0);
+  const [activeChapter, setActiveChapter] = useState(0);
+  const [activeInterest, setActiveInterest] = useState('Piano & music');
+
+  const sides = [
+    {
+      label: '01 / THE CLASSROOM',
+      title: 'Asking why.',
+      copy: 'Psychology keeps me curious about behaviour, relationships, attention and the choices people make. Consumer psychology is where a lot of those questions meet my creative interests.',
+      foot: 'READ · QUESTION · CONNECT',
+      extra: 'I like looking beyond what people say they do and asking what might be shaping the decision: context, habits, emotion, social influence or the way information is presented.',
+      tone: 'about-world-study',
+      doodle: '?',
+    },
+    {
+      label: '02 / THE REHEARSAL ROOM',
+      title: 'Making a scene.',
+      copy: 'Mime and street theatre taught me to tell stories with movement, timing and expression. Acting led me into writing and directing — and made collaboration a big part of the fun.',
+      foot: 'ACT · WRITE · DIRECT',
+      extra: 'I enjoy the collective process: taking a script or a loose idea into rehearsal, trying things out, changing what does not work and finding the moment when a scene finally clicks.',
+      tone: 'about-world-stage',
+      doodle: '✳',
+    },
+    {
+      label: '03 / THE EDITING TIMELINE',
+      title: 'Playing with the details.',
+      copy: 'I enjoy piano, music, audio and video editing. A sound cue, a cut or a pause can completely change the rhythm of a story — I like experimenting with those details.',
+      foot: 'LISTEN · CUT · REFINE',
+      extra: 'I work with Adobe Premiere Pro, Audition and After Effects, and have also sound-designed the InBlooms Mime Duo performance.',
+      tone: 'about-world-edit',
+      doodle: '〰',
+    },
+  ];
+
+  const chapters = [
+    {
+      period: '2024—25',
+      title: 'The start: learning to tell stories on stage.',
+      copy: 'I began with mime and street theatre. Time Wrath was my first mime, where I played the lead. I also performed in Why So Serious? and The Perfect Crime, then started taking on more of the making.',
+      projects: [
+        'Time Wrath — lead performer; 1st at Darpan ’24, Mood Indigo ’24 and VIT; 2nd at Enact.',
+        'InBlooms Mime Duo — acted, directed, scripted and sound-designed; placed 2nd.',
+        'One Two Ka Four — acted, directed and scripted for Blossoms ’25.',
+        'Blossoms Procession — POC for the opening act.',
+      ],
+    },
+    {
+      period: '2025—26',
+      title: 'The next chapter: taking on more roles.',
+      copy: 'I started moving between performance, direction, writing and technical work — sometimes within the same production.',
+      projects: [
+        'Hari Patang — acting, direction and scriptwriting; played Red Light and Dhritrashtra.',
+        'Ek Tha Raja — acting and lights handling.',
+        'Ek Anokhi Bhasha — Street Play Sub-Head; ensemble performer and Netaji in Scene 1.',
+        'Knock Knock — acting in the short film.',
+      ],
+    },
+  ];
+
+  const interests = [
+    { name: 'Psychology', detail: 'Third-year B.Sc. Psychology student at CHRIST. I am especially curious about consumer behaviour and how people interpret messages, form impressions and make choices.' },
+    { name: 'Theatre & mime', detail: 'A big part of my university life. I have worked across acting, mime, street play, direction and scriptwriting.' },
+    { name: 'Piano & music', detail: 'I play piano and enjoy exploring music. Sound is one of the details I notice when thinking about the mood and rhythm of a performance.' },
+    { name: 'Sound design', detail: 'I sound-designed the InBlooms Mime Duo performance, and enjoy how music and sound can help shape a live story.' },
+    { name: 'Video editing', detail: 'I work with Premiere Pro and After Effects, and enjoy shaping the pace and flow of a visual story.' },
+    { name: 'Audio editing', detail: 'Adobe Audition is part of my toolkit for working with sound and audio.' },
+  ];
+  const selectedInterest = interests.find((item) => item.name === activeInterest) ?? interests[0];
+
   return <main className="wrap main-content about-page about-vibrant" id="main-content" data-testid="page-about">
     <header className="about-vibrant-hero">
       <div className="about-vibrant-copy">
@@ -891,31 +958,27 @@ export function AboutPage() {
     <section className="about-vibrant-worlds">
       <div className="about-vibrant-section-head">
         <div><span className="kicker">THREE PLACES YOU'LL FIND ME</span><h2>Different rooms.<br/><em>Same curiosity.</em></h2></div>
-        <p>Not a list of job titles. Just three parts of my life that keep finding their way into each other.</p>
+        <p>Pick a room. There's a little more behind each one.</p>
       </div>
-      <div className="about-vibrant-world-grid">
-        <article className="about-vibrant-world about-world-study">
-          <span className="about-vibrant-world-index">01 / THE CLASSROOM</span>
-          <div className="about-world-doodle about-world-doodle-study" aria-hidden="true">?</div>
-          <h3>Asking why.</h3>
-          <p>Psychology keeps me curious about behaviour, relationships, attention and the choices people make. Consumer psychology is where a lot of those questions meet my creative interests.</p>
-          <span className="about-vibrant-world-foot">READ · QUESTION · CONNECT</span>
-        </article>
-        <article className="about-vibrant-world about-world-stage">
-          <span className="about-vibrant-world-index">02 / THE REHEARSAL ROOM</span>
-          <div className="about-world-doodle about-world-doodle-stage" aria-hidden="true">✳</div>
-          <h3>Making a scene.</h3>
-          <p>Mime and street theatre taught me to tell stories with movement, timing and expression. Acting led me into writing and directing — and made collaboration a big part of the fun.</p>
-          <span className="about-vibrant-world-foot">ACT · WRITE · DIRECT</span>
-        </article>
-        <article className="about-vibrant-world about-world-edit">
-          <span className="about-vibrant-world-index">03 / THE EDITING TIMELINE</span>
-          <div className="about-audio-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <h3>Playing with the details.</h3>
-          <p>I enjoy piano, music, audio and video editing. A sound cue, a cut or a pause can completely change the rhythm of a story — I like experimenting with those details.</p>
-          <span className="about-vibrant-world-foot">LISTEN · CUT · REFINE</span>
-        </article>
+      <div className="about-vibrant-world-grid" role="group" aria-label="Explore different sides of Ashley">
+        {sides.map((side,index) => <button
+          type="button"
+          key={side.label}
+          className={`about-vibrant-world ${side.tone} ${activeSide===index?'is-selected':''}`}
+          aria-pressed={activeSide===index}
+          onClick={() => setActiveSide(index)}
+        >
+          <span className="about-vibrant-world-index">{side.label}</span>
+          <span className={`about-world-doodle about-world-doodle-${index===0?'study':index===1?'stage':'edit'}`} aria-hidden="true">{side.doodle}</span>
+          <strong className="about-vibrant-world-title">{side.title}</strong>
+          <span className="about-vibrant-world-summary">{side.copy}</span>
+          <span className="about-vibrant-world-foot">{side.foot}<b>{activeSide===index?'SELECTED ✓':'OPEN THIS ↗'}</b></span>
+        </button>)}
       </div>
+      <article className="about-world-detail" aria-live="polite" key={activeSide}>
+        <div><span className="kicker">A LITTLE MORE ABOUT THIS SIDE</span><h3>{sides[activeSide].title}</h3></div>
+        <p>{sides[activeSide].extra}</p>
+      </article>
     </section>
 
     <section className="about-vibrant-detour">
@@ -930,21 +993,25 @@ export function AboutPage() {
     <section className="about-vibrant-timeline">
       <div className="about-vibrant-section-head">
         <div><span className="kicker">A QUICK LOOK BACK</span><h2>How it all<br/><em>started to stack up.</em></h2></div>
-        <p>University has been a series of saying yes to the next thing — and discovering I enjoy the making as much as the performing.</p>
+        <p>Choose a chapter to see how the work evolved.</p>
       </div>
-      <div className="about-vibrant-timeline-row">
-        <article><span>2024—25 / THE START</span><strong>First mime. First big wins.</strong><p><em>Time Wrath</em>, <em>Why So Serious?</em>, <em>The Perfect Crime</em>, and the InBlooms Mime Duo — where I acted, directed, scripted and sound-designed.</p></article>
-        <b className="about-timeline-arrow">↗</b>
-        <article><span>2025—26 / MORE TO MAKE</span><strong>More roles, more formats.</strong><p><em>Hari Patang</em>, <em>Ek Tha Raja</em>, <em>Ek Anokhi Bhasha</em> and the short film <em>Knock Knock</em> brought different combinations of acting, direction, writing and production.</p></article>
+      <div className="about-timeline-tabs" role="tablist" aria-label="Creative timeline">
+        {chapters.map((chapter,index)=><button type="button" role="tab" aria-selected={activeChapter===index} aria-controls="about-timeline-panel" className={activeChapter===index?'is-active':''} onClick={()=>setActiveChapter(index)} key={chapter.period}>{chapter.period}<span>{index===0?'THE START':'MORE TO MAKE'}</span></button>)}
       </div>
+      <article className="about-timeline-panel" id="about-timeline-panel" role="tabpanel" aria-live="polite" key={activeChapter}>
+        <div className="about-timeline-panel-heading"><span className="kicker">{chapters[activeChapter].period}</span><h3>{chapters[activeChapter].title}</h3><p>{chapters[activeChapter].copy}</p></div>
+        <ul>{chapters[activeChapter].projects.map((project)=><li key={project}>{project}</li>)}</ul>
+      </article>
       <Link href="/work" className="about-vibrant-work-link" data-testid="link-about-full-archive">The projects have their own stories. Take a look <ArrowRight size={16} aria-hidden="true" /></Link>
     </section>
 
     <section className="about-vibrant-bottom">
       <div className="about-bottom-quote"><span className="kicker">CURRENTLY COLLECTING</span><p>Interesting people. Unexpected stories. New ways to make an idea land.</p><span className="about-bottom-quote-mark">✳</span></div>
       <div className="about-bottom-list">
-        <div><span className="kicker">THINGS I LIKE</span><div className="about-bottom-chips">{interests.map((item) => <span key={item}>{item}</span>)}</div></div>
-        <div><span className="kicker">TOOLS I PLAY WITH</span><div className="about-bottom-chips about-tool-chips">{tools.map((item) => <span key={item}>{item}</span>)}</div></div>
+        <div><span className="kicker">PICK A RABBIT HOLE</span><div className="about-bottom-chips" role="group" aria-label="Explore personal interests">{interests.map((item)=><button type="button" key={item.name} aria-pressed={activeInterest===item.name} className={activeInterest===item.name?'is-active':''} onClick={()=>setActiveInterest(item.name)}>{item.name}</button>)}</div>
+          <article className="about-interest-detail" aria-live="polite" key={selectedInterest.name}><span className="kicker">CURRENTLY INTO / {selectedInterest.name.toUpperCase()}</span><p>{selectedInterest.detail}</p></article>
+        </div>
+        <div><span className="kicker">TOOLS I PLAY WITH</span><div className="about-bottom-chips about-tool-chips"><span>Premiere Pro</span><span>Audition</span><span>After Effects</span></div></div>
       </div>
     </section>
   </main>;
