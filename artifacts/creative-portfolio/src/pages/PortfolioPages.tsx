@@ -1241,6 +1241,7 @@ export function SpecAdsPage() {
   const [selectedAd, setSelectedAd] = useState<SpecAd | null>(null);
   const [activeLens, setActiveLens] = useState('curiosity');
   const [activeBrandChapter, setActiveBrandChapter] = useState('origin');
+  const [isRedBullOpen, setIsRedBullOpen] = useState(false);
   const formats = ['All', ...Array.from(new Set(specAds.map((ad) => ad.format)))];
   const visibleAds = activeFormat === 'All' ? specAds : specAds.filter((ad) => ad.format === activeFormat);
   const lenses = [
@@ -1294,9 +1295,9 @@ export function SpecAdsPage() {
   };
 
   useEffect(() => {
-    if (!selectedAd) return;
+    if (!selectedAd && !isRedBullOpen) return;
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setSelectedAd(null);
+      if (event.key === 'Escape') { setSelectedAd(null); setIsRedBullOpen(false); }
     };
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -1305,7 +1306,7 @@ export function SpecAdsPage() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', closeOnEscape);
     };
-  }, [selectedAd]);
+  }, [selectedAd, isRedBullOpen]);
 
   return <main className="wrap main-content spec-ads-page" id="main-content" data-testid="page-spec-ads">
     <header className="spec-ads-hero" onPointerMove={handleHeroMove} onPointerLeave={resetHeroMove}>
@@ -1329,55 +1330,6 @@ export function SpecAdsPage() {
       <div className="spec-ads-hero-footer"><span>OBSERVE</span><b>↗</b><span>IMAGINE</span><b>↗</b><span>MAKE</span><b>↗</b><span>REFINE</span><span className="spec-ads-hero-footer-right">SCROLL TO EXPLORE ↓</span></div>
     </header>
 
-
-    <section className="redbull-brand-file" aria-labelledby="redbull-brand-title">
-      <div className="redbull-brand-topline">
-        <span>BRAND FILE / 001</span>
-        <span>THE FIRST BRAND IN THE ARCHIVE</span>
-      </div>
-      <div className="redbull-brand-layout">
-        <div className="redbull-brand-identity">
-          <div className="redbull-brand-wordmark"><span>RED</span><i>×</i><span>BULL</span></div>
-          <div className="redbull-brand-orbit redbull-brand-orbit-one"/>
-          <div className="redbull-brand-orbit redbull-brand-orbit-two"/>
-          <span className="redbull-brand-spark redbull-brand-spark-one">✳</span>
-          <span className="redbull-brand-spark redbull-brand-spark-two">✳</span>
-          <div className="redbull-brand-identity-bottom">
-            <span>ENERGY DRINKS / SPORTS / CULTURE</span>
-            <strong>GIVES WINGS<br/>TO IDEAS.</strong>
-          </div>
-        </div>
-        <div className="redbull-brand-story">
-          <span className="kicker">ABOUT THE COMPANY</span>
-          <h2 id="redbull-brand-title">More than<br/>what’s <em>in the can.</em></h2>
-          <p className="redbull-brand-lead">Red Bull turned an energy drink into a platform for performance, entertainment and culture.</p>
-          <p className="redbull-brand-summary">Explore the company through three lenses: where it began, what it sells and the world it has built around the product.</p>
-          <div className="redbull-brand-facts">
-            <div><span>FOUNDED</span><strong>1987</strong></div>
-            <div><span>ORIGIN INSPIRATION</span><strong>Krating Daeng</strong></div>
-            <div><span>INDUSTRY</span><strong>Energy drinks</strong></div>
-          </div>
-        </div>
-      </div>
-      <div className="redbull-brand-explorer">
-        <div className="redbull-brand-tabs" role="tablist" aria-label="Explore Red Bull as a company">
-          {brandChapters.map((chapter) => <button type="button" role="tab" key={chapter.id} id={'redbull-tab-' + chapter.id} aria-controls="redbull-brand-panel" aria-selected={activeBrandChapter === chapter.id} className={activeBrandChapter === chapter.id ? 'is-active' : ''} onClick={() => setActiveBrandChapter(chapter.id)}>
-            <span>{chapter.tab}</span><ArrowUpRight size={17}/>
-          </button>)}
-        </div>
-        <article className="redbull-brand-panel" role="tabpanel" id="redbull-brand-panel" aria-labelledby={'redbull-tab-' + currentBrandChapter.id} key={currentBrandChapter.id}>
-          <div className="redbull-brand-panel-meta"><span>{currentBrandChapter.eyebrow}</span><strong>{currentBrandChapter.stamp}</strong></div>
-          <h3>{currentBrandChapter.title}</h3>
-          <p>{currentBrandChapter.copy}</p>
-          <p>{currentBrandChapter.detail}</p>
-          <div className="redbull-brand-panel-bottom"><span>RED BULL / BRAND OVERVIEW</span><span>{String(brandChapters.findIndex((chapter) => chapter.id === currentBrandChapter.id) + 1).padStart(2, '0')} — 03</span></div>
-        </article>
-      </div>
-      <div className="redbull-brand-positioning">
-        <span>THE BRAND TERRITORY</span>
-        <div><b>ENERGY</b><i>✳</i><b>PERFORMANCE</b><i>✳</i><b>ADVENTURE</b><i>✳</i><b>CREATIVITY</b><i>✳</i><b>CULTURE</b></div>
-      </div>
-    </section>
 
     <section className="spec-ads-playground" aria-labelledby="spec-ads-playground-title">
       <div className="spec-ads-playground-heading">
@@ -1407,12 +1359,30 @@ export function SpecAdsPage() {
       <div className="spec-ads-playground-foot"><span>THREE DIFFERENT WAYS TO EARN A SECOND LOOK.</span><span>YOUR TURN: PICK A LENS ↗</span></div>
     </section>
 
-    <section className="spec-ads-gallery" id="spec-ads-gallery" aria-labelledby="spec-ads-gallery-title">
+    <section className="spec-ads-gallery spec-brand-browser" id="spec-ads-gallery" aria-labelledby="spec-ads-gallery-title">
       <div className="spec-ads-gallery-heading">
-        <div><span className="kicker">THE SHOWREEL / 01</span><h2 id="spec-ads-gallery-title">The idea <em>shelf.</em></h2></div>
-        <span className="spec-ads-count">{String(specAds.length).padStart(2, '0')} PIECES</span>
+        <div><span className="kicker">THE BRAND INDEX / 01</span><h2 id="spec-ads-gallery-title">Choose a <em>brand.</em></h2></div>
+        <span className="spec-ads-count">01 BRAND</span>
       </div>
-      {specAds.length > 0 ? <>
+      <p className="spec-brand-browser-intro">A closer look at the brands I’m exploring — their world, their audience and the ideas they make possible.</p>
+      <div className="spec-brand-browser-grid">
+        <button type="button" className="spec-brand-card spec-brand-card-redbull" onClick={() => setIsRedBullOpen(true)} aria-haspopup="dialog">
+          <span className="spec-brand-card-top"><span>BRAND FILE / 001</span><span>ENERGY DRINKS</span></span>
+          <span className="spec-brand-card-art">
+            <span className="spec-brand-card-orbit spec-brand-card-orbit-one"/>
+            <span className="spec-brand-card-orbit spec-brand-card-orbit-two"/>
+            <strong><span>RED</span><i>×</i><span>BULL</span></strong>
+            <small>GIVES WINGS TO IDEAS.</small>
+            <i className="spec-brand-card-spark">✳</i>
+          </span>
+          <span className="spec-brand-card-bottom">
+            <span><strong>Red Bull</strong><small>Founded 1987 · Austria / Thailand</small></span>
+            <span className="spec-brand-card-open">EXPLORE BRAND <ArrowUpRight size={16}/></span>
+          </span>
+        </button>
+      </div>
+      {specAds.length > 0 && <>
+        <div className="spec-ads-subheading"><span className="kicker">THE EXECUTIONS / SELECTED WORK</span></div>
         <div className="spec-ads-filters" role="group" aria-label="Filter spec ads by format">
           {formats.map((format) => <button type="button" key={format} className={activeFormat === format ? 'is-active' : ''} aria-pressed={activeFormat === format} onClick={() => setActiveFormat(format)}>{format}</button>)}
         </div>
@@ -1428,21 +1398,7 @@ export function SpecAdsPage() {
             <span className="spec-ad-public-index">{String(index + 1).padStart(2, '0')}</span>
           </button>)}
         </div>
-        {visibleAds.length === 0 && <p className="spec-ads-no-results">No pieces in this format just yet. Try another filter.</p>}
-      </> : <div className="spec-ads-empty">
-        <div className="spec-ads-empty-art" aria-hidden="true">
-          <div className="spec-ads-empty-sheet spec-ads-empty-sheet-back"><span>THE THOUGHT</span><strong>?</strong></div>
-          <div className="spec-ads-empty-sheet spec-ads-empty-sheet-front"><span>COMING INTO FOCUS</span><strong>✳</strong><i>001</i></div>
-          <span className="spec-ads-empty-orbit">IDEA IN PROGRESS</span>
-        </div>
-        <div className="spec-ads-empty-copy">
-          <span className="kicker">THE FIRST DROP IS BEING PUT TOGETHER</span>
-          <h3>Good ideas deserve<br/>a proper <em>reveal.</em></h3>
-          <p>This gallery is being curated. Once a concept is ready, its creative preview and the thinking behind it will appear here. For now, explore the rest of the archive.</p>
-          <Link href="/work" className="spec-ads-back-link">Explore the work archive <ArrowRight size={16}/></Link>
-        </div>
-      </div>}
-      <div className="spec-ads-gallery-foot"><span>INDEPENDENT CONCEPTS / PERSONAL EXPERIMENTS</span><span>MADE TO BE LOOKED AT, NOT UPLOADED TO.</span></div>
+      </>}
     </section>
 
     <section className="spec-ads-process">
@@ -1454,6 +1410,41 @@ export function SpecAdsPage() {
       </div>
     </section>
 
+    {isRedBullOpen && <div className="spec-brand-modal-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setIsRedBullOpen(false); }}>
+      <section className="spec-brand-modal" role="dialog" aria-modal="true" aria-labelledby="spec-brand-modal-title">
+        <div className="spec-brand-modal-top"><span className="kicker">BRAND FILE / 001 · COMPANY OVERVIEW</span><button type="button" onClick={() => setIsRedBullOpen(false)} aria-label="Close Red Bull brand profile"><X size={18}/> CLOSE</button></div>
+        <div className="spec-brand-modal-head">
+          <div className="spec-brand-modal-art">
+            <div className="spec-brand-modal-orbit spec-brand-modal-orbit-one"/>
+            <div className="spec-brand-modal-orbit spec-brand-modal-orbit-two"/>
+            <strong><span>RED</span><i>×</i><span>BULL</span></strong>
+            <small>GIVES WINGS TO IDEAS.</small>
+          </div>
+          <div className="spec-brand-modal-about">
+            <span className="kicker">ABOUT THE COMPANY</span>
+            <h2 id="spec-brand-modal-title">Red Bull —<br/><em>more than the can.</em></h2>
+            <p>Founded in 1987 by Dietrich Mateschitz and Chaleo Yoovidhya, Red Bull took inspiration from Thailand’s Krating Daeng and adapted the drink for Western consumers.</p>
+            <p>What began as an energy drink grew into a global brand connected to sport, entertainment, culture and experiences — building a world around the product rather than relying on product advertising alone.</p>
+            <div className="spec-brand-modal-facts"><span><b>1987</b> FOUNDED</span><span><b>ENERGY</b> CORE PRODUCT</span><span><b>GLOBAL</b> BRAND WORLD</span></div>
+          </div>
+        </div>
+        <div className="spec-brand-modal-explorer">
+          <div className="spec-brand-modal-tabs" role="tablist" aria-label="Explore Red Bull">
+            {brandChapters.map((chapter) => <button type="button" role="tab" key={chapter.id} id={'redbull-tab-' + chapter.id} aria-controls="redbull-brand-panel" aria-selected={activeBrandChapter === chapter.id} className={activeBrandChapter === chapter.id ? 'is-active' : ''} onClick={() => setActiveBrandChapter(chapter.id)}>
+              <span>{chapter.tab}</span><ArrowUpRight size={16}/>
+            </button>)}
+          </div>
+          <article className="spec-brand-modal-panel" role="tabpanel" id="redbull-brand-panel" aria-labelledby={'redbull-tab-' + currentBrandChapter.id} key={currentBrandChapter.id}>
+            <div className="spec-brand-modal-panel-meta"><span>{currentBrandChapter.eyebrow}</span><strong>{currentBrandChapter.stamp}</strong></div>
+            <h3>{currentBrandChapter.title}</h3>
+            <p>{currentBrandChapter.copy}</p>
+            <p>{currentBrandChapter.detail}</p>
+            <div className="spec-brand-modal-panel-bottom"><span>RED BULL / BRAND OVERVIEW</span><span>{String(brandChapters.findIndex((chapter) => chapter.id === currentBrandChapter.id) + 1).padStart(2, '0')} — 03</span></div>
+          </article>
+        </div>
+        <div className="spec-brand-modal-territory"><span>THE BRAND TERRITORY</span><div><b>ENERGY</b><i>✳</i><b>PERFORMANCE</b><i>✳</i><b>ADVENTURE</b><i>✳</i><b>CREATIVITY</b><i>✳</i><b>CULTURE</b></div></div>
+      </section>
+    </div>}
     {selectedAd && <div className="spec-ad-modal-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setSelectedAd(null); }}>
       <section className="spec-ad-modal" role="dialog" aria-modal="true" aria-labelledby="spec-ad-modal-title">
         <div className="spec-ad-modal-top"><span className="kicker">SPEC WORK / PROJECT PREVIEW</span><button type="button" onClick={() => setSelectedAd(null)} aria-label="Close project preview"><X size={19}/> CLOSE</button></div>
