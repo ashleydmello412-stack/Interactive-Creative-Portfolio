@@ -1352,7 +1352,7 @@ export function SpecAdsPage() {
     setNotice('');
     if (file.type.startsWith('video/')) setFormat('Video ad');
     else setFormat('Static / print ad');
-    if (!title.trim()) setTitle(file.name.replace(/\\.[^.]+$/, '').replace(/[-_]+/g, ' '));
+    if (!title.trim()) setTitle(file.name.replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' '));
   };
 
   const saveDraft = async () => {
