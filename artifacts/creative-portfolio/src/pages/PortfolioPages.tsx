@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type PointerEvent } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useParams } from 'wouter';
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Search, X } from 'lucide-react';
 import { categories, projects } from '../data/projects';
@@ -1410,7 +1411,7 @@ export function SpecAdsPage() {
       </div>
     </section>
 
-    {isRedBullOpen && <div className="spec-brand-modal-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setIsRedBullOpen(false); }}>
+    {isRedBullOpen && createPortal(<div className="spec-brand-modal-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setIsRedBullOpen(false); }}>
       <section className="spec-brand-modal" role="dialog" aria-modal="true" aria-labelledby="spec-brand-modal-title">
         <div className="spec-brand-modal-top"><span className="kicker">BRAND FILE / 001 · COMPANY OVERVIEW</span><button type="button" onClick={() => setIsRedBullOpen(false)} aria-label="Close Red Bull brand profile"><X size={18}/> CLOSE</button></div>
         <div className="spec-brand-modal-head">
@@ -1444,8 +1445,8 @@ export function SpecAdsPage() {
         </div>
         <div className="spec-brand-modal-territory"><span>THE BRAND TERRITORY</span><div><b>ENERGY</b><i>✳</i><b>PERFORMANCE</b><i>✳</i><b>ADVENTURE</b><i>✳</i><b>CREATIVITY</b><i>✳</i><b>CULTURE</b></div></div>
       </section>
-    </div>}
-    {selectedAd && <div className="spec-ad-modal-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setSelectedAd(null); }}>
+    </div>, document.body)}
+    {selectedAd && createPortal(<div className="spec-ad-modal-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setSelectedAd(null); }}>
       <section className="spec-ad-modal" role="dialog" aria-modal="true" aria-labelledby="spec-ad-modal-title">
         <div className="spec-ad-modal-top"><span className="kicker">SPEC WORK / PROJECT PREVIEW</span><button type="button" onClick={() => setSelectedAd(null)} aria-label="Close project preview"><X size={19}/> CLOSE</button></div>
         <div className="spec-ad-modal-layout">
@@ -1464,7 +1465,7 @@ export function SpecAdsPage() {
           </div>
         </div>
       </section>
-    </div>}
+    </div>, document.body)}
   </main>;
 }
 
