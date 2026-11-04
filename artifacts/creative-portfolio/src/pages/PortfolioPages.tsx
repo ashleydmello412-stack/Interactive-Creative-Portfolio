@@ -1,4 +1,4 @@
-import { useMemo, useState, type PointerEvent } from 'react';
+import { useEffect, useMemo, useState, type PointerEvent } from 'react';
 import { Link, useParams } from 'wouter';
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Search, X } from 'lucide-react';
 import { categories, projects } from '../data/projects';
@@ -1239,29 +1239,94 @@ const specAds: SpecAd[] = [];
 export function SpecAdsPage() {
   const [activeFormat, setActiveFormat] = useState('All');
   const [selectedAd, setSelectedAd] = useState<SpecAd | null>(null);
+  const [activeLens, setActiveLens] = useState('curiosity');
   const formats = ['All', ...Array.from(new Set(specAds.map((ad) => ad.format)))];
   const visibleAds = activeFormat === 'All' ? specAds : specAds.filter((ad) => ad.format === activeFormat);
+  const lenses = [
+    { id: 'curiosity', tab: 'MAKE ME CURIOUS', label: 'THE HOOK', headline: 'Give me a reason\nto stop scrolling.', note: 'Start with a question, an unexpected detail or a pattern that feels just a little off.', marker: '01 / INTERRUPT THE AUTOPILOT', colour: 'lime' },
+    { id: 'feeling', tab: 'MAKE ME FEEL', label: 'THE CONNECTION', headline: 'Make it mean\nsomething to me.', note: 'Find the human truth underneath the product. The best creative makes the message feel personal, not pasted on.', marker: '02 / MAKE IT HUMAN', colour: 'coral' },
+    { id: 'memory', tab: 'MAKE ME REMEMBER', label: 'THE STICKY BIT', headline: 'Leave me with\nsomething to keep.', note: 'A distinct visual, a line, a sound or a feeling. Give the idea a shape people can carry away.', marker: '03 / STAY AFTER THE SCROLL', colour: 'blue' },
+  ];
+  const currentLens = lenses.find((lens) => lens.id === activeLens) ?? lenses[0];
+
+  const handleHeroMove = (event: PointerEvent<HTMLElement>) => {
+    if (event.pointerType !== 'mouse') return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    event.currentTarget.style.setProperty('--spec-pointer-x', (x * 10).toFixed(1) + 'px');
+    event.currentTarget.style.setProperty('--spec-pointer-y', (y * 9).toFixed(1) + 'px');
+  };
+  const resetHeroMove = (event: PointerEvent<HTMLElement>) => {
+    event.currentTarget.style.setProperty('--spec-pointer-x', '0px');
+    event.currentTarget.style.setProperty('--spec-pointer-y', '0px');
+  };
+
+  useEffect(() => {
+    if (!selectedAd) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSelectedAd(null);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [selectedAd]);
 
   return <main className="wrap main-content spec-ads-page" id="main-content" data-testid="page-spec-ads">
-    <header className="spec-ads-hero">
+    <header className="spec-ads-hero" onPointerMove={handleHeroMove} onPointerLeave={resetHeroMove}>
       <div className="spec-ads-hero-meta"><span>05 / THE SPEC WORK</span><span>SELF-INITIATED · NOT COMMISSIONED</span></div>
-      <h1>Ideas worth<br/><em>making.</em></h1>
-      <div className="spec-ads-hero-bottom">
-        <p>Campaign concepts, visual experiments and brand ideas made out of curiosity. This is where I take an observation, give it a creative direction and see where it goes.</p>
-        <div className="spec-ads-hero-sticker"><span>NO BRIEF.<br/>JUST THE<br/>BIG IDEA.</span><strong>✳</strong></div>
+      <div className="spec-ads-hero-composition">
+        <div className="spec-ads-hero-copy">
+          <span className="spec-ads-hero-side-note">A CREATIVE PLAYGROUND / 2026</span>
+          <h1>Ideas worth<br/><em>making.</em></h1>
+          <p>Campaign concepts, visual experiments and brand ideas made out of curiosity. This is where I take an observation, give it a creative direction and see where it goes.</p>
+          <a className="spec-ads-hero-jump" href="#spec-ads-gallery">Skip to the work <ArrowDownRight size={16}/></a>
+        </div>
+        <div className="spec-ads-hero-art" aria-label="A moving stack of creative concept cards">
+          <div className="spec-ads-orbit spec-ads-orbit-one"/>
+          <div className="spec-ads-orbit spec-ads-orbit-two"/>
+          <div className="spec-ads-art-card spec-ads-art-card-back"><span>WHAT IF?</span><strong>Make<br/>them<br/><em>look.</em></strong><i>IDEA / 01</i></div>
+          <div className="spec-ads-art-card spec-ads-art-card-front"><span>THE CREATIVE RULE</span><strong>Don't<br/>scroll<br/><em>past.</em></strong><i>✳</i></div>
+          <span className="spec-ads-art-sticker">NO<br/>BRIEF<br/>NEEDED</span>
+          <span className="spec-ads-art-cross">✳</span>
+        </div>
       </div>
-      <div className="spec-ads-hero-footer"><span>OBSERVE</span><b>↗</b><span>IMAGINE</span><b>↗</b><span>MAKE</span><b>↗</b><span>REFINE</span></div>
+      <div className="spec-ads-hero-footer"><span>OBSERVE</span><b>↗</b><span>IMAGINE</span><b>↗</b><span>MAKE</span><b>↗</b><span>REFINE</span><span className="spec-ads-hero-footer-right">SCROLL TO EXPLORE ↓</span></div>
     </header>
-    <section className="spec-ads-intro">
-      <div className="spec-ads-intro-mark" aria-hidden="true"><span>SPEC</span><strong>AD<br/>LAB</strong><i>✳</i></div>
-      <div className="spec-ads-intro-copy">
-        <span className="kicker">A LITTLE CONTEXT BEFORE THE CREATIVE</span>
-        <h2>Not just what<br/>it <em>looks like.</em></h2>
-        <p>Each piece shows more than the final frame: the brand it was imagined for, the audience it speaks to and the thought that shaped the idea.</p>
+
+    <section className="spec-ads-playground" aria-labelledby="spec-ads-playground-title">
+      <div className="spec-ads-playground-heading">
+        <span className="kicker">BEFORE THE ADS / A LITTLE CREATIVE INSTINCT</span>
+        <h2 id="spec-ads-playground-title">What should an idea <em>do?</em></h2>
+        <p>Pick a feeling. Watch the brief change.</p>
       </div>
-      <div className="spec-ads-intro-side"><span>THE THINKING</span><span>BEHIND THE</span><strong>SCROLL.</strong><i>↓</i></div>
+      <div className="spec-ads-playground-body">
+        <div className="spec-ads-lens-tabs" role="tablist" aria-label="Choose a creative objective">
+          {lenses.map((lens) => <button type="button" role="tab" key={lens.id} id={'spec-lens-tab-' + lens.id} aria-selected={activeLens === lens.id} aria-controls="spec-lens-panel" className={activeLens === lens.id ? 'is-active' : ''} onClick={() => setActiveLens(lens.id)}>
+            <span>{lens.marker.slice(0, 2)}</span><strong>{lens.tab}</strong><ArrowUpRight size={16}/>
+          </button>)}
+        </div>
+        <div className={'spec-ads-lens-panel lens-' + currentLens.colour} id="spec-lens-panel" role="tabpanel" aria-labelledby={'spec-lens-tab-' + currentLens.id} key={currentLens.id}>
+          <div className="spec-ads-lens-panel-top"><span>{currentLens.marker}</span><span>CHOOSE YOUR EFFECT</span></div>
+          <div className="spec-ads-lens-panel-main">
+            <div><span className="spec-ads-lens-label">{currentLens.label}</span><h3>{currentLens.headline.split('\n').map((line, index) => <span key={index}>{line}</span>)}</h3><p>{currentLens.note}</p></div>
+            <div className="spec-ads-lens-visual" aria-hidden="true">
+              <span className="lens-visual-ring lens-visual-ring-one"/><span className="lens-visual-ring lens-visual-ring-two"/>
+              <strong>{currentLens.id === 'curiosity' ? '?' : currentLens.id === 'feeling' ? '♡' : '!'}</strong>
+              <i>{currentLens.id === 'curiosity' ? 'WAIT—WHAT?' : currentLens.id === 'feeling' ? 'THAT’S ME.' : 'STILL HERE.'}</i>
+            </div>
+          </div>
+          <div className="spec-ads-lens-panel-foot"><span>THE CREATIVE LENS</span><span>{currentLens.id === 'curiosity' ? 'INTERRUPT' : currentLens.id === 'feeling' ? 'CONNECT' : 'LINGER'} / 03</span></div>
+        </div>
+      </div>
+      <div className="spec-ads-playground-foot"><span>THREE DIFFERENT WAYS TO EARN A SECOND LOOK.</span><span>YOUR TURN: PICK A LENS ↗</span></div>
     </section>
-    <section className="spec-ads-gallery" aria-labelledby="spec-ads-gallery-title">
+
+    <section className="spec-ads-gallery" id="spec-ads-gallery" aria-labelledby="spec-ads-gallery-title">
       <div className="spec-ads-gallery-heading">
         <div><span className="kicker">THE SHOWREEL / 01</span><h2 id="spec-ads-gallery-title">The idea <em>shelf.</em></h2></div>
         <span className="spec-ads-count">{String(specAds.length).padStart(2, '0')} PIECES</span>
@@ -1271,7 +1336,7 @@ export function SpecAdsPage() {
           {formats.map((format) => <button type="button" key={format} className={activeFormat === format ? 'is-active' : ''} aria-pressed={activeFormat === format} onClick={() => setActiveFormat(format)}>{format}</button>)}
         </div>
         <div className="spec-ads-grid">
-          {visibleAds.map((ad, index) => <button type="button" className="spec-ad-public-card" key={ad.id} onClick={() => setSelectedAd(ad)} aria-label={ad.title}>
+          {visibleAds.map((ad, index) => <button type="button" className="spec-ad-public-card" key={ad.id} onClick={() => setSelectedAd(ad)} aria-label={'Preview ' + ad.title}>
             <span className="spec-ad-public-media">
               {ad.mediaType === 'video' ? <video src={ad.asset} muted playsInline preload="metadata" /> : <img src={ad.asset} alt={ad.title + ' for ' + ad.brand} loading="lazy" />}
               <span className="spec-ad-public-open">OPEN PROJECT <ArrowUpRight size={16}/></span>
@@ -1298,6 +1363,7 @@ export function SpecAdsPage() {
       </div>}
       <div className="spec-ads-gallery-foot"><span>INDEPENDENT CONCEPTS / PERSONAL EXPERIMENTS</span><span>MADE TO BE LOOKED AT, NOT UPLOADED TO.</span></div>
     </section>
+
     <section className="spec-ads-process">
       <div><span className="kicker">02 / WHAT GOES INTO A PIECE</span><h2>From a small<br/>observation to a<br/><em>big idea.</em></h2></div>
       <div className="spec-ads-process-steps">
@@ -1306,6 +1372,7 @@ export function SpecAdsPage() {
         <article><span>03</span><div><h3>The execution</h3><p>The format, words and visuals that turn the thought into something people can experience.</p></div></article>
       </div>
     </section>
+
     {selectedAd && <div className="spec-ad-modal-backdrop" role="presentation" onClick={(event) => { if (event.target === event.currentTarget) setSelectedAd(null); }}>
       <section className="spec-ad-modal" role="dialog" aria-modal="true" aria-labelledby="spec-ad-modal-title">
         <div className="spec-ad-modal-top"><span className="kicker">SPEC WORK / PROJECT PREVIEW</span><button type="button" onClick={() => setSelectedAd(null)} aria-label="Close project preview"><X size={19}/> CLOSE</button></div>
