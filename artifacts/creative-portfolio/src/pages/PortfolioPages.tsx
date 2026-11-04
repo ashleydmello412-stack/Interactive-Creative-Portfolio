@@ -1240,6 +1240,7 @@ export function SpecAdsPage() {
   const [activeFormat, setActiveFormat] = useState('All');
   const [selectedAd, setSelectedAd] = useState<SpecAd | null>(null);
   const [activeLens, setActiveLens] = useState('curiosity');
+  const [activeBrandChapter, setActiveBrandChapter] = useState('origin');
   const formats = ['All', ...Array.from(new Set(specAds.map((ad) => ad.format)))];
   const visibleAds = activeFormat === 'All' ? specAds : specAds.filter((ad) => ad.format === activeFormat);
   const lenses = [
@@ -1248,6 +1249,36 @@ export function SpecAdsPage() {
     { id: 'memory', tab: 'MAKE ME REMEMBER', label: 'THE STICKY BIT', headline: 'Leave me with\nsomething to keep.', note: 'A distinct visual, a line, a sound or a feeling. Give the idea a shape people can carry away.', marker: '03 / STAY AFTER THE SCROLL', colour: 'blue' },
   ];
   const currentLens = lenses.find((lens) => lens.id === activeLens) ?? lenses[0];
+  const brandChapters = [
+    {
+      id: 'origin',
+      tab: '01 / THE ORIGIN',
+      eyebrow: 'FROM KRATING DAENG TO A GLOBAL BRAND',
+      title: 'A new kind of energy drink.',
+      copy: 'Red Bull was founded in 1987 by Austrian entrepreneur Dietrich Mateschitz and Thai businessman Chaleo Yoovidhya. Inspired by Thailand’s Krating Daeng, they adapted the drink for Western consumers and introduced the now-recognisable blue-and-silver can.',
+      detail: 'The launch helped establish the modern energy-drink category and gave the brand a clear starting point: a functional product with a distinctive identity.',
+      stamp: 'EST. 1987'
+    },
+    {
+      id: 'product',
+      tab: '02 / THE PRODUCT',
+      eyebrow: 'WHAT IS IN THE CAN?',
+      title: 'A functional drink with a recognisable identity.',
+      copy: 'Red Bull’s core product is an energy drink made with caffeine, taurine, B-group vitamins and water. Its blue-and-silver packaging makes the can instantly recognisable across markets.',
+      detail: 'The product is the entry point. The brand’s wider meaning is built through the stories, experiences and cultural spaces connected to it.',
+      stamp: 'THE ORIGINAL ENERGY DRINK'
+    },
+    {
+      id: 'culture',
+      tab: '03 / THE BRAND WORLD',
+      eyebrow: 'FAR BEYOND THE BEVERAGE AISLE',
+      title: 'A brand that behaves like a media universe.',
+      copy: 'Red Bull has built a presence across Formula 1, international football, extreme sports, music, gaming and esports. It works with athletes, teams, events and creators to make the brand part of the experiences its audiences follow.',
+      detail: 'Instead of depending only on conventional product advertising, Red Bull creates and distributes culture-led content and experiences around performance, ambition and pushing boundaries.',
+      stamp: 'SPORT · CULTURE · ENTERTAINMENT'
+    }
+  ];
+  const currentBrandChapter = brandChapters.find((chapter) => chapter.id === activeBrandChapter) ?? brandChapters[0];
 
   const handleHeroMove = (event: PointerEvent<HTMLElement>) => {
     if (event.pointerType !== 'mouse') return;
@@ -1297,6 +1328,56 @@ export function SpecAdsPage() {
       </div>
       <div className="spec-ads-hero-footer"><span>OBSERVE</span><b>↗</b><span>IMAGINE</span><b>↗</b><span>MAKE</span><b>↗</b><span>REFINE</span><span className="spec-ads-hero-footer-right">SCROLL TO EXPLORE ↓</span></div>
     </header>
+
+
+    <section className="redbull-brand-file" aria-labelledby="redbull-brand-title">
+      <div className="redbull-brand-topline">
+        <span>BRAND FILE / 001</span>
+        <span>THE FIRST BRAND IN THE ARCHIVE</span>
+      </div>
+      <div className="redbull-brand-layout">
+        <div className="redbull-brand-identity">
+          <div className="redbull-brand-wordmark"><span>RED</span><i>×</i><span>BULL</span></div>
+          <div className="redbull-brand-orbit redbull-brand-orbit-one"/>
+          <div className="redbull-brand-orbit redbull-brand-orbit-two"/>
+          <span className="redbull-brand-spark redbull-brand-spark-one">✳</span>
+          <span className="redbull-brand-spark redbull-brand-spark-two">✳</span>
+          <div className="redbull-brand-identity-bottom">
+            <span>ENERGY DRINKS / SPORTS / CULTURE</span>
+            <strong>GIVES WINGS<br/>TO IDEAS.</strong>
+          </div>
+        </div>
+        <div className="redbull-brand-story">
+          <span className="kicker">ABOUT THE COMPANY</span>
+          <h2 id="redbull-brand-title">More than<br/>what’s <em>in the can.</em></h2>
+          <p className="redbull-brand-lead">Red Bull turned an energy drink into a platform for performance, entertainment and culture.</p>
+          <p className="redbull-brand-summary">Explore the company through three lenses: where it began, what it sells and the world it has built around the product.</p>
+          <div className="redbull-brand-facts">
+            <div><span>FOUNDED</span><strong>1987</strong></div>
+            <div><span>ORIGIN INSPIRATION</span><strong>Krating Daeng</strong></div>
+            <div><span>INDUSTRY</span><strong>Energy drinks</strong></div>
+          </div>
+        </div>
+      </div>
+      <div className="redbull-brand-explorer">
+        <div className="redbull-brand-tabs" role="tablist" aria-label="Explore Red Bull as a company">
+          {brandChapters.map((chapter) => <button type="button" role="tab" key={chapter.id} id={'redbull-tab-' + chapter.id} aria-controls="redbull-brand-panel" aria-selected={activeBrandChapter === chapter.id} className={activeBrandChapter === chapter.id ? 'is-active' : ''} onClick={() => setActiveBrandChapter(chapter.id)}>
+            <span>{chapter.tab}</span><ArrowUpRight size={17}/>
+          </button>)}
+        </div>
+        <article className="redbull-brand-panel" role="tabpanel" id="redbull-brand-panel" aria-labelledby={'redbull-tab-' + currentBrandChapter.id} key={currentBrandChapter.id}>
+          <div className="redbull-brand-panel-meta"><span>{currentBrandChapter.eyebrow}</span><strong>{currentBrandChapter.stamp}</strong></div>
+          <h3>{currentBrandChapter.title}</h3>
+          <p>{currentBrandChapter.copy}</p>
+          <p>{currentBrandChapter.detail}</p>
+          <div className="redbull-brand-panel-bottom"><span>RED BULL / BRAND OVERVIEW</span><span>{String(brandChapters.findIndex((chapter) => chapter.id === currentBrandChapter.id) + 1).padStart(2, '0')} — 03</span></div>
+        </article>
+      </div>
+      <div className="redbull-brand-positioning">
+        <span>THE BRAND TERRITORY</span>
+        <div><b>ENERGY</b><i>✳</i><b>PERFORMANCE</b><i>✳</i><b>ADVENTURE</b><i>✳</i><b>CREATIVITY</b><i>✳</i><b>CULTURE</b></div>
+      </div>
+    </section>
 
     <section className="spec-ads-playground" aria-labelledby="spec-ads-playground-title">
       <div className="spec-ads-playground-heading">
