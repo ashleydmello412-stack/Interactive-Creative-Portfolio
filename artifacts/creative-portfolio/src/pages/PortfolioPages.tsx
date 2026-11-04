@@ -1370,11 +1370,12 @@ export function SpecAdsPage() {
         <button type="button" className="spec-brand-card spec-brand-card-redbull" onClick={() => setIsRedBullOpen(true)} aria-haspopup="dialog">
           <span className="spec-brand-card-top"><span>BRAND FILE / 001</span><span>ENERGY DRINKS</span></span>
           <span className="spec-brand-card-art">
-            <span className="spec-brand-card-orbit spec-brand-card-orbit-one"/>
-            <span className="spec-brand-card-orbit spec-brand-card-orbit-two"/>
-            <strong><span>RED</span><i>×</i><span>BULL</span></strong>
-            <small>GIVES WINGS TO IDEAS.</small>
-            <i className="spec-brand-card-spark">✳</i>
+            <span className="spec-brand-card-can-stripe" aria-hidden="true"/>
+            <span className="spec-brand-card-logo-frame">
+              <img src="https://a.storyblok.com/f/287059/1200x630/3e9ea8bc51/meta_img_fallback_logo_red_bull.png" alt="Red Bull logo: two red bulls facing across a yellow sun, with the Red Bull wordmark" loading="lazy"/>
+            </span>
+            <small>GIVES YOU WIIINGS.</small>
+            <i className="spec-brand-card-spark" aria-hidden="true">✳</i>
           </span>
           <span className="spec-brand-card-bottom">
             <span><strong>Red Bull</strong><small>Founded 1987 · Austria / Thailand</small></span>
@@ -1416,11 +1417,12 @@ export function SpecAdsPage() {
         <div className="spec-brand-modal-top"><span className="kicker">BRAND FILE / 001 · COMPANY OVERVIEW</span><button type="button" onClick={() => setIsRedBullOpen(false)} aria-label="Close Red Bull brand profile"><X size={18}/> CLOSE</button></div>
         <div className="spec-brand-modal-head">
           <div className="spec-brand-modal-art">
-            <div className="spec-brand-modal-orbit spec-brand-modal-orbit-one"/>
-            <div className="spec-brand-modal-orbit spec-brand-modal-orbit-two"/>
-            <span className="spec-brand-modal-sun" aria-hidden="true"/>
-            <strong><span>RED</span><i>×</i><span>BULL</span></strong>
-            <small>GIVES WINGS TO IDEAS.</small>
+            <span className="spec-brand-modal-art-index">THE ORIGINAL MARK / 001</span>
+            <span className="spec-brand-modal-can-stripe" aria-hidden="true"/>
+            <div className="spec-brand-modal-logo-frame">
+              <img src="https://a.storyblok.com/f/287059/1200x630/3e9ea8bc51/meta_img_fallback_logo_red_bull.png" alt="Red Bull logo featuring two charging red bulls and a yellow sun" />
+            </div>
+            <div className="spec-brand-modal-art-foot"><span>ENERGY DRINKS</span><span>EST. 1987</span></div>
           </div>
           <div className="spec-brand-modal-about">
             <span className="kicker">ABOUT THE COMPANY</span>
