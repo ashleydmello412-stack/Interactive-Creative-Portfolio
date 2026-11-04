@@ -3254,3 +3254,132 @@
   .spec-ad-modal-top { padding: 12px; }
   .spec-ad-modal-copy { padding: 22px; }
 }
+
+
+/* Spec Ads: expressive motion and an interactive creative-lens module */
+.spec-ads-hero { --spec-pointer-x: 0px; --spec-pointer-y: 0px; padding: clamp(28px,5vw,57px); }
+.spec-ads-hero-composition { display: grid; grid-template-columns: minmax(0,1fr) minmax(350px,.9fr); align-items: center; gap: 25px; min-height: 470px; }
+.spec-ads-hero-copy { position: relative; z-index: 2; }
+.spec-ads-hero-side-note { display: inline-flex; margin-top: 25px; color: var(--lime); font-family: var(--app-font-mono); font-size: .57rem; letter-spacing: .13em; }
+.spec-ads-hero h1 { position: relative; margin: 23px 0 25px; font-size: clamp(4.2rem,9.8vw,8.2rem); }
+.spec-ads-hero-copy > p { max-width: 520px; margin: 0; color: #e9e7e2; font-size: .98rem; line-height: 1.75; }
+.spec-ads-hero-jump { display: inline-flex; align-items: center; gap: 8px; margin-top: 25px; padding-bottom: 7px; border-bottom: 1px solid var(--lime); color: var(--lime); font-size: .8rem; font-weight: 700; text-decoration: none; transition: gap .2s ease; }
+.spec-ads-hero-jump:hover { gap: 15px; }
+.spec-ads-hero-art { position: relative; min-height: 420px; transform: translate(var(--spec-pointer-x),var(--spec-pointer-y)); transition: transform .25s ease-out; }
+.spec-ads-orbit { position: absolute; top: 50%; left: 50%; width: 340px; height: 340px; border: 1px solid #ffffff40; border-radius: 50%; transform: translate(-50%,-50%); }
+.spec-ads-orbit-two { width: 260px; height: 260px; border-style: dashed; animation: specOrbit 30s linear infinite; }
+.spec-ads-art-card { position: absolute; top: 50%; left: 50%; display: flex; width: 230px; height: 315px; flex-direction: column; justify-content: space-between; padding: 18px; border: 1px solid var(--ink); color: var(--ink); box-shadow: 0 25px 55px #0005; }
+.spec-ads-art-card > span,.spec-ads-art-card > i { font-family: var(--app-font-mono); font-size: .58rem; font-style: normal; letter-spacing: .11em; }
+.spec-ads-art-card > strong { font-size: 3.45rem; line-height: .82; letter-spacing: -.1em; }
+.spec-ads-art-card > strong em { color: var(--coral); font-style: normal; }
+.spec-ads-art-card-back { background: var(--blue); transform: translate(-62%,-48%) rotate(-12deg); animation: specCardDriftBack 6s ease-in-out infinite; }
+.spec-ads-art-card-front { z-index: 1; background: var(--lime); transform: translate(-36%,-54%) rotate(8deg); animation: specCardDriftFront 5s ease-in-out infinite; }
+.spec-ads-art-card-front > strong em { color: var(--coral); }
+.spec-ads-art-card-front > i { align-self: flex-end; color: var(--coral); font-size: 2.2rem; }
+.spec-ads-art-sticker { position: absolute; z-index: 3; top: 10%; right: 1%; display: grid; width: 92px; height: 92px; place-items: center; border: 1px solid var(--ink); border-radius: 50%; background: var(--coral); color: var(--ink); font-family: var(--app-font-mono); font-size: .55rem; letter-spacing: .08em; line-height: 1.4; text-align: center; transform: rotate(12deg); animation: specStickerWiggle 5s ease-in-out infinite; }
+.spec-ads-art-cross { position: absolute; right: 7%; bottom: 10%; color: var(--lime); font-size: 2.7rem; animation: specSpin 18s linear infinite; }
+.spec-ads-hero-footer { margin-top: 0; }
+.spec-ads-hero-footer-right { margin-left: auto; color: var(--lime); }
+@keyframes specOrbit { to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes specCardDriftBack { 0%,100% { margin-top: 0; } 50% { margin-top: -10px; } }
+@keyframes specCardDriftFront { 0%,100% { margin-top: 0; } 50% { margin-top: 12px; } }
+@keyframes specStickerWiggle { 0%,100% { transform: rotate(12deg) translateY(0); } 50% { transform: rotate(5deg) translateY(-8px); } }
+@keyframes specSpin { to { transform: rotate(360deg); } }
+.spec-ads-playground { margin: 88px 0 95px; padding: clamp(24px,4vw,42px); border: 1px solid var(--line); border-radius: 22px; background: var(--cream); }
+.spec-ads-playground-heading { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 8px 20px; margin-bottom: 25px; }
+.spec-ads-playground-heading .kicker { grid-column: 1 / -1; color: var(--muted-ink); }
+.spec-ads-playground-heading h2 { margin: 6px 0 0; font-size: clamp(2.4rem,5vw,4.2rem); line-height: .88; letter-spacing: -.09em; }
+.spec-ads-playground-heading h2 em { color: var(--coral); font-style: normal; }
+.spec-ads-playground-heading p { max-width: 190px; margin: 0 0 4px; color: var(--muted-ink); font-size: .78rem; line-height: 1.5; text-align: right; }
+.spec-ads-playground-body { display: grid; grid-template-columns: minmax(210px,.65fr) minmax(0,1.35fr); gap: 12px; }
+.spec-ads-lens-tabs { display: flex; flex-direction: column; gap: 7px; }
+.spec-ads-lens-tabs button { display: grid; grid-template-columns: 29px minmax(0,1fr) 18px; align-items: center; gap: 8px; min-height: 74px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 11px; background: var(--paper); color: var(--ink); text-align: left; cursor: pointer; transition: background .2s ease,color .2s ease,transform .2s ease,border-color .2s ease; }
+.spec-ads-lens-tabs button > span { color: var(--coral); font-family: var(--app-font-mono); font-size: .58rem; }
+.spec-ads-lens-tabs button > strong { font-family: var(--app-font-mono); font-size: .58rem; letter-spacing: .05em; }
+.spec-ads-lens-tabs button > svg { justify-self: end; }
+.spec-ads-lens-tabs button:hover { transform: translateX(4px); border-color: var(--ink); }
+.spec-ads-lens-tabs button.is-active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.spec-ads-lens-tabs button.is-active > span { color: var(--lime); }
+.spec-ads-lens-panel { position: relative; display: flex; min-height: 318px; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 19px 23px 15px; border: 1px solid var(--ink); border-radius: 12px; animation: specPanelEnter .35s cubic-bezier(.2,.8,.2,1) both; }
+.spec-ads-lens-panel.lens-lime { background: var(--lime); }
+.spec-ads-lens-panel.lens-coral { background: var(--coral); }
+.spec-ads-lens-panel.lens-blue { background: var(--blue); }
+@keyframes specPanelEnter { from { opacity: .45; transform: translateY(8px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.spec-ads-lens-panel-top,.spec-ads-lens-panel-foot { display: flex; justify-content: space-between; gap: 12px; color: #171717a8; font-family: var(--app-font-mono); font-size: .52rem; letter-spacing: .09em; }
+.spec-ads-lens-panel-main { display: grid; grid-template-columns: minmax(0,1fr) 185px; align-items: center; gap: 20px; }
+.spec-ads-lens-label { display: inline-block; margin-bottom: 12px; font-family: var(--app-font-mono); font-size: .56rem; letter-spacing: .1em; }
+.spec-ads-lens-panel-main h3 { display: flex; flex-direction: column; margin: 0; font-size: clamp(2.1rem,4.4vw,3.8rem); line-height: .88; letter-spacing: -.085em; }
+.spec-ads-lens-panel-main > div:first-child > p { max-width: 400px; margin: 15px 0 0; font-size: .82rem; line-height: 1.58; }
+.spec-ads-lens-visual { position: relative; display: grid; width: 170px; height: 170px; place-items: center; justify-self: center; }
+.lens-visual-ring { position: absolute; width: 100%; height: 100%; border: 1px solid #1717178c; border-radius: 50%; }
+.lens-visual-ring-one { animation: specRingPulse 3s ease-in-out infinite; }
+.lens-visual-ring-two { width: 74%; height: 74%; border-style: dashed; animation: specOrbit 18s linear infinite; }
+.spec-ads-lens-visual > strong { position: relative; z-index: 1; font-size: 6.5rem; font-weight: 500; line-height: 1; }
+.spec-ads-lens-visual > i { position: absolute; right: -5px; bottom: 9px; padding: 7px 9px; background: var(--ink); color: var(--paper); font-family: var(--app-font-mono); font-size: .49rem; font-style: normal; letter-spacing: .08em; transform: rotate(-6deg); }
+@keyframes specRingPulse { 0%,100% { transform: scale(.9); opacity: .5; } 50% { transform: scale(1.08); opacity: 1; } }
+.spec-ads-playground-foot { display: flex; justify-content: space-between; gap: 15px; margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted-ink); font-family: var(--app-font-mono); font-size: .51rem; letter-spacing: .08em; }
+.spec-ads-gallery { scroll-margin-top: 25px; }
+.spec-ad-public-card { transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+.spec-ad-public-card:nth-child(3n+2):hover { transform: translateY(-7px) rotate(.7deg); }
+.spec-ad-public-card:nth-child(3n+1):hover { transform: translateY(-7px) rotate(-.7deg); }
+.spec-ad-public-card:nth-child(3n):hover { transform: translateY(-7px) rotate(.4deg); }
+.spec-ad-public-media { border-radius: 5px; }
+.spec-ad-public-media::after { position: absolute; inset: 0; border: 1px solid #17171718; content: ''; pointer-events: none; }
+.spec-ad-modal { animation: specModalEnter .3s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes specModalEnter { from { opacity: .5; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media(max-width:900px) {
+  .spec-ads-hero-composition { grid-template-columns: minmax(0,1fr) minmax(280px,.8fr); min-height: 420px; }
+  .spec-ads-hero-art { min-height: 360px; }
+  .spec-ads-art-card { width: 195px; height: 275px; }
+  .spec-ads-art-card > strong { font-size: 3rem; }
+  .spec-ads-orbit { width: 280px; height: 280px; }
+  .spec-ads-orbit-two { width: 215px; height: 215px; }
+  .spec-ads-playground-body { grid-template-columns: minmax(180px,.65fr) minmax(0,1.35fr); }
+  .spec-ads-lens-panel-main { grid-template-columns: minmax(0,1fr) 145px; }
+  .spec-ads-lens-visual { width: 135px; height: 135px; }
+  .spec-ads-lens-visual > strong { font-size: 5rem; }
+}
+@media(max-width:720px) {
+  .spec-ads-hero-composition { grid-template-columns: 1fr; gap: 0; }
+  .spec-ads-hero-copy { padding-bottom: 0; }
+  .spec-ads-hero-side-note { margin-top: 22px; }
+  .spec-ads-hero-art { min-height: 335px; margin: -4px 0 0; }
+  .spec-ads-art-card { width: 190px; height: 265px; }
+  .spec-ads-hero-footer-right { display: none; }
+  .spec-ads-playground { margin: 65px 0; padding: 22px 17px; }
+  .spec-ads-playground-heading { grid-template-columns: 1fr; }
+  .spec-ads-playground-heading p { max-width: none; text-align: left; }
+  .spec-ads-playground-body { grid-template-columns: 1fr; }
+  .spec-ads-lens-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .spec-ads-lens-tabs button { display: flex; min-height: 65px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 5px; padding: 9px; }
+  .spec-ads-lens-tabs button > svg { display: none; }
+  .spec-ads-lens-tabs button > strong { font-size: .49rem; }
+  .spec-ads-lens-panel { min-height: 285px; padding: 15px; }
+  .spec-ads-lens-panel-main { grid-template-columns: minmax(0,1fr) 115px; gap: 10px; }
+  .spec-ads-lens-panel-main h3 { font-size: clamp(2rem,7vw,3.2rem); }
+  .spec-ads-lens-visual { width: 108px; height: 108px; }
+  .spec-ads-lens-visual > strong { font-size: 4.2rem; }
+  .spec-ads-lens-visual > i { right: -5px; bottom: 0; font-size: .42rem; }
+}
+@media(max-width:480px) {
+  .spec-ads-hero { padding: 24px 18px; }
+  .spec-ads-hero h1 { font-size: clamp(3.8rem,16vw,5.6rem); }
+  .spec-ads-hero-art { min-height: 295px; }
+  .spec-ads-art-card { width: 165px; height: 235px; padding: 14px; }
+  .spec-ads-art-card > strong { font-size: 2.7rem; }
+  .spec-ads-orbit { width: 240px; height: 240px; }
+  .spec-ads-orbit-two { width: 180px; height: 180px; }
+  .spec-ads-art-sticker { width: 75px; height: 75px; font-size: .48rem; }
+  .spec-ads-playground-heading h2 { font-size: 2.5rem; }
+  .spec-ads-lens-tabs button > strong { font-size: .44rem; }
+  .spec-ads-lens-panel-main { grid-template-columns: minmax(0,1fr) 90px; }
+  .spec-ads-lens-visual { width: 85px; height: 85px; }
+  .spec-ads-lens-visual > strong { font-size: 3.4rem; }
+  .spec-ads-lens-panel-top,.spec-ads-lens-panel-foot { font-size: .43rem; }
+  .spec-ads-playground-foot { flex-direction: column; gap: 6px; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .spec-ads-art-card,.spec-ads-art-sticker,.spec-ads-art-cross,.spec-ads-orbit-two,.spec-ads-lens-visual .lens-visual-ring-one,.spec-ads-lens-visual .lens-visual-ring-two { animation: none !important; }
+  .spec-ads-lens-panel { animation: none; }
+  .spec-ad-public-card,.spec-ad-public-media img,.spec-ad-public-media video { transition: none; }
+}
