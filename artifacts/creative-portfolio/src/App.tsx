@@ -54,7 +54,7 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
   '/spec-ads': {
     title: 'Spec Ads — Self-Initiated Creative Concepts',
     description:
-      'A studio for uploading, developing and organising self-initiated advertising concepts and spec ad drafts.',
+      'A public gallery of self-initiated advertising concepts, creative previews and the thinking behind each piece.',
   },
 };
 
