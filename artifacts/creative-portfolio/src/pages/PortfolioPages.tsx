@@ -1418,15 +1418,16 @@ export function SpecAdsPage() {
           <div className="spec-brand-modal-art">
             <div className="spec-brand-modal-orbit spec-brand-modal-orbit-one"/>
             <div className="spec-brand-modal-orbit spec-brand-modal-orbit-two"/>
+            <span className="spec-brand-modal-sun" aria-hidden="true"/>
             <strong><span>RED</span><i>×</i><span>BULL</span></strong>
             <small>GIVES WINGS TO IDEAS.</small>
           </div>
           <div className="spec-brand-modal-about">
             <span className="kicker">ABOUT THE COMPANY</span>
-            <h2 id="spec-brand-modal-title">Red Bull —<br/><em>more than the can.</em></h2>
+            <h2 id="spec-brand-modal-title">An energy drink.<br/><em>A cultural force.</em></h2>
             <p>Founded in 1987 by Dietrich Mateschitz and Chaleo Yoovidhya, Red Bull took inspiration from Thailand’s Krating Daeng and adapted the drink for Western consumers.</p>
             <p>What began as an energy drink grew into a global brand connected to sport, entertainment, culture and experiences — building a world around the product rather than relying on product advertising alone.</p>
-            <div className="spec-brand-modal-facts"><span><b>1987</b> FOUNDED</span><span><b>ENERGY</b> CORE PRODUCT</span><span><b>GLOBAL</b> BRAND WORLD</span></div>
+            <div className="spec-brand-modal-facts"><span><b>1987</b> FOUNDED</span><span><b>CAFFEINE + TAURINE</b> CORE FORMULA</span><span><b>SPORT + CULTURE</b> BRAND WORLD</span></div>
           </div>
         </div>
         <div className="spec-brand-modal-explorer">
