@@ -1054,111 +1054,162 @@ export function AboutPage() {
 }
 
 export function ContactPage() {
-  const topics = [
-    {
-      title: 'Creative concepts & scripts',
-      tag: '01 / THE IDEA',
-      copy: 'A campaign thought, a story, a script, or the creative direction that gives it shape.',
-      starter: "I'm reaching out about a creative idea for [brand / project]. The audience I'm thinking about is [audience], and the thought I'd like to explore is [idea].",
-    },
-    {
-      title: 'Direction & production',
-      tag: '02 / THE MAKING',
-      copy: 'Performance-led storytelling, short-form video, production, or making an idea work on screen.',
-      starter: "I'm getting in touch about a [film / video / production] project. The format and brief are [details], and I'm looking to discuss [role / collaboration].",
-    },
-    {
-      title: 'Consumer insight & research',
-      tag: '03 / THE WHY',
-      copy: 'Audience behaviour, consumer psychology, research questions, and insight-led creative work.',
-      starter: "I'd like to discuss a consumer insight or research question around [audience / behaviour]. The context is [details], and the question I'm exploring is [question].",
-    },
-    {
-      title: 'Something else',
-      tag: '04 / THE UNEXPECTED',
-      copy: 'An opportunity, a collaboration, a question, or simply a conversation worth starting.',
-      starter: "I came across your portfolio and wanted to connect about [opportunity / idea]. A little context: [details].",
-    },
-  ];
-  const [activeTopic, setActiveTopic] = useState(0);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [brand, setBrand] = useState('');
+  const [offering, setOffering] = useState('');
+  const [audience, setAudience] = useState('');
+  const [objective, setObjective] = useState('Build awareness');
+  const [support, setSupport] = useState('Creative concept & script');
+  const [tone, setTone] = useState('Open to ideas');
+  const [timeline, setTimeline] = useState('Flexible / to be discussed');
+  const [context, setContext] = useState('');
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'error'>('idle');
-  const starter = `Hi Ashley,\n\n${topics[activeTopic].starter}\n\nWould you be open to a conversation?\n\n[Your name]`;
 
-  const copyStarter = async () => {
+  const supportOptions = [
+    { title: 'Creative concept & script', tag: '01 / THE IDEA', description: 'Campaign concepts, story routes, scripts and creative direction.' },
+    { title: 'Direction & production', tag: '02 / THE MAKING', description: 'Performance-led storytelling, short-form video and production.' },
+    { title: 'Consumer insight & research', tag: '03 / THE WHY', description: 'Audience behaviour, consumer psychology and research.' },
+    { title: 'A bit of everything', tag: '04 / THE FULL PICTURE', description: 'Taking an idea from the first brief towards its final execution.' },
+    { title: 'Something else', tag: '05 / THE UNEXPECTED', description: 'A collaboration, opportunity or idea that does not fit a neat category.' },
+  ];
+
+  const briefLines = [
+    `Name: ${name.trim() || 'Not provided'}`,
+    `Email: ${email.trim() || 'Not provided'}`,
+    `Brand / organisation: ${brand.trim() || 'Not provided'}`,
+    `Product / service: ${offering.trim() || 'Not provided'}`,
+    `Audience: ${audience.trim() || 'Still to be defined'}`,
+    `Objective: ${objective}`,
+    `Looking for: ${support}`,
+    `Desired feel: ${tone}`,
+    `Timeline: ${timeline}`,
+    context.trim() ? `Additional context: ${context.trim()}` : '',
+  ].filter(Boolean);
+
+  const subject = brand.trim() ? `A project idea for ${brand.trim()}` : 'A project idea / collaboration';
+  const emailBody = `Hi Ashley,\n\nI'd like to get a conversation started. Here's a little about what I'm thinking:\n\n${briefLines.join('\n')}\n\nLooking forward to hearing from you.\n\n${name.trim() || '[Your name]'}`;
+  const mailtoHref = `mailto:ashleydmello412@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+  const copyBrief = async () => {
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-      await navigator.clipboard.writeText(starter);
+      await navigator.clipboard.writeText(`Subject: ${subject}\n\n${emailBody}`);
       setCopyState('copied');
     } catch {
       setCopyState('error');
     }
   };
+  const resetBrief = () => {
+    setName(''); setEmail(''); setBrand(''); setOffering(''); setAudience('');
+    setObjective('Build awareness'); setSupport('Creative concept & script');
+    setTone('Open to ideas'); setTimeline('Flexible / to be discussed');
+    setContext(''); setCopyState('idle');
+  };
 
-  return <main className="wrap main-content contact-page" id="main-content" data-testid="page-contact">
-    <section className="contact-page-hero">
-      <div className="contact-page-hero-copy">
-        <div className="kicker">04 / CONTACT — OPEN INVITATION</div>
-        <h1>The next good idea could start <em>here.</em></h1>
-        <p>I'm interested in the space between understanding people and making things that connect with them. That's where psychology, storytelling and creative work meet.</p>
-        <div className="contact-hero-tags"><span>PSYCHOLOGY</span><i>×</i><span>CREATIVE PRACTICE</span></div>
+  return <main className="wrap main-content contact-page contact-builder-page" id="main-content" data-testid="page-contact">
+    <header className="contact-builder-header">
+      <div className="kicker">04 / CONTACT — LET'S GET INTO THE DETAILS</div>
+      <h1>Every good project<br/>starts <em>somewhere.</em></h1>
+      <div className="contact-builder-header-bottom">
+        <p>Got a brand, a brief, a half-formed idea or just a question? Put a few details down. You don't need to have everything figured out before getting in touch.</p>
+        <span className="contact-builder-header-note">NO PERFECT BRIEF REQUIRED <b>✳</b></span>
       </div>
-      <div className="contact-page-art" aria-hidden="true">
-        <div className="contact-art-orbit contact-art-orbit-one" />
-        <div className="contact-art-orbit contact-art-orbit-two" />
-        <div className="contact-art-sticker"><span>GOOD IDEAS</span><strong>START<br />WITH<br />PEOPLE.</strong><i>✳</i></div>
-        <span className="contact-art-side-note">NOTICE<br />CONNECT<br />CREATE</span>
-      </div>
-      <span className="contact-page-index" aria-hidden="true">LET'S TALK / 04</span>
-    </section>
+    </header>
 
-    <section className="contact-conversation" aria-labelledby="contact-conversation-title">
-      <div className="contact-section-heading">
-        <div className="kicker">A PLACE TO BEGIN</div>
-        <h2 id="contact-conversation-title">What are you thinking about?</h2>
-        <p>Choose the closest starting point. No perfectly formed brief required.</p>
-      </div>
-      <div className="contact-conversation-grid">
-        <div className="contact-topic-list" role="group" aria-label="Choose a conversation topic">
-          {topics.map((topic, index) => <button
-            key={topic.title}
-            type="button"
-            className={`contact-topic${activeTopic === index ? ' is-active' : ''}`}
-            aria-pressed={activeTopic === index}
-            onClick={() => { setActiveTopic(index); setCopyState('idle'); }}
-            data-testid={`button-contact-topic-${index + 1}`}
-          >
-            <span className="contact-topic-tag">{topic.tag}</span>
-            <strong>{topic.title}</strong>
-            <span className="contact-topic-arrow" aria-hidden="true">↗</span>
+    <section className="contact-builder-shell" aria-label="Build a project enquiry">
+      <div className="contact-builder-form">
+        <div className="contact-builder-form-top">
+          <span className="kicker">THE PROJECT STARTER</span>
+          <button type="button" onClick={resetBrief} className="contact-reset-button">RESET ↺</button>
+        </div>
+        <div className="contact-builder-step-title"><span>01</span><h2>First, the basics.</h2><small>ABOUT THE PROJECT</small></div>
+        <div className="contact-builder-fields contact-builder-fields-two">
+          <label className="contact-builder-field">
+            <span>YOUR NAME</span>
+            <input value={name} maxLength={70} onChange={(event)=>{setName(event.target.value);setCopyState('idle');}} placeholder="What should I call you?" autoComplete="name"/>
+          </label>
+          <label className="contact-builder-field">
+            <span>YOUR EMAIL</span>
+            <input type="email" value={email} maxLength={120} onChange={(event)=>{setEmail(event.target.value);setCopyState('idle');}} placeholder="Where can I reach you?" autoComplete="email"/>
+          </label>
+          <label className="contact-builder-field">
+            <span>BRAND / ORGANISATION</span>
+            <input value={brand} maxLength={90} onChange={(event)=>{setBrand(event.target.value);setCopyState('idle');}} placeholder="e.g. A neighbourhood café"/>
+          </label>
+          <label className="contact-builder-field">
+            <span>PRODUCT / SERVICE</span>
+            <input value={offering} maxLength={110} onChange={(event)=>{setOffering(event.target.value);setCopyState('idle');}} placeholder="What are we talking about?"/>
+          </label>
+          <label className="contact-builder-field contact-builder-field-wide">
+            <span>WHO ARE YOU TRYING TO REACH?</span>
+            <input value={audience} maxLength={140} onChange={(event)=>{setAudience(event.target.value);setCopyState('idle');}} placeholder="e.g. First-time buyers, students, working parents..."/>
+          </label>
+        </div>
+
+        <div className="contact-builder-step-title contact-builder-step-spaced"><span>02</span><h2>What's the job to be done?</h2><small>THE OBJECTIVE</small></div>
+        <div className="contact-objective-grid" role="group" aria-label="Choose the project objective">
+          {[
+            ['Build awareness','Get noticed'],
+            ['Change brand perception','Shift the impression'],
+            ['Launch a product or service','Make an entrance'],
+            ['Build an emotional connection','Make it matter'],
+            ['Encourage trial or purchase','Move to action'],
+            ['Explore an idea','Still figuring it out'],
+          ].map(([value,label],index)=><button type="button" key={value} className={objective===value?'is-active':''} aria-pressed={objective===value} onClick={()=>{setObjective(value);setCopyState('idle');}}>
+            <span>0{index+1}</span><strong>{value}</strong><small>{label}</small><b>{objective===value?'✓':'↗'}</b>
           </button>)}
         </div>
-        <div className="contact-starter-card" aria-live="polite">
-          <div className="contact-starter-topline"><span className="kicker">A USEFUL FIRST MESSAGE</span><span className="contact-starter-number">0{activeTopic + 1} / 04</span></div>
-          <h3>{topics[activeTopic].title}</h3>
-          <p>{topics[activeTopic].copy}</p>
-          <div className="contact-starter-message">{starter}</div>
-          <button className="contact-copy-button" type="button" onClick={copyStarter} data-testid="button-copy-contact-starter">
-            {copyState === 'copied' ? 'Copied to clipboard ✓' : copyState === 'error' ? 'Copy unavailable — select the text above' : 'Copy message starter ↗'}
-          </button>
+
+        <div className="contact-builder-step-title contact-builder-step-spaced"><span>03</span><h2>Where could I come in?</h2><small>THE COLLABORATION</small></div>
+        <div className="contact-support-list" role="group" aria-label="Choose the kind of support">
+          {supportOptions.map((option)=><button type="button" key={option.title} className={support===option.title?'is-active':''} aria-pressed={support===option.title} onClick={()=>{setSupport(option.title);setCopyState('idle');}}>
+            <span>{option.tag}</span><strong>{option.title}</strong><small>{option.description}</small><b>{support===option.title?'✓':'+'}</b>
+          </button>)}
+        </div>
+
+        <div className="contact-builder-fields contact-builder-fields-two contact-builder-fields-lower">
+          <label className="contact-builder-field">
+            <span>THE FEEL / TONE YOU HAVE IN MIND</span>
+            <select value={tone} onChange={(event)=>{setTone(event.target.value);setCopyState('idle');}}>
+              <option>Open to ideas</option><option>Playful</option><option>Warm &amp; human</option><option>Bold &amp; disruptive</option><option>Thoughtful</option><option>Premium / understated</option>
+            </select>
+          </label>
+          <label className="contact-builder-field">
+            <span>WHEN ARE YOU THINKING?</span>
+            <select value={timeline} onChange={(event)=>{setTimeline(event.target.value);setCopyState('idle');}}>
+              <option>Flexible / to be discussed</option><option>As soon as possible</option><option>Within the next few weeks</option><option>Next 1–3 months</option><option>Just exploring for now</option>
+            </select>
+          </label>
+          <label className="contact-builder-field contact-builder-field-wide">
+            <span>ANYTHING ELSE? (OPTIONAL)</span>
+            <textarea rows={4} maxLength={900} value={context} onChange={(event)=>{setContext(event.target.value);setCopyState('idle');}} placeholder="A challenge you're facing, a reference you love, a deadline, a rough thought — anything you'd like me to know."/>
+          </label>
         </div>
       </div>
+
+      <aside className="contact-live-preview" aria-live="polite">
+        <div className="contact-live-preview-top"><span className="kicker">LIVE BRIEF PREVIEW</span><span>UPDATING AS YOU TYPE <i>●</i></span></div>
+        <div className="contact-live-preview-stamp">LET'S<br/>MAKE<br/><strong>IT.</strong></div>
+        <div className="contact-live-preview-brand"><span>THE BRAND</span><strong>{brand.trim() || 'Your brand goes here'}</strong><small>{offering.trim() || 'Product / service'}</small></div>
+        <div className="contact-live-preview-details">
+          <div><span>THE AUDIENCE</span><strong>{audience.trim() || 'To be defined'}</strong></div>
+          <div><span>THE OBJECTIVE</span><strong>{objective}</strong></div>
+          <div><span>THE COLLABORATION</span><strong>{support}</strong></div>
+          <div><span>THE FEEL</span><strong>{tone}</strong></div>
+          <div><span>THE TIMELINE</span><strong>{timeline}</strong></div>
+        </div>
+        <div className="contact-live-preview-note"><span>ONE LAST THING</span><p>{context.trim() || 'Add a little context on the left. Or leave it blank — we can work it out together.'}</p></div>
+        <div className="contact-live-preview-actions">
+          <a className="contact-send-button" href={mailtoHref}>Send this my way <ArrowUpRight size={17} aria-hidden="true"/></a>
+          <button type="button" className="contact-copy-brief-button" onClick={copyBrief}>{copyState==='copied'?'Copied ✓':copyState==='error'?'Copy unavailable':'Copy brief ↗'}</button>
+        </div>
+        <p className="contact-live-preview-foot">THIS OPENS YOUR EMAIL APP WITH A DRAFT. REVIEW IT, EDIT IT, THEN SEND.</p>
+      </aside>
     </section>
 
-    <section className="contact-next-step" aria-label="Explore the portfolio">
-      <div>
-        <div className="kicker">WANT A LITTLE MORE CONTEXT?</div>
-        <h2>Take a look around first.</h2>
-        <p>See the projects, the thinking behind them, and the creative direction I'm interested in exploring.</p>
-      </div>
-      <div className="contact-next-links">
-        <Link href="/work" className="contact-next-link" data-testid="link-contact-work"><span>01 / SELECTED WORK</span><strong>Explore the archive ↗</strong></Link>
-        <Link href="/thinking" className="contact-next-link" data-testid="link-contact-thinking"><span>02 / THE THINKING</span><strong>Explore psychology ↗</strong></Link>
-      </div>
-    </section>
-
-    <section className="contact-direct-links-original" aria-label="Contact details">
-      <div><span className="kicker">PREFER TO REACH ME DIRECTLY?</span><p>Your project can start with a message, a call or a connection.</p></div>
-      <div className="contact-direct-links-original-grid">
+    <section className="contact-bottom-row">
+      <div><span className="kicker">NOT A FORM PERSON?</span><h2>Skip the brief. Just say hello.</h2><p>You can reach me directly, too.</p></div>
+      <div className="contact-bottom-links">
         <a href="mailto:ashleydmello412@gmail.com"><span>EMAIL</span><strong>ashleydmello412@gmail.com ↗</strong></a>
         <a href="tel:+919653281997"><span>PHONE</span><strong>+91 96532 81997 ↗</strong></a>
         <a href="https://www.linkedin.com/in/ashley-d-mello-a48072341" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>Connect with me ↗</strong></a>
@@ -1166,7 +1217,6 @@ export function ContactPage() {
     </section>
   </main>;
 }
-
 
 export function NotFoundPage() {
   return <main className="wrap not-found" id="main-content" data-testid="page-not-found"><div className="kicker">404 / OUT OF FRAME</div><h1>That page isn't in this archive.</h1><Link href="/" className="button" data-testid="link-home-from-404">Back to the archive <ArrowRight size={16} /></Link></main>;
