@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type PointerEvent } from 'react';
 import { Link, useParams } from 'wouter';
-import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
+import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Download, FileUp, Search, Trash2, X } from 'lucide-react';
 import { categories, projects } from '../data/projects';
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
