@@ -1,4 +1,4 @@
-import { useMemo, useState, type PointerEvent } from 'react';
+import { useEffect, useMemo, useState, type PointerEvent } from 'react';
 import { Link, useParams } from 'wouter';
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Search } from 'lucide-react';
 import { categories, projects } from '../data/projects';
@@ -1214,6 +1214,314 @@ export function ContactPage() {
         <a href="tel:+919653281997"><span>PHONE</span><strong>+91 96532 81997 ↗</strong></a>
         <a href="https://www.linkedin.com/in/ashley-d-mello-a48072341" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>Connect with me ↗</strong></a>
       </div>
+    </section>
+  </main>;
+}
+
+
+type SpecAdDraft = {
+  id: string;
+  title: string;
+  brand: string;
+  format: string;
+  audience: string;
+  objective: string;
+  insight: string;
+  idea: string;
+  contribution: string;
+  fileName: string;
+  mediaType: string;
+  media: Blob;
+  createdAt: number;
+};
+
+function openSpecAdsDatabase(): Promise<IDBDatabase> {
+  return new Promise((resolve, reject) => {
+    if (!('indexedDB' in window)) {
+      reject(new Error('This browser does not support local draft storage.'));
+      return;
+    }
+    const request = window.indexedDB.open('creative-archive-spec-ads', 1);
+    request.onupgradeneeded = () => {
+      const database = request.result;
+      if (!database.objectStoreNames.contains('drafts')) {
+        database.createObjectStore('drafts', { keyPath: 'id' });
+      }
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error ?? new Error('Could not open local draft storage.'));
+  });
+}
+
+async function readSpecAdDrafts(): Promise<SpecAdDraft[]> {
+  const database = await openSpecAdsDatabase();
+  return new Promise((resolve, reject) => {
+    const request = database.transaction('drafts', 'readonly').objectStore('drafts').getAll();
+    request.onsuccess = () => {
+      database.close();
+      resolve((request.result as SpecAdDraft[]).sort((a, b) => b.createdAt - a.createdAt));
+    };
+    request.onerror = () => {
+      database.close();
+      reject(request.error ?? new Error('Could not read saved drafts.'));
+    };
+  });
+}
+
+async function saveSpecAdDraft(draft: SpecAdDraft): Promise<void> {
+  const database = await openSpecAdsDatabase();
+  return new Promise((resolve, reject) => {
+    const transaction = database.transaction('drafts', 'readwrite');
+    transaction.objectStore('drafts').put(draft);
+    transaction.oncomplete = () => { database.close(); resolve(); };
+    transaction.onerror = () => { database.close(); reject(transaction.error ?? new Error('Could not save this draft.')); };
+    transaction.onabort = () => { database.close(); reject(transaction.error ?? new Error('Saving this draft was cancelled.')); };
+  });
+}
+
+async function removeSpecAdDraft(id: string): Promise<void> {
+  const database = await openSpecAdsDatabase();
+  return new Promise((resolve, reject) => {
+    const transaction = database.transaction('drafts', 'readwrite');
+    transaction.objectStore('drafts').delete(id);
+    transaction.oncomplete = () => { database.close(); resolve(); };
+    transaction.onerror = () => { database.close(); reject(transaction.error ?? new Error('Could not delete this draft.')); };
+  });
+}
+
+export function SpecAdsPage() {
+  const [drafts, setDrafts] = useState<SpecAdDraft[]>([]);
+  const [databaseStatus, setDatabaseStatus] = useState<'loading' | 'ready' | 'unavailable'>('loading');
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedPreview, setSelectedPreview] = useState('');
+  const [isDragging, setIsDragging] = useState(false);
+  const [title, setTitle] = useState('');
+  const [brand, setBrand] = useState('');
+  const [format, setFormat] = useState('Video ad');
+  const [audience, setAudience] = useState('');
+  const [objective, setObjective] = useState('Build awareness');
+  const [insight, setInsight] = useState('');
+  const [idea, setIdea] = useState('');
+  const [contribution, setContribution] = useState('Concept, script & direction');
+  const [draftUrls, setDraftUrls] = useState<Record<string, string>>({});
+  const [notice, setNotice] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    readSpecAdDrafts().then((items) => {
+      if (!active) return;
+      setDrafts(items);
+      setDatabaseStatus('ready');
+    }).catch(() => {
+      if (!active) return;
+      setDatabaseStatus('unavailable');
+      setNotice('Local draft storage is unavailable in this browser. You can still preview a file, but cannot save it here.');
+    });
+    return () => { active = false; };
+  }, []);
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setSelectedPreview('');
+      return;
+    }
+    const url = URL.createObjectURL(selectedFile);
+    setSelectedPreview(url);
+    return () => URL.revokeObjectURL(url);
+  }, [selectedFile]);
+
+  useEffect(() => {
+    const next: Record<string, string> = {};
+    drafts.forEach((draft) => { next[draft.id] = URL.createObjectURL(draft.media); });
+    setDraftUrls(next);
+    return () => Object.values(next).forEach((url) => URL.revokeObjectURL(url));
+  }, [drafts]);
+
+  const acceptFile = (file?: File) => {
+    if (!file) return;
+    if (!file.type.startsWith('image/') && !file.type.startsWith('video/')) {
+      setNotice('Please choose an image or video file.');
+      return;
+    }
+    if (file.size > 250 * 1024 * 1024) {
+      setNotice('That file is over 250 MB. Please choose a smaller export.');
+      return;
+    }
+    setSelectedFile(file);
+    setNotice('');
+    if (file.type.startsWith('video/')) setFormat('Video ad');
+    else setFormat('Static / print ad');
+    if (!title.trim()) setTitle(file.name.replace(/\\.[^.]+$/, '').replace(/[-_]+/g, ' '));
+  };
+
+  const saveDraft = async () => {
+    if (!selectedFile) {
+      setNotice('Add an image or video first so the draft has something to show.');
+      return;
+    }
+    if (databaseStatus !== 'ready') {
+      setNotice('Draft storage is not available. Try another browser or save the file locally for now.');
+      return;
+    }
+    setIsSaving(true);
+    setNotice('');
+    const draft: SpecAdDraft = {
+      id: `spec-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      title: title.trim() || selectedFile.name,
+      brand: brand.trim() || 'Unbranded concept',
+      format,
+      audience: audience.trim() || 'Not specified',
+      objective,
+      insight: insight.trim() || 'Not added yet',
+      idea: idea.trim() || 'Not added yet',
+      contribution: contribution.trim(),
+      fileName: selectedFile.name,
+      mediaType: selectedFile.type,
+      media: selectedFile,
+      createdAt: Date.now(),
+    };
+    try {
+      await saveSpecAdDraft(draft);
+      setDrafts((current) => [draft, ...current]);
+      setSelectedFile(null);
+      setTitle(''); setBrand(''); setAudience(''); setInsight(''); setIdea('');
+      setObjective('Build awareness'); setFormat('Video ad'); setContribution('Concept, script & direction');
+      setNotice('Saved to your local Spec Ads studio.');
+    } catch {
+      setNotice('Could not save this draft. Check available browser storage and try again.');
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const deleteDraft = async (id: string) => {
+    try {
+      await removeSpecAdDraft(id);
+      setDrafts((current) => current.filter((item) => item.id !== id));
+      setNotice('Draft removed from this browser.');
+    } catch {
+      setNotice('Could not remove this draft.');
+    }
+  };
+
+  const copyDraftDetails = async (draft: SpecAdDraft) => {
+    const text = [
+      draft.title,
+      `Brand: ${draft.brand}`,
+      `Format: ${draft.format}`,
+      `Audience: ${draft.audience}`,
+      `Objective: ${draft.objective}`,
+      `Insight: ${draft.insight}`,
+      `Creative idea: ${draft.idea}`,
+      `My contribution: ${draft.contribution}`,
+      `Asset: ${draft.fileName}`,
+    ].join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      setNotice('Spec ad details copied.');
+    } catch {
+      setNotice('Clipboard access is unavailable in this browser.');
+    }
+  };
+
+  return <main className="wrap main-content spec-ads-page" id="main-content" data-testid="page-spec-ads">
+    <header className="spec-ads-hero">
+      <div className="kicker">05 / SPEC ADS — THE SELF-INITIATED SIDE</div>
+      <h1>No client brief.<br/><em>No problem.</em></h1>
+      <div className="spec-ads-hero-bottom">
+        <p>A space for ideas I wanted to make anyway. Campaign concepts, experiments, scripts and ads built around brands, audiences and observations that caught my attention.</p>
+        <div className="spec-ads-hero-sticker"><span>MADE JUST<br/>BECAUSE</span><strong>✳</strong></div>
+      </div>
+      <div className="spec-ads-hero-meta"><span>SELF-INITIATED CONCEPTS</span><span>IDEA → EXECUTION</span><span>NOT COMMISSIONED WORK</span></div>
+    </header>
+
+    <section className="spec-ads-empty-showcase">
+      <div>
+        <span className="kicker">THE SPEC AD SHELF</span>
+        <h2>Your next idea<br/><em>goes here.</em></h2>
+        <p>Published spec ads will appear here as a curated gallery. Start by adding your first concept to the studio below.</p>
+        <button type="button" onClick={() => document.getElementById('spec-ad-studio')?.scrollIntoView({behavior:'smooth',block:'start'})}>Add a spec ad <ArrowDownRight size={17} aria-hidden="true"/></button>
+      </div>
+      <div className="spec-ads-empty-art" aria-hidden="true">
+        <span className="spec-empty-frame spec-empty-frame-one">THE IDEA</span>
+        <span className="spec-empty-frame spec-empty-frame-two">THE AD</span>
+        <span className="spec-empty-centre">?</span>
+      </div>
+    </section>
+
+    <section className="spec-ad-studio" id="spec-ad-studio">
+      <div className="spec-ad-studio-heading">
+        <div><span className="kicker">THE UPLOAD DESK / 01</span><h2>Put an idea<br/><em>on the table.</em></h2></div>
+        <p>Add the actual creative, then give it enough context for someone to understand the thinking behind it.</p>
+      </div>
+
+      <div className="spec-ad-studio-grid">
+        <div className="spec-ad-editor">
+          <div className="spec-ad-editor-top"><span>01 / CREATIVE FILE</span><span>IMAGE OR VIDEO · MAX 250 MB</span></div>
+          <label className={`spec-ad-dropzone${isDragging?' is-dragging':''}`} onDragOver={(event)=>{event.preventDefault();setIsDragging(true);}} onDragLeave={()=>setIsDragging(false)} onDrop={(event)=>{event.preventDefault();setIsDragging(false);acceptFile(event.dataTransfer.files[0]);}}>
+            <input type="file" accept="image/*,video/mp4,video/webm,video/quicktime" onChange={(event)=>acceptFile(event.target.files?.[0])}/>
+            {selectedPreview ? <div className="spec-ad-selected-preview">
+              {selectedFile?.type.startsWith('video/') ? <video src={selectedPreview} controls /> : <img src={selectedPreview} alt="Selected spec ad preview"/>}
+              <span className="spec-ad-file-chip">{selectedFile?.name}</span>
+            </div> : <div className="spec-ad-drop-prompt"><span className="spec-ad-upload-icon"><FileUp size={24}/></span><strong>Drop your ad here.</strong><span>Or browse your files to upload a preview.</span><small>MP4 · MOV · WEBM · JPG · PNG · WEBP</small></div>}
+          </label>
+          <div className="spec-ad-file-actions">
+            <label className="spec-ad-browse-button">Browse files<input type="file" accept="image/*,video/mp4,video/webm,video/quicktime" onChange={(event)=>acceptFile(event.target.files?.[0])}/></label>
+            {selectedFile && <button type="button" onClick={()=>setSelectedFile(null)} className="spec-ad-clear-file">Remove file <X size={14}/></button>}
+          </div>
+
+          <div className="spec-ad-editor-top spec-ad-details-top"><span>02 / THE THINKING</span><span>GIVE THE IDEA A BACKSTORY</span></div>
+          <div className="spec-ad-fields">
+            <label><span>PROJECT / CAMPAIGN NAME</span><input value={title} onChange={(event)=>setTitle(event.target.value)} placeholder="e.g. The Other Side of the Label"/></label>
+            <label><span>BRAND</span><input value={brand} onChange={(event)=>setBrand(event.target.value)} placeholder="The brand this concept is for"/></label>
+            <label><span>FORMAT</span><select value={format} onChange={(event)=>setFormat(event.target.value)}><option>Video ad</option><option>Static / print ad</option><option>Social media campaign</option><option>Audio ad</option><option>Campaign concept</option><option>Other</option></select></label>
+            <label><span>TARGET AUDIENCE</span><input value={audience} onChange={(event)=>setAudience(event.target.value)} placeholder="Who is this speaking to?"/></label>
+            <label className="spec-ad-field-wide"><span>OBJECTIVE</span><select value={objective} onChange={(event)=>setObjective(event.target.value)}><option>Build awareness</option><option>Change brand perception</option><option>Launch a product or service</option><option>Build an emotional connection</option><option>Encourage trial or purchase</option><option>Strengthen brand association</option><option>Other / exploratory</option></select></label>
+            <label className="spec-ad-field-wide"><span>THE INSIGHT / OBSERVATION</span><textarea rows={3} value={insight} onChange={(event)=>setInsight(event.target.value)} placeholder="What human behaviour, tension or observation started this idea?"/></label>
+            <label className="spec-ad-field-wide"><span>THE CREATIVE IDEA</span><textarea rows={4} value={idea} onChange={(event)=>setIdea(event.target.value)} placeholder="What's the central thought? How does the ad bring it to life?"/></label>
+            <label className="spec-ad-field-wide"><span>MY CONTRIBUTION</span><input value={contribution} onChange={(event)=>setContribution(event.target.value)} placeholder="Concept, script, direction, editing, production..."/></label>
+          </div>
+          <button type="button" className="spec-ad-save-button" onClick={saveDraft} disabled={isSaving || databaseStatus==='loading' || databaseStatus==='unavailable'}>{isSaving?'Saving draft…':'Save to my Spec Ads studio'} <ArrowUpRight size={17}/></button>
+          {notice && <p className="spec-ad-notice" role="status">{notice}</p>}
+        </div>
+
+        <aside className="spec-ad-studio-aside">
+          <div className="spec-ad-studio-aside-top"><span className="kicker">A NOTE ABOUT UPLOADS</span><span className="spec-ad-local-label"><i/> LOCAL STUDIO</span></div>
+          <h3>Your work stays yours.</h3>
+          <p>This page saves drafts in this browser on this device. Files are not sent to a server and are not visible to public visitors.</p>
+          <div className="spec-ad-steps">
+            <div><b>01</b><span>Choose an image or video file.</span></div>
+            <div><b>02</b><span>Add the brand, audience and thinking behind it.</span></div>
+            <div><b>03</b><span>Save it here as a local draft.</span></div>
+            <div><b>04</b><span>When ready, add the approved asset to the live portfolio repository to publish it.</span></div>
+          </div>
+          <div className="spec-ad-storage-status">{databaseStatus==='loading'?'CHECKING LOCAL STORAGE…':databaseStatus==='ready'?'BROWSER STORAGE READY':'BROWSER STORAGE UNAVAILABLE'}</div>
+        </aside>
+      </div>
+    </section>
+
+    <section className="spec-ad-drafts">
+      <div className="spec-ad-drafts-heading"><div><span className="kicker">YOUR WORKSPACE / 02</span><h2>Saved <em>drafts.</em></h2></div><span>{drafts.length.toString().padStart(2,'0')} {drafts.length===1?'DRAFT':'DRAFTS'}</span></div>
+      {drafts.length===0 ? <div className="spec-ad-drafts-empty"><span>✳</span><p>No drafts yet. Your first upload will show up here.</p></div> :
+        <div className="spec-ad-draft-grid">
+          {drafts.map((draft)=><article className="spec-ad-draft-card" key={draft.id}>
+            <div className="spec-ad-draft-media">
+              {draft.mediaType.startsWith('video/') ? <video src={draftUrls[draft.id]} controls preload="metadata"/> : <img src={draftUrls[draft.id]} alt={draft.title}/>}
+              <span>LOCAL DRAFT</span>
+            </div>
+            <div className="spec-ad-draft-body">
+              <div className="spec-ad-draft-meta"><span>{draft.format}</span><span>{new Date(draft.createdAt).toLocaleDateString()}</span></div>
+              <h3>{draft.title}</h3>
+              <p>{draft.brand} · {draft.objective}</p>
+              <div className="spec-ad-draft-actions">
+                <a href={draftUrls[draft.id]} download={draft.fileName}><Download size={14}/> Asset</a>
+                <button type="button" onClick={()=>copyDraftDetails(draft)}>Copy details</button>
+                <button type="button" onClick={()=>deleteDraft(draft.id)} aria-label={`Delete ${draft.title}`}><Trash2 size={14}/> Delete</button>
+              </div>
+            </div>
+          </article>)}
+        </div>}
     </section>
   </main>;
 }
