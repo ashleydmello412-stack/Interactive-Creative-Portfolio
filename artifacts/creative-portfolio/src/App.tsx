@@ -18,6 +18,7 @@ import {
   NotFoundPage,
   ProjectDetailPage,
   ThinkingPage,
+  SpecAdsPage,
   WorkPage,
 } from './pages/PortfolioPages';
 import { projects } from './data/projects';
@@ -50,11 +51,17 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
     description:
       'Portfolio contact information for creative advertising, consumer insights, and production opportunities.',
   },
+  '/spec-ads': {
+    title: 'Spec Ads — Self-Initiated Creative Concepts',
+    description:
+      'A studio for uploading, developing and organising self-initiated advertising concepts and spec ad drafts.',
+  },
 };
 
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
+  { href: '/spec-ads', label: 'Spec Ads' },
   { href: '/thinking', label: 'Psychology' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
@@ -210,6 +217,7 @@ function Router() {
         <Switch>
           <Route path="/" component={HomePage} />
           <Route path="/work" component={WorkPage} />
+          <Route path="/spec-ads" component={SpecAdsPage} />
           <Route path="/work/:slug" component={ProjectDetailPage} />
           <Route path="/thinking" component={ThinkingPage} />
           <Route path="/about" component={AboutPage} />
