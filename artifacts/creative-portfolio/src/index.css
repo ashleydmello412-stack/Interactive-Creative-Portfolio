@@ -3383,3 +3383,100 @@
   .spec-ads-lens-panel { animation: none; }
   .spec-ad-public-card,.spec-ad-public-media img,.spec-ad-public-media video { transition: none; }
 }
+
+
+/* Red Bull brand profile: first featured brand */
+.redbull-brand-file {
+  --rb-navy: #061d42;
+  --rb-blue: #07519a;
+  --rb-red: #e32636;
+  --rb-yellow: #ffd43b;
+  margin: 82px 0 94px;
+  padding: clamp(20px,4vw,42px);
+  overflow: hidden;
+  border-radius: 24px;
+  background: #f1eee7;
+  color: #111820;
+}
+.redbull-brand-topline { display: flex; justify-content: space-between; gap: 15px; padding-bottom: 13px; border-bottom: 1px solid #11182035; color: #4b5661; font-family: var(--app-font-mono); font-size: .55rem; letter-spacing: .11em; }
+.redbull-brand-layout { display: grid; grid-template-columns: minmax(0,1.03fr) minmax(0,.97fr); gap: clamp(25px,4vw,55px); align-items: stretch; padding: 28px 0 35px; }
+.redbull-brand-identity { position: relative; display: flex; min-height: 380px; flex-direction: column; justify-content: space-between; overflow: hidden; padding: clamp(20px,3vw,34px); border-radius: 12px; background: var(--rb-navy); color: white; isolation: isolate; }
+.redbull-brand-identity::before { position: absolute; z-index: -1; top: -110px; right: -105px; width: 340px; height: 340px; border: 1px solid #ffffff23; border-radius: 50%; content: ''; }
+.redbull-brand-identity::after { position: absolute; z-index: -1; top: -60px; right: -55px; width: 240px; height: 240px; border: 1px dashed #ffffff35; border-radius: 50%; content: ''; }
+.redbull-brand-wordmark { position: relative; z-index: 2; display: flex; align-items: center; gap: 10px; font-size: clamp(2.4rem,5vw,4.8rem); font-weight: 900; line-height: .85; letter-spacing: -.095em; }
+.redbull-brand-wordmark span:first-child { color: white; }
+.redbull-brand-wordmark span:last-child { color: var(--rb-yellow); }
+.redbull-brand-wordmark i { color: var(--rb-red); font-size: .75em; font-style: normal; }
+.redbull-brand-orbit { position: absolute; top: 47%; left: 50%; width: 250px; height: 250px; border: 1px solid #ffffff26; border-radius: 50%; transform: translate(-50%,-50%); }
+.redbull-brand-orbit-two { width: 190px; height: 190px; border-style: dashed; animation: redBullOrbit 24s linear infinite; }
+.redbull-brand-spark { position: absolute; z-index: 1; color: var(--rb-yellow); font-size: 2.5rem; }
+.redbull-brand-spark-one { top: 24%; left: 18%; animation: redBullSpark 3.5s ease-in-out infinite; }
+.redbull-brand-spark-two { right: 17%; bottom: 24%; color: var(--rb-red); font-size: 1.8rem; animation: redBullSpark 4.5s ease-in-out infinite reverse; }
+.redbull-brand-identity-bottom { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: end; gap: 12px; padding-top: 20px; border-top: 1px solid #ffffff45; }
+.redbull-brand-identity-bottom > span { max-width: 170px; color: #ffffffa8; font-family: var(--app-font-mono); font-size: .51rem; letter-spacing: .09em; line-height: 1.55; }
+.redbull-brand-identity-bottom strong { color: white; font-size: clamp(1.25rem,2.2vw,2rem); line-height: .88; letter-spacing: -.07em; text-align: right; }
+.redbull-brand-story { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 10px 0; }
+.redbull-brand-story > .kicker { color: #64707a; }
+.redbull-brand-story h2 { margin: 15px 0; font-size: clamp(2.9rem,5vw,5.1rem); line-height: .83; letter-spacing: -.095em; }
+.redbull-brand-story h2 em { color: var(--rb-red); font-style: normal; }
+.redbull-brand-lead { max-width: 480px; margin: 7px 0 10px; font-size: 1.04rem; font-weight: 700; line-height: 1.5; letter-spacing: -.025em; }
+.redbull-brand-summary { max-width: 480px; margin: 0; color: #56606a; font-size: .86rem; line-height: 1.7; }
+.redbull-brand-facts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); width: 100%; gap: 10px; margin-top: 28px; padding-top: 17px; border-top: 1px solid #11182035; }
+.redbull-brand-facts > div { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.redbull-brand-facts span { color: #66717b; font-family: var(--app-font-mono); font-size: .49rem; letter-spacing: .08em; }
+.redbull-brand-facts strong { font-size: clamp(.9rem,1.45vw,1.12rem); line-height: 1.1; letter-spacing: -.04em; }
+.redbull-brand-explorer { display: grid; grid-template-columns: minmax(210px,.58fr) minmax(0,1.42fr); gap: 12px; }
+.redbull-brand-tabs { display: flex; flex-direction: column; gap: 7px; }
+.redbull-brand-tabs button { display: flex; min-height: 75px; align-items: center; justify-content: space-between; gap: 10px; padding: 13px 15px; border: 1px solid #11182030; border-radius: 8px; background: transparent; color: #18212c; text-align: left; cursor: pointer; transition: background .2s ease,color .2s ease,transform .2s ease; }
+.redbull-brand-tabs button > span { font-family: var(--app-font-mono); font-size: .59rem; letter-spacing: .07em; }
+.redbull-brand-tabs button:hover { transform: translateX(4px); }
+.redbull-brand-tabs button.is-active { border-color: var(--rb-navy); background: var(--rb-navy); color: white; }
+.redbull-brand-tabs button.is-active svg { color: var(--rb-yellow); }
+.redbull-brand-panel { display: flex; min-height: 270px; flex-direction: column; justify-content: space-between; padding: clamp(20px,3vw,32px); border-radius: 8px; background: white; animation: redBullPanelIn .32s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes redBullPanelIn { from { opacity: .45; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.redbull-brand-panel-meta { display: flex; align-items: center; justify-content: space-between; gap: 15px; color: #69727c; font-family: var(--app-font-mono); font-size: .51rem; letter-spacing: .08em; }
+.redbull-brand-panel-meta strong { padding: 6px 8px; border-radius: 99px; background: #fff0ba; color: #111820; font-size: .48rem; text-align: right; }
+.redbull-brand-panel h3 { max-width: 570px; margin: 25px 0 12px; font-size: clamp(1.8rem,3.5vw,3rem); line-height: .95; letter-spacing: -.07em; }
+.redbull-brand-panel > p { max-width: 650px; margin: 0 0 10px; color: #414b55; font-size: .86rem; line-height: 1.7; }
+.redbull-brand-panel-bottom { display: flex; justify-content: space-between; gap: 15px; margin-top: 19px; padding-top: 12px; border-top: 1px solid #11182025; color: #75808a; font-family: var(--app-font-mono); font-size: .49rem; letter-spacing: .09em; }
+.redbull-brand-positioning { display: grid; grid-template-columns: 170px minmax(0,1fr); gap: 15px; align-items: center; margin-top: 27px; padding-top: 17px; border-top: 1px solid #11182035; }
+.redbull-brand-positioning > span { color: #68737d; font-family: var(--app-font-mono); font-size: .53rem; letter-spacing: .09em; }
+.redbull-brand-positioning > div { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px 13px; }
+.redbull-brand-positioning b { font-size: .72rem; letter-spacing: .01em; }
+.redbull-brand-positioning i { color: var(--rb-red); font-size: .9rem; font-style: normal; }
+@keyframes redBullOrbit { to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes redBullSpark { 0%,100% { transform: scale(.9) rotate(0); opacity: .75; } 50% { transform: scale(1.15) rotate(20deg); opacity: 1; } }
+@media(max-width:900px) {
+  .redbull-brand-layout { grid-template-columns: 1fr; }
+  .redbull-brand-identity { min-height: 330px; }
+  .redbull-brand-wordmark { font-size: 4rem; }
+}
+@media(max-width:720px) {
+  .redbull-brand-file { margin: 60px 0 70px; padding: 18px; }
+  .redbull-brand-topline { flex-direction: column; gap: 6px; }
+  .redbull-brand-identity { min-height: 290px; }
+  .redbull-brand-wordmark { font-size: clamp(2.9rem,15vw,4.2rem); }
+  .redbull-brand-explorer { grid-template-columns: 1fr; }
+  .redbull-brand-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px; }
+  .redbull-brand-tabs button { min-height: 65px; justify-content: center; padding: 9px; }
+  .redbull-brand-tabs button > span { font-size: .48rem; line-height: 1.45; }
+  .redbull-brand-tabs button > svg { display: none; }
+  .redbull-brand-panel { min-height: 300px; }
+  .redbull-brand-positioning { grid-template-columns: 1fr; }
+  .redbull-brand-positioning > div { justify-content: flex-start; }
+}
+@media(max-width:480px) {
+  .redbull-brand-identity { min-height: 260px; padding: 17px; }
+  .redbull-brand-wordmark { font-size: 2.9rem; }
+  .redbull-brand-facts { grid-template-columns: 1fr 1fr; }
+  .redbull-brand-facts > div:last-child { grid-column: 1 / -1; }
+  .redbull-brand-tabs button > span { font-size: .42rem; }
+  .redbull-brand-panel { padding: 18px; }
+  .redbull-brand-panel-meta { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .redbull-brand-panel h3 { margin-top: 20px; }
+  .redbull-brand-panel-bottom { font-size: .43rem; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .redbull-brand-orbit-two,.redbull-brand-spark,.redbull-brand-panel { animation: none !important; }
+  .redbull-brand-tabs button { transition: none; }
+}
