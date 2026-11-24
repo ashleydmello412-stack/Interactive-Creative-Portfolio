@@ -3978,3 +3978,13 @@
   margin-top:10px;
   line-height:.76;
 }
+
+
+/* Hari Patang — tighten heading rhythm across the full page */
+.hari-patang-page h1,
+.hari-patang-page h2,
+.hari-patang-page h3 {
+  line-height: .9;
+}
+.hari-patang-page h2 { margin-top: 10px; margin-bottom: 12px; }
+.hari-patang-page h3 { margin-top: 8px; margin-bottom: 9px; }
