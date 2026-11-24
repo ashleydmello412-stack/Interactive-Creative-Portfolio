@@ -221,6 +221,7 @@ export function ProjectDetailPage() {
   const [revealedCheck, setRevealedCheck] = useState(false);
   const [greenwashChecks, setGreenwashChecks] = useState([false, false, false]);
   const [pageProgress, setPageProgress] = useState(0);
+  const [showHariScript, setShowHariScript] = useState(false);
   const [showBhashaScript, setShowBhashaScript] = useState(false);
   const [scriptScene, setScriptScene] = useState(0);
   const [activeBhashaDevice, setActiveBhashaDevice] = useState(0);
@@ -533,8 +534,6 @@ export function ProjectDetailPage() {
               <button type="button" className="bhasha-script-toggle" aria-expanded={showBhashaScript} aria-controls="bhasha-script-reader" onClick={() => setShowBhashaScript(value => !value)}>
                 {showBhashaScript ? 'Close script reader' : 'Read the full script'} <span aria-hidden="true">{showBhashaScript ? '−' : '+'}</span>
               </button>
-              <a className="bhasha-script-download" href="/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.txt" download="Ek-Anokhi-Bhasha-Full-Script.txt">Download complete script (.txt) ↓</a>
-              <a className="bhasha-script-open" href="/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.html" target="_blank" rel="noreferrer">Open reader in a new tab ↗</a>
             </div>
           </div>
           {showBhashaScript && (
@@ -759,20 +758,33 @@ export function ProjectDetailPage() {
           </div>
         </section>
 
-        <section className="hari-takeaway hari-script-document">
+        <section className="hari-takeaway hari-script-document" id="hari-script-section">
           <span className="hari-takeaway-label">THE ORIGINAL SCRIPT / 12 PAGES</span>
-          <p>Read the working script behind Hari Patang.</p>
-          <iframe
-            title="Hari Patang original script"
-            src="https://docs.google.com/document/d/1qzM2Hoz8MZ6XKmuwsiZHurcLGA0Q10Uy-T33hZujW0Q/preview"
-            loading="lazy"
-            style={{ width: '100%', height: '680px', border: '1px solid rgba(0,0,0,.16)', borderRadius: '12px', background: '#fff', marginTop: '1.5rem' }}
-          />
-          <div className="hari-takeaway-footer">
-            <span>LIVE ILLUSION PRODUCTIONS</span>
-            <a href="https://docs.google.com/document/d/1qzM2Hoz8MZ6XKmuwsiZHurcLGA0Q10Uy-T33hZujW0Q/edit?tab=t.0#heading=h.ahk479f18r2m" target="_blank" rel="noreferrer">OPEN FULL SCRIPT ↗</a>
-            <span>HARI PATANG / 2025—26</span>
+          <div className="hari-script-intro">
+            <p>Read the working script behind Hari Patang.</p>
+            <button
+              type="button"
+              className="hari-script-toggle"
+              aria-expanded={showHariScript}
+              aria-controls="hari-script-reader"
+              onClick={() => setShowHariScript(value => !value)}
+            >
+              {showHariScript ? 'Close the script' : 'Read the script'} <span aria-hidden="true">{showHariScript ? '−' : '+'}</span>
+            </button>
           </div>
+          {showHariScript && (
+            <div className="hari-script-reader" id="hari-script-reader">
+              <div className="hari-script-reader-top">
+                <span>LIVE ILLUSION PRODUCTIONS</span>
+                <span>HARI PATANG / 2025—26</span>
+              </div>
+              <iframe
+                title="Hari Patang script reader"
+                src="https://docs.google.com/document/d/1qzM2Hoz8MZ6XKmuwsiZHurcLGA0Q10Uy-T33hZujW0Q/preview"
+                loading="lazy"
+              />
+            </div>
+          )}
         </section>
 
         <section className="hari-takeaway">
