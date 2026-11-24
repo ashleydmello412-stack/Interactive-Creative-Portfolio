@@ -3970,3 +3970,11 @@
 @media(prefers-reduced-motion:reduce) {
   .hari-story-explorer .story-tabs button,.hari-story-feature .story-feature-controls button { transition:none; }
 }
+
+
+/* Hari Patang — tighten storyline heading rhythm */
+.hari-scenes-section .hari-section-heading { margin-bottom:24px; }
+.hari-scenes-section .hari-section-heading h2 {
+  margin-top:10px;
+  line-height:.76;
+}
