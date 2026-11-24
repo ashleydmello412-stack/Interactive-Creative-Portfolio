@@ -600,9 +600,9 @@ export function ProjectDetailPage() {
             <p>My contribution crossed performance and the development of the production, with one solution segment delivered directly to the audience.</p>
           </div>
           <div className="hari-roles-grid">
-            <article><span>01 / PERFORMANCE</span><h3>Red Light</h3><p>Scene 1 — part of the traffic-light opening that introduces the play’s environmental theme.</p></article>
-            <article><span>02 / PERFORMANCE</span><h3>Dhritrashtra</h3><p>Scene 4 — the central character in the blindfold sequence about failing to see the difference between claims and reality.</p></article>
-            <article><span>03 / DIRECTION & SCRIPT</span><h3>Shaping the play</h3><p>Worked across direction and scriptwriting to build the journey from the opening pitch to the closing solutions.</p></article>
+            <article><span>01 / ACTING</span><h3>Actor</h3><p>Played Red Light in Scene 1 and Dhritrashtra in Scene 4, performing across the opening traffic-light sequence and the blindfold sequence.</p></article>
+            <article><span>02 / SCRIPTWRITING</span><h3>Scriptwriter</h3><p>Developed the script’s progression from the opening green pitch and marketplace scenes to the closing solutions.</p></article>
+            <article><span>03 / DIRECTION</span><h3>Director</h3><p>Directed the production, shaping its scenes, performance and movement from the opening to the final audience-facing message.</p></article>
             <article><span>04 / AUDIENCE ADDRESS</span><h3>Consumer tools</h3><p>Presented the first solution block, introducing Good On You, Ecolabel Index and EarthHero as tools named in the script.</p></article>
           </div>
         </section>
