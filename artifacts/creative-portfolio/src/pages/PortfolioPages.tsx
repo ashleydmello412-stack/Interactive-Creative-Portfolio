@@ -421,27 +421,40 @@ export function ProjectDetailPage() {
           <div className="bhasha-stat-note"><span>RECOGNITION</span><strong>1st place · Blossoms ’26</strong></div>
         </section>
 
-        <section className="bhasha-scenes-section bhasha-scenes-compact">
-          <div className="bhasha-section-heading">
-            <div><div className="bhasha-section-index">01 <span>/ THE STORY</span></div><h2>Four scenes.<br /><em>One idea.</em></h2></div>
-            <p>{caseStudy.premise}</p>
+        <section className="bhasha-scenes-section bhasha-scenes-compact" aria-labelledby="bhasha-story-title">
+          <div className="bhasha-story-header">
+            <div className="bhasha-story-heading-main">
+              <div className="bhasha-section-index">01 <span>/ THE STORY</span></div>
+              <h2 id="bhasha-story-title">When language<br /><em>becomes a boundary.</em></h2>
+            </div>
+            <div className="bhasha-story-intro">
+              <span>THE PLAY IN FOUR MOVEMENTS</span>
+              <p>{caseStudy.premise}</p>
+            </div>
           </div>
-          <div className="story-explorer bhasha-story-explorer">
-            <div className="story-tabs" role="tablist" aria-label="Explore the four scenes">
+          <div className="bhasha-story-explorer">
+            <div className="bhasha-story-tabs" role="tablist" aria-label="Explore the four scenes">
               {caseStudy.scenes.map((scene, index) => (
                 <button type="button" role="tab" key={scene.title} id={`bhasha-scene-tab-${index}`} aria-selected={activeScene === index} aria-controls="bhasha-scene-panel" onClick={() => setActiveScene(index)}>
-                  <span>{String(index + 1).padStart(2, '0')}</span>{scene.title.split(' / ').slice(1).join(' / ')}
+                  <span className="bhasha-story-tab-number">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="bhasha-story-tab-copy">
+                    <strong>{scene.title.split(' / ').slice(1).join(' / ')}</strong>
+                    <small>{['THE MEDIA INTERVIEW', 'A CLASSROOM DEBATE', 'THREE NEWS REPORTS', 'REALISATION TO ACTION'][index]}</small>
+                  </span>
+                  <span className="bhasha-story-tab-arrow" aria-hidden="true">↗</span>
                 </button>
               ))}
             </div>
-            <article className="story-feature" id="bhasha-scene-panel" role="tabpanel" aria-labelledby={`bhasha-scene-tab-${activeScene}`} key={activeScene}>
-              <div className="story-feature-index">SCENE {String(activeScene + 1).padStart(2, '0')} / 04</div>
-              <p className="story-feature-kicker">{['THE SATIRE', 'THE QUESTION', 'THE CONSEQUENCE', 'THE RESPONSE'][activeScene]}</p>
-              <h3>{caseStudy.scenes[activeScene].title.split(' / ').slice(1).join(' / ')}</h3>
-              <p>{caseStudy.scenes[activeScene].description}</p>
-              <button type="button" className="bhasha-read-scene" onClick={() => { setScriptScene(activeScene); setShowBhashaScript(true); document.getElementById('bhasha-script-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Read this scene in the full script <span aria-hidden="true">↗</span></button>
+            <article className="story-feature bhasha-story-panel" id="bhasha-scene-panel" role="tabpanel" aria-labelledby={`bhasha-scene-tab-${activeScene}`} data-scene={String(activeScene + 1).padStart(2, '0')} key={activeScene}>
+              <div className="story-feature-index">SCENE {String(activeScene + 1).padStart(2, '0')} <span>/ 04</span></div>
+              <div className="bhasha-story-panel-copy">
+                <p className="story-feature-kicker">{['01 / POWER & LANGUAGE', '02 / ACCENT & IDENTITY', '03 / PREJUDICE & CONSEQUENCE', '04 / REALISATION & ACCEPTANCE'][activeScene]}</p>
+                <h3>{caseStudy.scenes[activeScene].title.split(' / ').slice(1).join(' / ')}</h3>
+                <p>{caseStudy.scenes[activeScene].description}</p>
+                <button type="button" className="bhasha-read-scene" onClick={() => { setScriptScene(activeScene); setShowBhashaScript(true); document.getElementById('bhasha-script-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Read this scene in the full script <span aria-hidden="true">↗</span></button>
+              </div>
               <div className="story-feature-controls">
-                <span>{activeScene + 1} OF {caseStudy.scenes.length}</span>
+                <span>CHAPTER {String(activeScene + 1).padStart(2, '0')} / 04</span>
                 <div>
                   <button type="button" aria-label="Previous scene" disabled={activeScene === 0} onClick={() => setActiveScene((current) => Math.max(0, current - 1))}>←</button>
                   <button type="button" aria-label="Next scene" disabled={activeScene === caseStudy.scenes.length - 1} onClick={() => setActiveScene((current) => Math.min(caseStudy.scenes.length - 1, current + 1))}>→</button>
