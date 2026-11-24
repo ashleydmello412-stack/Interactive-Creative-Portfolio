@@ -3514,3 +3514,186 @@
   .spec-brand-card,.spec-brand-modal-tabs button { transition: none; }
   .spec-brand-modal-panel,.spec-brand-modal { animation: none; }
 }
+
+
+/* Hari Patang — interactive field experience */
+.hari-interactive-lab {
+  padding: clamp(58px,8vw,108px) 0;
+  border-top: 1px solid var(--line);
+}
+.hari-lab-heading {
+  display:grid;
+  grid-template-columns:1.1fr .7fr;
+  gap:clamp(24px,6vw,82px);
+  align-items:end;
+  margin-bottom:34px;
+}
+.hari-lab-heading h2 {
+  margin:17px 0 0;
+  font-size:clamp(3rem,6.7vw,6rem);
+  line-height:.9;
+  letter-spacing:-.085em;
+}
+.hari-lab-heading h2 em { color:var(--coral); font-style:normal; }
+.hari-lab-heading > p { max-width:460px; margin:0 0 5px; color:var(--muted-ink); line-height:1.75; }
+.hari-claim-lab {
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:14px;
+  padding:14px;
+  border-radius:24px;
+  background:#171717;
+  color:#f7f3e9;
+}
+.hari-claim-picker { display:grid; align-content:start; gap:9px; padding:17px 7px 17px 12px; }
+.hari-lab-label {
+  display:block;
+  margin:0 0 8px;
+  color:var(--coral);
+  font-family:var(--app-font-mono);
+  font-size:.62rem;
+  letter-spacing:.12em;
+}
+.hari-claim-picker button {
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:9px;
+  align-items:center;
+  width:100%;
+  padding:15px 14px;
+  border:1px solid #ffffff30;
+  border-radius:13px;
+  background:transparent;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+  transition:background .22s ease,border-color .22s ease,transform .22s ease;
+}
+.hari-claim-picker button:hover { transform:translateX(3px); border-color:var(--lime); }
+.hari-claim-picker button.is-active { background:var(--lime); border-color:var(--lime); color:#171717; }
+.hari-claim-picker button span { grid-column:1/-1; font: .55rem var(--app-font-mono); letter-spacing:.1em; opacity:.72; }
+.hari-claim-picker button strong { font-size:1.03rem; }
+.hari-claim-picker button b { font-size:1.1rem; }
+.hari-claim-response {
+  min-height:330px;
+  padding:clamp(22px,4vw,42px);
+  border-radius:17px;
+  background:#f3eee3;
+  color:#171717;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  animation:hari-panel-in .35s ease both;
+}
+.hari-claim-response h3 { max-width:650px; margin:12px 0; font-size:clamp(1.8rem,3.5vw,3.1rem); line-height:1.03; letter-spacing:-.055em; }
+.hari-claim-response > p { max-width:600px; margin:0; color:#5b574f; line-height:1.7; }
+.hari-lab-reveal {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  align-self:flex-start;
+  margin-top:24px;
+  padding:11px 15px;
+  border:0;
+  border-radius:999px;
+  background:#171717;
+  color:#fff;
+  font: .62rem var(--app-font-mono);
+  letter-spacing:.08em;
+  cursor:pointer;
+}
+.hari-quick-check { margin-top:17px; padding:17px 19px; border-left:3px solid var(--coral); background:#e8e0d1; animation:hari-panel-in .25s ease both; }
+.hari-quick-check strong { font-size:.9rem; }
+.hari-quick-check ul { margin:9px 0 0; padding-left:18px; color:#514c44; line-height:1.8; font-size:.86rem; }
+.hari-solution-lab {
+  margin-top:22px;
+  padding:clamp(20px,3.5vw,34px);
+  border-radius:24px;
+  background:var(--lime);
+  color:#171717;
+}
+.hari-solution-top { display:flex; justify-content:space-between; gap:15px; align-items:center; }
+.hari-solution-top > span:last-child { font: .58rem var(--app-font-mono); letter-spacing:.1em; }
+.hari-solution-tabs { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:20px 0 13px; }
+.hari-solution-tabs button {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  min-height:58px;
+  padding:12px 14px;
+  border:1px solid #17171755;
+  border-radius:12px;
+  background:transparent;
+  color:#171717;
+  text-align:left;
+  cursor:pointer;
+  transition:background .2s ease,transform .2s ease;
+}
+.hari-solution-tabs button:hover { transform:translateY(-3px); }
+.hari-solution-tabs button.is-active { background:#171717; color:#f7f3e9; }
+.hari-solution-tabs button span { font: .6rem var(--app-font-mono); opacity:.7; }
+.hari-solution-tabs button strong { font-size:.86rem; }
+.hari-solution-panel {
+  min-height:245px;
+  padding:clamp(22px,4vw,42px);
+  border-radius:16px;
+  background:#f7f3e9;
+  animation:hari-panel-in .3s ease both;
+}
+.hari-solution-panel > span { color:#827d71; font: .6rem var(--app-font-mono); letter-spacing:.12em; }
+.hari-solution-panel h3 { max-width:690px; margin:16px 0 12px; font-size:clamp(2rem,4vw,3.8rem); line-height:.98; letter-spacing:-.07em; }
+.hari-solution-panel p { max-width:720px; margin:0; color:#5c584f; line-height:1.7; }
+.hari-solution-panel-foot { display:flex; justify-content:space-between; gap:12px; margin-top:30px; padding-top:14px; border-top:1px solid #17171725; font: .56rem var(--app-font-mono); letter-spacing:.08em; }
+.hari-action-builder {
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:clamp(24px,5vw,70px);
+  align-items:start;
+  margin-top:22px;
+  padding:clamp(24px,4vw,42px);
+  border:1px solid var(--line);
+  border-radius:24px;
+}
+.hari-action-builder h3 { margin:13px 0 9px; font-size:clamp(1.8rem,3.3vw,2.8rem); line-height:1; letter-spacing:-.06em; }
+.hari-action-builder > div:first-child > p { max-width:360px; margin:0; color:var(--muted-ink); line-height:1.65; }
+.hari-checklist { display:grid; gap:8px; }
+.hari-checklist label {
+  display:grid;
+  grid-template-columns:20px 1fr 22px;
+  gap:12px;
+  align-items:center;
+  padding:15px 16px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  cursor:pointer;
+  transition:background .2s ease,border-color .2s ease;
+}
+.hari-checklist label.is-checked { background:#e5edc8; border-color:#a9bd68; }
+.hari-checklist input { width:17px; height:17px; accent-color:#5b6c28; }
+.hari-checklist label span { font-size:.88rem; line-height:1.4; }
+.hari-checklist label b { display:grid; place-items:center; width:22px; height:22px; border-radius:50%; background:#171717; color:#fff; font-size:.8rem; }
+.hari-check-progress { display:grid; gap:8px; margin-top:10px; }
+.hari-check-progress > span { font: .58rem var(--app-font-mono); letter-spacing:.1em; }
+.hari-check-progress > div { height:7px; overflow:hidden; border-radius:99px; background:#ded9ce; }
+.hari-check-progress i { display:block; height:100%; border-radius:99px; background:#829a35; transition:width .3s ease; }
+.hari-check-complete { margin:4px 0 0; color:#53691d; font-weight:600; animation:hari-panel-in .25s ease both; }
+.hari-script-document iframe { display:block; }
+@keyframes hari-panel-in { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:760px) {
+  .hari-lab-heading,.hari-claim-lab,.hari-action-builder { grid-template-columns:1fr; }
+  .hari-lab-heading { gap:16px; }
+  .hari-claim-picker { padding:10px 5px; }
+  .hari-claim-response { min-height:unset; }
+  .hari-solution-tabs { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:420px) {
+  .hari-solution-tabs { grid-template-columns:1fr; }
+  .hari-solution-tabs button { min-height:48px; }
+  .hari-solution-top { align-items:flex-start; flex-direction:column; }
+  .hari-action-builder { padding:19px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hari-claim-picker button,.hari-solution-tabs button,.hari-checklist label,.hari-check-progress i { transition:none; }
+  .hari-claim-response,.hari-quick-check,.hari-solution-panel,.hari-check-complete { animation:none; }
+}
