@@ -49,7 +49,7 @@ export const projects: Project[] = [
     number: 'PROJECT 02',
     period: '2025–2026',
     tags: ['Street Play', 'Greenwashing', 'Acting', 'Direction', 'Scriptwriting'],
-    roles: ['Acting — Red Light and Dhritrashtra', 'Direction', 'Scriptwriting', 'Presented the consumer-tools solution segment'],
+    roles: ['Actor — Red Light and Dhritrashtra', 'Scriptwriter', 'Director', 'Presented the consumer-tools solution segment'],
     summary: 'A street play about greenwashing: how environmental claims shape consumer choices, how misleading claims go unnoticed, and how people can respond.',
     detail: 'Hari Patang uses a comic, satirical street-play format to unpack the gap between the language of sustainability and the evidence behind it. The story moves from a marketplace full of competing “green” promises to a media sequence, a Dhritrashtra allegory about selective blindness, and a final set of practical responses.',
     caseStudy: {
