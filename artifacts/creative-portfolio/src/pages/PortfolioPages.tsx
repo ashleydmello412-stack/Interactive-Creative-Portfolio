@@ -221,6 +221,7 @@ export function ProjectDetailPage() {
   const [revealedCheck, setRevealedCheck] = useState(false);
   const [greenwashChecks, setGreenwashChecks] = useState([false, false, false]);
   const [pageProgress, setPageProgress] = useState(0);
+  const [showBhashaScript, setShowBhashaScript] = useState(false);
   useEffect(() => {
     const updateProgress = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
@@ -495,6 +496,28 @@ export function ProjectDetailPage() {
         <section className="bhasha-recognition-compact">
           <span>RECOGNITION</span>
           <strong>1st place · Blossoms ’26</strong>
+        </section>
+
+        <section className="bhasha-script-section" aria-labelledby="bhasha-script-title">
+          <div className="bhasha-script-heading">
+            <div>
+              <span className="bhasha-section-index">05 / THE ORIGINAL SCRIPT</span>
+              <h2 id="bhasha-script-title">The words behind<br /><em>the performance.</em></h2>
+              <p>Explore the full four-scene script, including dialogue, stage directions, beats and jingles.</p>
+            </div>
+            <div className="bhasha-script-actions">
+              <button type="button" className="bhasha-script-toggle" aria-expanded={showBhashaScript} aria-controls="bhasha-script-reader" onClick={() => setShowBhashaScript((value) => !value)}>
+                {showBhashaScript ? 'Close script reader' : 'Open script reader'} <span aria-hidden="true">{showBhashaScript ? '−' : '+'}</span>
+              </button>
+              <a className="bhasha-script-download" href="/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.md" target="_blank" rel="noreferrer">Open full script in a new tab ↗</a>
+            </div>
+          </div>
+          {showBhashaScript && (
+            <div className="bhasha-script-reader" id="bhasha-script-reader">
+              <div className="bhasha-script-reader-top"><span>NUKKAD NAATAK / EK ANOKHI BHASHA</span><span>4 SCENES · FULL TRANSCRIPT</span></div>
+              <iframe title="Complete Ek Anokhi Bhasha script" src="/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.md" loading="lazy" />
+            </div>
+          )}
         </section>
       </main>
     );
