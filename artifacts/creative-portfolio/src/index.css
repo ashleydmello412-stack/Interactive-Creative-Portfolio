@@ -4174,3 +4174,246 @@
   .bhasha-device-tabs button,.bhasha-read-scene { transition:none; }
   .bhasha-device-feature { animation:none; }
 }
+
+
+/* Ek Anokhi Bhasha — editorial redesign of Section 01 / The Story */
+.bhasha-scenes-compact {
+  padding-top: clamp(52px,6vw,76px);
+  border-top: 1px solid var(--line);
+}
+.bhasha-story-header {
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(280px,.7fr);
+  align-items:end;
+  gap:clamp(28px,5vw,72px);
+  margin-bottom:30px;
+}
+.bhasha-story-heading-main .bhasha-section-index {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 11px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--paper);
+}
+.bhasha-story-heading-main h2 {
+  max-width:720px;
+  margin:18px 0 0;
+  font-size:clamp(3.1rem,6.3vw,6rem);
+  line-height:.82;
+  letter-spacing:-.095em;
+}
+.bhasha-story-heading-main h2 em {
+  color:#899c35;
+  font-style:normal;
+}
+.bhasha-story-intro {
+  max-width:440px;
+  padding:4px 0 5px 20px;
+  border-left:3px solid var(--coral);
+}
+.bhasha-story-intro > span {
+  display:block;
+  margin-bottom:10px;
+  color:#788b31;
+  font:600 .58rem var(--app-font-mono);
+  letter-spacing:.12em;
+}
+.bhasha-story-intro p {
+  margin:0;
+  color:var(--muted-ink);
+  font-size:.9rem;
+  line-height:1.75;
+}
+.bhasha-story-explorer { display:grid; gap:13px; }
+.bhasha-story-tabs {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+}
+.bhasha-story-tabs button {
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) 16px;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+  min-height:91px;
+  padding:14px 13px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--paper);
+  color:var(--ink);
+  text-align:left;
+  cursor:pointer;
+  transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+.bhasha-story-tabs button:hover {
+  transform:translateY(-3px);
+  border-color:var(--coral);
+}
+.bhasha-story-tabs button[aria-selected="true"] {
+  border-color:var(--lime);
+  background:var(--lime);
+  box-shadow:inset 0 -3px 0 var(--ink);
+}
+.bhasha-story-tab-number {
+  display:grid;
+  place-items:center;
+  width:31px;
+  height:31px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  font:.59rem var(--app-font-mono);
+}
+.bhasha-story-tab-copy { display:grid; gap:6px; min-width:0; }
+.bhasha-story-tab-copy strong {
+  font-size:.82rem;
+  line-height:1.2;
+}
+.bhasha-story-tab-copy small {
+  color:var(--muted-ink);
+  font:.49rem var(--app-font-mono);
+  letter-spacing:.055em;
+  line-height:1.25;
+}
+.bhasha-story-tab-arrow { font-size:.88rem; opacity:.58; }
+.bhasha-story-panel {
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  grid-template-columns:minmax(125px,.32fr) minmax(0,1.68fr);
+  grid-template-rows:1fr auto;
+  gap:20px clamp(22px,5vw,68px);
+  min-height:345px;
+  padding:clamp(26px,4.5vw,48px);
+  overflow:hidden;
+  border-radius:22px;
+  background:var(--ink);
+  color:var(--paper);
+  box-shadow:0 20px 44px #17171712;
+  animation:panelReveal .32s ease both;
+}
+.bhasha-story-panel::after {
+  content:attr(data-scene);
+  position:absolute;
+  z-index:-1;
+  right:2%;
+  bottom:-30%;
+  color:transparent;
+  -webkit-text-stroke:1px #ffffff12;
+  font-size:clamp(15rem,30vw,27rem);
+  font-weight:800;
+  line-height:1;
+  letter-spacing:-.12em;
+  pointer-events:none;
+}
+.bhasha-story-panel .story-feature-index {
+  align-self:start;
+  grid-column:1;
+  grid-row:1;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  padding:9px 11px;
+  border:1px solid #ffffff45;
+  border-radius:999px;
+  color:var(--lime);
+  font:600 .58rem var(--app-font-mono);
+  letter-spacing:.1em;
+}
+.bhasha-story-panel .story-feature-index span { color:#ffffff86; }
+.bhasha-story-panel-copy {
+  position:relative;
+  z-index:1;
+  grid-column:2;
+  grid-row:1;
+  max-width:720px;
+}
+.bhasha-story-panel-copy .story-feature-kicker {
+  margin:0 0 14px;
+  color:var(--coral);
+  font:.59rem var(--app-font-mono);
+  letter-spacing:.13em;
+}
+.bhasha-story-panel-copy h3 {
+  margin:0;
+  max-width:720px;
+  color:var(--paper);
+  font-size:clamp(2.3rem,4.8vw,4.5rem);
+  line-height:.88;
+  letter-spacing:-.085em;
+}
+.bhasha-story-panel-copy > p:not(.story-feature-kicker) {
+  max-width:650px;
+  margin:17px 0 12px;
+  color:#e5e1d8;
+  font-size:.96rem;
+  line-height:1.75;
+}
+.bhasha-story-panel .bhasha-read-scene {
+  margin-top:8px;
+  color:var(--lime);
+}
+.bhasha-story-panel .story-feature-controls {
+  position:relative;
+  z-index:1;
+  grid-column:1 / -1;
+  grid-row:2;
+  align-self:end;
+  margin:0;
+  padding-top:15px;
+  border-top:1px solid #ffffff35;
+}
+.bhasha-story-panel .story-feature-controls > span {
+  color:#ffffff9c;
+  font: .57rem var(--app-font-mono);
+  letter-spacing:.12em;
+}
+.bhasha-story-panel .story-feature-controls button {
+  width:39px;
+  height:39px;
+  border:1px solid #ffffff55;
+  border-radius:50%;
+  background:transparent;
+  color:var(--paper);
+}
+.bhasha-story-panel .story-feature-controls button:hover:not(:disabled) {
+  background:var(--lime);
+  color:var(--ink);
+}
+.bhasha-story-tabs button:focus-visible,
+.bhasha-story-panel button:focus-visible {
+  outline:3px solid var(--coral);
+  outline-offset:3px;
+}
+@media(max-width:900px) {
+  .bhasha-story-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .bhasha-story-header { grid-template-columns:1fr; gap:18px; }
+  .bhasha-story-intro { max-width:650px; }
+}
+@media(max-width:600px) {
+  .bhasha-story-heading-main h2 { font-size:clamp(2.8rem,13vw,4.4rem); }
+  .bhasha-story-tabs { grid-template-columns:1fr 1fr; gap:7px; }
+  .bhasha-story-tabs button { grid-template-columns:28px minmax(0,1fr); min-height:82px; gap:8px; padding:11px 9px; }
+  .bhasha-story-tab-number { width:27px; height:27px; }
+  .bhasha-story-tab-copy strong { font-size:.75rem; }
+  .bhasha-story-tab-copy small { font-size:.45rem; }
+  .bhasha-story-tab-arrow { display:none; }
+  .bhasha-story-panel {
+    grid-template-columns:1fr;
+    grid-template-rows:auto 1fr auto;
+    min-height:unset;
+    gap:24px;
+    padding:24px 21px;
+  }
+  .bhasha-story-panel .story-feature-index { grid-column:1; grid-row:1; }
+  .bhasha-story-panel-copy { grid-column:1; grid-row:2; }
+  .bhasha-story-panel-copy h3 { font-size:clamp(2.1rem,10vw,3.4rem); }
+  .bhasha-story-panel .story-feature-controls { grid-column:1; grid-row:3; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .bhasha-story-tabs button { transition:none; }
+  .bhasha-story-panel { animation:none; }
+}
