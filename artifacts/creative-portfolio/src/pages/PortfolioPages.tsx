@@ -782,6 +782,8 @@ export function ProjectDetailPage() {
                 title="Hari Patang script reader"
                 src="https://docs.google.com/document/d/1qzM2Hoz8MZ6XKmuwsiZHurcLGA0Q10Uy-T33hZujW0Q/preview"
                 loading="lazy"
+                sandbox="allow-scripts allow-same-origin"
+                referrerPolicy="no-referrer"
               />
             </div>
           )}
