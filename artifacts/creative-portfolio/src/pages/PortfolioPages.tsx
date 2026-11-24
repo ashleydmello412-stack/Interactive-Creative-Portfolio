@@ -618,6 +618,12 @@ export function ProjectDetailPage() {
         <section className="hari-takeaway hari-script-document">
           <span className="hari-takeaway-label">THE ORIGINAL SCRIPT / 12 PAGES</span>
           <p>Read the working script behind Hari Patang, including all five scenes, dialogue, performance cues, greenwashing facts, the consumer-tools solution segment and the production prop list.</p>
+          <iframe
+            title="Hari Patang original script"
+            src="https://docs.google.com/document/d/1qzM2Hoz8MZ6XKmuwsiZHurcLGA0Q10Uy-T33hZujW0Q/preview"
+            loading="lazy"
+            style={{ width: '100%', height: '680px', border: '1px solid rgba(0,0,0,.16)', borderRadius: '12px', background: '#fff', marginTop: '1.5rem' }}
+          />
           <div className="hari-takeaway-footer">
             <span>LIVE ILLUSION PRODUCTIONS</span>
             <a href="https://docs.google.com/document/d/1qzM2Hoz8MZ6XKmuwsiZHurcLGA0Q10Uy-T33hZujW0Q/edit?tab=t.0#heading=h.ahk479f18r2m" target="_blank" rel="noreferrer">OPEN FULL SCRIPT ↗</a>
