@@ -4005,3 +4005,127 @@
 .bhasha-page .bhasha-section-heading { margin-bottom: 18px; }
 .bhasha-page .bhasha-section-heading h2 { line-height: .72; }
 .bhasha-page .bhasha-hero-copy h1 { margin-top: 5px; }
+
+
+/* Ek Anokhi Bhasha — interactive story and script reader */
+.bhasha-page .bhasha-story-explorer .story-tabs {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+}
+.bhasha-page .bhasha-story-explorer .story-tabs button {
+  min-height:92px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--paper);
+  text-align:left;
+  transition:transform .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.bhasha-page .bhasha-story-explorer .story-tabs button:hover {
+  transform:translateY(-4px);
+  border-color:var(--coral);
+  box-shadow:0 12px 22px #17171710;
+}
+.bhasha-page .bhasha-story-explorer .story-tabs button[aria-selected="true"] {
+  background:var(--lime);
+  border-color:var(--lime);
+  box-shadow:inset 0 -4px 0 var(--ink);
+}
+.bhasha-page .bhasha-story-explorer .story-tabs button span {
+  display:block;
+  margin-bottom:16px;
+  font: .6rem var(--app-font-mono);
+  opacity:.65;
+}
+.bhasha-page .story-feature {
+  margin-top:12px;
+  animation:hari-panel-in .28s ease both;
+}
+.bhasha-page .bhasha-device-card,
+.bhasha-page .bhasha-role-card,
+.bhasha-page .bhasha-ending-steps article {
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.bhasha-page .bhasha-device-card:hover,
+.bhasha-page .bhasha-role-card:hover,
+.bhasha-page .bhasha-ending-steps article:hover {
+  transform:translateY(-4px);
+  box-shadow:0 14px 26px #17171712;
+}
+.bhasha-script-section {
+  margin-top:72px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:#eeece4;
+}
+.bhasha-script-heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:28px;
+}
+.bhasha-script-heading h2 {
+  margin:9px 0 8px;
+  font-size:clamp(2.3rem,5vw,4.4rem);
+  line-height:.82;
+  letter-spacing:-.08em;
+}
+.bhasha-script-heading h2 em { color:#879b35; font-style:normal; }
+.bhasha-script-heading p { max-width:520px; margin:0; color:var(--muted-ink); line-height:1.6; }
+.bhasha-script-actions { display:flex; flex-direction:column; align-items:flex-start; gap:12px; flex:0 0 auto; }
+.bhasha-script-toggle {
+  display:flex;
+  align-items:center;
+  gap:24px;
+  padding:14px 17px;
+  border:0;
+  border-radius:999px;
+  background:var(--ink);
+  color:var(--paper);
+  cursor:pointer;
+  transition:transform .2s ease,background .2s ease;
+}
+.bhasha-script-toggle:hover { transform:translateY(-2px); background:#34342d; }
+.bhasha-script-toggle span { color:var(--lime); font-size:1.2rem; }
+.bhasha-script-download { color:var(--ink); font-size:.78rem; text-decoration:underline; text-underline-offset:4px; }
+.bhasha-script-reader {
+  margin-top:24px;
+  overflow:hidden;
+  border:1px solid #17171724;
+  border-radius:15px;
+  background:var(--paper);
+  animation:hari-panel-in .28s ease both;
+}
+.bhasha-script-reader-top {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:13px 16px;
+  background:var(--ink);
+  color:var(--paper);
+  font: .58rem var(--app-font-mono);
+  letter-spacing:.1em;
+}
+.bhasha-script-reader iframe {
+  display:block;
+  width:100%;
+  height:680px;
+  border:0;
+  background:white;
+}
+@media(max-width:760px) {
+  .bhasha-page .bhasha-story-explorer .story-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .bhasha-script-heading { align-items:flex-start; flex-direction:column; }
+  .bhasha-script-section { padding:22px; }
+  .bhasha-script-reader iframe { height:560px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .bhasha-page .bhasha-story-explorer .story-tabs button,
+  .bhasha-page .bhasha-device-card,
+  .bhasha-page .bhasha-role-card,
+  .bhasha-page .bhasha-ending-steps article,
+  .bhasha-script-toggle { transition:none; }
+  .bhasha-page .story-feature,.bhasha-script-reader { animation:none; }
+}
