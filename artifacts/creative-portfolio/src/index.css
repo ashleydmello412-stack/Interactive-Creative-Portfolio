@@ -3988,3 +3988,11 @@
 }
 .hari-patang-page h2 { margin-top: 10px; margin-bottom: 12px; }
 .hari-patang-page h3 { margin-top: 8px; margin-bottom: 9px; }
+
+
+/* Hari Patang — compact heading rhythm further */
+.hari-patang-page h1 { line-height: .78; }
+.hari-patang-page h2 { line-height: .78; margin-top: 5px; margin-bottom: 8px; }
+.hari-patang-page h3 { line-height: .84; margin-top: 4px; margin-bottom: 6px; }
+.hari-scenes-section .hari-section-heading { margin-bottom: 18px; }
+.hari-scenes-section .hari-section-heading h2 { margin-top: 5px; line-height: .72; }
