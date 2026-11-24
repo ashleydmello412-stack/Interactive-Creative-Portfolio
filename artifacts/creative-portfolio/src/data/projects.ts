@@ -49,7 +49,7 @@ export const projects: Project[] = [
     number: 'PROJECT 02',
     period: '2025–2026',
     tags: ['Street Play', 'Greenwashing', 'Acting', 'Direction', 'Scriptwriting'],
-    roles: ['Actor — Red Light and Dhritrashtra', 'Scriptwriter', 'Director', 'Presented the consumer-tools solution segment'],
+    roles: ['Actor', 'Scriptwriter', 'Director', 'Presented the consumer-tools solution segment'],
     summary: 'A street play about greenwashing: how environmental claims shape consumer choices, how misleading claims go unnoticed, and how people can respond.',
     detail: 'Hari Patang uses a comic, satirical street-play format to unpack the gap between the language of sustainability and the evidence behind it. The story moves from a marketplace full of competing “green” promises to a media sequence, a Dhritrashtra allegory about selective blindness, and a final set of practical responses.',
     caseStudy: {
@@ -61,7 +61,7 @@ export const projects: Project[] = [
         { title: '04 / The blindfold', description: 'The play shifts into a timeline and a Dhritrashtra sequence. Blindfolds become a visual metaphor for failing to notice the gap between sustainability promises and evidence, before the characters confront examples of vague claims, unsupported labels and distant targets.' },
         { title: '05 / The way forward', description: 'The closing kite sequence moves from exposing the problem to practical responses: using consumer-facing information tools, demanding laws and transparency, building eco-literacy and scanning a QR code for further information.' },
       ],
-      contribution: 'I worked across acting, direction and scriptwriting. In the performance, I played the Red Light in the opening and Dhritrashtra in the fourth scene. I also presented the first solution segment, introducing consumer-facing tools. The script places these roles within a larger structure that moves from satire and confusion towards awareness and action.',
+      contribution: 'I contributed as an actor, scriptwriter and director. I also presented the first solution segment, introducing consumer-facing tools. The script moves from satire and confusion towards awareness and action.',
       reflection: 'The project brought together several ways of communicating with a live audience: character, humour, rhythm, familiar references, visual formations and direct address. It also made me think about how to move an audience from recognising a problem to having something practical to do next. That is a structure I would like to carry into campaign development: establish the tension, make the message understandable, and give people a clear next step.',
     },
     recognition: [
