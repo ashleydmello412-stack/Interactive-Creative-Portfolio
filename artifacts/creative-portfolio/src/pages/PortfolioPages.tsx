@@ -690,7 +690,7 @@ export function ProjectDetailPage() {
 
         <section className="hari-takeaway hari-script-document">
           <span className="hari-takeaway-label">THE ORIGINAL SCRIPT / 12 PAGES</span>
-          <p>Read the working script behind Hari Patang, including all five scenes, dialogue, performance cues, greenwashing facts, the consumer-tools solution segment and the production prop list.</p>
+          <p>Read the working script behind Hari Patang.</p>
           <iframe
             title="Hari Patang original script"
             src="https://docs.google.com/document/d/1qzM2Hoz8MZ6XKmuwsiZHurcLGA0Q10Uy-T33hZujW0Q/preview"
