@@ -222,6 +222,8 @@ export function ProjectDetailPage() {
   const [greenwashChecks, setGreenwashChecks] = useState([false, false, false]);
   const [pageProgress, setPageProgress] = useState(0);
   const [showBhashaScript, setShowBhashaScript] = useState(false);
+  const [scriptScene, setScriptScene] = useState(0);
+  const [activeBhashaDevice, setActiveBhashaDevice] = useState(0);
   useEffect(() => {
     const updateProgress = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
@@ -378,10 +380,10 @@ export function ProjectDetailPage() {
   if (project.slug === 'ek-anokhi-bhasha' && project.caseStudy) {
     const caseStudy = project.caseStudy;
     const devices = [
-      { number: '01', title: 'Multilingual sound', copy: 'Greetings from different languages open the play; “Aeiiioa” returns as a shared ensemble sound.' },
-      { number: '02', title: 'Satire & reversal', copy: 'The Netaji interview turns the language test back on those demanding linguistic conformity.' },
-      { number: '03', title: 'Visual metaphor', copy: 'The weighing machine becomes “the weight of the nation”.' },
-      { number: '04', title: 'A changing refrain', copy: '“Saare Jahan Se Achha” shifts from a familiar refrain to an uneasy counterpoint as the stakes rise.' },
+      { number: '01', title: 'Multilingual sound', copy: 'The opening jingle moves through greetings in different languages. “Aeiiioa” becomes a shared sound that returns at the close.', source: 'ENTRY JINGLE / AEIIIOA' },
+      { number: '02', title: 'Satire & reversal', copy: 'The media interview turns the language test back on the leader and reporters, exposing the contradiction in demanding linguistic loyalty.', source: 'THE NETAJI INTERVIEW' },
+      { number: '03', title: 'Visual metaphor', copy: 'The kabadiwala’s weighing machine becomes “the weight of the nation”. Three escalating news items change what the scale means.', source: 'THE WEIGHING SCALE / THREE NEWS ITEMS' },
+      { number: '04', title: 'A changing refrain', copy: 'The pledge is rewritten with exclusionary conditions. “Saare Jahan Se Achha” repeats after each news item, becoming an uneasy counterpoint.', source: 'THE PLEDGE / SAARE JAHAN SE ACHA' },
     ];
 
     return (
@@ -437,6 +439,7 @@ export function ProjectDetailPage() {
               <p className="story-feature-kicker">{['THE SATIRE', 'THE QUESTION', 'THE CONSEQUENCE', 'THE RESPONSE'][activeScene]}</p>
               <h3>{caseStudy.scenes[activeScene].title.split(' / ').slice(1).join(' / ')}</h3>
               <p>{caseStudy.scenes[activeScene].description}</p>
+              <button type="button" className="bhasha-read-scene" onClick={() => { setScriptScene(activeScene); setShowBhashaScript(true); document.getElementById('bhasha-script-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}>Read this scene in the full script <span aria-hidden="true">↗</span></button>
               <div className="story-feature-controls">
                 <span>{activeScene + 1} OF {caseStudy.scenes.length}</span>
                 <div>
@@ -453,12 +456,20 @@ export function ProjectDetailPage() {
             <div><div className="bhasha-section-index">02 <span>/ THE CREATIVE LANGUAGE</span></div><h2>How the message<br /><em>reaches the audience.</em></h2></div>
             <p>Sound, satire and a strong visual metaphor carry the idea without over-explaining it.</p>
           </div>
-          <div className="bhasha-devices-grid">
-            {devices.map((device) => (
-              <article className={'bhasha-device-card bhasha-device-card-' + Number(device.number)} key={device.number}>
-                <span>{device.number}</span><h3>{device.title}</h3><p>{device.copy}</p>
-              </article>
-            ))}
+          <div className="bhasha-device-explorer">
+            <div className="bhasha-device-tabs" role="tablist" aria-label="Explore the creative devices used in the play">
+              {devices.map((device, index) => (
+                <button type="button" role="tab" key={device.number} id={`bhasha-device-tab-${index}`} aria-selected={activeBhashaDevice === index} aria-controls="bhasha-device-panel" onClick={() => setActiveBhashaDevice(index)}>
+                  <span>{device.number}</span><strong>{device.title}</strong><i aria-hidden="true">↗</i>
+                </button>
+              ))}
+            </div>
+            <article className="bhasha-device-feature" id="bhasha-device-panel" role="tabpanel" aria-labelledby={`bhasha-device-tab-${activeBhashaDevice}`} key={activeBhashaDevice}>
+              <span className="bhasha-device-feature-source">{devices[activeBhashaDevice].source}</span>
+              <h3>{devices[activeBhashaDevice].title}</h3>
+              <p>{devices[activeBhashaDevice].copy}</p>
+              <span className="bhasha-device-feature-count">{String(activeBhashaDevice + 1).padStart(2, '0')} / 04</span>
+            </article>
           </div>
         </section>
 
@@ -498,24 +509,25 @@ export function ProjectDetailPage() {
           <strong>1st place · Blossoms ’26</strong>
         </section>
 
-        <section className="bhasha-script-section" aria-labelledby="bhasha-script-title">
+        <section className="bhasha-script-section" id="bhasha-script-section" aria-labelledby="bhasha-script-title">
           <div className="bhasha-script-heading">
             <div>
-              <span className="bhasha-section-index">05 / THE ORIGINAL SCRIPT</span>
-              <h2 id="bhasha-script-title">The words behind<br /><em>the performance.</em></h2>
-              <p>Explore the full four-scene script, including dialogue, stage directions, beats and jingles.</p>
+              <span className="bhasha-section-index">05 / THE FULL SCRIPT</span>
+              <h2 id="bhasha-script-title">Read the play.<br /><em>Scene by scene.</em></h2>
+              <p>The complete four-scene script, with dialogue, stage directions, beats and jingles transcribed from the uploaded DOCX.</p>
             </div>
             <div className="bhasha-script-actions">
-              <button type="button" className="bhasha-script-toggle" aria-expanded={showBhashaScript} aria-controls="bhasha-script-reader" onClick={() => setShowBhashaScript((value) => !value)}>
-                {showBhashaScript ? 'Close script reader' : 'Open script reader'} <span aria-hidden="true">{showBhashaScript ? '−' : '+'}</span>
+              <button type="button" className="bhasha-script-toggle" aria-expanded={showBhashaScript} aria-controls="bhasha-script-reader" onClick={() => setShowBhashaScript(value => !value)}>
+                {showBhashaScript ? 'Close script reader' : 'Read the full script'} <span aria-hidden="true">{showBhashaScript ? '−' : '+'}</span>
               </button>
-              <a className="bhasha-script-download" href="/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.md" target="_blank" rel="noreferrer">Open full script in a new tab ↗</a>
+              <a className="bhasha-script-download" href="/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.txt" download="Ek-Anokhi-Bhasha-Full-Script.txt">Download complete script (.txt) ↓</a>
+              <a className="bhasha-script-open" href="/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.html" target="_blank" rel="noreferrer">Open reader in a new tab ↗</a>
             </div>
           </div>
           {showBhashaScript && (
             <div className="bhasha-script-reader" id="bhasha-script-reader">
-              <div className="bhasha-script-reader-top"><span>NUKKAD NAATAK / EK ANOKHI BHASHA</span><span>4 SCENES · FULL TRANSCRIPT</span></div>
-              <iframe title="Complete Ek Anokhi Bhasha script" src="/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.md" loading="lazy" />
+              <div className="bhasha-script-reader-top"><span>NUKKAD NAATAK / EK ANOKHI BHASHA</span><span>SCENE {String(scriptScene + 1).padStart(2, '0')} / 04 · SEARCHABLE TRANSCRIPT</span></div>
+              <iframe key={scriptScene} title="Complete Ek Anokhi Bhasha script" src={`/Interactive-Creative-Portfolio/scripts/ek-anokhi-bhasha-script.html#scene-${scriptScene + 1}`} loading="lazy" />
             </div>
           )}
         </section>
