@@ -220,6 +220,20 @@ export function ProjectDetailPage() {
   const [selectedClaim, setSelectedClaim] = useState(0);
   const [revealedCheck, setRevealedCheck] = useState(false);
   const [greenwashChecks, setGreenwashChecks] = useState([false, false, false]);
+  const [pageProgress, setPageProgress] = useState(0);
+  useEffect(() => {
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      setPageProgress(scrollable > 0 ? Math.min(100, Math.max(0, (window.scrollY / scrollable) * 100)) : 0);
+    };
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    return () => {
+      window.removeEventListener('scroll', updateProgress);
+      window.removeEventListener('resize', updateProgress);
+    };
+  }, []);
   const params = useParams<{ slug: string }>();
   const project = projects.find((item) => item.slug === params.slug);
   if (!project) return <main className="wrap not-found" id="main-content"><div className="kicker">ARCHIVE / NOT FOUND</div><h1>This project isn't in the archive.</h1><Link href="/work" className="button" data-testid="link-back-to-archive">Back to the archive <ArrowLeft size={16} /></Link></main>;
@@ -497,6 +511,9 @@ export function ProjectDetailPage() {
 
     return (
       <main className="wrap main-content hari-patang-page" id="main-content" data-testid="project-detail-hari-patang">
+        <div className="hari-reading-progress" role="progressbar" aria-label="Page reading progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(pageProgress)}>
+          <span style={{ width: pageProgress + '%' }} />
+        </div>
         <Link href="/work" className="back-link hari-back-link" data-testid="link-back-work"><ArrowLeft size={16} /> Back to all work</Link>
 
         <section className="hari-hero">
@@ -561,6 +578,12 @@ export function ProjectDetailPage() {
                   <span>{String(index + 1).padStart(2, '0')}</span>{scene.title.replace(/^\d+\s*\/\s*/, '')}
                 </button>
               ))}
+            </div>
+            <div className="hari-scene-progress" aria-label={`Scene ${activeScene + 1} of 5 selected`}>
+              <div className="hari-scene-progress-track">
+                {caseStudy.scenes.map((scene, index) => <button type="button" key={scene.title} className={index <= activeScene ? 'is-complete' : ''} aria-label={`Go to scene ${index + 1}: ${scene.title}`} aria-current={index === activeScene ? 'step' : undefined} onClick={() => setActiveScene(index)}><span /></button>)}
+              </div>
+              <span>THE STORY / {String(activeScene + 1).padStart(2, '0')} OF 05</span>
             </div>
             <article className="story-feature hari-story-feature" id="hari-scene-panel" role="tabpanel" aria-labelledby={`hari-scene-tab-${activeScene}`} key={activeScene}>
               <div className="story-feature-index">SCENE {String(activeScene + 1).padStart(2, '0')} / 05</div>
