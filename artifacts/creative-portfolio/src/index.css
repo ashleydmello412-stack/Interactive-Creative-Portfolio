@@ -3996,3 +3996,12 @@
 .hari-patang-page h3 { line-height: .84; margin-top: 4px; margin-bottom: 6px; }
 .hari-scenes-section .hari-section-heading { margin-bottom: 18px; }
 .hari-scenes-section .hari-section-heading h2 { margin-top: 5px; line-height: .72; }
+
+
+/* Ek Anokhi Bhasha — compact heading rhythm across the page */
+.bhasha-page h1 { line-height: .78; }
+.bhasha-page h2 { line-height: .78; margin-top: 5px; margin-bottom: 8px; }
+.bhasha-page h3 { line-height: .84; margin-top: 4px; margin-bottom: 6px; }
+.bhasha-page .bhasha-section-heading { margin-bottom: 18px; }
+.bhasha-page .bhasha-section-heading h2 { line-height: .72; }
+.bhasha-page .bhasha-hero-copy h1 { margin-top: 5px; }
