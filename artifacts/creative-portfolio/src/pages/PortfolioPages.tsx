@@ -780,9 +780,9 @@ export function ProjectDetailPage() {
               </div>
               <iframe
                 title="Hari Patang script reader"
-                src="https://docs.google.com/document/d/1qzM2Hoz8MZ6XKmuwsiZHurcLGA0Q10Uy-T33hZujW0Q/preview"
+                src="/Interactive-Creative-Portfolio/scripts/hari-patang-script-reader.html"
                 loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
+                sandbox="allow-scripts"
                 referrerPolicy="no-referrer"
               />
             </div>
