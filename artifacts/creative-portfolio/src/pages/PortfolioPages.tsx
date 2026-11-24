@@ -216,6 +216,10 @@ export function WorkPage() {
 
 export function ProjectDetailPage() {
   const [activeScene, setActiveScene] = useState(0);
+  const [activeSolution, setActiveSolution] = useState(0);
+  const [selectedClaim, setSelectedClaim] = useState(0);
+  const [revealedCheck, setRevealedCheck] = useState(false);
+  const [greenwashChecks, setGreenwashChecks] = useState([false, false, false]);
   const params = useParams<{ slug: string }>();
   const project = projects.find((item) => item.slug === params.slug);
   if (!project) return <main className="wrap not-found" id="main-content"><div className="kicker">ARCHIVE / NOT FOUND</div><h1>This project isn't in the archive.</h1><Link href="/work" className="button" data-testid="link-back-to-archive">Back to the archive <ArrowLeft size={16} /></Link></main>;
@@ -594,9 +598,78 @@ export function ProjectDetailPage() {
           </div>
         </section>
 
+        <section className="hari-interactive-lab" aria-labelledby="hari-lab-title">
+          <div className="hari-lab-heading">
+            <div><div className="hari-section-index">04 <span>/ YOUR TURN</span></div><h2 id="hari-lab-title">Don't just spot the claim.<br /><em>Check the proof.</em></h2></div>
+            <p>The play asks its audience to move from awareness to action. Try the same thought process here: choose a claim, then decide what evidence you would want to see.</p>
+          </div>
+          <div className="hari-claim-lab">
+            <div className="hari-claim-picker">
+              <span className="hari-lab-label">PICK A CLAIM TO INVESTIGATE</span>
+              {[
+                { label: '“100% natural”', kind: 'PRODUCT CLAIM' },
+                { label: '“Eco-friendly”', kind: 'BROAD PROMISE' },
+                { label: '“Net zero by 2050”', kind: 'FUTURE TARGET' },
+              ].map((claim, index) => <button type="button" key={claim.label} className={selectedClaim === index ? 'is-active' : ''} aria-pressed={selectedClaim === index} onClick={() => { setSelectedClaim(index); setRevealedCheck(false); }}>
+                <span>0{index + 1} / {claim.kind}</span><strong>{claim.label}</strong><b>↗</b>
+              </button>)}
+            </div>
+            <div className="hari-claim-response" aria-live="polite">
+              <span className="hari-lab-label">THE QUESTION BEHIND THE WORDS</span>
+              <h3>{[
+                'Natural according to whom — and what is actually in it?',
+                'Which part of the product or process is better for the environment?',
+                'What measurable action is happening between now and that target date?'
+              ][selectedClaim]}</h3>
+              <p>{[
+                'Ask for the ingredient information, the basis for the claim and relevant independent testing or certification. A reassuring word is not the same as evidence.',
+                'Ask the company to define the claim, show the specific environmental benefit and support it with evidence rather than relying on a broad label.',
+                'Look for interim targets, published progress, measurable reductions and accountability — not only a distant promise.'
+              ][selectedClaim]}</p>
+              <button type="button" className="hari-lab-reveal" onClick={() => setRevealedCheck((value) => !value)}>{revealedCheck ? 'HIDE THE CHECKLIST' : 'REVEAL THE QUICK CHECK'} <ArrowDownRight size={16}/></button>
+              {revealedCheck && <div className="hari-quick-check"><strong>Before you believe it, check:</strong><ul><li>Is the claim specific and clearly defined?</li><li>Is there credible evidence or certification?</li><li>Can the company show progress, not just promise it?</li></ul></div>}
+            </div>
+          </div>
+          <div className="hari-solution-lab">
+            <div className="hari-solution-top"><span className="hari-lab-label">THE PLAY'S FOUR-PART RESPONSE</span><span>SELECT A ROUTE <b>↘</b></span></div>
+            <div className="hari-solution-tabs" role="tablist" aria-label="Explore the four solutions from Hari Patang">
+              {[
+                { title: 'Use tools', short: '01' },
+                { title: 'Demand laws', short: '02' },
+                { title: 'Build literacy', short: '03' },
+                { title: 'Scan & learn', short: '04' },
+              ].map((item, index) => <button type="button" role="tab" key={item.short} aria-selected={activeSolution === index} aria-controls="hari-solution-panel" className={activeSolution === index ? 'is-active' : ''} onClick={() => setActiveSolution(index)}><span>{item.short}</span><strong>{item.title}</strong><ArrowUpRight size={15}/></button>)}
+            </div>
+            <article className="hari-solution-panel" role="tabpanel" id="hari-solution-panel" key={activeSolution}>
+              <span>ROUTE {String(activeSolution + 1).padStart(2, '0')} / 04</span>
+              <h3>{[
+                'Make information part of the habit.',
+                'Ask for rules with teeth — and transparency.',
+                'Learn to question, compare and understand.',
+                'Keep the learning going beyond the performance.'
+              ][activeSolution]}</h3>
+              <p>{[
+                'The script names Good On You, Ecolabel Index and EarthHero as consumer-facing tools. The point is to make checking a claim as familiar as scrolling through a feed.',
+                'The play asks people to demand strict laws against greenwashing and to ask companies for proof behind environmental promises.',
+                'Eco-literacy turns vague labels into questions people can actually ask: what does this mean, how is it measured and where is the evidence?',
+                'The QR-code moment points the audience towards further information, so the performance becomes a starting point rather than the end of the conversation.'
+              ][activeSolution]}</p>
+              <div className="hari-solution-panel-foot"><span>{['GOOD ON YOU · ECOLABEL INDEX · EARTHHERO','ACCOUNTABILITY · TRANSPARENCY','KNOW · ASK · UNDERSTAND','SCAN · EXPLORE · ACT'][activeSolution]}</span><span>{String(activeSolution + 1).padStart(2, '0')} / 04</span></div>
+            </article>
+          </div>
+          <div className="hari-action-builder">
+            <div><span className="hari-lab-label">MAKE IT PRACTICAL</span><h3>Your green-claim checklist.</h3><p>Tick off the questions you would ask before trusting a sustainability claim.</p></div>
+            <div className="hari-checklist">
+              {['I can identify exactly what the claim means.','I can find evidence or a credible certification.','I can see measurable action, not only a promise.'].map((item, index) => <label key={item} className={greenwashChecks[index] ? 'is-checked' : ''}><input type="checkbox" checked={greenwashChecks[index]} onChange={(event) => setGreenwashChecks((current) => current.map((value, i) => i === index ? event.target.checked : value))}/><span>{item}</span><b>{greenwashChecks[index] ? '✓' : '+'}</b></label>)}
+              <div className="hari-check-progress"><span>{greenwashChecks.filter(Boolean).length} / 3 CHECKS COMPLETE</span><div><i style={{ width: (greenwashChecks.filter(Boolean).length / 3 * 100) + '%' }}/></div></div>
+              {greenwashChecks.every(Boolean) && <p className="hari-check-complete" role="status">You're looking beyond the label. That's where informed choice begins.</p>}
+            </div>
+          </div>
+        </section>
+
         <section className="hari-contribution-section">
           <div className="hari-section-heading">
-            <div><div className="hari-section-index">04 <span>/ MY CONTRIBUTION</span></div><h2>On stage, in the script<br /><em>and in the direction.</em></h2></div>
+            <div><div className="hari-section-index">05 <span>/ MY CONTRIBUTION</span></div><h2>On stage, in the script<br /><em>and in the direction.</em></h2></div>
             <p>My contribution crossed performance and the development of the production, with one solution segment delivered directly to the audience.</p>
           </div>
           <div className="hari-roles-grid">
@@ -608,7 +681,7 @@ export function ProjectDetailPage() {
         </section>
 
         <section className="hari-results-section">
-          <div><div className="hari-section-index">05 <span>/ RECOGNITION</span></div><h2>The work travelled.<br /><em>The message stayed.</em></h2></div>
+          <div><div className="hari-section-index">06 <span>/ RECOGNITION</span></div><h2>The work travelled.<br /><em>The message stayed.</em></h2></div>
           <div className="hari-awards">
             <div className="hari-award"><span>01</span><strong>1st PLACE</strong><small>DARPAN</small></div>
             <div className="hari-award"><span>02</span><strong>2nd PLACE</strong><small>MOOD INDIGO PRELIMS</small></div>
