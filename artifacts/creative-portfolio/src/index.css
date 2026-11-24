@@ -3697,3 +3697,83 @@
   .hari-claim-picker button,.hari-solution-tabs button,.hari-checklist label,.hari-check-progress i { transition:none; }
   .hari-claim-response,.hari-quick-check,.hari-solution-panel,.hari-check-complete { animation:none; }
 }
+
+
+/* Hari Patang — motion and navigation polish */
+.hari-reading-progress {
+  position:sticky;
+  top:0;
+  z-index:30;
+  height:3px;
+  width:100%;
+  margin:0 0 8px;
+  overflow:hidden;
+  border-radius:99px;
+  background:#17171712;
+  pointer-events:none;
+}
+.hari-reading-progress span {
+  display:block;
+  height:100%;
+  border-radius:inherit;
+  background:var(--coral);
+  transition:width .12s linear;
+  box-shadow:0 0 12px #ff754a66;
+}
+.hari-scene-progress {
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin:16px 0 13px;
+}
+.hari-scene-progress-track {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:5px;
+  flex:1;
+}
+.hari-scene-progress-track button {
+  height:15px;
+  padding:5px 0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+}
+.hari-scene-progress-track button span {
+  display:block;
+  height:4px;
+  border-radius:99px;
+  background:#1717171c;
+  transition:background .25s ease,transform .25s ease;
+}
+.hari-scene-progress-track button.is-complete span { background:var(--coral); }
+.hari-scene-progress-track button[aria-current="step"] span { background:var(--ink); transform:scaleY(1.8); }
+.hari-scene-progress > span {
+  flex:0 0 auto;
+  color:var(--muted-ink);
+  font: .58rem var(--app-font-mono);
+  letter-spacing:.1em;
+}
+.hari-device-card,.hari-roles-grid article,.hari-award {
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.hari-device-card:hover,.hari-roles-grid article:hover,.hari-award:hover {
+  transform:translateY(-5px) rotate(-.35deg);
+  box-shadow:0 16px 30px #17171712;
+}
+.hari-hero .hari-kite-stage { perspective:800px; }
+.hari-kite-art { transform-origin:50% 55%; transition:filter .35s ease; }
+.hari-kite-stage:hover .hari-kite-art {
+  filter:drop-shadow(0 25px 34px #00000070);
+  animation-duration:2.8s;
+}
+.hari-kite-stage:hover .hari-kite-orbit { border-color:#d8f36a99; }
+.hari-script-document iframe { box-shadow:0 18px 45px #17171712; }
+@media(max-width:600px) {
+  .hari-scene-progress { align-items:flex-start; flex-direction:column; gap:7px; }
+  .hari-scene-progress-track { width:100%; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hari-reading-progress span,.hari-scene-progress-track button span,
+  .hari-device-card,.hari-roles-grid article,.hari-award,.hari-kite-art { transition:none; animation:none; }
+}
